@@ -393,7 +393,7 @@ export default function FunkcePage() {
           ))}
         </div>
 
-        {/* Hidden signals — 54 analyses */}
+        {/* Hidden signals — 54 analyses, told as stories */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">
             <div className="section-tag">
@@ -409,149 +409,184 @@ export default function FunkcePage() {
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Drobnosti, které <span className="text-gold">vidíte teprve, když vám je někdo ukáže</span>
+            Tři drobnosti, které <span className="text-gold">zachránily klienta</span>
           </h2>
           <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Aplikace sleduje <strong className="text-white">drobnosti, kterých si lidé sami nevšímají</strong> — kolik dní leží faktura, jestli klient pořád posílá smajlíky, kdy přestal vykat. Z těchhle drobností pozná, co opravdu funguje a kde se něco zadrhává —
-            <strong className="text-white"> dřív, než vám to klient řekne nahlas</strong>. Tady je 12 ukázek, celkem jich je <strong className="text-gold">54</strong>.
+            Lidé tyhle věci sami nevidí — jsou moc malé, moc běžné, moc nudné. Aplikace si jich všímá za vás. Tady jsou tři <strong className="text-white">opravdové scénáře</strong>, jak to v praxi funguje. (Klienti jsou anonymizováni — ale situace jsou reálné.)
           </p>
         </FadeInSection>
 
-        {/* Subcat: Metadata */}
-        <FadeInSection className="mb-4">
-          <div
-            className="text-gold mb-2"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.65rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-            }}
-          >
-            ◉ Metadata
+        {/* Story 1 */}
+        <FadeInSection className="mb-6">
+          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
+            <div className="flex flex-col gap-3">
+              <div
+                className="text-gold"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Příběh 01
+              </div>
+              <div className="text-white text-5xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                ☺
+              </div>
+              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
+                Z e-mailů
+              </span>
+            </div>
+            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+              <p>
+                Klient vám <strong className="text-white">6 měsíců posílal v každém mailu smajlík.</strong> Žádný velký, jen takový obyčejný „úsměv". Pak jednoho dne — <strong className="text-white">15. února</strong> — přestal. Strohé věty. Žádné emoce.
+              </p>
+              <p>
+                Vy jste si toho nevšimli. Měli jste 30 dalších klientů a hromadu termínů. Aplikace si toho všimla:
+              </p>
+              <p className="hud-panel p-4 my-4 border-l-2 border-l-gold/60">
+                <span className="text-gold" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
+                <span className="text-white">„Klient #007 změnil tón. Posledních 14 dní bez emocí. Pravděpodobnost odchodu během 60 dní: <strong className="text-gold">64 %</strong>."</span>
+              </p>
+              <p>
+                Zavolali jste mu, omluvili se za nestihnutý termín z minulého týdne, naplánovali kávu. <strong className="text-white">Klient zůstal.</strong> Cca 8 hodin práce na záchranu vztahu, který by jinak skončil výpovědí.
+              </p>
+              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
+                <strong>Bez aplikace</strong> byste o tom věděli, až by přišla výpověď. Tehdy je už pozdě.
+              </p>
+            </div>
           </div>
         </FadeInSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {hiddenSignalsMetadata.map((s) => (
-            <div key={s.title} className="hud-panel p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="hud-chip" data-tone="cyan">
-                  KLIENT
-                </span>
-                <span
-                  className="text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  ← {s.source}
-                </span>
-              </div>
-              <h3
-                className="text-white text-base font-semibold mb-3"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
+        {/* Story 2 */}
+        <FadeInSection className="mb-6">
+          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
+            <div className="flex flex-col gap-3">
+              <div
+                className="text-gold"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
               >
-                {s.title}
-              </h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-green flex-shrink-0"
-                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
-                  >
-                    OK:
-                  </span>
-                  <span className="text-text-secondary">{s.good}</span>
-                </div>
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-red flex-shrink-0"
-                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
-                  >
-                    Risk:
-                  </span>
-                  <span className="text-text-secondary">{s.bad}</span>
-                </div>
+                Příběh 02
               </div>
+              <div className="text-white text-4xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                vy → ty
+              </div>
+              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
+                Z e-mailů
+              </span>
             </div>
-          ))}
-        </div>
-
-        {/* Subcat: Language & Emotions */}
-        <FadeInSection className="mb-4">
-          <div
-            className="text-gold mb-2"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.65rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-            }}
-          >
-            ◉ Jazyk a emoce
+            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+              <p>
+                Klient vám <strong className="text-white">4 roky vykal.</strong> Jednoho dne přijde e-mail: <em>„Ahoj Petro, můžeš mi to poslat?"</em>
+              </p>
+              <p>
+                Změna na tykání může znamenat dvě věci. Buď vás <strong className="text-white">bere víc osobně</strong> (= dobré pro vztah), nebo vás <strong className="text-white">přestal brát vážně</strong> (= riziko). Záleží na kontextu.
+              </p>
+              <p>
+                Aplikace má kontext, který vy v hlavě nedržíte:
+              </p>
+              <p className="hud-panel p-4 my-4 border-l-2 border-l-status-red/60">
+                <span className="text-status-red" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
+                <span className="text-white">„Klient #012 současně: přestal odpovídat na první mail (3× za sebou), zvýšil počet ad-hoc dotazů o 240 %, přestal číst přílohy. <strong className="text-status-red">Trojnásobné riziko.</strong> Doporučení: osobní schůzka tento týden."</span>
+              </p>
+              <p>
+                Sjednali jste schůzku. Klient přiznal, že hledal jiného účetního, ale dali jste mu důvěru zpět. <strong className="text-white">Měli jste 64% šanci ho udržet — zvládli jste to.</strong>
+              </p>
+              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
+                <strong>Bez aplikace</strong> byste viděli jen tu změnu z vykání na tykání. To samo o sobě ještě nic neznamená — důležitá je kombinace.
+              </p>
+            </div>
           </div>
         </FadeInSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {hiddenSignalsLanguage.map((s) => (
-            <div key={s.title} className="hud-panel p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="hud-chip" data-tone="cyan">
-                  KLIENT
-                </span>
-                <span
-                  className="text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  ← {s.source}
-                </span>
-              </div>
-              <h3
-                className="text-white text-base font-semibold mb-3"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
+        {/* Story 3 */}
+        <FadeInSection className="mb-12">
+          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
+            <div className="flex flex-col gap-3">
+              <div
+                className="text-gold"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
               >
-                {s.title}
-              </h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-green flex-shrink-0"
-                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
-                  >
-                    OK:
-                  </span>
-                  <span className="text-text-secondary">{s.good}</span>
-                </div>
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-red flex-shrink-0"
-                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
-                  >
-                    Risk:
-                  </span>
-                  <span className="text-text-secondary">{s.bad}</span>
-                </div>
+                Příběh 03
               </div>
+              <div className="text-white text-5xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                100 %
+              </div>
+              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
+                Z fronty úkolů
+              </span>
             </div>
-          ))}
-        </div>
+            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
+              <p>
+                Tři roky se vám klient stěžoval, že jste <strong className="text-white">pomalí.</strong> Vy jste mu pokaždé říkali, že to není pravda — máte plno klientů, dělá se mu maximum. Klient odpovídal: <em>„Možná. Ale mně to vždycky trvá nejdéle."</em>
+              </p>
+              <p>
+                Nikdy jste nepochopili proč. Aplikace se podívala do logu:
+              </p>
+              <p className="hud-panel p-4 my-4 border-l-2 border-l-gold/60">
+                <span className="text-gold" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
+                <span className="text-white">„Účetní A vždy nechává klienta #003 na <strong className="text-gold">úplný konec dne</strong>. <strong className="text-gold">100 % případů</strong>, i když je naléhavý. Pattern detekován za posledních 24 měsíců."</span>
+              </p>
+              <p>
+                Žádný zlý úmysl. Jen lidská preference — účetní A měla podvědomě raději jiné klienty. Ale klient #003 to <strong className="text-white">cítil tři roky</strong>.
+              </p>
+              <p>
+                Přerozdělili jste agendu. Klient #003 dostal jiného účetního. Stížnosti přestaly. Po půl roce klient přidal druhou firmu pod vás.
+              </p>
+              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
+                <strong>Bez aplikace</strong> byste tenhle vzorec nikdy neviděli. Jeden konkrétní vzorec mezi 1 800 případy zpracovaných za rok.
+              </p>
+            </div>
+          </div>
+        </FadeInSection>
 
-        {/* Hidden signals teaser CTA */}
+        {/* Hidden signals — list of remaining */}
         <FadeInSection className="mb-24">
-          <div className="hud-panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <p className="text-text-secondary text-sm leading-relaxed max-w-2xl">
-              <strong className="text-white">+ dalších 42 takových drobností.</strong> Kdo píše velkými písmeny, kdo volá v noci, kdo zapomíná přílohy, kdo neodpovídá na první e-mail. Aplikace to vidí, vy se rozhodnete, co s tím.
+          <div className="hud-panel p-6">
+            <div className="mb-5 flex items-center gap-2">
+              <span className="hud-chip" data-tone="gold">
+                + 51 dalších drobností
+              </span>
+              <span
+                className="text-text-muted"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Ukázka
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 text-text-secondary text-sm">
+              <div>• Jak dlouho leží faktura</div>
+              <div>• Kolikrát ji někdo otevřel</div>
+              <div>• Kdo s kým začíná pracovat ráno</div>
+              <div>• Jak často účetní přepíná okna</div>
+              <div>• Kolik papíru ještě tisknete</div>
+              <div>• Kdo píše velkými písmeny</div>
+              <div>• Tón pondělí vs. pátek</div>
+              <div>• Pravopisné chyby v čase</div>
+              <div>• Kdo volá v noci</div>
+              <div>• Kdo zapomíná přílohy</div>
+              <div>• Kdo neodpovídá na první mail</div>
+              <div>• Délka pozdravů a oslovení</div>
+            </div>
+            <p className="text-text-muted text-xs mt-5 leading-relaxed">
+              Vše z metadat — žádné slídění, žádné čtení obsahu mailu. Aplikace si všímá <em>jak</em> komunikujete, ne <em>o čem</em>.
             </p>
-            <span className="hud-chip" data-tone="gold">
-              54 ANALÝZ CELKEM
-            </span>
           </div>
         </FadeInSection>
 

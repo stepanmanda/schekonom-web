@@ -11,7 +11,7 @@ const stories = [
     headline: "672 000 Kč",
     subhead: "Někdo se nás snažil okrást",
     body: [
-      "Stavební firma platila dlouhodobě německému dodavateli. Tentokrát přišel mail s fakturou — všechno jako vždycky, jen „použijte prosím nový IBAN".",
+      "Stavební firma platila dlouhodobě německému dodavateli. Tentokrát přišel mail s fakturou — všechno jako vždycky, jen 'použijte prosím nový IBAN'.\",
       "Klasický phishing. Účetní by v rutině zaplatila. Aplikace si všimla.",
     ],
     alert: 'EkonomOS hlásí ⟶ "Podezřelá změna IBAN u Kranbau. Ověřit telefonicky na známém čísle. Neplatit do ověření."',

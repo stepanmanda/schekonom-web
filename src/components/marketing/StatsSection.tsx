@@ -84,17 +84,17 @@ export default function StatsSection() {
         >
           <div className="section-tag justify-center mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            METRIKY // NAŠE ČÍSLA
+            METRIKY // ROZSAH PRODUKTU
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Čísla, která <span className="text-cyan">mluví</span>
+            Co <span className="text-cyan">vidíte uvnitř</span>
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
-            Tři dekády zkušeností, desítky odborníků a stovky spokojených
-            klientů v regionu Cheb a Plzeň.
+            Hodnota není v množství dat, ale v korelacích, které vznikají jejich
+            propojením.
           </p>
         </div>
 

@@ -304,6 +304,89 @@ export default function FunkcePage() {
           ))}
         </div>
 
+        {/* Predictive layer detail */}
+        <FadeInSection className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="section-tag">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
+              PREDIKTIVNÍ VRSTVA // 5 ML ANALÝZ NA KLIENTA
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
+          </div>
+        </FadeInSection>
+
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Pět ML pohledů na <span className="text-gold">každého klienta</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
+            Pro každého klienta běží pět prediktivních analýz s drill-down do
+            scénářů „dobrý stav" vs. „rizikový stav". Plus konkrétní akce, co
+            dělat.
+          </p>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-24">
+          {predictiveAnalyses.map((p) => (
+            <div key={p.title} className="hud-panel p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="hud-chip" data-tone="cyan">
+                  KLIENT
+                </span>
+                <span
+                  className="text-text-muted"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  ← {p.method}
+                </span>
+              </div>
+              <h3
+                className="text-white text-base font-semibold mb-3"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {p.title}
+              </h3>
+              <div className="space-y-2.5 text-sm">
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-green flex-shrink-0"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.6rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Dobrý stav:
+                  </span>
+                  <span className="text-text-secondary">{p.good}</span>
+                </div>
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-red flex-shrink-0"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.6rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Riziko:
+                  </span>
+                  <span className="text-text-secondary">{p.bad}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Integrace / Napojení na systémy */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">

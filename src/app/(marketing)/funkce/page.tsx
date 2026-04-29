@@ -90,6 +90,23 @@ const stats = [
   { value: "8", label: "Workflow" },
 ];
 
+const integrations = [
+  { icon: Database, name: "Money S3 / Pohoda", category: "Účetní systém" },
+  { icon: Layers, name: "DocuWare", category: "DMS dokumenty" },
+  { icon: HeadphonesIcon, name: "Daktela", category: "Contact center" },
+  { icon: Banknote, name: "Bankovní API (FIO, KB, ČSOB)", category: "Transakce" },
+  { icon: Building2, name: "ARES + VIES", category: "Rejstříky firem" },
+  { icon: Shield, name: "ČSSZ + eNeschopenky", category: "Sociální pojištění" },
+  { icon: FileText, name: "DIS+ (Finanční správa)", category: "Daňový portál" },
+  { icon: Globe, name: "ELSTER / Finanzamt", category: "Německé daně" },
+  { icon: MailIcon, name: "Email server (IMAP)", category: "Komunikace" },
+  { icon: Building2, name: "Justice.cz", category: "Rejstříky" },
+  { icon: MapPinIcon, name: "GPS + knihy jízd", category: "Geolokace" },
+  { icon: Cloud, name: "Reenio", category: "Rezervace termínů" },
+  { icon: Plug, name: "TeamViewer", category: "Vzdálená podpora" },
+  { icon: Cloud, name: "ČHMÚ", category: "Meteorologická data" },
+];
+
 function FadeInSection({
   children,
   className = "",

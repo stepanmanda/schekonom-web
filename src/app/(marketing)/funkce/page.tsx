@@ -409,10 +409,11 @@ export default function FunkcePage() {
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Co tam je, ale <span className="text-gold">nikoho nenapadne to hledat</span>
+            Drobnosti, které <span className="text-gold">vidíte teprve, když vám je někdo ukáže</span>
           </h2>
           <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Největší kategorie produktu — <strong className="text-white">54 analýz</strong> nad metadaty, jazykem a chováním. EkonomOS čte to, co lidé sami nečtou: kolikrát byla faktura otevřena, kdy účetní přestal používat smajlíky, jak se mění tón v pondělí vs. v pátek. Tady je 12 z nich.
+            Aplikace sleduje <strong className="text-white">drobnosti, kterých si lidé sami nevšímají</strong> — kolik dní leží faktura, jestli klient pořád posílá smajlíky, kdy přestal vykat. Z těchhle drobností pozná, co opravdu funguje a kde se něco zadrhává —
+            <strong className="text-white"> dřív, než vám to klient řekne nahlas</strong>. Tady je 12 ukázek, celkem jich je <strong className="text-gold">54</strong>.
           </p>
         </FadeInSection>
 

@@ -84,21 +84,81 @@ const aiLayer = [
 ];
 
 const hiddenSignalsMetadata = [
-  { title: "Čas přijetí → zaúčtování", source: "DocuWare timestamps", good: "Průměr 4 h — efektivní", bad: "Průměr 96 h u klienta X — odkládání" },
-  { title: "Kolikrát faktura otevřena", source: "DocuWare open log", good: "1-2× — jasný doklad", bad: "12× otevřena — účetní neví jak zaúčtovat" },
-  { title: "Přepínání oken", source: "OS telemetrie", good: "Průměr 3 přepnutí", bad: "45 přepnutí — kognitivní přetížení" },
-  { title: "Pořadí zpracování", source: "queue log", good: "FIFO — spravedlivé", bad: "Klient Y vždy poslední — neoblíbený" },
-  { title: "Kdo první ráno", source: "login × klient", good: "Rovnoměrné", bad: "Účetní A vždy odkládá klienta B" },
-  { title: "Kdy vytištěn doklad", source: "printer log", good: "0 tisků — plně digitální", bad: "340 tisků/měsíc — papírový středověk" },
+  {
+    title: "Jak dlouho leží faktura, než ji zpracujeme",
+    source: "z DocuWare",
+    good: "Většinou hotovo do 4 hodin",
+    bad: "U klienta X čeká i 4 dny — něco se zaseklo",
+  },
+  {
+    title: "Kolikrát někdo otevřel jednu fakturu",
+    source: "z DocuWare",
+    good: "Jeden, dva pohledy a hotovo",
+    bad: "Otevřena 12× — účetní si neví rady, jak ji zaúčtovat",
+  },
+  {
+    title: "Jak často účetní přeskakuje mezi okny",
+    source: "z počítače",
+    good: "3 přepnutí — soustředěná práce",
+    bad: "45 přepnutí — rozptýlení a riziko chyby",
+  },
+  {
+    title: "V jakém pořadí dáváme klienty na řadu",
+    source: "z fronty úkolů",
+    good: "Spravedlivě, jak chodí",
+    bad: "Klient Y vždy úplně poslední — někomu se nelíbí",
+  },
+  {
+    title: "S kým účetní začínají ráno pracovat",
+    source: "z přihlášení",
+    good: "Rovnoměrně rozdělené",
+    bad: "Účetní A vždy odkládá klienta B na konec dne",
+  },
+  {
+    title: "Kolik papíru ještě tisknete",
+    source: "z tiskárny",
+    good: "0 výtisků — vše digitálně",
+    bad: "340 výtisků měsíčně — zbytečné papírování",
+  },
 ];
 
 const hiddenSignalsLanguage = [
-  { title: "Tón pondělí vs. pátek", source: "sentiment × čas", good: "Konzistentní", bad: "Pondělí negativní, pátek pozitivní — stres z práce" },
-  { title: "Délka pozdravů", source: "textová analýza", good: "Stabilní formální", bad: "Z «Vážený pane» na «Ahoj» — blízkost nebo nerespekt?" },
-  { title: "Smajlíky", source: "emotikon tracking", good: "Konzistentní", bad: "Přestal 15. 2. — přesný bod ochlazení" },
-  { title: "Vykání/tykání", source: "analýza", good: "Konzistentní vykání", bad: "Přešel na tykání — buď důvěra, nebo nerespekt" },
-  { title: "Křestní jméno v předmětu", source: "email metadata", good: "Ano — osobní vztah", bad: "Ne — formální distance" },
-  { title: "Pravopisné chyby", source: "text analýza", good: "0 chyb — pečlivý", bad: "Rostoucí chyby — stres / únava / alkohol" },
+  {
+    title: "Jakým tónem píšete v pondělí vs. v pátek",
+    source: "z e-mailů",
+    good: "Stejný tón celý týden",
+    bad: "Pondělí drsné, pátek vlídné — někdo má stres z práce",
+  },
+  {
+    title: "Jak se vám klient zdraví v e-mailech",
+    source: "z e-mailů",
+    good: "Stabilně formálně",
+    bad: "Z „Vážený pane" se přesunul na „Ahoj" — bere vás jinak",
+  },
+  {
+    title: "Jestli vám klient dává v e-mailech smajlíky",
+    source: "z e-mailů",
+    good: "Posílá je pořád stejně",
+    bad: "15. 2. přestal — od toho dne ochlazení vztahu",
+  },
+  {
+    title: "Jestli si vykáte, nebo tykáte",
+    source: "z e-mailů",
+    good: "Konzistentně vykání",
+    bad: "Najednou přešel na tykání — buď vás bere víc, nebo míň vážně",
+  },
+  {
+    title: "Jestli klient v předmětu používá vaše křestní jméno",
+    source: "z e-mailů",
+    good: "Ano — má vás osobně rád",
+    bad: "Ne — drží odstup, nepatříte mezi blízké",
+  },
+  {
+    title: "Kolik dělá klient pravopisných chyb",
+    source: "z e-mailů",
+    good: "Žádné — píše pečlivě",
+    bad: "Najednou hodně chyb — stres, únava, alkohol",
+  },
 ];
 
 const externalSignals = [

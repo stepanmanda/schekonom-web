@@ -1,80 +1,81 @@
 "use client";
 
 import {
-  FileText,
-  Calculator,
-  TrendingUp,
-  Users,
-  Globe,
-  Archive,
+  LayoutDashboard,
+  Building2,
+  ListChecks,
+  FolderOpen,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  Zap,
   Cpu,
-  BarChart3,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const services = [
   {
-    icon: FileText,
-    code: "SVC-001",
-    title: "Daňové poradenství",
-    desc: "Komplexní daňové poradenství pro právnické i fyzické osoby. Daňová přiznání (DPPO, DPFO), DPH, optimalizace daňové zátěže, zastupování před FÚ.",
-    tags: ["DPH", "DPPO", "DPFO", "Optimalizace"],
+    icon: LayoutDashboard,
+    code: "MOD-001",
+    title: "Přehled na úvod",
+    desc: "Klient se přihlásí a vidí všechno najednou — kolik úkolů má, jaké termíny ho čekají, co je nového. Žádné hledání.",
+    tags: ["Najednou", "Stav", "Úkoly"],
     ai: false,
   },
   {
-    icon: Calculator,
-    code: "SVC-002",
-    title: "Účetnictví",
-    desc: "Vedení podvojného účetnictví, daňová evidence, účetní závěrky. Rekonstrukce účetnictví, konzultace.",
-    tags: ["Podvojné", "Daňová evidence", "Závěrky"],
+    icon: Building2,
+    code: "MOD-002",
+    title: "Klienti a jejich firmy",
+    desc: "Pro účetní firmu — seznam všech klientů s rychlým náhledem na obrat, počet zaměstnanců a stav. Klikněte a vidíte detail.",
+    tags: ["Firmy", "Obrat", "Lidé"],
     ai: false,
   },
   {
-    icon: TrendingUp,
-    code: "SVC-003",
-    title: "Mzdová agenda",
-    desc: "Kompletní zpracování mezd, personální administrativa, hlášení na pojišťovny a FÚ.",
-    tags: ["Mzdy", "Personalistika", "Pojišťovny"],
+    icon: ListChecks,
+    code: "MOD-003",
+    title: "Úkoly a termíny",
+    desc: "Aplikace hlídá, kdo má co udělat a do kdy. Připomene den předem. Konec lepicích lístků a Excel tabulek.",
+    tags: ["Lhůty", "DPH", "Daně"],
     ai: false,
   },
   {
-    icon: Users,
-    code: "SVC-004",
-    title: "Přeshraniční CZ/DE",
-    desc: "Specializované služby pro české a německé subjekty v příhraničním regionu Cheb-Bavorsko.",
-    tags: ["Pendleři", "A1", "Bavorsko"],
+    icon: FolderOpen,
+    code: "MOD-004",
+    title: "Dokumenty na jednom místě",
+    desc: "Faktury, smlouvy, výpisy z banky. Klient nahraje, vy stáhnete. Žádné e-maily s přílohami a žádné USB flashky.",
+    tags: ["Faktury", "Smlouvy", "Výpisy"],
     ai: false,
   },
   {
-    icon: Globe,
-    code: "SVC-005",
-    title: "Německé daně",
-    desc: "Kompletní správa německých daňových povinností — Steuererklärung, Freistellung, Kindergeld, ELSTER.",
-    tags: ["Freistellung", "Kindergeld", "ELSTER"],
+    icon: CheckCircle2,
+    code: "MOD-005",
+    title: "Schválení kliknutím",
+    desc: "Klient potvrdí faktury, mzdy nebo přiznání jedním kliknutím. Bez tištění, bez podpisu, bez telefonování.",
+    tags: ["Potvrzení", "Souhlas", "Klient"],
     ai: false,
   },
   {
-    icon: Archive,
-    code: "SVC-006",
-    title: "Certifikační autorita",
-    desc: "Vydávání a správa kvalifikovaných certifikátů pro elektronické podpisy (eIDAS).",
-    tags: ["eIDAS", "Kvalifikovaný podpis"],
+    icon: AlertTriangle,
+    code: "MOD-006",
+    title: "Rizika a upozornění",
+    desc: "Klient zapomněl poslat výpis. Blíží se termín, ale chybí podklady. Aplikace vás upozorní dřív, než to udělá finanční úřad.",
+    tags: ["Pokuty", "Chyby", "Lhůty"],
     ai: false,
   },
   {
-    icon: Cpu,
-    code: "SVC-AI1",
-    title: "AI Finanční analýza",
-    desc: "Prediktivní analýza cash-flow, automatická detekce daňových rizik, benchmarking.",
-    tags: ["Predikce", "Risk Detection", "Benchmarking"],
+    icon: Lightbulb,
+    code: "MOD-AI1",
+    title: "Návrhy, kde ušetřit",
+    desc: "Aplikace sleduje data klienta a sama navrhne, kde lze platit méně daní nebo snížit náklady. Vy se rozhodnete, jestli to udělat.",
+    tags: ["Úspory", "Návrhy"],
     ai: true,
   },
   {
-    icon: BarChart3,
-    code: "SVC-AI2",
-    title: "AI Reporting",
-    desc: "Automatizované generování reportů a dashboardů v reálném čase.",
-    tags: ["Real-time", "Dashboards", "Auto-report"],
+    icon: Zap,
+    code: "MOD-AI2",
+    title: "Automatické úkoly",
+    desc: "Klient nahraje fakturu — aplikace sama vytvoří úkol. Přišel termín DPH — aplikace sama připraví, co je potřeba. Méně psaní pro vás.",
+    tags: ["Workflow", "Méně psaní"],
     ai: true,
   },
 ];
@@ -84,7 +85,7 @@ export default function ServicesSection() {
 
   return (
     <section
-      id="sluzby"
+      id="funkce"
       className="py-28 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
@@ -93,19 +94,17 @@ export default function ServicesSection() {
         <div className={`mb-16 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            SLUŽBY // PORTFOLIO
+            FUNKCE // CO APLIKACE UMÍ
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            S čím vším vám
-            <br />
-            <span className="text-cyan">pomůžeme?</span>
+            Co tam <span className="text-cyan">klient uvidí</span>
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-2xl">
-            Od daňového poradenství přes vedení účetnictví až po zpracování mezd
-            a přeshraniční služby pro region Cheb-Bavorsko.
+            Osm hlavních funkcí. Žádné instalování, žádné návody. Klient se
+            přihlásí přes prohlížeč a všechno má před sebou.
           </p>
         </div>
 
@@ -190,7 +189,7 @@ export default function ServicesSection() {
                       textTransform: "uppercase",
                     }}
                   >
-                    AI-Powered
+                    AI uvnitř
                   </span>
                 </div>
               )}

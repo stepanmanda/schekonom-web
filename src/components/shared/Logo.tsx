@@ -71,11 +71,11 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
               fontSize: "1.1rem",
               fontWeight: 700,
               color: "#FFFFFF",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.04em",
               lineHeight: 1,
             }}
           >
-            SCH-EKONOM
+            EkonomOS
           </span>
           <span
             style={{

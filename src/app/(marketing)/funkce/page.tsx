@@ -13,6 +13,15 @@ import {
   ArrowRight,
   Layers,
   Cpu,
+  Database,
+  Plug,
+  Building2,
+  Mail as MailIcon,
+  Banknote,
+  Shield,
+  Cloud,
+  HeadphonesIcon,
+  MapPin as MapPinIcon,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 

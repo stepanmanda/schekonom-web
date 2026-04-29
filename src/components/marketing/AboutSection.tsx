@@ -125,10 +125,11 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-4 text-text-secondary text-base leading-relaxed">
               <p>
-                EkonomOS je aplikace pro účetní kanceláře a jejich klienty.
-                Klient se přihlásí na svůj portál — nahraje dokumenty, vidí
-                termíny, schvaluje kliknutím. Vy v EkonomOS vidíte všechny své
-                klienty na jedné obrazovce.
+                EkonomOS dodáváme jako kompletní řešení. Postavíme vám web na
+                vaší doméně s vaším brandem, pod ním klientský portál a pro vás
+                administrátorskou aplikaci. Klient se přihlásí na vašem webu,
+                nahraje dokumenty, vidí termíny, schvaluje kliknutím. Vy vidíte
+                všechny své klienty na jedné obrazovce.
               </p>
               <p>
                 Hodnota není v množství dat. Hodnota je v korelacích, které

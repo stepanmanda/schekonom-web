@@ -113,8 +113,8 @@ export default function Header() {
             </span>
           </Link>
 
-          <Link href="/#kontakt" className="btn-primary">
-            Kontaktovat
+          <Link href="/kontakt" className="btn-primary">
+            Domluvit demo
           </Link>
         </div>
 

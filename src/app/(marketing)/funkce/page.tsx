@@ -547,7 +547,7 @@ export default function FunkcePage() {
         <FadeInSection className="mb-24">
           <div className="hud-panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p className="text-text-secondary text-sm leading-relaxed max-w-2xl">
-              <strong className="text-white">+ dalších 42 skrytých analýz</strong> — kdo CAPS LOCKuje, jak se mění frekvence dotazů, který klient volá v noci, kdo neodpovídá na první e-mail, kdo zapomíná přílohy. Vše z metadat, žádné slídění.
+              <strong className="text-white">+ dalších 42 takových drobností.</strong> Kdo píše velkými písmeny, kdo volá v noci, kdo zapomíná přílohy, kdo neodpovídá na první e-mail. Aplikace to vidí, vy se rozhodnete, co s tím.
             </p>
             <span className="hud-chip" data-tone="gold">
               54 ANALÝZ CELKEM

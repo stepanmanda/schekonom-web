@@ -107,9 +107,10 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="opacity-0 animate-float-up delay-200 mt-7 text-text-secondary text-lg sm:text-xl leading-relaxed max-w-2xl">
-          Web pro vaši účetní kancelář, kam se klient přihlásí a uvidí všechno
-          najednou — faktury, daně, úkoly. Méně e-mailů, méně telefonů, méně
-          chyb.
+          Postavíme vám web na vaší doméně, klientský portál pod ním a
+          administrátorskou aplikaci pro vás. Klient se přihlásí, nahraje
+          dokumenty, vidí termíny. Vy vidíte všechny klienty najednou. Méně
+          e-mailů, méně telefonů, méně chyb.
         </p>
 
         {/* Badges */}

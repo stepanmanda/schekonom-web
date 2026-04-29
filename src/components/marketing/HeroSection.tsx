@@ -2,20 +2,26 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, FileText, Calculator, Wallet, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  LayoutDashboard,
+  FolderOpen,
+  CalendarClock,
+  CheckSquare,
+} from "lucide-react";
 
 const stats = [
-  { value: "30+", label: "Let praxe" },
-  { value: "40+", label: "Zaměstnanců" },
-  { value: "2", label: "Pobočky (Cheb & Plzeň)" },
-  { value: "340+", label: "Klientů" },
+  { value: "9", label: "Sekcí v aplikaci" },
+  { value: "1×", label: "Přihlášení pro klienta" },
+  { value: "0", label: "Instalování" },
+  { value: "24/7", label: "Online" },
 ];
 
 const badges = [
-  { icon: FileText, label: "Daňové poradenství" },
-  { icon: Calculator, label: "Účetnictví" },
-  { icon: Wallet, label: "Mzdy" },
-  { icon: Globe, label: "CZ / DE" },
+  { icon: LayoutDashboard, label: "Přehled" },
+  { icon: FolderOpen, label: "Dokumenty" },
+  { icon: CalendarClock, label: "Termíny" },
+  { icon: CheckSquare, label: "Schválení" },
 ];
 
 export default function HeroSection() {
@@ -82,8 +88,7 @@ export default function HeroSection() {
         {/* Section tag */}
         <div className="section-tag opacity-0 animate-float-up mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-          SCH-EKONOM &nbsp;// &nbsp;30+ LET ZKUŠENOSTÍ &nbsp;// &nbsp;CHEB &
-          PLZEŇ
+          EKONOMOS &nbsp;// &nbsp;ÚČETNÍ FIRMA ONLINE &nbsp;// &nbsp;ČESKY
         </div>
 
         {/* Heading */}
@@ -91,19 +96,20 @@ export default function HeroSection() {
           className="opacity-0 animate-float-up delay-100 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.06] tracking-tight text-white max-w-4xl"
           style={{ fontFamily: "var(--font-space-grotesk)" }}
         >
-          Ušetřete si čas
+          Klient vidí svoje
           <br />
-          i&nbsp;starosti s&nbsp;
-          <span className="text-cyan">účetnictvím</span>
+          <span className="text-cyan">papíry</span>,&nbsp;
+          <span className="text-cyan">úkoly</span> a&nbsp;
+          <span className="text-cyan">termíny</span>.
           <br />
-          a&nbsp;daňovými <span className="text-gold">povinnostmi.</span>
+          Vy ušetříte <span className="text-gold">hodiny.</span>
         </h1>
 
         {/* Subtitle */}
         <p className="opacity-0 animate-float-up delay-200 mt-7 text-text-secondary text-lg sm:text-xl leading-relaxed max-w-2xl">
-          Jsme rodinná účetní firma z Chebu, která už více než 30 let poskytuje
-          komplexní účetní služby pro malé i střední podniky, ale rádi se
-          věnujeme také živnostníkům nebo fyzickým osobám pracujícím v Německu.
+          Web pro vaši účetní kancelář, kam se klient přihlásí a uvidí všechno
+          najednou — faktury, daně, úkoly. Méně e-mailů, méně telefonů, méně
+          chyb.
         </p>
 
         {/* Badges */}
@@ -131,12 +137,12 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div className="opacity-0 animate-float-up delay-400 mt-10 flex flex-wrap gap-4">
-          <Link href="#sluzby" className="btn-primary">
-            Zobrazit služby
+          <Link href="#funkce" className="btn-primary">
+            Co aplikace umí
             <ArrowRight size={16} />
           </Link>
-          <Link href="#kontakt" className="btn-ghost">
-            Kontaktujte nás
+          <Link href="/prihlaseni" className="btn-ghost">
+            Vyzkoušet demo
           </Link>
         </div>
 

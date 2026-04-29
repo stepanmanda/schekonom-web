@@ -6,149 +6,66 @@ import {
   Wallet,
   FileText,
   Globe,
-  AlertTriangle,
+  ShieldCheck,
   Brain,
-  Phone as PhoneIcon,
   Workflow,
   ArrowRight,
   Layers,
-  Cpu,
-  Database,
-  Plug,
-  Building2,
-  Mail as MailIcon,
-  Banknote,
-  Shield,
-  Cloud,
-  HeadphonesIcon,
-  MapPin as MapPinIcon,
+  Eye,
+  Lock,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const modules = [
   {
     icon: BookOpen,
-    code: "MOD-01",
     title: "Účetní reporting",
-    desc: "Skutečnost vs. plán, cash flow, variance analýza. 9 analýz, které propojují účetnictví s rozpočtem a prognózou.",
+    desc: "Skutečnost vs. plán, cash flow, prognózy a variance analýza — propojené napříč klientovou agendou.",
     href: "/modul-ucetnictvi",
-    analyses: 9,
   },
   {
     icon: Wallet,
-    code: "MOD-02",
     title: "Mzdy + ČSSZ + ZP",
-    desc: "Mzdové uzávěrky, fluktuace, nemocnost, ELDP, hlášení pojišťovnám. 10 analýz pro mzdovou agendu.",
+    desc: "Mzdová uzávěrka, fluktuace, nemocnost, hlášení pojišťovnám. Jedna obrazovka pro celý měsíc.",
     href: "/modul-mzdy",
-    analyses: 10,
   },
   {
     icon: FileText,
-    code: "MOD-03",
-    title: "Daně + DPH",
-    desc: "DPPO, DPFO, DPH, kontrolní hlášení, ViDA, e-fakturace. 10 analýz pro českou daňovou agendu.",
+    title: "Daně a DPH",
+    desc: "Česká daňová agenda v jednom toku — DPPO, DPFO, DPH, kontrolní hlášení, e-fakturace, monitoring legislativy.",
     href: "/modul-dane",
-    analyses: 10,
   },
   {
     icon: Globe,
-    code: "MOD-04",
-    title: "CZ/DE + ELSTER",
-    desc: "Steuererklärung, Freistellung, Kindergeld, pendleři A1, transferové ceny. 11 analýz pro CZ/DE agendu.",
+    title: "CZ / DE",
+    desc: "Pendleři, Steuererklärung, Freistellung, Kindergeld, ELSTER, transferové ceny. Přeshraniční agenda bez papírování.",
     href: "/modul-cz-de",
-    analyses: 11,
   },
 ];
 
-const aiLayer = [
+const aiPillars = [
   {
-    icon: AlertTriangle,
-    title: "Detekce podvodů a chyb",
-    desc: "Změny IBAN u dodavatelů, duplicitní faktury, nesoulady v dokumentech, deepfake faktury. Aplikace prochází data 24/7 a označí, co nesedí.",
+    icon: Brain,
+    title: "Predikce",
+    desc: "Aplikace předpovídá riziko odchodu klienta, posouvá termíny, hledá nejlepší moment ke kontaktu — z dat, která už máte.",
   },
   {
-    icon: PhoneIcon,
-    title: "Hlasová a textová analýza",
-    desc: "EkonomOS analyzuje tón a obsah klientské komunikace. Najde vážná témata mezi řádky, frustraci, požadavek, který jste mohli přehlédnout.",
+    icon: ShieldCheck,
+    title: "Detekce",
+    desc: "Fraud, podvodné změny IBAN, duplicitní faktury, nesoulady, podezřelá komunikace. 24/7 hlídání bez vašeho zásahu.",
   },
   {
     icon: Workflow,
-    title: "Automatizovaná workflow",
-    desc: "8 N8N workflow pro běžné úkony: OCR příjem faktur, párování plateb, 3stupňové upomínky, mzdové uzávěrky, ELSTER podání. Bez ručního klikání.",
-  },
-  {
-    icon: Brain,
-    title: "Prediktivní vrstva",
-    desc: "Pět ML analýz na úrovni klienta: kdy odejde, co ho udrží, kdy ho oslovit, jakou cenu unese, jestli je v hledáčku akvizice. Detail níže.",
-  },
-];
-
-const externalSignals = [
-  { title: "ARES + VIES", source: "API", good: "Vše validní, plátce DPH", bad: "Dodavatel zrušen v ARES — fiktivní firma" },
-  { title: "Insolvenční rejstřík", source: "justice.cz", good: "0 nálezů", bad: "Klient podal insolvenční návrh" },
-  { title: "Pracovní inzeráty", source: "scraping", good: "Najímá — firma roste", bad: "Najímá účetní — chce nás nahradit?" },
-  { title: "Tiskové zprávy", source: "RSS", good: "Pozitivní PR", bad: "Negativní média — reputační riziko" },
-  { title: "Výběrová řízení", source: "portál", good: "Vyhrál zakázku 12M", bad: "Prohrál 3 tendry v řadě" },
-  { title: "Regulatorní feeds", source: "CZ+DE+EU", good: "Připraven na novely", bad: "Novela ho zasáhne — neví o tom" },
-  { title: "Kurzovní lístek", source: "ČNB + EZB API", good: "EUR stabilní, hedging nepotřeba", bad: "EUR +8 % za měsíc — nezajištěná pozice" },
-  { title: "Sbírka listin", source: "justice.cz", good: "Výkazy zveřejněny", bad: "Nezveřejněny 2 roky — pokuta 100 K" },
-];
-
-const predictiveAnalyses = [
-  {
-    title: "Kdy klient odejde",
-    method: "ML klasifikace",
-    good: "0 % riziko odchodu",
-    bad: "87 % pravděpodobnost odchodu do 60 dní",
-  },
-  {
-    title: "Co ho zachrání",
-    method: "Uplift modeling",
-    good: "Klient stabilní — žádná akce nepotřeba",
-    bad: "Osobní schůzka + sleva 10 % = 64 % šance na udržení",
-  },
-  {
-    title: "Optimální moment kontaktu",
-    method: "Behaviorální analýza",
-    good: "Úterý 10:00 — response rate 89 %",
-    bad: "Pátek 16:00 — response rate 12 %",
-  },
-  {
-    title: "Cenová elasticita",
-    method: "Historie reakcí",
-    good: "Toleruje +20 % bez reakce",
-    bad: "Zlomový bod při +3 % — okamžitý odchod",
-  },
-  {
-    title: "Predikce akvizice / fúze",
-    method: "Detekce signálů",
-    good: "Stabilní struktura",
-    bad: "3 signály fúze — připravit transition plán",
+    title: "Automatizace",
+    desc: "Rutinní úkony běží na pozadí — příjem faktur, párování plateb, upomínky, uzávěrky. Vy schvalujete, robot pracuje.",
   },
 ];
 
 const stats = [
-  { value: "205", label: "Analýz" },
-  { value: "184", label: "Datových zdrojů" },
-  { value: "23", label: "Kategorií" },
+  { value: "200+", label: "Analýz" },
+  { value: "20+", label: "Datových zdrojů" },
   { value: "8", label: "Workflow" },
-];
-
-const integrations = [
-  { icon: Database, name: "Money S3 / Pohoda", category: "Účetní systém" },
-  { icon: Layers, name: "DocuWare", category: "DMS dokumenty" },
-  { icon: HeadphonesIcon, name: "Daktela", category: "Contact center" },
-  { icon: Banknote, name: "Bankovní API (FIO, KB, ČSOB)", category: "Transakce" },
-  { icon: Building2, name: "ARES + VIES", category: "Rejstříky firem" },
-  { icon: Shield, name: "ČSSZ + eNeschopenky", category: "Sociální pojištění" },
-  { icon: FileText, name: "DIS+ (Finanční správa)", category: "Daňový portál" },
-  { icon: Globe, name: "ELSTER / Finanzamt", category: "Německé daně" },
-  { icon: MailIcon, name: "Email server (IMAP)", category: "Komunikace" },
-  { icon: Building2, name: "Justice.cz", category: "Rejstříky" },
-  { icon: MapPinIcon, name: "GPS + knihy jízd", category: "Geolokace" },
-  { icon: Cloud, name: "Reenio", category: "Rezervace termínů" },
-  { icon: Plug, name: "TeamViewer", category: "Vzdálená podpora" },
-  { icon: Cloud, name: "ČHMÚ", category: "Meteorologická data" },
+  { value: "24/7", label: "Online provoz" },
 ];
 
 function FadeInSection({
@@ -188,9 +105,9 @@ export default function FunkcePage() {
             jedna AI <span className="text-gold">vrstva</span>
           </h1>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            EkonomOS dělí účetní firmu do čtyř modulů. Pod nimi běží AI vrstva,
+            EkonomOS rozděluje účetní firmu na čtyři moduly. Pod nimi běží AI vrstva,
             která propojuje data napříč moduly a hledá souvislosti, které byste
-            jinak nevidíli.
+            jinak nevidíli. Detail funkčnosti vám ukážeme na osobní konzultaci.
           </p>
         </div>
 
@@ -235,7 +152,7 @@ export default function FunkcePage() {
         <div className="grid md:grid-cols-2 gap-6 mb-24">
           {modules.map((m) => (
             <Link
-              key={m.code}
+              key={m.title}
               href={m.href}
               className="service-card p-8 flex flex-col group"
             >
@@ -243,16 +160,6 @@ export default function FunkcePage() {
                 <div className="p-3 border border-cyan/15 bg-cyan/5 group-hover:bg-cyan/15 transition-colors">
                   <m.icon size={22} className="text-cyan" />
                 </div>
-                <span
-                  className="text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  {m.code}
-                </span>
               </div>
               <h3
                 className="text-white text-xl font-semibold mb-3"
@@ -263,16 +170,9 @@ export default function FunkcePage() {
               <p className="text-text-secondary text-sm leading-relaxed mb-5 flex-1">
                 {m.desc}
               </p>
-              <div className="flex items-center justify-between pt-4 border-t border-cyan/8">
-                <span
-                  className="hud-chip"
-                  data-tone="cyan"
-                  style={{ letterSpacing: "0.1em" }}
-                >
-                  {m.analyses} analýz
-                </span>
+              <div className="pt-4 border-t border-cyan/8">
                 <span className="inline-flex items-center gap-2 text-cyan text-sm font-medium group-hover:gap-3 transition-all">
-                  Detail
+                  Stručný přehled
                   <ArrowRight size={14} />
                 </span>
               </div>
@@ -280,460 +180,82 @@ export default function FunkcePage() {
           ))}
         </div>
 
-        {/* AI layer label */}
+        {/* AI pillars */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">
             <div className="section-tag">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-dot" />
-              AI VRSTVA // 4 NADMODULOVÉ FUNKCE
+              AI VRSTVA // CO BĚŽÍ POD MODULY
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
           </div>
         </FadeInSection>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-24">
-          {aiLayer.map((a) => (
-            <div key={a.title} className="service-card service-card-ai p-8">
-              <div className="flex items-start justify-between mb-5">
-                <div className="p-3 border border-cyan/30 bg-cyan/10">
-                  <a.icon size={22} className="text-cyan" />
-                </div>
-                <span className="hud-chip" data-tone="cyan">
-                  AI uvnitř
-                </span>
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Tři pilíře, které <span className="text-cyan">vidíte v každém modulu</span>
+          </h2>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-24">
+          {aiPillars.map((p) => (
+            <div key={p.title} className="service-card service-card-ai p-8 flex flex-col">
+              <div className="p-3 border border-cyan/30 bg-cyan/10 inline-flex w-fit mb-5">
+                <p.icon size={22} className="text-cyan" />
               </div>
               <h3
                 className="text-white text-xl font-semibold mb-3"
                 style={{ fontFamily: "var(--font-space-grotesk)" }}
               >
-                {a.title}
-              </h3>
-              <p className="text-text-secondary text-sm leading-relaxed">
-                {a.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Hidden signals — 54 analyses, told as stories */}
-        <FadeInSection className="mb-8">
-          <div className="flex items-center gap-4">
-            <div className="section-tag">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
-              SKRYTÉ SIGNÁLY // 54 ANALÝZ
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
-          </div>
-        </FadeInSection>
-
-        <FadeInSection className="mb-12">
-          <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Tři drobnosti, které <span className="text-gold">zachránily klienta</span>
-          </h2>
-          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Lidé tyhle věci sami nevidí — jsou moc malé, moc běžné, moc nudné. Aplikace si jich všímá za vás. Tady jsou tři <strong className="text-white">opravdové scénáře</strong>, jak to v praxi funguje. (Klienti jsou anonymizováni — ale situace jsou reálné.)
-          </p>
-        </FadeInSection>
-
-        {/* Story 1 */}
-        <FadeInSection className="mb-6">
-          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
-            <div className="flex flex-col gap-3">
-              <div
-                className="text-gold"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Příběh 01
-              </div>
-              <div className="text-white text-5xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-                ☺
-              </div>
-              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
-                Z e-mailů
-              </span>
-            </div>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
-              <p>
-                Klient vám <strong className="text-white">6 měsíců posílal v každém mailu smajlík.</strong> Žádný velký, jen takový obyčejný „úsměv". Pak jednoho dne — <strong className="text-white">15. února</strong> — přestal. Strohé věty. Žádné emoce.
-              </p>
-              <p>
-                Vy jste si toho nevšimli. Měli jste 30 dalších klientů a hromadu termínů. Aplikace si toho všimla:
-              </p>
-              <p className="hud-panel p-4 my-4 border-l-2 border-l-gold/60">
-                <span className="text-gold" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
-                <span className="text-white">„Klient #007 změnil tón. Posledních 14 dní bez emocí. Pravděpodobnost odchodu během 60 dní: <strong className="text-gold">64 %</strong>."</span>
-              </p>
-              <p>
-                Zavolali jste mu, omluvili se za nestihnutý termín z minulého týdne, naplánovali kávu. <strong className="text-white">Klient zůstal.</strong> Cca 8 hodin práce na záchranu vztahu, který by jinak skončil výpovědí.
-              </p>
-              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
-                <strong>Bez aplikace</strong> byste o tom věděli, až by přišla výpověď. Tehdy je už pozdě.
-              </p>
-            </div>
-          </div>
-        </FadeInSection>
-
-        {/* Story 2 */}
-        <FadeInSection className="mb-6">
-          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
-            <div className="flex flex-col gap-3">
-              <div
-                className="text-gold"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Příběh 02
-              </div>
-              <div className="text-white text-4xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-                vy → ty
-              </div>
-              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
-                Z e-mailů
-              </span>
-            </div>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
-              <p>
-                Klient vám <strong className="text-white">4 roky vykal.</strong> Jednoho dne přijde e-mail: <em>„Ahoj Petro, můžeš mi to poslat?"</em>
-              </p>
-              <p>
-                Změna na tykání může znamenat dvě věci. Buď vás <strong className="text-white">bere víc osobně</strong> (= dobré pro vztah), nebo vás <strong className="text-white">přestal brát vážně</strong> (= riziko). Záleží na kontextu.
-              </p>
-              <p>
-                Aplikace má kontext, který vy v hlavě nedržíte:
-              </p>
-              <p className="hud-panel p-4 my-4 border-l-2 border-l-status-red/60">
-                <span className="text-status-red" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
-                <span className="text-white">„Klient #012 současně: přestal odpovídat na první mail (3× za sebou), zvýšil počet ad-hoc dotazů o 240 %, přestal číst přílohy. <strong className="text-status-red">Trojnásobné riziko.</strong> Doporučení: osobní schůzka tento týden."</span>
-              </p>
-              <p>
-                Sjednali jste schůzku. Klient přiznal, že hledal jiného účetního, ale dali jste mu důvěru zpět. <strong className="text-white">Měli jste 64% šanci ho udržet — zvládli jste to.</strong>
-              </p>
-              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
-                <strong>Bez aplikace</strong> byste viděli jen tu změnu z vykání na tykání. To samo o sobě ještě nic neznamená — důležitá je kombinace.
-              </p>
-            </div>
-          </div>
-        </FadeInSection>
-
-        {/* Story 3 */}
-        <FadeInSection className="mb-12">
-          <div className="hud-panel p-8 grid md:grid-cols-[180px_1fr] gap-6">
-            <div className="flex flex-col gap-3">
-              <div
-                className="text-gold"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Příběh 03
-              </div>
-              <div className="text-white text-5xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-                100 %
-              </div>
-              <span className="hud-chip" data-tone="cyan" style={{ width: "fit-content" }}>
-                Z fronty úkolů
-              </span>
-            </div>
-            <div className="space-y-4 text-text-secondary text-base leading-relaxed">
-              <p>
-                Tři roky se vám klient stěžoval, že jste <strong className="text-white">pomalí.</strong> Vy jste mu pokaždé říkali, že to není pravda — máte plno klientů, dělá se mu maximum. Klient odpovídal: <em>„Možná. Ale mně to vždycky trvá nejdéle."</em>
-              </p>
-              <p>
-                Nikdy jste nepochopili proč. Aplikace se podívala do logu:
-              </p>
-              <p className="hud-panel p-4 my-4 border-l-2 border-l-gold/60">
-                <span className="text-gold" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase" }}>EkonomOS hlásí ⟶ </span>
-                <span className="text-white">„Účetní A vždy nechává klienta #003 na <strong className="text-gold">úplný konec dne</strong>. <strong className="text-gold">100 % případů</strong>, i když je naléhavý. Pattern detekován za posledních 24 měsíců."</span>
-              </p>
-              <p>
-                Žádný zlý úmysl. Jen lidská preference — účetní A měla podvědomě raději jiné klienty. Ale klient #003 to <strong className="text-white">cítil tři roky</strong>.
-              </p>
-              <p>
-                Přerozdělili jste agendu. Klient #003 dostal jiného účetního. Stížnosti přestaly. Po půl roce klient přidal druhou firmu pod vás.
-              </p>
-              <p className="text-text-muted text-sm border-t border-cyan/10 pt-4 mt-4">
-                <strong>Bez aplikace</strong> byste tenhle vzorec nikdy neviděli. Jeden konkrétní vzorec mezi 1 800 případy zpracovaných za rok.
-              </p>
-            </div>
-          </div>
-        </FadeInSection>
-
-        {/* Hidden signals — list of remaining */}
-        <FadeInSection className="mb-24">
-          <div className="hud-panel p-6">
-            <div className="mb-5 flex items-center gap-2">
-              <span className="hud-chip" data-tone="gold">
-                + 51 dalších drobností
-              </span>
-              <span
-                className="text-text-muted"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Ukázka
-              </span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 text-text-secondary text-sm">
-              <div>• Jak dlouho leží faktura</div>
-              <div>• Kolikrát ji někdo otevřel</div>
-              <div>• Kdo s kým začíná pracovat ráno</div>
-              <div>• Jak často účetní přepíná okna</div>
-              <div>• Kolik papíru ještě tisknete</div>
-              <div>• Kdo píše velkými písmeny</div>
-              <div>• Tón pondělí vs. pátek</div>
-              <div>• Pravopisné chyby v čase</div>
-              <div>• Kdo volá v noci</div>
-              <div>• Kdo zapomíná přílohy</div>
-              <div>• Kdo neodpovídá na první mail</div>
-              <div>• Délka pozdravů a oslovení</div>
-            </div>
-            <p className="text-text-muted text-xs mt-5 leading-relaxed">
-              Vše z metadat — žádné slídění, žádné čtení obsahu mailu. Aplikace si všímá <em>jak</em> komunikujete, ne <em>o čem</em>.
-            </p>
-          </div>
-        </FadeInSection>
-
-        {/* External signals layer */}
-        <FadeInSection className="mb-8">
-          <div className="flex items-center gap-4">
-            <div className="section-tag">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-dot" />
-              EXTERNÍ SIGNÁLY // 8 ZDROJŮ MIMO ÚČETNICTVÍ
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
-          </div>
-        </FadeInSection>
-
-        <FadeInSection className="mb-12">
-          <h2
-            className="text-2xl sm:text-3xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Co se s klientem děje <span className="text-cyan">venku</span>
-          </h2>
-          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Účetnictví ukazuje minulost. Externí signály ukazují, co se kolem
-            klienta děje právě teď — z ARES, insolvenčního rejstříku, médií,
-            tendrů a kurzů. Aplikace si všimne, co byste sami nestíhli sledovat.
-          </p>
-        </FadeInSection>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-24">
-          {externalSignals.map((s) => (
-            <div key={s.title} className="hud-panel p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="hud-chip" data-tone="cyan">
-                  KLIENT
-                </span>
-                <span
-                  className="text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  ← {s.source}
-                </span>
-              </div>
-              <h3
-                className="text-white text-base font-semibold mb-3"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
-                {s.title}
-              </h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-green flex-shrink-0"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.55rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    OK:
-                  </span>
-                  <span className="text-text-secondary">{s.good}</span>
-                </div>
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-red flex-shrink-0"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.55rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Risk:
-                  </span>
-                  <span className="text-text-secondary">{s.bad}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Predictive layer detail */}
-        <FadeInSection className="mb-8">
-          <div className="flex items-center gap-4">
-            <div className="section-tag">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
-              PREDIKTIVNÍ VRSTVA // 5 ML ANALÝZ NA KLIENTA
-            </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
-          </div>
-        </FadeInSection>
-
-        <FadeInSection className="mb-12">
-          <h2
-            className="text-2xl sm:text-3xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Pět ML pohledů na <span className="text-gold">každého klienta</span>
-          </h2>
-          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Pro každého klienta běží pět prediktivních analýz s drill-down do
-            scénářů „dobrý stav" vs. „rizikový stav". Plus konkrétní akce, co
-            dělat.
-          </p>
-        </FadeInSection>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-24">
-          {predictiveAnalyses.map((p) => (
-            <div key={p.title} className="hud-panel p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="hud-chip" data-tone="cyan">
-                  KLIENT
-                </span>
-                <span
-                  className="text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  ← {p.method}
-                </span>
-              </div>
-              <h3
-                className="text-white text-base font-semibold mb-3"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
                 {p.title}
               </h3>
-              <div className="space-y-2.5 text-sm">
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-green flex-shrink-0"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Dobrý stav:
-                  </span>
-                  <span className="text-text-secondary">{p.good}</span>
-                </div>
-                <div className="flex gap-2">
-                  <span
-                    className="text-status-red flex-shrink-0"
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Riziko:
-                  </span>
-                  <span className="text-text-secondary">{p.bad}</span>
-                </div>
-              </div>
+              <p className="text-text-secondary text-sm leading-relaxed flex-1">
+                {p.desc}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Integrace / Napojení na systémy */}
-        <FadeInSection className="mb-8">
-          <div className="flex items-center gap-4">
-            <div className="section-tag">
-              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-              DATOVÉ ZDROJE // NAPOJENÍ
+        {/* Tease — Skryté signály */}
+        <FadeInSection className="mb-24">
+          <div className="hud-panel p-10 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
+            <div className="p-4 border border-gold/30 bg-gold/5">
+              <Eye size={28} className="text-gold" />
             </div>
-            <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
+            <div>
+              <div
+                className="text-gold mb-2"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Skryté signály
+              </div>
+              <h3
+                className="text-white text-xl sm:text-2xl font-semibold mb-2"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                Drobnosti, kterých si lidé sami nevšimnou
+              </h3>
+              <p className="text-text-secondary text-sm leading-relaxed max-w-2xl">
+                Vedle účetních dat sleduje aplikace desítky signálů, ze kterých skládá obraz toho, co se s klientem opravdu děje. Konkrétní seznam ukazujeme až klientům — proč byste měli prozradit konkurenci, na co se my dívají.
+              </p>
+            </div>
+            <Link
+              href="/kontakt"
+              className="btn-primary whitespace-nowrap"
+            >
+              Domluvit demo
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </FadeInSection>
-
-        <FadeInSection className="mb-12">
-          <h2
-            className="text-2xl sm:text-3xl font-bold text-white mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
-          >
-            Napojíme se na <span className="text-cyan">vaše stávající systémy</span>
-          </h2>
-          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
-            EkonomOS nepřepisuje, co už používáte. Připojí se k vašim účetním
-            systémům, dokumentovým úložištím, bankám, rejstříkům a státním
-            portálům. 14 výchozích integrací na den jedna, další přidáváme na
-            míru.
-          </p>
-        </FadeInSection>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-24">
-          {integrations.map((i) => (
-            <div
-              key={i.name}
-              className="hud-panel p-4 flex items-center gap-3 hover:border-cyan/25 transition-colors"
-            >
-              <div className="p-2 border border-cyan/15 bg-cyan/5 flex-shrink-0">
-                <i.icon size={16} className="text-cyan" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="text-white text-sm font-medium truncate">
-                  {i.name}
-                </div>
-                <div
-                  className="text-text-muted truncate"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  {i.category}
-                </div>
-              </div>
-              <span className="hud-chip" data-tone="green">
-                ●
-              </span>
-            </div>
-          ))}
-        </div>
 
         {/* Komplet servis sekce */}
         <FadeInSection className="mb-24">
@@ -743,41 +265,39 @@ export default function FunkcePage() {
               className="text-2xl sm:text-3xl font-bold text-white mb-4"
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
-              Web, portál i aplikace —
+              Web, portál i aplikaci —
               <br />
               <span className="text-gold">postavíme za vás</span>
             </h2>
             <p className="text-text-secondary text-base max-w-2xl mx-auto leading-relaxed">
               Veřejný web na vaší doméně s vaším brandem. Pod ním klientský
               portál, kde se přihlásí vaši klienti. A administrátorská
-              aplikace s 205 analýzami pro vás. Tři vrstvy, jedno řešení,
-              postaví a hostuje studio VELYOS.
+              aplikace pro vás. Tři vrstvy, jedno řešení, postaví a hostuje studio VELYOS.
             </p>
           </div>
         </FadeInSection>
 
-        {/* CTA */}
+        {/* Final CTA */}
         <FadeInSection>
           <div className="text-center">
             <div className="glass-panel inline-block p-12 max-w-xl">
-              <Cpu size={32} className="text-cyan mx-auto mb-5" />
+              <Lock size={32} className="text-cyan mx-auto mb-5" />
               <h3
                 className="text-white text-2xl font-semibold mb-3"
                 style={{ fontFamily: "var(--font-space-grotesk)" }}
               >
-                Vyzkoušejte demo
+                Plný katalog je pro klienty
               </h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                3 demo profily bez registrace. Klient, mzdová účetní, daňový
-                poradce. Otevřete si, prohlédněte si, vyzkoušejte.
+                Konkrétní analýzy, integrace a metodologii ukazujeme až po nezávazné konzultaci. Demo dostupné po krátkém hovoru.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/prihlaseni" className="btn-primary">
-                  Otevřít demo
+                <Link href="/kontakt" className="btn-primary">
+                  Domluvit konzultaci
                   <ArrowRight size={16} />
                 </Link>
-                <Link href="/kontakt" className="btn-ghost">
-                  Domluvit konzultaci
+                <Link href="/o-nas" className="btn-ghost">
+                  Kdo za tím stojí
                 </Link>
               </div>
             </div>

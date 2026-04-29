@@ -229,7 +229,7 @@ export default function LoginPage() {
                     backgroundClip: "text",
                   }}
                 >
-                  SCH-EKONOM Control Center
+                  EkonomOS Control Center
                 </span>
               </h1>
 

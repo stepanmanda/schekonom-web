@@ -1,15 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { Network, Bot, UserCheck, MapPin } from "lucide-react";
+import { Layers, Network, Bot, UserCheck, MapPin } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const values = [
   {
+    icon: Layers,
+    title: "Komplet servis",
+    desc: "Web na vaší doméně s vaším logem, klientský portál pod ním a EkonomOS aplikaci pro vás. Postavíme, hostujeme, aktualizujeme — vy se staráte o klienty.",
+    accent: "gold",
+  },
+  {
     icon: Network,
     title: "Propojuje data",
-    desc: "Účetnictví, mzdy, komunikace, rejstříky, geodata. EkonomOS hledá souvislosti, které uvidíte jen když se data potkají na jednom místě.",
-    accent: "gold",
+    desc: "Účetnictví, mzdy, komunikace, rejstříky, geodata. Aplikace hledá souvislosti, které uvidíte jen když se data potkají na jednom místě.",
+    accent: "cyan",
   },
   {
     icon: Bot,

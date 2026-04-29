@@ -43,7 +43,7 @@ const stories = [
     subhead: "Aplikace to věděla dřív než my",
     body: [
       "Nový klient v onboardingu měl poslat bankovní výpisy do 5. dubna. Nedoručil. Na maily neodpovídal. Telefon nezvedal.",
-      "Pro lidské oko: „bude mít moc práce". Aplikace to vidí jinak.",
+      "Pro lidské oko: 'bude mít moc práce'. Aplikace to vidí jinak.",
     ],
     alert: 'EkonomOS hlásí ⟶ "Onboarding v prodlení — klient neodpovídá. Pravděpodobnost odchodu rostoucí. Doporučení: osobní návštěva, nabídnout pomoc se sběrem dokumentů."',
     outcome:

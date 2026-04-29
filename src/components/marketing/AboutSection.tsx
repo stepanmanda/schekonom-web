@@ -145,7 +145,7 @@ export default function AboutSection() {
         </div>
 
         {/* Value cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {values.map((value, i) => (
             <div
               key={value.title}

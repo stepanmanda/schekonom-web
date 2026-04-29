@@ -83,6 +83,24 @@ const aiLayer = [
   },
 ];
 
+const hiddenSignalsMetadata = [
+  { title: "Čas přijetí → zaúčtování", source: "DocuWare timestamps", good: "Průměr 4 h — efektivní", bad: "Průměr 96 h u klienta X — odkládání" },
+  { title: "Kolikrát faktura otevřena", source: "DocuWare open log", good: "1-2× — jasný doklad", bad: "12× otevřena — účetní neví jak zaúčtovat" },
+  { title: "Přepínání oken", source: "OS telemetrie", good: "Průměr 3 přepnutí", bad: "45 přepnutí — kognitivní přetížení" },
+  { title: "Pořadí zpracování", source: "queue log", good: "FIFO — spravedlivé", bad: "Klient Y vždy poslední — neoblíbený" },
+  { title: "Kdo první ráno", source: "login × klient", good: "Rovnoměrné", bad: "Účetní A vždy odkládá klienta B" },
+  { title: "Kdy vytištěn doklad", source: "printer log", good: "0 tisků — plně digitální", bad: "340 tisků/měsíc — papírový středověk" },
+];
+
+const hiddenSignalsLanguage = [
+  { title: "Tón pondělí vs. pátek", source: "sentiment × čas", good: "Konzistentní", bad: "Pondělí negativní, pátek pozitivní — stres z práce" },
+  { title: "Délka pozdravů", source: "textová analýza", good: "Stabilní formální", bad: "Z «Vážený pane» na «Ahoj» — blízkost nebo nerespekt?" },
+  { title: "Smajlíky", source: "emotikon tracking", good: "Konzistentní", bad: "Přestal 15. 2. — přesný bod ochlazení" },
+  { title: "Vykání/tykání", source: "analýza", good: "Konzistentní vykání", bad: "Přešel na tykání — buď důvěra, nebo nerespekt" },
+  { title: "Křestní jméno v předmětu", source: "email metadata", good: "Ano — osobní vztah", bad: "Ne — formální distance" },
+  { title: "Pravopisné chyby", source: "text analýza", good: "0 chyb — pečlivý", bad: "Rostoucí chyby — stres / únava / alkohol" },
+];
+
 const externalSignals = [
   { title: "ARES + VIES", source: "API", good: "Vše validní, plátce DPH", bad: "Dodavatel zrušen v ARES — fiktivní firma" },
   { title: "Insolvenční rejstřík", source: "justice.cz", good: "0 nálezů", bad: "Klient podal insolvenční návrh" },

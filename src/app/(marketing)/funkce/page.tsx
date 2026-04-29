@@ -83,6 +83,17 @@ const aiLayer = [
   },
 ];
 
+const externalSignals = [
+  { title: "ARES + VIES", source: "API", good: "Vše validní, plátce DPH", bad: "Dodavatel zrušen v ARES — fiktivní firma" },
+  { title: "Insolvenční rejstřík", source: "justice.cz", good: "0 nálezů", bad: "Klient podal insolvenční návrh" },
+  { title: "Pracovní inzeráty", source: "scraping", good: "Najímá — firma roste", bad: "Najímá účetní — chce nás nahradit?" },
+  { title: "Tiskové zprávy", source: "RSS", good: "Pozitivní PR", bad: "Negativní média — reputační riziko" },
+  { title: "Výběrová řízení", source: "portál", good: "Vyhrál zakázku 12M", bad: "Prohrál 3 tendry v řadě" },
+  { title: "Regulatorní feeds", source: "CZ+DE+EU", good: "Připraven na novely", bad: "Novela ho zasáhne — neví o tom" },
+  { title: "Kurzovní lístek", source: "ČNB + EZB API", good: "EUR stabilní, hedging nepotřeba", bad: "EUR +8 % za měsíc — nezajištěná pozice" },
+  { title: "Sbírka listin", source: "justice.cz", good: "Výkazy zveřejněny", bad: "Nezveřejněny 2 roky — pokuta 100 K" },
+];
+
 const predictiveAnalyses = [
   {
     title: "Kdy klient odejde",

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FileText, ArrowRight, CheckCircle2, Database } from "lucide-react";
+import { FileText, ArrowRight, CheckCircle2, Database, AlertTriangle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const analyses = [

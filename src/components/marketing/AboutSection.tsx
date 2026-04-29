@@ -64,30 +64,136 @@ export default function AboutSection() {
           </p>
         </div>
 
-        {/* Image + story row */}
+        {/* Visualization + story row */}
         <div
           className={`mb-20 grid lg:grid-cols-2 gap-10 items-center ${inView ? "animate-float-up delay-100" : "opacity-0"}`}
         >
+          {/* Abstract HUD visualization — žádné fotky */}
           <div className="relative group">
             <div
-              className="absolute -inset-3 opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-700"
+              className="absolute -inset-3 opacity-25 blur-2xl group-hover:opacity-40 transition-opacity duration-700"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, rgba(0,229,255,0.2), transparent 70%)",
+                  "radial-gradient(ellipse at center, rgba(0,229,255,0.3), transparent 70%)",
               }}
             />
-            <div className="relative glass-panel p-2 overflow-hidden">
-              <Image
-                src="/images/office/office-01.jpg"
-                alt="EkonomOS — pracovní prostředí"
-                width={720}
-                height={480}
-                className="w-full h-auto object-cover"
-                style={{ aspectRatio: "3/2" }}
+            <div
+              className="relative glass-panel overflow-hidden"
+              style={{ aspectRatio: "3/2" }}
+            >
+              {/* Animated mesh background */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 60% 80% at 30% 30%, rgba(0,229,255,0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 75% 70%, rgba(212,175,55,0.12) 0%, transparent 60%)",
+                }}
               />
+
+              {/* Grid pattern */}
+              <div className="absolute inset-0 grid-bg opacity-40" />
+
+              {/* SVG data viz — concentric rings + nodes */}
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 600 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="rgba(0,229,255,0.15)" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </radialGradient>
+                </defs>
+                {/* Center glow */}
+                <circle cx="300" cy="200" r="150" fill="url(#ringGlow)" />
+                {/* Concentric rings */}
+                {[80, 110, 140, 170, 200].map((r, i) => (
+                  <circle
+                    key={r}
+                    cx="300"
+                    cy="200"
+                    r={r}
+                    fill="none"
+                    stroke="rgba(0,229,255,0.15)"
+                    strokeWidth="0.5"
+                    strokeDasharray={i % 2 === 0 ? "2 4" : "none"}
+                  />
+                ))}
+                {/* Data nodes */}
+                {[
+                  { x: 300, y: 80, color: "#00E5FF", label: "MONEY" },
+                  { x: 480, y: 130, color: "#00E5FF", label: "POHODA" },
+                  { x: 510, y: 250, color: "#D4AF37", label: "DOCUWARE" },
+                  { x: 380, y: 340, color: "#00E5FF", label: "BANKY" },
+                  { x: 220, y: 340, color: "#D4AF37", label: "ARES" },
+                  { x: 90, y: 250, color: "#00E5FF", label: "ČSSZ" },
+                  { x: 120, y: 130, color: "#00E5FF", label: "ELSTER" },
+                ].map((node) => (
+                  <g key={node.label}>
+                    <line
+                      x1="300"
+                      y1="200"
+                      x2={node.x}
+                      y2={node.y}
+                      stroke={node.color}
+                      strokeWidth="0.4"
+                      strokeOpacity="0.4"
+                    />
+                    <circle
+                      cx={node.x}
+                      cy={node.y}
+                      r="4"
+                      fill={node.color}
+                      fillOpacity="0.85"
+                    />
+                    <circle
+                      cx={node.x}
+                      cy={node.y}
+                      r="10"
+                      fill={node.color}
+                      fillOpacity="0.15"
+                    />
+                    <text
+                      x={node.x}
+                      y={node.y + 22}
+                      fill="rgba(184,193,200,0.7)"
+                      fontSize="9"
+                      fontFamily="SF Mono, monospace"
+                      letterSpacing="1"
+                      textAnchor="middle"
+                    >
+                      {node.label}
+                    </text>
+                  </g>
+                ))}
+                {/* Center hub */}
+                <circle
+                  cx="300"
+                  cy="200"
+                  r="14"
+                  fill="rgba(0,229,255,0.2)"
+                  stroke="#00E5FF"
+                  strokeWidth="1.5"
+                />
+                <text
+                  x="300"
+                  y="204"
+                  fill="#00E5FF"
+                  fontSize="9"
+                  fontFamily="Space Grotesk, sans-serif"
+                  fontWeight="700"
+                  textAnchor="middle"
+                  letterSpacing="0.5"
+                >
+                  OS
+                </text>
+              </svg>
+
+              {/* Bottom HUD bar */}
               <div className="absolute bottom-2 left-2 right-2 glass-panel-dark px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <MapPin size={12} className="text-cyan" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-status-green animate-pulse-dot" />
                   <span
                     className="text-text-secondary"
                     style={{

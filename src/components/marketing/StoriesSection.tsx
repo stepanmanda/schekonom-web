@@ -49,7 +49,7 @@ const stories = [
     outcome:
       "Mácalová zajela osobně. Klient měl problém s předchozím účetním a chtěl se vrátit zpátky. Vyřešila to. Klient zůstal.",
     contrast:
-      "Bez aplikace bys za měsíc dostal e-mail „Děkujeme za spolupráci, jdeme jinam".",
+      "Bez aplikace bys za měsíc dostal e-mail 'Děkujeme za spolupráci, jdeme jinam'.",
     accent: "cyan",
   },
 ];

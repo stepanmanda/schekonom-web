@@ -180,7 +180,7 @@ export default function LoginPage() {
               <Shield size={18} color="#00E5FF" />
             </div>
             <div>
-              <div style={labelStyle}>SCH-EKONOM CONTROL CENTER</div>
+              <div style={labelStyle}>EKONOMOS CONTROL CENTER</div>
               <div
                 style={{
                   color: "#FFFFFF",

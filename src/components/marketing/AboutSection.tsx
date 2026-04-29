@@ -1,46 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import { Heart, Map, UserCheck, MapPin, Building2 } from "lucide-react";
+import { Network, Bot, UserCheck, MapPin } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const values = [
   {
-    icon: Heart,
-    title: "Rodinná čestnost",
-    desc: "Budujeme vztahy založené na důvěře a transparentnosti. Každý klient je pro nás partner, ne číslo v systému. Naše rodinné kořeny garantují osobní přístup ke každému případu.",
+    icon: Network,
+    title: "Propojuje data",
+    desc: "Účetnictví, mzdy, komunikace, rejstříky, geodata. EkonomOS hledá souvislosti, které uvidíte jen když se data potkají na jednom místě.",
     accent: "gold",
   },
   {
-    icon: Map,
-    title: "Regionální expertíza",
-    desc: "Znalost přeshraničního regionu Cheb-Bavorsko je naše DNA. Rozumíme české i německé legislativě a pomáháme firmám překonávat bariéry mezi oběma systémy.",
+    icon: Bot,
+    title: "AI hlídá za vás",
+    desc: "Termíny, chybějící dokumenty, podezřelé platby, klient, který přestal komunikovat. Aplikace si toho všimne dřív než vy.",
     accent: "cyan",
   },
   {
     icon: UserCheck,
-    title: "Osobní přístup",
-    desc: "Každého klienta známe jménem. Věnujeme se malým i středním podnikům, živnostníkům i fyzickým osobám pracujícím v Německu s maximální pozorností.",
+    title: "Lidská kontrola",
+    desc: "AI navrhuje, vy rozhodujete. Žádný autopilot bez dohledu — každá důležitá akce projde vaším schválením.",
     accent: "cyan",
-  },
-];
-
-const offices = [
-  {
-    name: "Hlavní sídlo — Cheb",
-    building: "Chebana",
-    address: "Obrněné brigády 553/31",
-    city: "350 02 Cheb",
-    phone: "+420 354 433 005",
-    type: "Centrála",
-  },
-  {
-    name: "Pobočka — Plzeň",
-    building: "Kolektiv Hub",
-    address: "Kopeckého sady 329/8",
-    city: "301 00 Plzeň",
-    phone: "+420 354 433 005",
-    type: "Pobočka",
   },
 ];
 
@@ -62,19 +43,19 @@ export default function AboutSection() {
           className={`mb-16 text-center ${inView ? "animate-float-up" : "opacity-0"}`}
         >
           <div className="section-tag justify-center mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />O
-            NÁS // HODNOTY
+            <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
+            O PRODUKTU // CO JE EKONOMOS
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Na čem <span className="text-gold">stavíme</span>
+            Co děláme <span className="text-gold">jinak</span>
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-2xl mx-auto">
-            Jsme rodinná účetní firma z Chebu, která už více než 30 let
-            poskytuje komplexní účetní služby. Kombinace tradičních hodnot a
-            moderních technologií je naší cestou k dokonalosti.
+            EkonomOS není jen aplikace. Je to autonomní finanční centrum, které
+            propojuje vaše data, hlídá rizika a navrhuje akce — místo toho, aby
+            vás zaplavovalo Excelem.
           </p>
         </div>
 
@@ -92,8 +73,8 @@ export default function AboutSection() {
             />
             <div className="relative glass-panel p-2 overflow-hidden">
               <Image
-                src="/images/cheb/cheb-drone.jpg"
-                alt="Chebana - sídlo SCH-EKONOM"
+                src="/images/office/office-01.jpg"
+                alt="EkonomOS — pracovní prostředí"
                 width={720}
                 height={480}
                 className="w-full h-auto object-cover"
@@ -110,7 +91,7 @@ export default function AboutSection() {
                       letterSpacing: "0.1em",
                     }}
                   >
-                    CHEBANA, CHEB
+                    EKONOMOS // CONTROL CENTER
                   </span>
                 </div>
                 <span
@@ -121,7 +102,7 @@ export default function AboutSection() {
                     letterSpacing: "0.1em",
                   }}
                 >
-                  50.0735°N, 12.3702°E
+                  205 ANALÝZ · 184 ZDROJŮ
                 </span>
               </div>
             </div>
@@ -132,33 +113,33 @@ export default function AboutSection() {
               className="text-white text-2xl sm:text-3xl font-bold mb-6"
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
-              Více než 30 let
+              Jedno místo pro všechno,
               <br />
-              <span className="text-gold">vašeho klidu</span>
+              co účetní firma <span className="text-gold">potřebuje</span>
             </h3>
             <div className="space-y-4 text-text-secondary text-base leading-relaxed">
               <p>
-                SCH-EKONOM s.r.o. vznikl jako rodinná firma v Chebu a od svého
-                založení se specializuje na komplexní účetní a daňové služby.
-                Díky poloze v příhraničním regionu jsme se stali odborníky na
-                přeshraniční problematiku CZ/DE.
+                EkonomOS je aplikace pro účetní kanceláře a jejich klienty.
+                Klient se přihlásí na svůj portál — nahraje dokumenty, vidí
+                termíny, schvaluje kliknutím. Vy v EkonomOS vidíte všechny své
+                klienty na jedné obrazovce.
               </p>
               <p>
-                Dnes zaměstnáváme více než 40 specialistů ve dvou pobočkách — v
-                Chebu a Plzni. Naším klientům poskytujeme plný servis od vedení
-                účetnictví přes mzdovou agendu až po německé daňové poradenství.
+                Hodnota není v množství dat. Hodnota je v korelacích, které
+                vznikají teprve propojením účetnictví, komunikace, mezd,
+                rejstříků, geodat a behaviorálních stop. To je rozdíl mezi
+                účetní firmou s počítači a autonomním finančním centrem.
               </p>
               <p>
-                Věříme, že každý klient si zaslouží individuální přístup a
-                maximální péči. Proto investujeme do moderních technologií a
-                neustálého vzdělávání našeho týmu.
+                EkonomOS staví studio VELYOS — tým, který se specializuje na
+                B2B AI agenty a autonomní workflow pro profesionální služby.
               </p>
             </div>
           </div>
         </div>
 
         {/* Value cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
+        <div className="grid md:grid-cols-3 gap-6">
           {values.map((value, i) => (
             <div
               key={value.title}
@@ -202,49 +183,6 @@ export default function AboutSection() {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Offices subsection */}
-        <div
-          className={`${inView ? "animate-float-up delay-600" : "opacity-0"}`}
-        >
-          <div className="section-tag mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            NAŠE KANCELÁŘE
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {offices.map((office) => (
-              <div
-                key={office.name}
-                className="glass-panel p-6 flex gap-5 group hover:border-cyan/25 transition-all duration-300"
-              >
-                <div className="p-3 border border-cyan/15 bg-cyan/5 h-fit flex-shrink-0">
-                  <Building2 size={22} className="text-cyan" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h4
-                      className="text-white font-semibold"
-                      style={{ fontFamily: "var(--font-space-grotesk)" }}
-                    >
-                      {office.name}
-                    </h4>
-                    <span className="hud-chip" data-tone="cyan">
-                      {office.type}
-                    </span>
-                  </div>
-                  <p className="text-text-muted text-sm mb-1">
-                    {office.building}
-                  </p>
-                  <p className="text-text-secondary text-sm">
-                    {office.address}
-                  </p>
-                  <p className="text-text-secondary text-sm">{office.city}</p>
-                  <p className="text-cyan text-sm mt-2">{office.phone}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

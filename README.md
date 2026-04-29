@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EkonomOS
 
-## Getting Started
+Klientský portál nové generace pro účetní a poradenské firmy. Postavili jsme ho ve [Studiu VELYOS](https://velyos.cz).
 
-First, run the development server:
+EkonomOS dodáváme jako kompletní řešení — veřejný web na vaší doméně, klientský portál pod ním a administrátorská aplikace pro vaši kancelář. Napojuje se na vaše stávající systémy (Money S3, Pohoda, DocuWare, banky, ARES, ČSSZ, ELSTER) a hlídá rizika za vás.
+
+## Co umí
+
+- **205 analýz** napříč **23 kategoriemi** — od tvrdého účetnictví přes mzdy, daně, DPH, ViDA, klientskou komunikaci a hlasovou analýzu až po fraud detection a deepfake watchdog
+- **184 datových zdrojů** propojených v jedné aplikaci
+- **8 N8N workflow** pro běžné úkony (OCR příjem faktur, párování plateb, 3stupňové upomínky, mzdové uzávěrky, ELSTER)
+- **AI prediktivní vrstva** — predikce odchodu klienta, uplift modeling, optimální moment kontaktu, cenová elasticita, predikce akvizice/fúze
+
+Detail na [`/funkce`](http://localhost:3000/funkce).
+
+## Vývoj
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Dev server běží na [`http://localhost:3000`](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js 16.2.3 (Turbopack, App Router)
+- React 19
+- Tailwind CSS 4
+- TypeScript 5
+- Lucide ikony
 
-## Learn More
+⚠️ Next.js 16 má breaking changes oproti starším verzím. Před úpravami čti `node_modules/next/dist/docs/`.
 
-To learn more about Next.js, take a look at the following resources:
+## Struktura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── (marketing)/        # veřejný web (homepage, /funkce, moduly, /o-nas, /kontakt)
+│   ├── portal/             # klientský/administrátorský portál
+│   ├── prihlaseni/         # demo login
+│   └── layout.tsx
+├── components/
+│   ├── marketing/          # Hero, Services, About, Stats, Testimonials, Contact, Footer, Header, DataTicker
+│   ├── portal/             # KpiCard, ClientCard, SectionCard
+│   └── shared/             # Logo
+├── hooks/
+│   └── useInView.ts
+└── lib/
+    ├── auth/               # frontend-only mock auth context
+    ├── demo/               # mock workspace data (anonymizovaná)
+    └── utils.ts
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Demo režim
 
-## Deploy on Vercel
+Aplikace běží ve frontend-only demo režimu (`DEMO_MODE = true`). Data jsou statická v `src/lib/demo/data.ts`. Žádný backend, žádná databáze, žádné externí volání. Tři demo profily:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Klient** (jednoduchý cockpit s dokumenty, cash-flow, dalšími kroky)
+- **DE specialista** (pendleři, ELSTER, Kindergeld, A1)
+- **Mzdová účetní** (docházka, mzdy, ONZ, exekuce)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Produkční verze EkonomOS staví na stejném UI, ale s reálným backendem na míru klientovi.
+
+## Licence
+
+© 2026 Studio VELYOS. Všechna práva vyhrazena.

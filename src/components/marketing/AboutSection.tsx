@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { Layers, Network, Bot, UserCheck, MapPin } from "lucide-react";
+import { Layers, Network, Bot, UserCheck } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const values = [

@@ -4,12 +4,12 @@ import { useInView } from "@/hooks/useInView";
 import { useEffect, useState } from "react";
 
 const stats = [
-  { target: 30, suffix: "+", label: "Let na trhu" },
-  { target: 40, suffix: "+", label: "Zaměstnanců" },
-  { target: 340, suffix: "+", label: "Aktivních klientů" },
-  { target: 2, suffix: "", label: "Pobočky (Cheb & Plzeň)" },
-  { target: 2800, suffix: "+", label: "Zpracovaných přiznání ročně" },
-  { target: 6, suffix: "", label: "Oblastí služeb" },
+  { target: 205, suffix: "", label: "Analýz dostupných pro klienty" },
+  { target: 184, suffix: "", label: "Datových zdrojů" },
+  { target: 23, suffix: "", label: "Kategorií analytiky" },
+  { target: 8, suffix: "", label: "Automatizovaných workflow" },
+  { target: 1734, suffix: "+", label: "Spuštění workflow měsíčně" },
+  { target: 24, suffix: "/7", label: "Online provoz" },
 ];
 
 function AnimatedCounter({

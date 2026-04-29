@@ -24,8 +24,18 @@ const badges = [
   { icon: CheckSquare, label: "Schválení" },
 ];
 
+const tickerLines = [
+  "OCR PŘÍJEM FAKTUR — 234×",
+  "DPH KH PŘIPRAVENO",
+  "PÁROVÁNÍ PLATEB — AKTIVNÍ",
+  "CHURN ANALYZER — RUNNING",
+  "FRAUD WATCH — IBAN OK",
+  "ARES SYNC — 23 KLIENTŮ",
+  "ELSTER ENDPOINT — STANDBY",
+  "DOCUMENT INGEST — 8/8 OK",
+];
+
 export default function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollY, setScrollY] = useState(0);
 
@@ -35,59 +45,118 @@ export default function HeroSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Slow zoom effect on video
-  const videoScale = 1 + scrollY * 0.0002;
-  const overlayOpacity = Math.min(0.85, 0.55 + scrollY * 0.0003);
+  const overlayOpacity = Math.min(0.92, 0.6 + scrollY * 0.0003);
 
   return (
     <section
       ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Video background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+      {/* Animated mesh background */}
+      <div className="absolute inset-0 z-0 bg-void-deep">
+        {/* Base radial mesh */}
+        <div
+          className="absolute inset-0"
           style={{
-            transform: `scale(${videoScale})`,
-            transformOrigin: "center center",
-            willChange: "transform",
+            background:
+              "radial-gradient(ellipse 60% 80% at 25% 30%, rgba(0,229,255,0.18) 0%, transparent 55%), radial-gradient(ellipse 50% 60% at 80% 70%, rgba(212,175,55,0.10) 0%, transparent 55%), radial-gradient(ellipse 90% 50% at 50% 100%, rgba(0,85,255,0.08) 0%, transparent 65%)",
           }}
-        >
-          <source src="/video/hero.mp4" type="video/mp4" />
-        </video>
+        />
+
+        {/* Slow drifting glow blobs */}
+        <div
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-30 animate-pulse"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0,229,255,0.25) 0%, transparent 60%)",
+            animationDuration: "8s",
+          }}
+        />
+        <div
+          className="absolute -bottom-40 -right-40 w-[700px] h-[700px] rounded-full opacity-20 animate-pulse"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 60%)",
+            animationDuration: "12s",
+            animationDelay: "2s",
+          }}
+        />
+
+        {/* Animated rotating ring */}
+        <div
+          className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[480px] h-[480px] hidden lg:block animate-spin-slow opacity-50"
+          style={{
+            background:
+              "conic-gradient(from 0deg, transparent 0deg, rgba(0,229,255,0.20) 60deg, transparent 120deg, rgba(212,175,55,0.12) 200deg, transparent 280deg)",
+            mask: "radial-gradient(circle, transparent 60%, black 61%, black 70%, transparent 71%)",
+            WebkitMask:
+              "radial-gradient(circle, transparent 60%, black 61%, black 70%, transparent 71%)",
+          }}
+        />
+
+        {/* Grid bg */}
+        <div className="absolute inset-0 grid-bg opacity-30" />
+
+        {/* Diagonal scan lines */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background:
+              "repeating-linear-gradient(45deg, transparent 0, transparent 6px, rgba(0,229,255,0.015) 6px, rgba(0,229,255,0.015) 7px)",
+          }}
+        />
       </div>
 
-      {/* Dark gradient overlay on top of video */}
+      {/* Bottom fade overlay */}
       <div
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: `linear-gradient(180deg, rgba(3,8,13,${overlayOpacity}) 0%, rgba(3,8,13,0.70) 40%, rgba(3,8,13,0.85) 70%, rgba(3,8,13,0.97) 100%)`,
+          background: `linear-gradient(180deg, transparent 0%, transparent 55%, rgba(3,8,13,${overlayOpacity * 0.6}) 80%, rgba(3,8,13,0.97) 100%)`,
         }}
       />
 
-      {/* Cinematic side gradients */}
-      <div
-        className="absolute inset-0 z-[2] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 70% at 20% 50%, rgba(0,229,255,0.06) 0%, transparent 70%), radial-gradient(ellipse 35% 50% at 85% 30%, rgba(212,175,55,0.04) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Grid bg subtle */}
-      <div className="absolute inset-0 z-[2] grid-bg opacity-15 pointer-events-none" />
+      {/* Floating data ticker — right side */}
+      <div className="absolute top-32 right-6 z-[3] hidden xl:flex flex-col gap-2 max-w-xs opacity-0 animate-float-up delay-500">
+        <div
+          className="text-text-muted mb-2"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.55rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+          }}
+        >
+          ◉ LIVE PROVOZNÍ DATA
+        </div>
+        {tickerLines.map((line, i) => (
+          <div
+            key={line}
+            className="hud-panel px-3 py-2 flex items-center gap-2 animate-float-up"
+            style={{
+              animationDelay: `${0.6 + i * 0.08}s`,
+              animationFillMode: "backwards",
+            }}
+          >
+            <span className="w-1 h-1 rounded-full bg-status-green animate-pulse-dot" />
+            <span
+              className="text-text-secondary"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.58rem",
+                letterSpacing: "0.1em",
+              }}
+            >
+              {line}
+            </span>
+          </div>
+        ))}
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
         {/* Section tag */}
         <div className="section-tag opacity-0 animate-float-up mb-8">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-dot" />
           EKONOMOS &nbsp;// &nbsp;ÚČETNÍ FIRMA ONLINE &nbsp;// &nbsp;ČESKY
         </div>
 
@@ -138,7 +207,7 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div className="opacity-0 animate-float-up delay-400 mt-10 flex flex-wrap gap-4">
-          <Link href="#funkce" className="btn-primary">
+          <Link href="/funkce" className="btn-primary">
             Co aplikace umí
             <ArrowRight size={16} />
           </Link>

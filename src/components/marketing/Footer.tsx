@@ -1,52 +1,25 @@
 import Link from "next/link";
 import Logo from "@/components/shared/Logo";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 
 const footerLinks = {
-  sluzby: [
-    { label: "Daňové poradenství", href: "/danove-poradenstvi" },
-    { label: "Účetnictví", href: "/ucetnictvi" },
-    { label: "Mzdové účetnictví", href: "/mzdove-ucetnictvi" },
-    { label: "Německé daně", href: "/nemecke-dane" },
-    { label: "Přeshraniční CZ/DE", href: "/preshranicni-poradenstvi" },
-    { label: "Certifikační autorita", href: "/certifikacni-autorita" },
+  funkce: [
+    { label: "Účetní reporting", href: "/modul-ucetnictvi" },
+    { label: "Mzdy + ČSSZ + ZP", href: "/modul-mzdy" },
+    { label: "Daně + DPH", href: "/modul-dane" },
+    { label: "CZ/DE + ELSTER", href: "/modul-cz-de" },
+    { label: "Všechny funkce", href: "/funkce" },
   ],
-  informace: [
-    { label: "O společnosti", href: "/o-nas" },
-    { label: "Reference", href: "/reference" },
-    { label: "Aktuality", href: "/aktuality" },
-    { label: "Volná místa", href: "/volna-mista" },
+  produkt: [
+    { label: "O EkonomOS", href: "/o-nas" },
     { label: "Kontakt", href: "/kontakt" },
-    {
-      label: "Rezervace termínu",
-      href: "https://schekonom.reenio.cz/cs/#/terms",
-      external: true,
-    },
-  ] as { label: string; href: string; external?: boolean }[],
-  dokumenty: [
+    { label: "Vyzkoušet demo", href: "/prihlaseni" },
+  ],
+  pravni: [
     { label: "Ochrana osobních údajů", href: "#" },
     { label: "Obchodní podmínky", href: "#" },
     { label: "Cookies", href: "#" },
-    { label: "Datové úložiště SCH-EKONOM", href: "#", external: true },
-    { label: "DocuWare", href: "#", external: true },
-    { label: "TeamViewer", href: "#", external: true },
-  ] as { label: string; href: string; external?: boolean }[],
+  ],
 };
-
-const socialLinks = [
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/schekonom",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/sch.ekonom/",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/sch-ekonom-s-r-o-/about/",
-  },
-];
 
 export default function Footer() {
   return (
@@ -58,74 +31,24 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Logo size={36} showText />
             <p className="mt-4 text-text-muted text-sm leading-relaxed max-w-sm">
-              Důvěryhodný partner pro daňové poradenství, účetnictví a mzdovou
-              agendu. Více než 30 let zkušeností v regionu Cheb a přeshraničním
-              prostoru CZ/DE.
+              Klientský portál pro účetní firmy a jejich klienty. Termíny,
+              dokumenty, schválení a AI hlídání rizik na jednom místě.
             </p>
-            <div className="mt-6 flex flex-col gap-3">
-              <div className="flex items-start gap-3 text-text-secondary text-sm">
-                <MapPin size={14} className="text-cyan flex-shrink-0 mt-0.5" />
-                <span>
-                  Chebana, Obrněné brigády 553/31
-                  <br />
-                  350 02 Cheb
-                </span>
-              </div>
-              <div className="flex items-start gap-3 text-text-secondary text-sm">
-                <MapPin size={14} className="text-cyan flex-shrink-0 mt-0.5" />
-                <span>
-                  Kolektiv Hub, Kopeckého sady 329/8
-                  <br />
-                  301 00 Plzeň
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-text-secondary text-sm">
-                <Phone size={14} className="text-cyan flex-shrink-0" />
-                <a
-                  href="tel:+420354433005"
-                  className="hover:text-white transition-colors"
-                >
-                  +420 354 433 005
-                </a>
-              </div>
-              <div className="flex items-center gap-3 text-text-secondary text-sm">
-                <Mail size={14} className="text-cyan flex-shrink-0" />
-                <a
-                  href="mailto:mail@schekonom.cz"
-                  className="hover:text-white transition-colors"
-                >
-                  mail@schekonom.cz
-                </a>
-              </div>
-            </div>
-
-            {/* Social links */}
-            <div className="mt-6 flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-1.5 border border-cyan/10 hover:border-cyan/25 bg-cyan/[0.03] hover:bg-cyan/[0.06] transition-all text-text-muted hover:text-text-secondary"
-                >
-                  <ExternalLink size={10} />
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {social.label}
-                  </span>
-                </a>
-              ))}
+            <div
+              className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 border border-cyan/15 bg-cyan/[0.03]"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.6rem",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+              }}
+            >
+              <span className="text-text-muted">Vývoj:</span>
+              <span className="text-cyan">Studio VELYOS</span>
             </div>
           </div>
 
-          {/* Služby */}
+          {/* Funkce */}
           <div>
             <h4
               className="text-white mb-4"
@@ -137,10 +60,10 @@ export default function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Služby
+              Funkce
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {footerLinks.sluzby.map((link) => (
+              {footerLinks.funkce.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="nav-link text-xs">
                     {link.label}
@@ -150,7 +73,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Informace */}
+          {/* Produkt */}
           <div>
             <h4
               className="text-white mb-4"
@@ -162,31 +85,20 @@ export default function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Informace
+              Produkt
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {footerLinks.informace.map((link) => (
+              {footerLinks.produkt.map((link) => (
                 <li key={link.label}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="nav-link text-xs inline-flex items-center gap-1"
-                    >
-                      {link.label} <ExternalLink size={9} />
-                    </a>
-                  ) : (
-                    <Link href={link.href} className="nav-link text-xs">
-                      {link.label}
-                    </Link>
-                  )}
+                  <Link href={link.href} className="nav-link text-xs">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Dokumenty */}
+          {/* Právní */}
           <div>
             <h4
               className="text-white mb-4"
@@ -198,25 +110,14 @@ export default function Footer() {
                 textTransform: "uppercase",
               }}
             >
-              Dokumenty
+              Právní
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {footerLinks.dokumenty.map((link) => (
+              {footerLinks.pravni.map((link) => (
                 <li key={link.label}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="nav-link text-xs inline-flex items-center gap-1"
-                    >
-                      {link.label} <ExternalLink size={9} />
-                    </a>
-                  ) : (
-                    <Link href={link.href} className="nav-link text-xs">
-                      {link.label}
-                    </Link>
-                  )}
+                  <Link href={link.href} className="nav-link text-xs">
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -235,8 +136,7 @@ export default function Footer() {
               letterSpacing: "0.08em",
             }}
           >
-            &copy; 2026 SCH-EKONOM s.r.o. | IČO: 64832694 | DIČ: CZ64832694 |
-            Zapsáno v OR vedeném KS v Plzni, sp. zn. C 7431
+            &copy; 2026 EkonomOS &middot; Produkt Studia VELYOS
           </p>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-status-green animate-pulse-dot" />

@@ -62,11 +62,6 @@ const modules = [
 
 const aiLayer = [
   {
-    icon: Brain,
-    title: "Predikce odchodu klienta",
-    desc: "Aplikace sleduje signály — pokles aktivity, opožděné platby, méně komunikace. Když roste riziko, dáme vědět dřív, než klient odejde ke konkurenci.",
-  },
-  {
     icon: AlertTriangle,
     title: "Detekce podvodů a chyb",
     desc: "Změny IBAN u dodavatelů, duplicitní faktury, nesoulady v dokumentech, deepfake faktury. Aplikace prochází data 24/7 a označí, co nesedí.",
@@ -80,6 +75,44 @@ const aiLayer = [
     icon: Workflow,
     title: "Automatizovaná workflow",
     desc: "8 N8N workflow pro běžné úkony: OCR příjem faktur, párování plateb, 3stupňové upomínky, mzdové uzávěrky, ELSTER podání. Bez ručního klikání.",
+  },
+  {
+    icon: Brain,
+    title: "Prediktivní vrstva",
+    desc: "Pět ML analýz na úrovni klienta: kdy odejde, co ho udrží, kdy ho oslovit, jakou cenu unese, jestli je v hledáčku akvizice. Detail níže.",
+  },
+];
+
+const predictiveAnalyses = [
+  {
+    title: "Kdy klient odejde",
+    method: "ML klasifikace",
+    good: "0 % riziko odchodu",
+    bad: "87 % pravděpodobnost odchodu do 60 dní",
+  },
+  {
+    title: "Co ho zachrání",
+    method: "Uplift modeling",
+    good: "Klient stabilní — žádná akce nepotřeba",
+    bad: "Osobní schůzka + sleva 10 % = 64 % šance na udržení",
+  },
+  {
+    title: "Optimální moment kontaktu",
+    method: "Behaviorální analýza",
+    good: "Úterý 10:00 — response rate 89 %",
+    bad: "Pátek 16:00 — response rate 12 %",
+  },
+  {
+    title: "Cenová elasticita",
+    method: "Historie reakcí",
+    good: "Toleruje +20 % bez reakce",
+    bad: "Zlomový bod při +3 % — okamžitý odchod",
+  },
+  {
+    title: "Predikce akvizice / fúze",
+    method: "Detekce signálů",
+    good: "Stabilní struktura",
+    bad: "3 signály fúze — připravit transition plán",
   },
 ];
 

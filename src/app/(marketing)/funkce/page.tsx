@@ -271,6 +271,63 @@ export default function FunkcePage() {
           ))}
         </div>
 
+        {/* Integrace / Napojení na systémy */}
+        <FadeInSection className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="section-tag">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
+              DATOVÉ ZDROJE // NAPOJENÍ
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
+          </div>
+        </FadeInSection>
+
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Napojíme se na <span className="text-cyan">vaše stávající systémy</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
+            EkonomOS nepřepisuje, co už používáte. Připojí se k vašim účetním
+            systémům, dokumentovým úložištím, bankám, rejstříkům a státním
+            portálům. 14 výchozích integrací na den jedna, další přidáváme na
+            míru.
+          </p>
+        </FadeInSection>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mb-24">
+          {integrations.map((i) => (
+            <div
+              key={i.name}
+              className="hud-panel p-4 flex items-center gap-3 hover:border-cyan/25 transition-colors"
+            >
+              <div className="p-2 border border-cyan/15 bg-cyan/5 flex-shrink-0">
+                <i.icon size={16} className="text-cyan" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-white text-sm font-medium truncate">
+                  {i.name}
+                </div>
+                <div
+                  className="text-text-muted truncate"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  {i.category}
+                </div>
+              </div>
+              <span className="hud-chip" data-tone="green">
+                ●
+              </span>
+            </div>
+          ))}
+        </div>
+
         {/* Komplet servis sekce */}
         <FadeInSection className="mb-24">
           <div className="hud-panel p-10 text-center">

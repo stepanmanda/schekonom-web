@@ -86,7 +86,7 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
               marginTop: 2,
             }}
           >
-            FINANČNÍ SYSTÉM
+            KLIENTSKÝ PORTÁL
           </span>
         </div>
       )}

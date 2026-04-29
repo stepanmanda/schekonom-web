@@ -1,103 +1,39 @@
 "use client";
 
 import { useState } from "react";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  Globe,
-  ExternalLink,
-} from "lucide-react";
+import { Mail, MessageSquare, PlayCircle, Send } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const contactInfo = [
   {
-    icon: MapPin,
-    label: "Hlavní sídlo — Cheb",
-    value: "Chebana, Obrněné brigády 553/31\n350 02 Cheb",
-    href: "https://maps.google.com/?q=Obrněné+brigády+553/31,+Cheb",
-  },
-  {
-    icon: MapPin,
-    label: "Pobočka — Plzeň",
-    value: "Kolektiv Hub, Kopeckého sady 329/8\n301 00 Plzeň",
-    href: "https://maps.google.com/?q=Kopeckého+sady+329/8,+Plzeň",
-  },
-  {
-    icon: Phone,
-    label: "Recepce",
-    value: "+420 354 433 005",
-    href: "tel:+420354433005",
-  },
-  {
-    icon: Phone,
-    label: "Německé daně",
-    value: "+420 351 011 820",
-    href: "tel:+420351011820",
-  },
-  {
-    icon: Globe,
-    label: "Německo",
-    value: "+49 9632 92312 15",
-    href: "tel:+4996329231215",
+    icon: PlayCircle,
+    label: "Demo přístup",
+    value: "3 demo profily, žádná registrace",
+    actionLabel: "Otevřít demo",
+    href: "/prihlaseni",
   },
   {
     icon: Mail,
-    label: "E-mail",
-    value: "mail@schekonom.cz",
-    href: "mailto:mail@schekonom.cz",
+    label: "Obchodní kontakt",
+    value: "info@ekonomos.cz",
+    actionLabel: "Napsat",
+    href: "mailto:info@ekonomos.cz",
   },
   {
-    icon: Mail,
-    label: "Německé daně e-mail",
-    value: "nemecko@schekonom.cz",
-    href: "mailto:nemecko@schekonom.cz",
-  },
-  {
-    icon: Clock,
-    label: "Úřední hodiny — Hlavní",
-    value: "Po\u2013Čt 7:00\u201315:30, Pá 7:00\u201314:00",
-    href: null,
-  },
-  {
-    icon: Clock,
-    label: "Úřední hodiny — Něm. daně",
-    value:
-      "Po,Út,Čt 8:00\u201312:00\nSt 8:00\u201312:00 a 13:00\u201317:00\nPá 8:00\u201312:00",
+    icon: MessageSquare,
+    label: "Studio za produktem",
+    value: "VELYOS · B2B AI agenti",
+    actionLabel: null,
     href: null,
   },
 ];
 
-const socialLinks = [
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/schekonom",
-    icon: "fb",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/sch.ekonom/",
-    icon: "ig",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/sch-ekonom-s-r-o-/about/",
-    icon: "li",
-  },
-];
-
-const serviceOptions = [
-  "Daňové poradenství",
-  "Účetnictví",
-  "Mzdová agenda",
-  "Přeshraniční CZ/DE",
-  "Německé daně",
-  "Certifikační autorita",
-  "AI Finanční analýza",
-  "AI Reporting",
-  "Jiné",
+const inquiryOptions = [
+  "Chci si vyzkoušet demo",
+  "Mám zájem o cenovou nabídku",
+  "Chci nasadit EkonomOS u nás v kanceláři",
+  "Partnerství / integrace",
+  "Něco jiného",
 ];
 
 export default function ContactSection() {
@@ -105,8 +41,8 @@ export default function ContactSection() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    phone: "",
-    service: "",
+    company: "",
+    inquiry: "",
     message: "",
   });
 
@@ -120,7 +56,7 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Děkujeme za zprávu! Ozveme se vám do 24 hodin.");
+    alert("Děkujeme. Ozveme se vám do 24 hodin v pracovních dnech.");
   };
 
   return (
@@ -140,11 +76,11 @@ export default function ContactSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Pojďme se <span className="text-cyan">spojit</span>
+            Pojďme to <span className="text-cyan">rozjet</span>
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-xl">
-            Nezávazná konzultace zdarma. Odpovídáme do 24 hodin v pracovních
-            dnech.
+            Vyzkoušejte demo bez registrace, nebo nám napište. Odpovídáme do 24
+            hodin v pracovních dnech.
           </p>
         </div>
 
@@ -180,7 +116,7 @@ export default function ContactSection() {
                         className="text-cyan group-hover:text-white transition-colors"
                       />
                     </div>
-                    <div className="min-w-0">
+                    <div className="min-w-0 flex-1">
                       <div
                         className="text-text-muted mb-1"
                         style={{
@@ -192,55 +128,26 @@ export default function ContactSection() {
                       >
                         {item.label}
                       </div>
-                      <div className="text-white text-sm whitespace-pre-line leading-relaxed">
+                      <div className="text-white text-sm leading-relaxed">
                         {item.value}
                       </div>
+                      {item.actionLabel && (
+                        <div
+                          className="text-cyan mt-2"
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: "0.6rem",
+                            letterSpacing: "0.12em",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {item.actionLabel} →
+                        </div>
+                      )}
                     </div>
                   </Wrapper>
                 );
               })}
-
-              {/* Social links */}
-              <div className="mt-4">
-                <div
-                  className="text-text-muted mb-3"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Sledujte nás
-                </div>
-                <div className="flex gap-3">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="glass-panel px-4 py-2.5 flex items-center gap-2 group hover:border-cyan/30 transition-all"
-                    >
-                      <ExternalLink
-                        size={12}
-                        className="text-cyan/60 group-hover:text-cyan transition-colors"
-                      />
-                      <span
-                        className="text-text-secondary group-hover:text-white transition-colors"
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.65rem",
-                          letterSpacing: "0.1em",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {social.label}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
 
@@ -274,7 +181,7 @@ export default function ContactSection() {
                     value={formState.name}
                     onChange={handleChange}
                     className="hud-input"
-                    placeholder="Jan Novák"
+                    placeholder="Vaše jméno"
                   />
                 </div>
                 <div>
@@ -298,7 +205,7 @@ export default function ContactSection() {
                     value={formState.email}
                     onChange={handleChange}
                     className="hud-input"
-                    placeholder="jan@firma.cz"
+                    placeholder="vy@firma.cz"
                   />
                 </div>
               </div>
@@ -306,7 +213,7 @@ export default function ContactSection() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label
-                    htmlFor="phone"
+                    htmlFor="company"
                     className="block text-text-muted mb-2"
                     style={{
                       fontFamily: "var(--font-mono)",
@@ -315,21 +222,21 @@ export default function ContactSection() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Telefon
+                    Firma
                   </label>
                   <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formState.phone}
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formState.company}
                     onChange={handleChange}
                     className="hud-input"
-                    placeholder="+420 ..."
+                    placeholder="Název kanceláře"
                   />
                 </div>
                 <div>
                   <label
-                    htmlFor="service"
+                    htmlFor="inquiry"
                     className="block text-text-muted mb-2"
                     style={{
                       fontFamily: "var(--font-mono)",
@@ -338,17 +245,17 @@ export default function ContactSection() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Služba
+                    Co potřebujete
                   </label>
                   <select
-                    id="service"
-                    name="service"
-                    value={formState.service}
+                    id="inquiry"
+                    name="inquiry"
+                    value={formState.inquiry}
                     onChange={handleChange}
                     className="hud-input"
                   >
-                    <option value="">Vyberte službu...</option>
-                    {serviceOptions.map((opt) => (
+                    <option value="">Vyberte...</option>
+                    {inquiryOptions.map((opt) => (
                       <option key={opt} value={opt}>
                         {opt}
                       </option>
@@ -378,7 +285,7 @@ export default function ContactSection() {
                   value={formState.message}
                   onChange={handleChange}
                   className="hud-input resize-none"
-                  placeholder="Popište váš požadavek..."
+                  placeholder="Krátce, co byste chtěli zjistit..."
                 />
               </div>
 
@@ -387,7 +294,7 @@ export default function ContactSection() {
                 className="btn-primary w-full justify-center"
               >
                 <Send size={16} />
-                Odeslat zprávu
+                Odeslat
               </button>
 
               <p

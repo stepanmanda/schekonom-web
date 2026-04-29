@@ -96,6 +96,99 @@ export default function ModulDanePage() {
           ))}
         </div>
 
+        {/* Example deep dive — Scénáře co kdyby */}
+        <FadeInSection className="mb-24">
+          <div className="section-tag mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
+            UKÁZKA // ANALÝZA „SCÉNÁŘE CO KDYBY"
+          </div>
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-white mb-2"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Simulační model bez <span className="text-cyan">reálného dopadu</span>
+          </h2>
+          <p className="text-text-secondary text-sm mb-8 max-w-3xl leading-relaxed">
+            Monte Carlo simulace alternativních daňových strategií. Klient
+            uvidí, kolik by ušetřil změnou právní formy, optimalizací odpisů
+            nebo přerozdělením příjmů — bez nutnosti to zkoušet naživo.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="hud-panel p-6 border-l-2 border-l-status-green">
+              <div className="flex items-center gap-2 mb-4">
+                <CheckCircle2 size={16} className="text-status-green" />
+                <span
+                  className="text-status-green"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Optimální daňová struktura
+                </span>
+              </div>
+              <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                Simulace identifikovala strukturu, která sníží efektivní daňovou
+                sazbu o 15 %. Kombinace optimalizace odpisů a správného
+                načasování výdajů přinese úsporu 280 000 Kč ročně.
+              </p>
+              <ul className="space-y-2 text-text-muted text-sm">
+                <li className="flex gap-2">
+                  <CheckCircle2 size={14} className="text-status-green mt-0.5 flex-shrink-0" />
+                  Úspora 15 % efektivní sazby
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={14} className="text-status-green mt-0.5 flex-shrink-0" />
+                  Absolutní úspora 280 000 Kč/rok
+                </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 size={14} className="text-status-green mt-0.5 flex-shrink-0" />
+                  Plně v souladu s legislativou
+                </li>
+              </ul>
+            </div>
+
+            <div className="hud-panel p-6 border-l-2 border-l-status-red">
+              <div className="flex items-center gap-2 mb-4">
+                <AlertTriangle size={16} className="text-status-red" />
+                <span
+                  className="text-status-red"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Zmeškaná optimalizace
+                </span>
+              </div>
+              <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                Klient nebyl informován o možnostech optimalizace a přeplatil na
+                daních 340 000 Kč. Jednoduchá úprava odpisové politiky a
+                načasování fakturace by přinesla výraznou úsporu.
+              </p>
+              <ul className="space-y-2 text-text-muted text-sm">
+                <li className="flex gap-2">
+                  <AlertTriangle size={14} className="text-status-red mt-0.5 flex-shrink-0" />
+                  Přeplatek 340 000 Kč
+                </li>
+                <li className="flex gap-2">
+                  <AlertTriangle size={14} className="text-status-red mt-0.5 flex-shrink-0" />
+                  Efektivní sazba 23 % vs. optimum 18 %
+                </li>
+                <li className="flex gap-2">
+                  <AlertTriangle size={14} className="text-status-red mt-0.5 flex-shrink-0" />
+                  Žádná optimalizace neprovedena
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FadeInSection>
+
         <FadeInSection className="mb-24">
           <div className="hud-panel p-8">
             <div className="flex items-center gap-3 mb-5">

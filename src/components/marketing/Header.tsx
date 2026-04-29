@@ -161,11 +161,11 @@ export default function Header() {
                 </span>
               </Link>
               <Link
-                href="/#kontakt"
+                href="/kontakt"
                 className="btn-primary text-center justify-center"
                 onClick={() => setMobileOpen(false)}
               >
-                Kontaktovat
+                Domluvit demo
               </Link>
             </div>
           </nav>

@@ -12,9 +12,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "SCH-EKONOM — Pokročilé finanční poradenství",
+  title: "EkonomOS — Klientský portál nové generace",
   description:
-    "Důvěryhodný partner pro daňové poradenství, účetnictví a mzdovou agendu. Cheb a region. AI-podpořená analýza.",
+    "Klientský portál pro účetní a poradenské firmy. Klienti vidí úkoly, termíny, dokumenty a rizika v reálném čase. AI hlídá, co byste přehlédli.",
 };
 
 export default function RootLayout({

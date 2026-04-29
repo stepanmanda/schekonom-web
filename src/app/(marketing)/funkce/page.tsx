@@ -333,6 +333,167 @@ export default function FunkcePage() {
           ))}
         </div>
 
+        {/* Hidden signals — 54 analyses */}
+        <FadeInSection className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="section-tag">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
+              SKRYTÉ SIGNÁLY // 54 ANALÝZ
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
+          </div>
+        </FadeInSection>
+
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Co tam je, ale <span className="text-gold">nikoho nenapadne to hledat</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
+            Největší kategorie produktu — <strong className="text-white">54 analýz</strong> nad metadaty, jazykem a chováním. EkonomOS čte to, co lidé sami nečtou: kolikrát byla faktura otevřena, kdy účetní přestal používat smajlíky, jak se mění tón v pondělí vs. v pátek. Tady je 12 z nich.
+          </p>
+        </FadeInSection>
+
+        {/* Subcat: Metadata */}
+        <FadeInSection className="mb-4">
+          <div
+            className="text-gold mb-2"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.65rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            ◉ Metadata
+          </div>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          {hiddenSignalsMetadata.map((s) => (
+            <div key={s.title} className="hud-panel p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="hud-chip" data-tone="cyan">
+                  KLIENT
+                </span>
+                <span
+                  className="text-text-muted"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  ← {s.source}
+                </span>
+              </div>
+              <h3
+                className="text-white text-base font-semibold mb-3"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {s.title}
+              </h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-green flex-shrink-0"
+                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                  >
+                    OK:
+                  </span>
+                  <span className="text-text-secondary">{s.good}</span>
+                </div>
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-red flex-shrink-0"
+                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                  >
+                    Risk:
+                  </span>
+                  <span className="text-text-secondary">{s.bad}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Subcat: Language & Emotions */}
+        <FadeInSection className="mb-4">
+          <div
+            className="text-gold mb-2"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.65rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+            }}
+          >
+            ◉ Jazyk a emoce
+          </div>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+          {hiddenSignalsLanguage.map((s) => (
+            <div key={s.title} className="hud-panel p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="hud-chip" data-tone="cyan">
+                  KLIENT
+                </span>
+                <span
+                  className="text-text-muted"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  ← {s.source}
+                </span>
+              </div>
+              <h3
+                className="text-white text-base font-semibold mb-3"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {s.title}
+              </h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-green flex-shrink-0"
+                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                  >
+                    OK:
+                  </span>
+                  <span className="text-text-secondary">{s.good}</span>
+                </div>
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-red flex-shrink-0"
+                    style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
+                  >
+                    Risk:
+                  </span>
+                  <span className="text-text-secondary">{s.bad}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Hidden signals teaser CTA */}
+        <FadeInSection className="mb-24">
+          <div className="hud-panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-text-secondary text-sm leading-relaxed max-w-2xl">
+              <strong className="text-white">+ dalších 42 skrytých analýz</strong> — kdo CAPS LOCKuje, jak se mění frekvence dotazů, který klient volá v noci, kdo neodpovídá na první e-mail, kdo zapomíná přílohy. Vše z metadat, žádné slídění.
+            </p>
+            <span className="hud-chip" data-tone="gold">
+              54 ANALÝZ CELKEM
+            </span>
+          </div>
+        </FadeInSection>
+
         {/* External signals layer */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">

@@ -315,6 +315,89 @@ export default function FunkcePage() {
           ))}
         </div>
 
+        {/* External signals layer */}
+        <FadeInSection className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="section-tag">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-dot" />
+              EXTERNÍ SIGNÁLY // 8 ZDROJŮ MIMO ÚČETNICTVÍ
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-cyan/20 to-transparent" />
+          </div>
+        </FadeInSection>
+
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Co se s klientem děje <span className="text-cyan">venku</span>
+          </h2>
+          <p className="text-text-secondary text-lg max-w-3xl leading-relaxed">
+            Účetnictví ukazuje minulost. Externí signály ukazují, co se kolem
+            klienta děje právě teď — z ARES, insolvenčního rejstříku, médií,
+            tendrů a kurzů. Aplikace si všimne, co byste sami nestíhli sledovat.
+          </p>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-24">
+          {externalSignals.map((s) => (
+            <div key={s.title} className="hud-panel p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="hud-chip" data-tone="cyan">
+                  KLIENT
+                </span>
+                <span
+                  className="text-text-muted"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.6rem",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  ← {s.source}
+                </span>
+              </div>
+              <h3
+                className="text-white text-base font-semibold mb-3"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {s.title}
+              </h3>
+              <div className="space-y-2 text-sm">
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-green flex-shrink-0"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.55rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    OK:
+                  </span>
+                  <span className="text-text-secondary">{s.good}</span>
+                </div>
+                <div className="flex gap-2">
+                  <span
+                    className="text-status-red flex-shrink-0"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.55rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Risk:
+                  </span>
+                  <span className="text-text-secondary">{s.bad}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Predictive layer detail */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">

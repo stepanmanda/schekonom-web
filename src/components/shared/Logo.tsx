@@ -51,34 +51,15 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
           />
           <text
             x="24"
-            y="20"
+            y="30"
             textAnchor="middle"
             fill="#00E5FF"
-            fontSize="11"
+            fontSize="16"
             fontFamily="Space Grotesk, sans-serif"
             fontWeight="700"
-            letterSpacing="0.5"
+            letterSpacing="1"
           >
-            SCH
-          </text>
-          <line
-            x1="14"
-            y1="24"
-            x2="34"
-            y2="24"
-            stroke="rgba(0,229,255,0.3)"
-            strokeWidth="0.5"
-          />
-          <text
-            x="24"
-            y="34"
-            textAnchor="middle"
-            fill="#B8C1C8"
-            fontSize="6"
-            fontFamily="SF Mono, monospace"
-            letterSpacing="1.5"
-          >
-            EKONOM
+            OS
           </text>
         </svg>
       </div>

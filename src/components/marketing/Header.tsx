@@ -5,21 +5,16 @@ import Link from "next/link";
 import Logo from "@/components/shared/Logo";
 import { Menu, X, LogIn, ChevronDown } from "lucide-react";
 
-const serviceLinks = [
-  { label: "Účetnictví", href: "/ucetnictvi" },
-  { label: "Daňové poradenství", href: "/danove-poradenstvi" },
-  { label: "Mzdové účetnictví", href: "/mzdove-ucetnictvi" },
-  { label: "Německé daně", href: "/nemecke-dane" },
-  { label: "Přeshraniční CZ/DE", href: "/preshranicni-poradenstvi" },
-  { label: "Certifikační autorita", href: "/certifikacni-autorita" },
+const moduleLinks = [
+  { label: "Účetní reporting", href: "/modul-ucetnictvi" },
+  { label: "Mzdy + ČSSZ + ZP", href: "/modul-mzdy" },
+  { label: "Daně + DPH", href: "/modul-dane" },
+  { label: "CZ/DE + ELSTER", href: "/modul-cz-de" },
 ];
 
 const navItems = [
-  { label: "Služby", href: "/sluzby", children: serviceLinks },
-  { label: "Kdo jsme", href: "/o-nas" },
-  { label: "Reference", href: "/reference" },
-  { label: "Aktuality", href: "/aktuality" },
-  { label: "Volná místa", href: "/volna-mista" },
+  { label: "Funkce", href: "/funkce", children: moduleLinks },
+  { label: "O EkonomOS", href: "/o-nas" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 

@@ -64,7 +64,7 @@ export default function StoriesSection() {
   return (
     <section
       id="scenare"
-      className="py-28 relative"
+      className="py-16 sm:py-24 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       {/* Section background accent */}
@@ -168,10 +168,12 @@ export default function StoriesSection() {
                   </div>
                 </div>
 
-                {/* Body paragraphs */}
+                {/* Body paragraphs — first paragraph always, second only on sm+ */}
                 <div className="space-y-3 mb-5 text-text-secondary text-sm leading-relaxed">
                   {s.body.map((p, idx) => (
-                    <p key={idx}>{p}</p>
+                    <p key={idx} className={idx > 0 ? "hidden sm:block" : ""}>
+                      {p}
+                    </p>
                   ))}
                 </div>
 

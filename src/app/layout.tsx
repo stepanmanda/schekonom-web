@@ -53,6 +53,66 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ekonomos.velyos.cz/#organization",
+      name: "EkonomOS",
+      url: "https://ekonomos.velyos.cz",
+      description:
+        "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik.",
+      parentOrganization: {
+        "@type": "Organization",
+        name: "Studio VELYOS",
+        url: "https://velyos.cz",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://ekonomos.velyos.cz/#software",
+      name: "EkonomOS",
+      applicationCategory: "BusinessApplication",
+      applicationSubCategory: "Accounting Software",
+      operatingSystem: "Web (browser)",
+      description:
+        "Klientský portál nové generace pro účetní firmy. AI hlídá rizika, predikuje churn, automatizuje rutinu.",
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "CZK",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          description:
+            "Setup fee + měsíční platforma + per-klient. Konkrétní cena podle rozsahu.",
+        },
+      },
+      featureList: [
+        "Klientský portál na vlastní doméně",
+        "AI predikce odchodu klienta",
+        "Fraud detection (IBAN, duplicitní faktury)",
+        "Automatizace OCR faktur, párování plateb, upomínek",
+        "Hlídání termínů (DPH, ELSTER, ČSSZ, ZP)",
+        "200+ analýz napříč 23 kategoriemi",
+        "Napojení na účetní software, banky, státní portály",
+      ],
+      provider: {
+        "@id": "https://ekonomos.velyos.cz/#organization",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://ekonomos.velyos.cz/#website",
+      url: "https://ekonomos.velyos.cz",
+      name: "EkonomOS",
+      inLanguage: "cs-CZ",
+      publisher: {
+        "@id": "https://ekonomos.velyos.cz/#organization",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -60,6 +120,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="cs" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -1,9 +1,14 @@
 name: Deploy to GitHub Pages
 
+# DEAKTIVOVÁNO — EkonomOS deployujeme na Cloudflare Pages (ekonomos.velyos.cz),
+# ne na GitHub Pages. Tento workflow zůstává v repu pro případ rollbacku,
+# ale nespouští se. Pro reaktivaci: odstraň `if: false` z jobu `build` níže
+# nebo nastav workflow_dispatch a spusť ručně.
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+  # push:
+  #   branches: [main]
 
 permissions:
   contents: read

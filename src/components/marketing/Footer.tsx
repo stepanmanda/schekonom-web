@@ -19,9 +19,9 @@ const footerLinks = {
     { label: "Vyzkoušet demo", href: "/prihlaseni" },
   ],
   pravni: [
-    { label: "Ochrana osobních údajů", href: "#" },
-    { label: "Obchodní podmínky", href: "#" },
-    { label: "Cookies", href: "#" },
+    { label: "Ochrana osobních údajů", href: "/soukromi" },
+    { label: "Obchodní podmínky", href: "/podminky" },
+    { label: "Cookies", href: "/cookies" },
   ],
 };
 

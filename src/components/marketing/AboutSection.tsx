@@ -230,52 +230,6 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Value cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, i) => (
-            <div
-              key={value.title}
-              className={`glass-panel p-8 relative group hover:border-cyan/25 transition-all duration-300 ${
-                inView ? `animate-float-up delay-${(i + 1) * 200}` : "opacity-0"
-              }`}
-            >
-              {/* Accent line top */}
-              <div
-                className={`absolute top-0 left-6 right-6 h-px ${
-                  value.accent === "gold"
-                    ? "bg-gradient-to-r from-transparent via-gold/40 to-transparent"
-                    : "bg-gradient-to-r from-transparent via-cyan/40 to-transparent"
-                }`}
-              />
-
-              <div
-                className={`inline-flex p-3 border mb-6 ${
-                  value.accent === "gold"
-                    ? "border-gold/20 bg-gold/5"
-                    : "border-cyan/20 bg-cyan/5"
-                }`}
-              >
-                <value.icon
-                  size={24}
-                  className={
-                    value.accent === "gold" ? "text-gold" : "text-cyan"
-                  }
-                />
-              </div>
-
-              <h3
-                className="text-white text-xl font-semibold mb-3"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
-                {value.title}
-              </h3>
-
-              <p className="text-text-muted text-sm leading-relaxed">
-                {value.desc}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

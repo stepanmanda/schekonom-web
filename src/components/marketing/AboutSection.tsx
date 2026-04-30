@@ -8,7 +8,7 @@ export default function AboutSection() {
   return (
     <section
       id="o-nas"
-      className="py-28 relative"
+      className="py-16 sm:py-24 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       {/* Subtle top border line */}

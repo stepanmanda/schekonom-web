@@ -43,7 +43,7 @@ export default function WhatIsItSection() {
   return (
     <section
       id="co-je-to"
-      className="py-24 relative"
+      className="py-14 sm:py-20 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       {/* Background accent */}

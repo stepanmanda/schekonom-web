@@ -27,7 +27,7 @@ export default function DeadlineStressSection() {
   return (
     <section
       id="terminy"
-      className="py-24 relative"
+      className="py-14 sm:py-20 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       {/* Background accent — slight red urgency */}

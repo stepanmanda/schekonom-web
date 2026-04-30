@@ -19,9 +19,9 @@ export const OWNER_DEMO_PHONE = "+420 731 037 123";
 
 export const demoProfiles: DemoProfile[] = [
   {
-    id: "profile_svanda",
-    surname: "svanda",
-    phone: "+491759096965",
+    id: "profile_klient",
+    surname: "klient",
+    phone: "+49 *** *** ***",
     role: "client",
     title: "Klient firmy",
     summary:
@@ -31,9 +31,9 @@ export const demoProfiles: DemoProfile[] = [
     demoCode: "428611",
   },
   {
-    id: "profile_schneider",
-    surname: "schneider",
-    phone: "+420733296961",
+    id: "profile_de_specialista",
+    surname: "de_specialista",
+    phone: "+420 *** *** ***",
     role: "german-tax",
     title: "Specialista německých daní",
     summary:
@@ -48,8 +48,8 @@ export const demoProfiles: DemoProfile[] = [
     demoCode: "153904",
   },
   {
-    id: "profile_poupova",
-    surname: "poupova",
+    id: "profile_mzdy",
+    surname: "mzdy",
     phone: "+420777******",
     role: "payroll",
     title: "Mzdová účetní a personalistika",
@@ -97,10 +97,10 @@ export const navByRole: Record<DemoRole, NavItem[]> = {
 export const clientSummaries: ClientSummary[] = [
   {
     id: "client_montservis",
-    name: "MontServis Svanda",
+    name: "Klient #001",
     sector: "Montážní a stavební firma",
-    region: "Cheb / Bayern",
-    ownerLabels: ["Schneider", "Poupova"],
+    region: "CZ/DE region",
+    ownerLabels: ["DE specialista", "Mzdová účetní"],
     status: "Čeká na podklady + vysoké riziko IBAN",
     statusTone: "red",
     openTasks: 7,
@@ -111,10 +111,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_bauteam",
-    name: "BauTeam Nord GmbH",
+    name: "Klient #002",
     sector: "Německá stavební společnost",
-    region: "Hof / Cheb",
-    ownerLabels: ["Schneider"],
+    region: "DE/CZ region",
+    ownerLabels: ["DE specialista"],
     status: "ELSTER ready ke schválení",
     statusTone: "cyan",
     openTasks: 3,
@@ -125,10 +125,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_pendler",
-    name: "Pendler Petr K.",
+    name: "Klient #003 (pendler)",
     sector: "Zaměstnanec v Německu",
-    region: "Aš / Marktredwitz",
-    ownerLabels: ["Schneider"],
+    region: "CZ/DE region",
+    ownerLabels: ["DE specialista"],
     status: "Chybí EU/EWR a kniha jízd",
     statusTone: "gold",
     openTasks: 4,
@@ -139,10 +139,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_elektro",
-    name: "Elektro Projekt DE-CZ",
+    name: "Klient #004",
     sector: "Elektromontáže",
-    region: "Plzeň / Regensburg",
-    ownerLabels: ["Schneider"],
+    region: "CZ/DE region",
+    ownerLabels: ["DE specialista"],
     status: "A1 formuláře v procesu",
     statusTone: "green",
     openTasks: 2,
@@ -153,10 +153,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_restaurace",
-    name: "Restaurace U Mostu",
+    name: "Klient #005",
     sector: "Gastro provoz",
-    region: "Cheb",
-    ownerLabels: ["Poupova"],
+    region: "ČR",
+    ownerLabels: ["Mzdová účetní"],
     status: "Docházka čeká na import",
     statusTone: "gold",
     openTasks: 5,
@@ -167,10 +167,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_kovo",
-    name: "Kovo Dílna Cheb",
+    name: "Klient #006",
     sector: "Výroba",
-    region: "Cheb",
-    ownerLabels: ["Poupova"],
+    region: "ČR",
+    ownerLabels: ["Mzdová účetní"],
     status: "Exekuční změna připravena",
     statusTone: "cyan",
     openTasks: 3,
@@ -181,10 +181,10 @@ export const clientSummaries: ClientSummary[] = [
   },
   {
     id: "client_logitrans",
-    name: "LogiTrans CZ",
+    name: "Klient #007",
     sector: "Logistika",
-    region: "Karlovarský kraj",
-    ownerLabels: ["Poupova"],
+    region: "ČR",
+    ownerLabels: ["Mzdová účetní"],
     status: "Mzdová uzávěrka ve frontě",
     statusTone: "cyan",
     openTasks: 4,
@@ -199,7 +199,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_01",
     clientId: "client_montservis",
-    ownerId: "profile_schneider",
+    ownerId: "profile_de_specialista",
     title: "Doplnit EU/EWR pro dvě rodiny pendlerů",
     summary:
       "Bez potvrzeného formuláře nelze dokončit optimalizaci daňového přiznání.",
@@ -212,7 +212,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_02",
     clientId: "client_montservis",
-    ownerId: "profile_poupova",
+    ownerId: "profile_mzdy",
     title: "Schválit mzdový batch za duben",
     summary:
       "Import docházky proběhl, čeká se jen na finální odsouhlasení náhrad.",
@@ -225,7 +225,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_03",
     clientId: "client_montservis",
-    ownerId: "profile_poupova",
+    ownerId: "profile_mzdy",
     title: "Prověřit změnu IBAN u dodavatele Kranbau",
     summary:
       "Detekována odchylka proti historii plateb. Blokace úhrady zůstává aktivní.",
@@ -238,7 +238,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_04",
     clientId: "client_montservis",
-    ownerId: "profile_svanda",
+    ownerId: "profile_klient",
     title: "Nahrát chybějící fakturu za servisní vůz",
     summary:
       "Bankovní pohyb 18 450 Kč nemá účetní doklad. Bez něj se zastaví uzávěrka DPH.",
@@ -251,8 +251,8 @@ export const tasks: DemoTask[] = [
   {
     id: "task_05",
     clientId: "client_bauteam",
-    ownerId: "profile_schneider",
-    title: "Finalizovat Freistellung pro stavbu Hof",
+    ownerId: "profile_de_specialista",
+    title: "Finalizovat Freistellung pro DE projekt",
     summary:
       "Systém připravil podklady, chybí jen závěrečná kontrola data platnosti.",
     type: "tax_deadline",
@@ -264,7 +264,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_06",
     clientId: "client_pendler",
-    ownerId: "profile_schneider",
+    ownerId: "profile_de_specialista",
     title: "Vyžádat knihu jízd a nájemní smlouvu",
     summary:
       "Bez doložení dvojí domácnosti nelze uplatnit plný odpočet dojíždění.",
@@ -277,7 +277,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_07",
     clientId: "client_elektro",
-    ownerId: "profile_schneider",
+    ownerId: "profile_de_specialista",
     title: "Odeslat A1 batch pro čtyři techniky",
     summary: "Data jsou zvalidována, čeká se na digitální podpis.",
     type: "tax_deadline",
@@ -289,7 +289,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_08",
     clientId: "client_restaurace",
-    ownerId: "profile_poupova",
+    ownerId: "profile_mzdy",
     title: "Importovat nedělní směny z docházky",
     summary: "Klient zatím neposlal export. Bez něj systém neuzamkne mzdy.",
     type: "document_missing",
@@ -301,7 +301,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_09",
     clientId: "client_kovo",
-    ownerId: "profile_poupova",
+    ownerId: "profile_mzdy",
     title: "Přepočítat exekuční srážku od května",
     summary:
       "Nový příkaz byl načten z datové schránky, systém navrhl novou výši srážky.",
@@ -314,7 +314,7 @@ export const tasks: DemoTask[] = [
   {
     id: "task_10",
     clientId: "client_logitrans",
-    ownerId: "profile_poupova",
+    ownerId: "profile_mzdy",
     title: "Doplnit cestovní náhrady řidičů",
     summary: "Dvě jízdy nemají přiřazené destinace a nelze spočítat sazby.",
     type: "payroll_review",
@@ -463,7 +463,7 @@ export const deadlines: DemoDeadline[] = [
     title: "Přiznání k DPH",
     due: "2026-04-25",
     area: "CZ daně",
-    ownerLabel: "Poupova",
+    ownerLabel: "Mzdová účetní",
     status: "Blokováno chybějící fakturou",
     visibleToClient: true,
   },
@@ -473,7 +473,7 @@ export const deadlines: DemoDeadline[] = [
     title: "Mzdový batch duben",
     due: "2026-04-15",
     area: "Mzdy",
-    ownerLabel: "Poupova",
+    ownerLabel: "Mzdová účetní",
     status: "Čeká na schválení",
     visibleToClient: true,
   },
@@ -483,7 +483,7 @@ export const deadlines: DemoDeadline[] = [
     title: "EU/EWR kompletace",
     due: "2026-04-14",
     area: "DE agenda",
-    ownerLabel: "Schneider",
+    ownerLabel: "DE specialista",
     status: "Čeká na klienta",
     visibleToClient: true,
   },
@@ -493,7 +493,7 @@ export const deadlines: DemoDeadline[] = [
     title: "ELSTER submission",
     due: "2026-04-18",
     area: "DE daně",
-    ownerLabel: "Schneider",
+    ownerLabel: "DE specialista",
     status: "Připraveno ke schválení",
     visibleToClient: false,
   },
@@ -503,7 +503,7 @@ export const deadlines: DemoDeadline[] = [
     title: "A1 formuláře",
     due: "2026-04-17",
     area: "HR / DE",
-    ownerLabel: "Schneider",
+    ownerLabel: "DE specialista",
     status: "Čeká na podpis",
     visibleToClient: false,
   },
@@ -513,7 +513,7 @@ export const deadlines: DemoDeadline[] = [
     title: "Mzdy a odvody",
     due: "2026-04-15",
     area: "Mzdy",
-    ownerLabel: "Poupova",
+    ownerLabel: "Mzdová účetní",
     status: "Docházka chybí",
     visibleToClient: false,
   },
@@ -595,9 +595,9 @@ export const documents: DemoDocument[] = [
 export const clientDetails: Record<string, ClientDetail> = {
   client_montservis: {
     id: "client_montservis",
-    name: "MontServis Svanda",
+    name: "Klient #001",
     sector: "Montážní a stavební firma",
-    region: "Cheb / Bayern",
+    region: "CZ/DE region",
     description:
       "Ideální showcase klient. Kombinuje české účetnictví, mzdy, německou agendu, výjezdy techniků a vysokou frekvenci dokumentů.",
     employees: "18 zaměstnanců + 6 výjezdových techniků",
@@ -676,7 +676,7 @@ export const clientDetails: Record<string, ClientDetail> = {
       },
       {
         title: "EU/EWR potvrzení za 2 zaměstnance",
-        requester: "Schneider",
+        requester: "DE specialista",
         requestedAt: "08:21",
         channel: "Klientský upload slot",
         blocking: "Nelze dokončit německou optimalizaci.",
@@ -685,13 +685,13 @@ export const clientDetails: Record<string, ClientDetail> = {
     approvals: [
       {
         title: "Potvrdit nový účet dodavatele Kranbau",
-        owner: "Svanda / Poupova",
+        owner: "Klient / Mzdová účetní",
         due: "Dnes",
         status: "Vysoká priorita",
       },
       {
         title: "Schválit mzdový batch za duben",
-        owner: "Svanda",
+        owner: "Klient",
         due: "15.04.",
         status: "Čeká na potvrzení",
       },
@@ -717,9 +717,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_bauteam: {
     id: "client_bauteam",
-    name: "BauTeam Nord GmbH",
+    name: "Klient #002",
     sector: "Německá stavební společnost",
-    region: "Hof / Cheb",
+    region: "DE/CZ region",
     description:
       "Firma s opakovanými přeshraničními stavebními zakázkami a častou agendou Freistellung.",
     employees: "31 zaměstnanců",
@@ -783,8 +783,8 @@ export const clientDetails: Record<string, ClientDetail> = {
     ],
     missingDocs: [
       {
-        title: "Potvrzení stavby Hof",
-        requester: "Schneider",
+        title: "Potvrzení DE projektu",
+        requester: "DE specialista",
         requestedAt: "09:00",
         channel: "E-mail",
         blocking: "Potřeba doložit rozšíření Freistellung.",
@@ -793,7 +793,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     approvals: [
       {
         title: "Schválit ELSTER batch",
-        owner: "Schneider",
+        owner: "DE specialista",
         due: "18.04.",
         status: "Ke schválení",
       },
@@ -811,9 +811,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_pendler: {
     id: "client_pendler",
-    name: "Pendler Petr K.",
+    name: "Klient #003 (pendler)",
     sector: "Zaměstnanec v Německu",
-    region: "Aš / Marktredwitz",
+    region: "CZ/DE region",
     description:
       "Ukázka individuální přeshraniční agendy, kde největší hodnotu dělá sběr důkazních podkladů.",
     employees: "1 osoba / rodina",
@@ -878,7 +878,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     missingDocs: [
       {
         title: "Kniha jízd",
-        requester: "Schneider",
+        requester: "DE specialista",
         requestedAt: "08:35",
         channel: "WhatsApp",
         blocking: "Bez ní se neprokáže rozsah dojíždění.",
@@ -904,9 +904,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_elektro: {
     id: "client_elektro",
-    name: "Elektro Projekt DE-CZ",
+    name: "Klient #004",
     sector: "Elektromontáže",
-    region: "Plzeň / Regensburg",
+    region: "CZ/DE region",
     description:
       "Příklad firmy s pravidelnými výjezdy techniků a potřebou A1 formulářů.",
     employees: "12 techniků",
@@ -957,7 +957,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     approvals: [
       {
         title: "Podepsat A1 batch",
-        owner: "Schneider",
+        owner: "DE specialista",
         due: "17.04.",
         status: "Čeká",
       },
@@ -974,9 +974,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_restaurace: {
     id: "client_restaurace",
-    name: "Restaurace U Mostu",
+    name: "Klient #005",
     sector: "Gastro provoz",
-    region: "Cheb",
+    region: "ČR",
     description:
       "Typický mzdový klient se směnami, brigádníky a nepravidelnou docházkou.",
     employees: "22 zaměstnanců + brigádníci",
@@ -1036,7 +1036,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     missingDocs: [
       {
         title: "Export nedělních směn",
-        requester: "Poupova",
+        requester: "Mzdová účetní",
         requestedAt: "08:37",
         channel: "Voice reminder",
         blocking: "Bez něj nelze uzavřít mzdy.",
@@ -1062,9 +1062,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_kovo: {
     id: "client_kovo",
-    name: "Kovo Dílna Cheb",
+    name: "Klient #006",
     sector: "Výroba",
-    region: "Cheb",
+    region: "ČR",
     description:
       "Výrobní firma s pravidelnou mzdovou agendou a občasnou exekuční změnou.",
     employees: "47 zaměstnanců",
@@ -1120,7 +1120,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     approvals: [
       {
         title: "Potvrdit novou srážku",
-        owner: "Poupova",
+        owner: "Mzdová účetní",
         due: "16.04.",
         status: "Ke kontrole",
       },
@@ -1137,9 +1137,9 @@ export const clientDetails: Record<string, ClientDetail> = {
   },
   client_logitrans: {
     id: "client_logitrans",
-    name: "LogiTrans CZ",
+    name: "Klient #007",
     sector: "Logistika",
-    region: "Karlovarský kraj",
+    region: "ČR",
     description:
       "Klient s cestovními náhradami a řidiči v nepravidelných směnách.",
     employees: "14 řidičů",
@@ -1194,7 +1194,7 @@ export const clientDetails: Record<string, ClientDetail> = {
     missingDocs: [
       {
         title: "Destinace dvou jízd",
-        requester: "Poupova",
+        requester: "Mzdová účetní",
         requestedAt: "08:20",
         channel: "Klientský portál",
         blocking: "Bez doplnění nelze spočítat náhrady.",
@@ -1354,13 +1354,13 @@ function buildKpis(profile: DemoProfile): DemoKpi[] {
     {
       label: "Mzdy ke schválení",
       value: "3 klienti",
-      sub: "MontServis, Restaurace, LogiTrans",
+      sub: "Klient #001, #005, #007",
       tone: "cyan",
     },
     {
       label: "Docházka blokuje",
       value: "1 klient",
-      sub: "Restaurace U Mostu",
+      sub: "Klient #005",
       tone: "gold",
     },
     {
@@ -1383,7 +1383,7 @@ function buildHeadline(profile: DemoProfile) {
     return {
       headline: "Klientský cockpit bez účetního chaosu",
       helperText:
-        "Vidíte jen to podstatné: co chybí, co SCH-EKONOM řeší za vás a kde vzniká riziko.",
+        "Vidíte jen to podstatné: co chybí, co EkonomOS řeší za vás a kde vzniká riziko.",
     };
   }
 

@@ -149,7 +149,7 @@ export default function HiddenSignalsDemo() {
   return (
     <section
       id="signaly"
-      className="py-24 relative"
+      className="py-14 sm:py-20 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div

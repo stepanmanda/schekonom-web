@@ -24,7 +24,7 @@ export default function ICPSection() {
   return (
     <section
       id="pro-koho"
-      className="py-24 relative"
+      className="py-14 sm:py-20 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div className="max-w-7xl mx-auto px-6">

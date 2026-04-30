@@ -182,6 +182,75 @@ export default function ONasPage() {
           </div>
         </FadeInSection>
 
+        {/* Founder section */}
+        <FadeInSection className="mb-20">
+          <div className="hud-panel p-10">
+            <div
+              className="text-cyan mb-3"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+              }}
+            >
+              ◉ Kdo za tím stojí
+            </div>
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-white mb-5"
+              style={{ fontFamily: "var(--font-space-grotesk)" }}
+            >
+              Štěpán Manda <span className="text-cyan">— founder</span>
+            </h2>
+            <p className="text-text-secondary leading-relaxed mb-4 max-w-3xl">
+              Zakladatel studia VELYOS. Stavím AI agenty a autonomní workflow
+              pro firmy, které prodávají odbornou práci. EkonomOS je první
+              produkt postavený speciálně pro účetní vertikálu.
+            </p>
+            <p className="text-text-secondary leading-relaxed mb-5 max-w-3xl">
+              Pokud zvažujete pilot, ozvěte se přímo —{" "}
+              <a
+                href="mailto:stepan@velyos.cz"
+                className="text-cyan hover:underline"
+              >
+                stepan@velyos.cz
+              </a>
+              . Žádná sales rola mezi námi, žádná powerpoint prezentace.
+              Začneme krátkým hovorem o tom, co řešíte.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://velyos.cz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 border border-cyan/15 bg-cyan/[0.03] hover:border-cyan/40 transition-all"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(0,229,255,0.85)",
+                }}
+              >
+                velyos.cz
+              </a>
+              <a
+                href="mailto:stepan@velyos.cz"
+                className="inline-flex items-center gap-2 px-3 py-1.5 border border-cyan/15 bg-cyan/[0.03] hover:border-cyan/40 transition-all"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  color: "rgba(0,229,255,0.85)",
+                }}
+              >
+                stepan@velyos.cz
+              </a>
+            </div>
+          </div>
+        </FadeInSection>
+
         {/* VELYOS section */}
         <FadeInSection className="mb-20">
           <div className="hud-panel p-10 text-center">

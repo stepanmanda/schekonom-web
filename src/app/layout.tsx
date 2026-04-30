@@ -12,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://velyos.ekonomos.cz"),
+  metadataBase: new URL("https://ekonomos.velyos.cz"),
   title: {
     default: "EkonomOS — Klientský portál nové generace",
     template: "%s · EkonomOS",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "EkonomOS — Klientský portál nové generace",
     description:
       "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
-    url: "https://velyos.ekonomos.cz",
+    url: "https://ekonomos.velyos.cz",
     siteName: "EkonomOS",
     locale: "cs_CZ",
     type: "website",

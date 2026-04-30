@@ -59,19 +59,11 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitState("sending");
-    const payload = {
-      name: formState.name,
-      email: formState.email,
-      company: formState.phone, // contact section nemá company field, použijeme phone jako kontext
-      inquiry: formState.service,
-      message: formState.message,
-    };
-    const result = await submitContactForm(payload);
+    const result = await submitContactForm(formState);
     if (result.ok && result.mode === "endpoint") {
       setSubmitState("success");
-      setFormState({ name: "", email: "", phone: "", service: "", message: "" });
+      setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
     } else if (result.mode === "mailto") {
-      // mailto fallback otevřel klienta — ale nevíme, jestli odeslal
       setSubmitState("idle");
     } else {
       setSubmitState("error");

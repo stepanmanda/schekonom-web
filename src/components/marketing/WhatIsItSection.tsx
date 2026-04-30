@@ -21,11 +21,6 @@ const capabilities = [
     desc: "OCR faktur, párování plateb, upomínky, mzdové uzávěrky. Vy schvalujete, robot pracuje.",
   },
   {
-    icon: UserMinus,
-    title: "Predikuje odchod klienta",
-    desc: "Z drobností v komunikaci pozná, že klient přemýšlí o odchodu. Dáme vám vědět dřív než výpověď.",
-  },
-  {
     icon: ShieldAlert,
     title: "Hlídá fraud",
     desc: "Změny IBAN, duplicitní faktury, podezřelá komunikace, deepfake doklady. 24/7 kontrola na pozadí.",

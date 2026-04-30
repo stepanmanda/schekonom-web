@@ -16,9 +16,9 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Obchodní kontakt",
-    value: "info@ekonomos.cz",
+    value: "stepan@velyos.cz",
     actionLabel: "Napsat",
-    href: "mailto:info@ekonomos.cz",
+    href: "mailto:stepan@velyos.cz",
   },
   {
     icon: MessageSquare,

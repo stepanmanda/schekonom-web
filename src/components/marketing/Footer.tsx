@@ -11,6 +11,7 @@ const footerLinks = {
   ],
   produkt: [
     { label: "O EkonomOS", href: "/o-nas" },
+    { label: "Zabezpečení dat", href: "/zabezpeceni-dat" },
     { label: "Kontakt", href: "/kontakt" },
     { label: "Vyzkoušet demo", href: "/prihlaseni" },
   ],

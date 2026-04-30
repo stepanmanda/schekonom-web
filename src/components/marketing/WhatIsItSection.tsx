@@ -3,7 +3,6 @@
 import {
   CalendarClock,
   Receipt,
-  UserMinus,
   ShieldAlert,
   Radio,
   Workflow,

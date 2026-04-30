@@ -332,68 +332,126 @@ export default function HiddenSignalsDemo() {
             </button>
           </div>
 
-          {/* Timeline visualization */}
-          <div className="mb-8">
-            <div className="grid grid-cols-12 gap-1 mb-3" style={{ minHeight: "140px" }}>
-              {active.weeks.map((value, i) => {
-                const week = i + 1;
-                const isRevealed = week <= revealedWeek;
-                const isAlert = week === active.alertWeek;
-                const isPostAlert = week > active.alertWeek;
-                const heightPct = Math.max(8, value);
+          {/* Timeline visualization — zmenšeno + legend */}
+          <div className="mb-6 grid lg:grid-cols-[1fr_220px] gap-6">
+            <div>
+              <div className="grid grid-cols-12 gap-1 mb-2" style={{ minHeight: "100px" }}>
+                {active.weeks.map((value, i) => {
+                  const week = i + 1;
+                  const isRevealed = week <= revealedWeek;
+                  const isAlert = week === active.alertWeek;
+                  const isPostAlert = week > active.alertWeek;
+                  const heightPct = Math.max(8, value);
 
-                let barColor = "rgba(0,229,255,0.6)";
-                if (isPostAlert) barColor = "rgba(255,123,123,0.6)";
-                if (isAlert) barColor = "rgba(212,175,55,0.85)";
+                  let barColor = "rgba(0,229,255,0.6)";
+                  if (isPostAlert) barColor = "rgba(255,123,123,0.6)";
+                  if (isAlert) barColor = "rgba(212,175,55,0.85)";
 
-                return (
+                  return (
+                    <div
+                      key={i}
+                      className="flex flex-col items-center justify-end relative"
+                      style={{ height: "100px" }}
+                    >
+                      {isAlert && isRevealed && (
+                        <div
+                          className="absolute -top-1 left-1/2 -translate-x-1/2"
+                          style={{
+                            fontFamily: "var(--font-mono)",
+                            fontSize: "0.6rem",
+                            color: "rgba(212,175,55,0.95)",
+                          }}
+                        >
+                          ◉
+                        </div>
+                      )}
+                      <div
+                        style={{
+                          width: "100%",
+                          height: isRevealed ? `${heightPct}%` : "0%",
+                          background: barColor,
+                          transition: "height 0.4s ease, background 0.4s ease",
+                          opacity: isRevealed ? 1 : 0.15,
+                          borderTop: isAlert
+                            ? "2px solid rgba(212,175,55,0.95)"
+                            : "none",
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="grid grid-cols-12 gap-1">
+                {Array.from({ length: 12 }, (_, i) => (
                   <div
                     key={i}
-                    className="flex flex-col items-center justify-end relative"
-                    style={{ height: "140px" }}
+                    className="text-center text-text-muted"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.55rem",
+                      letterSpacing: "0.08em",
+                    }}
                   >
-                    {isAlert && isRevealed && (
-                      <div
-                        className="absolute -top-1 left-1/2 -translate-x-1/2"
-                        style={{
-                          fontFamily: "var(--font-mono)",
-                          fontSize: "0.6rem",
-                          color: "rgba(212,175,55,0.95)",
-                        }}
-                      >
-                        ◉
-                      </div>
-                    )}
-                    <div
-                      style={{
-                        width: "100%",
-                        height: isRevealed ? `${heightPct}%` : "0%",
-                        background: barColor,
-                        transition: "height 0.4s ease, background 0.4s ease",
-                        opacity: isRevealed ? 1 : 0.15,
-                        borderTop: isAlert
-                          ? "2px solid rgba(212,175,55,0.95)"
-                          : "none",
-                      }}
-                    />
+                    T{i + 1}
                   </div>
-                );
-              })}
+                ))}
+              </div>
+              <div
+                className="mt-3 text-text-muted text-xs"
+                style={{ fontStyle: "italic" }}
+              >
+                T1–T12 = týdny od začátku sledování. Vyšší sloupec = silnější signál (přátelská komunikace).
+              </div>
             </div>
-            <div className="grid grid-cols-12 gap-1">
-              {Array.from({ length: 12 }, (_, i) => (
-                <div
-                  key={i}
-                  className="text-center text-text-muted"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.55rem",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  T{i + 1}
+
+            {/* Legend */}
+            <div
+              className="hud-panel p-4 self-start"
+              style={{ background: "rgba(2,6,10,0.6)" }}
+            >
+              <div
+                className="text-cyan mb-3"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Co znamenají barvy
+              </div>
+              <div className="space-y-2.5 text-xs">
+                <div className="flex items-start gap-2">
+                  <div
+                    className="w-3 h-3 mt-0.5 flex-shrink-0"
+                    style={{ background: "rgba(0,229,255,0.6)" }}
+                  />
+                  <span className="text-text-secondary leading-snug">
+                    <strong className="text-white">Cyan:</strong> klient v pohodě, signál stabilní
+                  </span>
                 </div>
-              ))}
+                <div className="flex items-start gap-2">
+                  <div
+                    className="w-3 h-3 mt-0.5 flex-shrink-0"
+                    style={{
+                      background: "rgba(212,175,55,0.85)",
+                      borderTop: "2px solid rgba(212,175,55,1)",
+                    }}
+                  />
+                  <span className="text-text-secondary leading-snug">
+                    <strong className="text-white">Gold:</strong> aplikace zaznamenala riziko, posílá alert
+                  </span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div
+                    className="w-3 h-3 mt-0.5 flex-shrink-0"
+                    style={{ background: "rgba(255,123,123,0.6)" }}
+                  />
+                  <span className="text-text-secondary leading-snug">
+                    <strong className="text-white">Červená:</strong> stav po alertu, signál dál slábne
+                  </span>
+                </div>
+              </div>
             </div>
             {revealedWeek >= active.alertWeek && (
               <div

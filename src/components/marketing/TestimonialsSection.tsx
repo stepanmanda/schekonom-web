@@ -1,27 +1,24 @@
 "use client";
 
-import { Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Sparkles, Target, Users } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
-const testimonials = [
+const reasons = [
   {
-    quote:
-      "Místo toho, abychom honili klienty po e-mailech a Excelu, vidíme všechno na jedné obrazovce. Termíny, chybějící podklady, rizikové platby — najednou.",
-    role: "Majitel účetní kanceláře",
-    region: "ČR · 12 zaměstnanců",
+    icon: Sparkles,
+    title: "Rutina ujídá čas, který není na klienty",
+    body: "Účetní v ČR tráví desítky procent dne přepisováním, párováním a hledáním. Postavili jsme nástroj, který tyhle úkony převezme — abyste se mohli vrátit k tomu, za co vám klienti reálně platí.",
   },
   {
-    quote:
-      "Aplikace si všimla, že jeden z našich klientů přestal komunikovat 6 týdnů. Zavolali jsme včas, vyřešili problém, klient zůstal. Bez EkonomOS bychom o něm věděli, až by odešel.",
-    role: "Daňová poradkyně",
-    region: "ČR · samostatná praxe",
+    icon: Target,
+    title: "Klient odchází tiše, výpověď jen potvrdí",
+    body: "Když klient přestane komunikovat, je to signál — ale v 50 e-mailech denně vám utopí. EkonomOS sleduje vzorce klientovy komunikace a upozorní vás dřív, než vám dojde notifikace o ukončení smlouvy.",
   },
   {
-    quote:
-      "Klienti se přihlásí, nahrají faktury, schválí mzdy kliknutím. Telefonáty kvůli papírování klesly o 70 %. Můžeme se konečně věnovat poradenství, ne administrativě.",
-    role: "Controllingový konzultant",
-    region: "ČR · B2B služby",
+    icon: Users,
+    title: "Klient chce vidět, co se děje s jeho daty",
+    body: "Typický klient vás obtěžuje stejnými dotazy, protože nevidí stav. Klientský portál EkonomOS mu dá přehled bez vašeho zásahu — a vy získáte čas zpátky.",
   },
 ];
 
@@ -30,7 +27,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      id="reference"
+      id="proc"
       className="py-28 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
@@ -41,71 +38,65 @@ export default function TestimonialsSection() {
         >
           <div className="section-tag justify-center mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block" />
-            POUŽÍVAJÍ NÁS
+            PROČ TO STAVÍME
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Co říkají <span className="text-gold">účetní firmy</span>
+            Tři bolesti, které <span className="text-gold">slyšíme stále dokola</span>
           </h2>
-          <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
-            Vybráno z anonymizovaných rozhovorů. Jména a firmy chráníme — bez
-            výjimky.
+          <p className="mt-4 text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
+            EkonomOS vznikl z rozhovorů s českými účetními firmami a vlastní
+            zkušenosti při budování AI agentů pro B2B služby. Tohle nejsou
+            citace zákazníků — produkt je v pilotní fázi. Jsou to tři problémy,
+            které slyšíme v každém rozhovoru, a hypotézy, jak je řešit.
           </p>
         </div>
 
-        {/* Testimonial cards */}
+        {/* Reason cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {testimonials.map((t, i) => (
+          {reasons.map((r, i) => (
             <div
-              key={t.role}
+              key={r.title}
               className={`glass-panel p-8 flex flex-col relative group hover:border-gold/25 transition-all duration-300 ${
                 inView ? `animate-float-up delay-${(i + 1) * 200}` : "opacity-0"
               }`}
             >
-              {/* Quote icon */}
-              <Quote size={28} className="text-gold/30 mb-4 flex-shrink-0" />
-
-              {/* Quote text */}
-              <p className="text-text-secondary text-sm leading-relaxed flex-1 italic">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="mt-6 pt-4 border-t border-cyan/10">
-                <div
-                  className="text-white font-semibold text-sm"
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
-                >
-                  {t.role}
-                </div>
-                <div
-                  className="text-text-muted mt-2"
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.1em",
-                  }}
-                >
-                  {t.region}
-                </div>
+              <div className="inline-flex p-3 border border-gold/20 bg-gold/5 mb-5 w-fit">
+                <r.icon size={22} className="text-gold" />
               </div>
+
+              <h3
+                className="text-white text-lg font-semibold mb-3"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {r.title}
+              </h3>
+
+              <p className="text-text-secondary text-sm leading-relaxed flex-1">
+                {r.body}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Section CTA */}
+        {/* Pilot CTA */}
         <div
           className={`text-center ${inView ? "animate-float-up delay-800" : "opacity-0"}`}
         >
           <p className="text-text-secondary text-lg mb-6">
-            Chcete to vidět na vlastní oči?
+            Pokud vám aspoň jedna z těch bolestí zní povědomě, ozvěte se. Hledáme první partnery, se kterými dopady společně změříme.
           </p>
-          <Link href="/prihlaseni" className="btn-primary">
-            Vyzkoušet demo
-            <ArrowRight size={16} />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/kontakt" className="btn-primary">
+              Mám zájem o pilot
+              <ArrowRight size={16} />
+            </Link>
+            <Link href="/prihlaseni" className="btn-ghost">
+              Otevřít demo
+            </Link>
+          </div>
         </div>
       </div>
     </section>

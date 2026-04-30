@@ -46,6 +46,7 @@ export default function ContactSection() {
     inquiry: "",
     message: "",
   });
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<

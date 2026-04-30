@@ -4,11 +4,11 @@ import { useInView } from "@/hooks/useInView";
 import { useEffect, useState } from "react";
 
 const stats = [
-  { target: 205, suffix: "", label: "Analýz dostupných pro klienty" },
-  { target: 184, suffix: "", label: "Datových zdrojů" },
+  { target: 200, suffix: "+", label: "Analýz připravených v aplikaci" },
+  { target: 20, suffix: "+", label: "Datových zdrojů k napojení" },
   { target: 23, suffix: "", label: "Kategorií analytiky" },
   { target: 8, suffix: "", label: "Automatizovaných workflow" },
-  { target: 1734, suffix: "+", label: "Spuštění workflow měsíčně" },
+  { target: 3, suffix: "", label: "Vrstvy: web · portál · admin" },
   { target: 24, suffix: "/7", label: "Online provoz" },
 ];
 

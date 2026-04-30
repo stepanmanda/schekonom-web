@@ -10,6 +10,7 @@ import {
   Gift,
   Users,
   AlertCircle,
+  Coins,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 

@@ -21,6 +21,7 @@ concurrency:
 
 jobs:
   build:
+    if: false # deaktivováno — viz komentář nahoře
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -302,11 +302,34 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="btn-primary w-full justify-center"
+                disabled={submitState === "sending"}
+                className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send size={16} />
-                Odeslat
+                {submitState === "sending" ? "Odesílám..." : "Odeslat"}
               </button>
+
+              {submitState === "success" && (
+                <div className="flex items-center gap-2 text-status-green text-sm">
+                  <CheckCircle2 size={16} />
+                  <span>Děkujeme. Ozveme se vám do 24 hodin.</span>
+                </div>
+              )}
+              {submitState === "error" && (
+                <div className="flex items-center gap-2 text-status-red text-sm">
+                  <AlertTriangle size={16} />
+                  <span>
+                    Něco se pokazilo.{" "}
+                    <a
+                      href={getMailtoLink(formState)}
+                      className="text-cyan hover:underline"
+                    >
+                      Pošlete nám e-mail přímo
+                    </a>
+                    .
+                  </span>
+                </div>
+              )}
 
               <p
                 className="text-text-muted text-center"

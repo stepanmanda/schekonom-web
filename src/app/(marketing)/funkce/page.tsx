@@ -13,6 +13,10 @@ import {
   Layers,
   Eye,
   Lock,
+  Clock,
+  TrendingUp,
+  AlertOctagon,
+  UserCheck,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 

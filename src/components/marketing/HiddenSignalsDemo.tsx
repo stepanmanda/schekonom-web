@@ -49,10 +49,10 @@ const SIGNALS: Record<SignalKey, Signal> = {
       situation:
         "Klient #007 vám 6 měsíců posílal v každém e-mailu smajlík. Žádný velký, jen takový obyčejný. Ve 4. týdnu nárůstu pracovních úkolů ho začal vynechávat. V 8. týdnu úplně přestal.",
       aiCall:
-        "Klient #007 změnil tón. Posledních 14 dní bez emocí. Pravděpodobnost odchodu během 60 dní: 64 %.",
+        "Klient #007 změnil tón. Posledních 14 dní bez emocí. Riziko odchodu během 60 dní výrazně zvýšené.",
       action:
         "Zavoláte mu, omluvíte se za nestihnutý termín z minulého týdne, naplánujete kávu.",
-      saved: "Klient zůstal. ~80 K Kč ročního obratu zachráněno.",
+      saved: "Klient zůstal. Roční obrat zachráněn.",
     },
   },
   vykani: {

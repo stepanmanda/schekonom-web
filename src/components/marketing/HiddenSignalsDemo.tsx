@@ -162,19 +162,77 @@ export default function HiddenSignalsDemo() {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
-        <div className={`mb-12 ${inView ? "animate-float-up" : "opacity-0"}`}>
+        <div className={`mb-10 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
             INTERAKTIVNÍ UKÁZKA // SKRYTÉ SIGNÁLY
           </div>
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-4xl"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-4xl leading-[1.06]"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Vyzkoušejte si, co aplikace <span className="text-gold">vidí, co vy ne.</span>
+            Klient toho moc neřekne.{" "}
+            <span className="text-gold">Aplikace ano.</span>
           </h2>
-          <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Klikněte na signál — uvidíte 12týdenní vývoj. <strong className="text-white">Demo data</strong>, postupy autentické.
+        </div>
+
+        {/* Explanatory primer */}
+        <div className={`mb-10 grid lg:grid-cols-3 gap-5 ${inView ? "animate-float-up delay-100" : "opacity-0"}`}>
+          <div className="hud-panel p-5">
+            <div
+              className="text-cyan mb-2"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.62rem",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+              }}
+            >
+              01 / Co aplikace dělá
+            </div>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Sleduje, jak s vámi klient komunikuje. <strong className="text-white">Smajlíky v mailech, vykání nebo tykání, tón pondělí versus pátku, rychlost odpovědí.</strong> Drobnosti, kterých si lidé sami nevšimnou.
+            </p>
+          </div>
+          <div className="hud-panel p-5">
+            <div
+              className="text-cyan mb-2"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.62rem",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+              }}
+            >
+              02 / Proč to dává smysl
+            </div>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Když klient přestane být přátelský, zhoršuje se vztah. Když přestane odpovídat, blíží se odchod. <strong className="text-white">Drobné změny v komunikaci jsou často první signál</strong> — dřív, než to řekne nahlas.
+            </p>
+          </div>
+          <div className="hud-panel p-5">
+            <div
+              className="text-cyan mb-2"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.62rem",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+              }}
+            >
+              03 / Co dostanete
+            </div>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              Když změna překročí prahovou hodnotu, dostanete <strong className="text-white">upozornění s konkrétní akcí</strong> — koho zavolat, co se zeptat, jak vztah zachránit.
+            </p>
+          </div>
+        </div>
+
+        {/* How to use this demo */}
+        <div className={`mb-6 ${inView ? "animate-float-up delay-200" : "opacity-0"}`}>
+          <p className="text-text-muted text-sm leading-relaxed max-w-3xl">
+            <strong className="text-white">Jak používat demo:</strong>{" "}
+            Vyberte níže signál (smajlíky, vykání, tón, rychlost odpovědí). Spustí se animovaný 12týdenní průběh fiktivního klienta — sloupce ukazují, jak signál postupně slábne. Když překročí prahovou hodnotu, aplikace zaznamená alert (zlatý sloupec) a navrhne akci. <strong className="text-white">Demo data, postupy autentické.</strong>
           </p>
         </div>
 

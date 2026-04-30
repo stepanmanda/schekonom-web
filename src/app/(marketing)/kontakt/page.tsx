@@ -81,7 +81,13 @@ export default function KontaktPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Děkujeme. Ozveme se vám do 24 hodin v pracovních dnech.");
+    const subject = encodeURIComponent(
+      `EkonomOS — ${formState.inquiry || "zájem o produkt"}`,
+    );
+    const body = encodeURIComponent(
+      `Jméno: ${formState.name}\nE-mail: ${formState.email}\nFirma: ${formState.company}\nCo potřebuji: ${formState.inquiry}\n\nZpráva:\n${formState.message}`,
+    );
+    window.location.href = `mailto:info@ekonomos.cz?subject=${subject}&body=${body}`;
   };
 
   return (

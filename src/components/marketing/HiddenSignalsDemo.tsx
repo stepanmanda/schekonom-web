@@ -104,7 +104,7 @@ const SIGNALS: Record<SignalKey, Signal> = {
       situation:
         "Klient #018 odpovídal průměrně do 4 hodin. Postupně se to zhoršuje. Týden po týdnu trvá déle, než se ozve. V 7. týdnu už neodpovídá ani druhý den.",
       aiCall:
-        "Klient #018 reagoval pomaleji o 600 % oproti baselinu. Pattern indikuje buď ztrátu zájmu, nebo přepracování. Riziko ghostingu.",
+        "Klient #018 reaguje řádově pomaleji než dříve. Pattern indikuje buď ztrátu zájmu, nebo přepracování. Riziko ghostingu.",
       action:
         "Místo dalšího mailu zavoláte. Zjistíte, že klient přijal velkou zakázku a nemá čas. Dohodnete jiný způsob komunikace.",
       saved:

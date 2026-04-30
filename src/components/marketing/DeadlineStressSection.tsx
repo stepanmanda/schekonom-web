@@ -44,21 +44,22 @@ export default function DeadlineStressSection() {
         <div className={`mb-12 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-status-red inline-block animate-pulse-dot" />
-            TERMÍNOVÝ STRES // CO ZNÁTE Z 25.
+            TERMÍNOVÝ STRES // PROČ MÁ KAŽDÝ ÚČETNÍ KVĚTEN A ČERVEN PLNÉ ZUBY
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white max-w-4xl leading-[1.05]"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            25. ráno. <span className="text-status-red">DPH za 6 hodin.</span>
+            Daňové přiznání. Měsíční DPH.
             <br />
-            Klient mlčí.
+            <span className="text-status-red">Klienti mlčí. Termín se blíží.</span>
           </h2>
           <p className="mt-6 text-text-secondary text-lg sm:text-xl max-w-3xl leading-relaxed">
-            Tohle znáte. Měsíční uzávěrky, daňová přiznání, kontrolní hlášení —
-            v nich tone celá kancelář vždycky ten samý týden. Excel tabulky
-            s deadliny, hromady mailů, klienti, kteří dodávají podklady na
-            poslední chvíli (nebo vůbec). <strong className="text-white">EkonomOS to ředí za vás.</strong>
+            Tohle znáte. <strong className="text-white">DPFO za 2025 do 1. 7.</strong>,{" "}
+            <strong className="text-white">DPPO do 1. 7.</strong>, kontrolní hlášení každý 25.,{" "}
+            <strong className="text-white">ELDP do 31. 5.</strong> — termíny se vrší jeden přes druhý.
+            Excel tabulky, hromady mailů, klienti, kteří dodávají podklady na
+            poslední chvíli (nebo vůbec). Tým padá, vy padáte taky. <strong className="text-white">EkonomOS to ředí za vás.</strong>
           </p>
         </div>
 

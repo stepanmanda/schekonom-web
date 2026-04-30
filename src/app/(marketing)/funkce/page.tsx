@@ -17,6 +17,7 @@ import {
   TrendingUp,
   AlertOctagon,
   UserCheck,
+  CheckCircle2,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 

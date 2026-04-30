@@ -278,7 +278,7 @@ export default function LoginPage() {
                         : "Mzdy, docházka, ČSSZ, exekuce";
                   const cardBenefit =
                     profile.role === "client"
-                      ? "Dashboard „co mě čeká", nahrávání faktur, schvalování kliknutím."
+                      ? "Dashboard 'co mě čeká', nahrávání faktur, schvalování kliknutím."
                       : profile.role === "german-tax"
                         ? "Fronta CZ/DE případů, podání přes ELSTER, hlídání termínů."
                         : "Měsíční uzávěrka, hlášení pojišťovnám, ELDP, exekuce na jedné obrazovce.";

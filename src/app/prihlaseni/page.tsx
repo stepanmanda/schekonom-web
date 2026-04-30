@@ -158,16 +158,22 @@ export default function LoginPage() {
           <div>
             <div className="mb-5 flex flex-wrap items-center gap-3">
               <span className="hud-chip" data-tone="cyan">
-                SHOWCASE BUILD
+                DEMO REŽIM
               </span>
               <span className="hud-chip" data-tone="gold">
-                OTP na telefon majitele
+                OTP přes telefon
               </span>
               <span className="hud-chip" data-tone="green">
-                Agentní finance
+                Pilot fáze
               </span>
             </div>
-            <Logo size={52} showText={true} />
+            <Link
+              href="/"
+              aria-label="Zpět na hlavní stránku"
+              className="inline-block hover:opacity-80 transition-opacity"
+            >
+              <Logo size={52} showText={true} />
+            </Link>
           </div>
 
           <div className="hud-panel flex max-w-xl flex-wrap items-center gap-3 px-4 py-4">

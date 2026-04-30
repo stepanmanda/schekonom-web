@@ -170,9 +170,6 @@ export default function FunkcePage() {
           </div>
         </FadeInSection>
 
-        {/* ROI Calculator — atomovka */}
-        <RoiCalculator />
-
         {/* Impact / oblasti dopadu */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">

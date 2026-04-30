@@ -83,15 +83,18 @@ export default function KontaktPage() {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `EkonomOS — ${formState.inquiry || "zájem o produkt"}`,
-    );
-    const body = encodeURIComponent(
-      `Jméno: ${formState.name}\nE-mail: ${formState.email}\nFirma: ${formState.company}\nCo potřebuji: ${formState.inquiry}\n\nZpráva:\n${formState.message}`,
-    );
-    window.location.href = `mailto:info@ekonomos.cz?subject=${subject}&body=${body}`;
+    setSubmitState("sending");
+    const result = await submitContactForm(formState);
+    if (result.ok && result.mode === "endpoint") {
+      setSubmitState("success");
+      setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
+    } else if (result.mode === "mailto") {
+      setSubmitState("idle");
+    } else {
+      setSubmitState("error");
+    }
   };
 
   return (

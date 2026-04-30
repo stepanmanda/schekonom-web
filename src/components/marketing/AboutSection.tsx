@@ -240,9 +240,9 @@ export default function AboutSection() {
                 <strong className="text-white">
                   Napojíme se na vaše existující systémy.
                 </strong>{" "}
-                Money S3, Pohoda, DocuWare, banky (FIO, KB, ČSOB), ARES, ČSSZ,
-                ELSTER, e-mail. Nic nepřepisujeme, nic nemigrujeme — EkonomOS
-                pracuje s tím, co už máte.
+                Pracujeme s tím, co už máte — účetní software, dokumentové
+                úložiště, banky, státní portály i e-mail. Nic nepřepisujeme,
+                nic nemigrujeme.
               </p>
               <p>
                 Hodnota není v množství dat. Hodnota je v korelacích, které

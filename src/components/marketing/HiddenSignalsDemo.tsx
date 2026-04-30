@@ -174,10 +174,7 @@ export default function HiddenSignalsDemo() {
             Vyzkoušejte si, co aplikace <span className="text-gold">vidí, co vy ne.</span>
           </h2>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Klikněte na signál. Spustí se 12týdenní vývoj fiktivního klienta.
-            Sledujte, jak se signál postupně mění, kde aplikace zachytí riziko
-            a co s tím uděláte. <strong className="text-white">Demo data</strong> — postupy jsou autentické,
-            klienti vymyšlení.
+            Klikněte na signál — uvidíte 12týdenní vývoj. <strong className="text-white">Demo data</strong>, postupy autentické.
           </p>
         </div>
 

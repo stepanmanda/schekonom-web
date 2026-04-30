@@ -93,8 +93,8 @@ export default function StatsSection() {
             Co <span className="text-cyan">vidíte uvnitř</span>
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-xl mx-auto">
-            Hodnota není v množství dat, ale v korelacích, které vznikají jejich
-            propojením.
+            Co je v aplikaci připravené ke spuštění. Konkrétní využití u vás záleží
+            na rozsahu nasazení — probereme na konzultaci.
           </p>
         </div>
 

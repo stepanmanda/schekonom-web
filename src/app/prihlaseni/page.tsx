@@ -130,6 +130,34 @@ export default function LoginPage() {
     }
   };
 
+  // Express login — jeden klik bez OTP. Pro pilot demo není OTP potřeba.
+  const handleExpressLogin = async (profile: DemoProfile) => {
+    setActiveProfileId(profile.id);
+    setSurname(profile.surname);
+    setPhone(profile.phone);
+    setError("");
+    setLoadingStage("request");
+    try {
+      const challengeResponse = await requestDemoCode(
+        profile.surname,
+        profile.phone,
+      );
+      const session: VerifyCodeResponse = await verifyDemoCode(
+        challengeResponse.challengeId,
+        challengeResponse.relayCode ?? profile.demoCode,
+      );
+      login(session);
+      router.push("/portal");
+    } catch (expressError) {
+      setError(
+        expressError instanceof Error
+          ? expressError.message
+          : "Nepodařilo se otevřít demo. Zkuste to znovu.",
+      );
+      setLoadingStage(null);
+    }
+  };
+
   const demoFlow = [
     "Vyberte demo profil podle role.",
     "Po odeslání jde OTP na telefon majitele, ne na číslo uživatele.",

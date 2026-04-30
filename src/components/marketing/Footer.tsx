@@ -11,6 +11,7 @@ const footerLinks = {
   ],
   produkt: [
     { label: "Pilot fáze", href: "/pilot" },
+    { label: "Roadmap", href: "/roadmap" },
     { label: "Časté dotazy", href: "/caste-dotazy" },
     { label: "O EkonomOS", href: "/o-nas" },
     { label: "Zabezpečení dat", href: "/zabezpeceni-dat" },

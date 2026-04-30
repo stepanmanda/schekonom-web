@@ -8,8 +8,11 @@ import {
   MessageSquare,
   Send,
   Layers,
+  CheckCircle2,
+  AlertTriangle,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { submitContactForm, getMailtoLink } from "@/lib/form-submit";
 
 const contactBlocks = [
   {

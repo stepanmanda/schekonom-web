@@ -25,14 +25,14 @@ const badges = [
 ];
 
 const tickerLines = [
-  "OCR FAKTURY — 234× ZA MĚSÍC",
-  "PÁROVÁNÍ PLATEB — 189× AKTIVNÍ",
-  "FRAUD ALERT ⟶ KRANBAU IBAN",
-  "11 RIZIK · 1 KRITICKÉ",
-  "TERMÍNY DUBEN — 13 ITEMS",
-  "UPOMÍNKY — 47× SENT",
-  "DPH 03/2026 — 8 PŘIZNÁNÍ",
-  "ELSTER Q1 — REVIEW",
+  "FRAUD WATCH — AKTIVNÍ",
+  "OCR FAKTURY — RUNNING",
+  "PÁROVÁNÍ PLATEB — AKTIVNÍ",
+  "RIZIKOVÁ DETEKCE — 1.2k×",
+  "TERMÍNY HLÍDÁNY",
+  "UPOMÍNKY — AUTO",
+  "DPH KH — PŘIPRAVENO",
+  "AI VRSTVA — ONLINE",
 ];
 
 export default function HeroSection() {

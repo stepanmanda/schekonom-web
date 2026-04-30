@@ -542,9 +542,9 @@ export default function LoginPage() {
               <div className="mb-4 flex items-center gap-3">
                 <Cpu size={18} color="#00E5FF" />
                 <div>
-                  <div style={labelStyle}>API HANDSHAKE</div>
+                  <div style={labelStyle}>POD KAPOTOU</div>
                   <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
-                    Showcase je připravený jako produkt, ne jako obrázek.
+                    Demo komunikuje s backendem stejně jako produkce.
                   </div>
                 </div>
               </div>

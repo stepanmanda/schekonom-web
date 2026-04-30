@@ -169,12 +169,12 @@ export default function FunkcePage() {
           </div>
         </FadeInSection>
 
-        {/* ROI / Impact section */}
+        {/* Impact / oblasti dopadu */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">
             <div className="section-tag">
               <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
-              CO VÁM TO PŘINESE // VYČÍSLENO
+              KDE TO POMŮŽE // OBLASTI DOPADU
             </div>
             <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
           </div>
@@ -185,12 +185,12 @@ export default function FunkcePage() {
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Modelová kancelář: 25 zaměstnanců, 100 klientů, obrat 30M Kč/rok.
+            Čtyři oblasti, kde EkonomOS
             <br />
-            <span className="text-gold">Po 12 měsících s EkonomOS:</span>
+            <span className="text-gold">míří udělat rozdíl</span>
           </h2>
           <p className="text-text-secondary text-base max-w-3xl leading-relaxed">
-            Konzervativní odhad na základě dat z aktivního nasazení. Každá kancelář je jiná — váš profil propočítáme na konzultaci.
+            EkonomOS je nový produkt v pilotní fázi. Konkrétní čísla nemůžeme slíbit, dokud je společně se zákazníkem nezměříme. Tady jsou oblasti, kde produkt cílí na měřitelný rozdíl — a kde s vámi rádi nastavíme baseline a porovnáme stav před a po.
           </p>
         </FadeInSection>
 
@@ -202,27 +202,8 @@ export default function FunkcePage() {
                   <i.icon size={22} className="text-gold" />
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span
-                      className="text-gold text-3xl font-bold"
-                      style={{ fontFamily: "var(--font-space-grotesk)" }}
-                    >
-                      {i.value}
-                    </span>
-                    <span
-                      className="text-text-muted"
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.65rem",
-                        letterSpacing: "0.14em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {i.unit}
-                    </span>
-                  </div>
                   <h3
-                    className="text-white text-lg font-semibold mb-2"
+                    className="text-white text-lg font-semibold mb-3"
                     style={{ fontFamily: "var(--font-space-grotesk)" }}
                   >
                     {i.title}
@@ -234,11 +215,11 @@ export default function FunkcePage() {
                     className="text-cyan border-t border-cyan/10 pt-3"
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.65rem",
                       letterSpacing: "0.1em",
                     }}
                   >
-                    💰 {i.moneyEquiv}
+                    ◉ {i.expectation}
                   </div>
                 </div>
               </div>
@@ -246,9 +227,9 @@ export default function FunkcePage() {
           ))}
         </div>
 
-        {/* ROI Bottom line */}
+        {/* Pilot pozvánka */}
         <FadeInSection className="mb-24">
-          <div className="hud-panel p-10 text-center" style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}>
+          <div className="hud-panel p-10" style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}>
             <div
               className="text-gold mb-3"
               style={{
@@ -258,40 +239,45 @@ export default function FunkcePage() {
                 textTransform: "uppercase",
               }}
             >
-              Bottom line
+              ◉ Pilot fáze — hledáme partnery
             </div>
-            <div className="grid sm:grid-cols-3 gap-6 mb-6">
+            <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center">
               <div>
-                <div
-                  className="text-white text-3xl sm:text-4xl font-bold mb-1"
+                <h3
+                  className="text-white text-2xl sm:text-3xl font-bold mb-4"
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  ~2,6M Kč
-                </div>
-                <div className="text-text-muted text-sm">Roční dopad</div>
+                  Buďte u toho první.
+                  <br />
+                  <span className="text-gold">Společně to změříme.</span>
+                </h3>
+                <p className="text-text-secondary text-base leading-relaxed mb-4 max-w-2xl">
+                  EkonomOS je nový produkt. Místo abychom slibovali čísla bez podkladu, hledáme <strong className="text-white">3–5 prvních partnerských kanceláří</strong>, se kterými nasadíme produkt, společně nastavíme metriky a po 6 měsících veřejně publikujeme reálný dopad.
+                </p>
+                <ul className="space-y-2 text-text-secondary text-sm">
+                  <li className="flex gap-3">
+                    <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
+                    Pilot za zvýhodněných podmínek (sleva nebo prodloužené free období)
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
+                    Společný měřící framework — baseline před nasazením, výsledky za 6 měsíců
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
+                    Přímý přístup k vývojovému týmu — vaše požadavky se promítají do produktu
+                  </li>
+                  <li className="flex gap-3">
+                    <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
+                    Spoluautorství první case study (volitelně, anonymizovaně i otevřeně)
+                  </li>
+                </ul>
               </div>
-              <div>
-                <div
-                  className="text-cyan text-3xl sm:text-4xl font-bold mb-1"
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
-                >
-                  ~800 K Kč
-                </div>
-                <div className="text-text-muted text-sm">Roční náklad EkonomOS</div>
-              </div>
-              <div>
-                <div
-                  className="text-gold text-3xl sm:text-4xl font-bold mb-1"
-                  style={{ fontFamily: "var(--font-space-grotesk)" }}
-                >
-                  3,3×
-                </div>
-                <div className="text-text-muted text-sm">ROI první rok</div>
-              </div>
+              <Link href="/kontakt" className="btn-primary whitespace-nowrap self-start lg:self-center">
+                Mám zájem o pilot
+                <ArrowRight size={16} />
+              </Link>
             </div>
-            <p className="text-text-secondary text-sm max-w-2xl mx-auto leading-relaxed">
-              Setup fee se vrátí za <strong className="text-white">2–4 měsíce</strong>. Každý další rok ROI roste — náklad zůstává, dopady kumulují.
-            </p>
           </div>
         </FadeInSection>
 

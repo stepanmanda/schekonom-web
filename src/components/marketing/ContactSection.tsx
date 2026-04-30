@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, MessageSquare, PlayCircle, Send } from "lucide-react";
+import { Mail, MessageSquare, PlayCircle, Send, CheckCircle2, AlertTriangle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { submitContactForm, getMailtoLink } from "@/lib/form-submit";
 
 const contactInfo = [
   {

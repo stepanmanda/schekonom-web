@@ -131,7 +131,7 @@ export default function LoginPage() {
   };
 
   const demoFlow = [
-    "Vyberte showcase profil podle role.",
+    "Vyberte demo profil podle role.",
     "Po odeslání jde OTP na telefon majitele, ne na číslo uživatele.",
     "Po ověření se otevře pracovní plocha přesně podle role.",
     "Každý profil vidí jen své klienty, termíny a výjimky.",

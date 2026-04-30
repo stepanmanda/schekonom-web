@@ -518,9 +518,9 @@ export default function LoginPage() {
               <div className="mb-4 flex items-center gap-3">
                 <Bot size={18} color="#00E5FF" />
                 <div>
-                  <div style={labelStyle}>WHAT OWNER SEES</div>
+                  <div style={labelStyle}>JAK PŘIHLÁŠENÍ FUNGUJE</div>
                   <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
-                    Hlavní wow momenty showcase
+                    Čtyři kroky od kliknutí k pracovní ploše
                   </div>
                 </div>
               </div>

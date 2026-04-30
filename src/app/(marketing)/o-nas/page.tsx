@@ -70,8 +70,16 @@ export default function ONasPage() {
             <span className="text-gold">Studio</span> za produktem.
           </h1>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            EkonomOS staví studio <span className="text-cyan">VELYOS</span> —
-            tým, který se specializuje na B2B AI agenty a autonomní workflow
+            EkonomOS staví studio{" "}
+            <a
+              href="https://velyos.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan hover:underline"
+            >
+              VELYOS
+            </a>{" "}
+            — tým, který se specializuje na B2B AI agenty a autonomní workflow
             pro profesionální služby. Zaměřujeme se na sektory, kde malé úspory
             a včasné varování generují největší hodnotu: účetnictví, daně,
             advokacie, poradenství.

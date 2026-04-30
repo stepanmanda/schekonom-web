@@ -8,13 +8,14 @@ import {
   FolderOpen,
   CalendarClock,
   CheckSquare,
+  CheckCircle2,
 } from "lucide-react";
 
-const stats = [
-  { value: "9", label: "Sekcí v aplikaci" },
-  { value: "1×", label: "Přihlášení pro klienta" },
-  { value: "0", label: "Instalování" },
-  { value: "24/7", label: "Online" },
+const pilotPerks = [
+  "Pilot za zvýhodněných podmínek (sleva nebo prodloužené free období)",
+  "Společný měřící framework — baseline před, výsledky za 6 měsíců",
+  "Přímý přístup k vývojovému týmu — vaše požadavky jdou do produktu",
+  "Spoluautorství první case study (volitelně anonymně)",
 ];
 
 const badges = [

@@ -7,49 +7,53 @@ import { useInView } from "@/hooks/useInView";
 const stories = [
   {
     icon: ShieldCheck,
-    code: "FRAUD-01",
-    headline: "672 000 Kč",
-    subhead: "Někdo se nás snažil okrást",
+    code: "SCÉNÁŘ-01",
+    headline: "Phishing IBAN",
+    subhead: "Někdo vám podvrhne změnu účtu",
     body: [
-      "Stavební firma platila dlouhodobě německému dodavateli. Tentokrát přišel mail s fakturou — všechno jako vždycky, jen 'použijte prosím nový IBAN'.",
-      "Klasický phishing. Účetní by v rutině zaplatila. Aplikace si všimla.",
+      "Klient platí dlouhodobě stejnému dodavateli. Tentokrát přijde mail s fakturou — všechno jako vždycky, jen 'použijte prosím nový IBAN'.",
+      "Klasický phishing. Účetní by v rutině zaplatila. Aplikace si toho má všimnout.",
     ],
-    alert: 'EkonomOS hlásí ⟶ "Podezřelá změna IBAN u Kranbau. Ověřit telefonicky na známém čísle. Neplatit do ověření."',
+    alert:
+      'EkonomOS by měl říct: "Podezřelá změna IBAN — ověřit telefonicky na známém čísle. Neplatit do ověření."',
     outcome:
-      "Schneider zavolal Kranbau na známé číslo — žádnou změnu neposlali. Někdo se vlomil do mailu. Klient ušetřen 672 000 Kč.",
-    contrast: "Bez aplikace by se 672 000 Kč nasadilo na falešný účet.",
+      "Účetní zavolá přímo dodavateli. Pokud žádnou změnu neposlal, vy jste právě ušetřili klientovi částku faktury.",
+    contrast:
+      "Bez aplikace by se peníze odeslaly na falešný účet, než by někdo zjistil, že IBAN nesedí.",
     accent: "red",
   },
   {
     icon: Calendar,
-    code: "DEADLINE-02",
-    headline: "Mzdy by zamrzly",
-    subhead: "Restaurace nedodala docházku",
+    code: "SCÉNÁŘ-02",
+    headline: "Zaseknutá uzávěrka",
+    subhead: "Klient nedodá podklady, výplaty se blíží",
     body: [
-      "Restaurace měla poslat docházku za březen do 10. dubna. Nepřišla. 11. ráno: ticho. 12.: ticho. 13. ráno: aplikace se ozvala.",
-      "Bez docházky se nedají spočítat mzdy. Bez mezd nejdou výplaty 25.",
+      "Klient měl poslat docházku do 10. dubna. 11. ráno: ticho. 12.: ticho. Bez docházky se nedají spočítat mzdy. Bez mezd nejdou výplaty 25.",
+      "Účetní by to zjistila až na konci měsíce, kdyby zkusila zpracovat mzdy.",
     ],
-    alert: 'EkonomOS hlásí ⟶ "Mzdová uzávěrka zablokovaná — chybí docházka. Deadline 13. 4. Eskalovat na jednatele."',
+    alert:
+      'EkonomOS by měl říct: "Mzdová uzávěrka zablokovaná — chybí docházka. Eskalace na jednatele dnes."',
     outcome:
-      "Vedoucí mezd zavolala manažerce, zjistila, že nová pokladní neumí systém. Domluvily se na středu. Výplaty stihly.",
+      "Vedoucí mezd okamžitě zavolá manažerovi klienta a pomůže vyřešit, proč podklady neposlal. Výplaty stihnou termín.",
     contrast:
-      "Bez aplikace by problém vyšel najevo, až by se mzdy začaly počítat. Tehdy už pozdě.",
+      "Bez aplikace problém vyjde najevo, až mzdy zaseknou — to už je pozdě.",
     accent: "gold",
   },
   {
     icon: UserMinus,
-    code: "CHURN-03",
-    headline: "Klient se chystal odejít",
-    subhead: "Aplikace to věděla dřív než my",
+    code: "SCÉNÁŘ-03",
+    headline: "Tichý odchod klienta",
+    subhead: "Klient přestane komunikovat",
     body: [
-      "Nový klient v onboardingu měl poslat bankovní výpisy do 5. dubna. Nedoručil. Na maily neodpovídal. Telefon nezvedal.",
-      "Pro lidské oko: 'bude mít moc práce'. Aplikace to vidí jinak.",
+      "Nový klient v onboardingu měl poslat bankovní výpisy. Nedoručí. Na maily neodpovídá. Telefon nezvedá.",
+      "Pro lidské oko: 'bude mít moc práce'. Pro aplikaci to vypadá jinak.",
     ],
-    alert: 'EkonomOS hlásí ⟶ "Onboarding v prodlení — klient neodpovídá. Pravděpodobnost odchodu rostoucí. Doporučení: osobní návštěva, nabídnout pomoc se sběrem dokumentů."',
+    alert:
+      'EkonomOS by měl říct: "Klient v prodlení a bez komunikace. Doporučení: osobní návštěva, nabídnout pomoc se sběrem dokumentů."',
     outcome:
-      "Mácalová zajela osobně. Klient měl problém s předchozím účetním a chtěl se vrátit zpátky. Vyřešila to. Klient zůstal.",
+      "Tým zajede osobně. Pokud má klient problém s předchozím účetním nebo zvažuje odchod, zachytíte to dřív, než pošle výpověď.",
     contrast:
-      "Bez aplikace bys za měsíc dostal e-mail 'Děkujeme za spolupráci, jdeme jinam'.",
+      "Bez aplikace dostanete za měsíc e-mail 'Děkujeme za spolupráci, jdeme jinam'.",
     accent: "cyan",
   },
 ];
@@ -59,7 +63,7 @@ export default function StoriesSection() {
 
   return (
     <section
-      id="pribehy"
+      id="scenare"
       className="py-28 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
@@ -77,20 +81,18 @@ export default function StoriesSection() {
         <div className={`mb-16 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
-            CO APLIKACE VČERA UDĚLALA // 3 SITUACE
+            CO MÁ APLIKACE ZACHYTIT // 3 SCÉNÁŘE
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white max-w-4xl"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Tři dny, kdy aplikace
+            Tři situace, na které
             <br />
-            <span className="text-gold">zachránila víc, než stála.</span>
+            <span className="text-gold">EkonomOS cílí.</span>
           </h2>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Reálná data z portálu — anonymizovaná, ale autentická. Tohle se v
-            jedné účetní firmě <strong className="text-white">stalo za jediný týden</strong>.
-            Vy se ráno otevřete aplikaci a vidíte to první.
+            Tohle nejsou historické případy zákazníků — produkt je v pilotní fázi. Jsou to <strong className="text-white">scénáře</strong>, na které je aplikace stavěná. Pokud vám zní povědomě, jste přesně cílovka, kterou hledáme.
           </p>
         </div>
 
@@ -146,10 +148,10 @@ export default function StoriesSection() {
                   </div>
                 </div>
 
-                {/* Big number / title */}
+                {/* Headline */}
                 <div className="mb-6">
                   <div
-                    className="text-3xl sm:text-4xl font-bold mb-2"
+                    className="text-2xl sm:text-3xl font-bold mb-2"
                     style={{
                       fontFamily: "var(--font-space-grotesk)",
                       color: accentColor,
@@ -200,7 +202,7 @@ export default function StoriesSection() {
                     <strong className="text-text-secondary not-italic">
                       Bez aplikace:
                     </strong>{" "}
-                    {s.contrast.replace(/^Bez aplikace by /, "").replace(/^Bez aplikace bys /, "")}
+                    {s.contrast.replace(/^Bez aplikace by /, "").replace(/^Bez aplikace bys /, "").replace(/^Bez aplikace /, "")}
                   </p>
                 </div>
               </div>
@@ -213,7 +215,7 @@ export default function StoriesSection() {
           className={`mt-16 text-center ${inView ? "animate-float-up delay-800" : "opacity-0"}`}
         >
           <p className="text-text-secondary text-lg mb-6">
-            205 dalších analýz pracuje na pozadí, abyste tyhle situace viděli první.
+            Tyhle scénáře aplikace umí. Konkrétní dopad u vás společně změříme — produkt je v pilotní fázi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/funkce" className="btn-primary">

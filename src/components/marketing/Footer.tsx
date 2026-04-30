@@ -37,8 +37,11 @@ export default function Footer() {
               Klientský portál pro účetní firmy a jejich klienty. Termíny,
               dokumenty, schválení a AI hlídání rizik na jednom místě.
             </p>
-            <div
-              className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 border border-cyan/15 bg-cyan/[0.03]"
+            <a
+              href="https://velyos.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 px-3 py-1.5 border border-cyan/15 bg-cyan/[0.03] hover:border-cyan/40 hover:bg-cyan/[0.06] transition-all"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "0.6rem",
@@ -48,7 +51,7 @@ export default function Footer() {
             >
               <span className="text-text-muted">Vývoj:</span>
               <span className="text-cyan">Studio VELYOS</span>
-            </div>
+            </a>
           </div>
 
           {/* Funkce */}

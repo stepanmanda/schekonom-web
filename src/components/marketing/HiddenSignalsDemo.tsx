@@ -67,10 +67,10 @@ const SIGNALS: Record<SignalKey, Signal> = {
       situation:
         "Klient #012 vám 4 roky vykal. Najednou v 8. týdnu začne tykat. „Ahoj, můžeš mi to poslat?\" Změna sama o sobě nic neznamená. V kombinaci s dalšími signály ano.",
       aiCall:
-        "Klient #012 současně: přestal odpovídat na první mail (3× za sebou), zvýšil počet ad-hoc dotazů o 240 %, přestal číst přílohy. Trojnásobné riziko. Doporučení: osobní schůzka tento týden.",
+        "Klient #012 současně: přestal odpovídat na první mail (3× za sebou), řádově víc ad-hoc dotazů, přestal číst přílohy. Vícenásobné riziko. Doporučení: osobní schůzka tento týden.",
       action:
         "Sjednáte schůzku. Klient přizná, že hledal jiného účetního, ale dáte mu důvěru zpět.",
-      saved: "Měli jste 64% šanci ho udržet — zvládli jste to.",
+      saved: "Měli jste reálnou šanci ho udržet — zvládli jste to.",
     },
   },
   ton: {

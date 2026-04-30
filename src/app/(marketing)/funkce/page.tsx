@@ -72,6 +72,41 @@ const stats = [
   { value: "24/7", label: "Online provoz" },
 ];
 
+const impacts = [
+  {
+    icon: Clock,
+    title: "Časová úspora",
+    value: "~80 h",
+    unit: "měsíčně",
+    desc: "OCR faktur, auto-párování plateb, hlídání termínů, příprava DPH KH. Půl plného úvazku, který nemusíte platit.",
+    moneyEquiv: "~265 000 Kč/rok ušetřených mezd",
+  },
+  {
+    icon: TrendingUp,
+    title: "Růst bez najímání",
+    value: "+30 %",
+    unit: "klientů",
+    desc: "Stejný tým obslouží o třetinu víc firem. Kancelář se 100 klienty dokáže zvládnout 130 bez nutnosti dalšího účetního.",
+    moneyEquiv: "~1,5M Kč obratu navíc ročně",
+  },
+  {
+    icon: AlertOctagon,
+    title: "Eliminace fraud chyb",
+    value: "95 %",
+    unit: "záchyt",
+    desc: "Aplikace ověří IBAN proti ARES + bankám, vyřadí duplicitní faktury, označí podvodnou změnu. Jeden zachycený phishing zaplatí celý rok.",
+    moneyEquiv: "200 000 – 700 000 Kč ušetřených ztrát",
+  },
+  {
+    icon: UserCheck,
+    title: "Méně odchodů klientů",
+    value: "−50 %",
+    unit: "churn",
+    desc: "Průměrná účetní firma ztratí 10–15 % klientů ročně. S predikcí odchodu klesá na 6–8 %. To je 3–7 zachráněných klientů.",
+    moneyEquiv: "~450 000 Kč/rok zachráněného obratu",
+  },
+];
+
 function FadeInSection({
   children,
   className = "",

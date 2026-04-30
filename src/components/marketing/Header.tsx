@@ -14,6 +14,8 @@ const moduleLinks = [
 
 const navItems = [
   { label: "Funkce", href: "/funkce", children: moduleLinks },
+  { label: "Pilot", href: "/pilot" },
+  { label: "Časté dotazy", href: "/caste-dotazy" },
   { label: "O EkonomOS", href: "/o-nas" },
   { label: "Kontakt", href: "/kontakt" },
 ];

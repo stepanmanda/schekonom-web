@@ -19,21 +19,21 @@ export default async function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background:
-            "radial-gradient(ellipse 60% 80% at 25% 30%, rgba(0,229,255,0.18) 0%, transparent 55%), radial-gradient(ellipse 50% 60% at 80% 70%, rgba(212,175,55,0.10) 0%, transparent 55%), #03080D",
+          background: "#03080D",
+          backgroundImage:
+            "radial-gradient(ellipse 60% 80% at 25% 30%, rgba(0,229,255,0.18) 0%, transparent 55%), radial-gradient(ellipse 50% 60% at 80% 70%, rgba(212,175,55,0.10) 0%, transparent 55%)",
           padding: "80px",
           color: "#FFFFFF",
           fontFamily: "system-ui, sans-serif",
-          position: "relative",
+          justifyContent: "space-between",
         }}
       >
-        {/* Top: logo + label */}
+        {/* Top: logo */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             gap: "20px",
-            marginBottom: "auto",
           }}
         >
           <div
@@ -41,9 +41,7 @@ export default async function Image() {
               width: "72px",
               height: "72px",
               borderRadius: "50%",
-              background:
-                "radial-gradient(circle, rgba(0,229,255,0.18) 0%, transparent 70%)",
-              border: "2px solid rgba(0,229,255,0.7)",
+              border: "2px solid #00E5FF",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -61,7 +59,6 @@ export default async function Image() {
                 fontSize: "32px",
                 fontWeight: 700,
                 color: "#FFFFFF",
-                letterSpacing: "0.5px",
               }}
             >
               EkonomOS
@@ -72,6 +69,7 @@ export default async function Image() {
                 color: "rgba(0,229,255,0.7)",
                 letterSpacing: "3px",
                 marginTop: "2px",
+                display: "flex",
               }}
             >
               KLIENTSKÝ PORTÁL
@@ -89,35 +87,28 @@ export default async function Image() {
         >
           <div
             style={{
-              fontSize: "28px",
+              fontSize: "24px",
               color: "rgba(212,175,55,0.95)",
               letterSpacing: "4px",
               fontWeight: 600,
               textTransform: "uppercase",
+              display: "flex",
             }}
           >
-            ◉ Pilot fáze — hledáme partnery
+            PILOT FAZE — HLEDAME PARTNERY
           </div>
           <div
             style={{
-              fontSize: "84px",
+              fontSize: "76px",
               fontWeight: 700,
               lineHeight: 1.05,
               color: "#FFFFFF",
               maxWidth: "1000px",
+              display: "flex",
+              flexWrap: "wrap",
             }}
           >
-            Klient vidí svoje{" "}
-            <span style={{ color: "#00E5FF" }}>papíry, úkoly, termíny</span>.
-          </div>
-          <div
-            style={{
-              fontSize: "44px",
-              fontWeight: 700,
-              color: "rgba(212,175,55,0.95)",
-            }}
-          >
-            Vy ušetříte hodiny.
+            Klient vidi svoje papiry, ukoly, terminy. Vy usetrite hodiny.
           </div>
         </div>
 
@@ -127,25 +118,26 @@ export default async function Image() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-end",
-            marginTop: "auto",
-            paddingTop: "40px",
+            paddingTop: "30px",
             borderTop: "1px solid rgba(0,229,255,0.15)",
           }}
         >
           <div
             style={{
-              fontSize: "22px",
+              fontSize: "20px",
               color: "rgba(184,193,200,0.85)",
               maxWidth: "800px",
+              display: "flex",
             }}
           >
-            Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik.
+            Komplet pro ucetni firmy: web, klientsky portal a admin aplikace s AI hlidanim rizik.
           </div>
           <div
             style={{
               fontSize: "16px",
               color: "rgba(0,229,255,0.6)",
               letterSpacing: "2px",
+              display: "flex",
             }}
           >
             EKONOMOS.VELYOS.CZ

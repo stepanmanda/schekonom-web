@@ -20,7 +20,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
-import RoiCalculator from "@/components/marketing/RoiCalculator";
 
 const modules = [
   {

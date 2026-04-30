@@ -276,10 +276,9 @@ export default function LoginPage() {
                   marginBottom: 28,
                 }}
               >
-                Demo přístup do EkonomOS bez registrace. Vyberte profil podle
-                role, ověříme přes OTP na telefon majitele a otevře se
-                pracovní plocha přesně podle toho, co daná role vidí —
-                klienti, workflow, rizika a akce.
+                Demo přístup do EkonomOS bez registrace. Klikněte na profil podle
+                role a otevře se pracovní plocha přesně podle toho, co daná role
+                vidí — klienti, workflow, rizika a akce. Žádné heslo, žádné OTP.
               </p>
 
               {/* Profile cards */}

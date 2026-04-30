@@ -39,9 +39,10 @@ const contactBlocks = [
 ];
 
 const inquiryOptions = [
-  "Chci si vyzkoušet demo",
+  "Chci si vyzkoušet rozšířenou verzi (víc než demo)",
   "Mám zájem o cenovou nabídku",
   "Chci nasadit EkonomOS u nás v kanceláři",
+  "Mám zájem o pilot fázi",
   "Komplet servis (web + portál + aplikace)",
   "Partnerství / integrace",
   "Něco jiného",

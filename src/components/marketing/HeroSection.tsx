@@ -177,8 +177,8 @@ export default function HeroSection() {
         {/* Subtitle */}
         <p className="opacity-0 animate-float-up delay-200 mt-7 text-text-secondary text-lg sm:text-xl leading-relaxed max-w-2xl">
           Postavíme vám web na vaší doméně, klientský portál pod ním a
-          administrátorskou aplikaci pro vás. Napojíme se na Money, Pohodu,
-          banky, ARES, ČSSZ, ELSTER. Vy vidíte všechny klienty najednou — méně
+          administrátorskou aplikaci pro vás. Napojíme se na vaše stávající
+          systémy — účetní, dokumenty, banky i registry. Vy vidíte všechny klienty najednou — méně
           e-mailů, méně telefonů, méně chyb.
         </p>
 

@@ -291,6 +291,82 @@ export default function PilotPage() {
           </FadeInSection>
         </div>
 
+        {/* Pricing model */}
+        <FadeInSection className="mb-16">
+          <div className="hud-panel p-8">
+            <div className="flex items-center gap-3 mb-5">
+              <Coins size={20} className="text-gold" />
+              <span
+                className="text-gold"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Cenový model
+              </span>
+            </div>
+            <p className="text-text-secondary text-base leading-relaxed mb-6 max-w-3xl">
+              Konkrétní cifry probereme na konzultaci — záleží na rozsahu nasazení a počtu vašich klientů. Cena má tři složky:
+            </p>
+            <div className="grid md:grid-cols-3 gap-4">
+              <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
+                <div
+                  className="text-cyan mb-2"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.62rem",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  1) Setup (jednorázově)
+                </div>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  Audit, integrace na vaše systémy, branding, training týmu. Pokrývá 8–12 týdnů onboarding.
+                </p>
+              </div>
+              <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
+                <div
+                  className="text-cyan mb-2"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.62rem",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  2) Platforma (měsíčně)
+                </div>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  Hosting, údržba, security patches, support. Fixní položka, nezávisí na počtu klientů.
+                </p>
+              </div>
+              <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
+                <div
+                  className="text-cyan mb-2"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.62rem",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  3) Per klient (měsíčně)
+                </div>
+                <p className="text-text-secondary text-sm leading-relaxed">
+                  Skaluje s vaším úspěchem. AI compute, storage, integrace pro každého vašeho klienta zvlášť.
+                </p>
+              </div>
+            </div>
+            <p className="text-text-muted text-xs mt-5 leading-relaxed">
+              V pilot fázi nabízíme zvýhodněné podmínky — sleva nebo prodloužené free období. Konkrétní rozsah dohodneme individuálně.
+            </p>
+          </div>
+        </FadeInSection>
+
         {/* Honest disclaimer */}
         <FadeInSection className="mb-16">
           <div

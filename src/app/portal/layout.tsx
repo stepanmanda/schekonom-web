@@ -2,7 +2,14 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Activity, Building2, ChevronRight, LogOut, User } from "lucide-react";
+import {
+  Activity,
+  Building2,
+  ChevronRight,
+  Lock,
+  LogOut,
+  User,
+} from "lucide-react";
 import Logo from "@/components/shared/Logo";
 import KpiCard from "@/components/portal/KpiCard";
 import { AuthProvider, useAuth } from "@/lib/auth/context";

@@ -372,16 +372,22 @@ export default function LoginPage() {
                           borderTop: "1px solid rgba(0,229,255,0.08)",
                         }}
                       >
-                        <Building2 size={13} />
+                        <ArrowRight size={13} />
                         <span
                           style={{
                             fontSize: "0.72rem",
                             fontFamily: "var(--font-mono)",
                             letterSpacing: "0.1em",
                             textTransform: "uppercase",
+                            color:
+                              loadingStage !== null && isActive
+                                ? "rgba(0,229,255,0.6)"
+                                : "rgba(0,229,255,0.85)",
                           }}
                         >
-                          Vstoupit do dema
+                          {loadingStage !== null && isActive
+                            ? "Otevírám..."
+                            : "Otevřít demo →"}
                         </span>
                       </div>
                     </button>

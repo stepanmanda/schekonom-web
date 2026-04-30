@@ -454,8 +454,8 @@ export default function LoginPage() {
                       }}
                     >
                       V produkci by šel kód jen přes backend a SMS provider.
-                      Tady je přítomná i demo relay vrstva, aby šlo showcase
-                      rovnou odprezentovat.
+                      V demu vidíte vygenerovaný kód přímo na obrazovce, ať
+                      můžete pokračovat bez čekání na SMS.
                     </div>
                   </div>
 

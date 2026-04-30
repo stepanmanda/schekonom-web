@@ -396,8 +396,29 @@ export default function LoginPage() {
               </div>
             </div>
 
+            {/* Helper banner above forms */}
+            {error && (
+              <div className="hud-inline-alert mb-5">
+                <AlertTriangle size={16} />
+                <span>{error}</span>
+              </div>
+            )}
+
+            <details className="mb-6">
+              <summary
+                className="cursor-pointer text-text-muted hover:text-cyan transition-colors py-3"
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                }}
+              >
+                ▸ Pokročilé: ukázat OTP flow (jak funguje produkční přihlášení)
+              </summary>
+
             {/* Auth forms row */}
-            <div className="grid gap-6 xl:grid-cols-12">
+            <div className="grid gap-6 xl:grid-cols-12 mt-4">
               {/* Step 1: Request code */}
               <div className="xl:col-span-7">
                 <form className="hud-panel p-6" onSubmit={handleRequestCode}>

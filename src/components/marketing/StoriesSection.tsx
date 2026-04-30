@@ -195,8 +195,8 @@ export default function StoriesSection() {
                   {s.outcome}
                 </p>
 
-                {/* Contrast bottom */}
-                <div className="pt-4 border-t border-cyan/10">
+                {/* Contrast bottom — hidden on small screens to keep cards short */}
+                <div className="pt-4 border-t border-cyan/10 hidden sm:block">
                   <p
                     className="text-text-muted text-xs leading-relaxed"
                     style={{ fontStyle: "italic" }}

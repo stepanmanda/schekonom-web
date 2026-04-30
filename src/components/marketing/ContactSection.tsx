@@ -30,9 +30,10 @@ const contactInfo = [
 ];
 
 const inquiryOptions = [
-  "Chci si vyzkoušet demo",
+  "Chci si vyzkoušet rozšířenou verzi (víc než demo)",
   "Mám zájem o cenovou nabídku",
   "Chci nasadit EkonomOS u nás v kanceláři",
+  "Mám zájem o pilot fázi",
   "Partnerství / integrace",
   "Něco jiného",
 ];
@@ -73,7 +74,7 @@ export default function ContactSection() {
   return (
     <section
       id="kontakt"
-      className="py-28 relative"
+      className="py-16 sm:py-24 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
       <div className="max-w-7xl mx-auto px-6">

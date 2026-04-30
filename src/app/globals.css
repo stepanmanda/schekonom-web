@@ -565,6 +565,28 @@ body {
 .animate-spin-slow { animation: spin-slow 12s linear infinite; }
 .animate-data-ticker { animation: data-ticker 30s linear infinite; }
 
+/* ── Respect prefers-reduced-motion ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-data-ticker,
+  .animate-pulse-dot,
+  .animate-spin-slow,
+  .animate-glow-logo {
+    animation: none !important;
+  }
+  .animate-float-up,
+  .animate-slide-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }

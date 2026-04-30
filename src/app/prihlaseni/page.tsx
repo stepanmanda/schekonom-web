@@ -18,6 +18,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
+import Link from "next/link";
 import Logo from "@/components/shared/Logo";
 import { useAuth } from "@/lib/auth/context";
 import { demoProfiles, DEMO_MODE } from "@/lib/demo/data";

@@ -1,9 +1,6 @@
 "use client";
 
 import {
-  Globe2,
-  Users,
-  Monitor,
   CalendarClock,
   Receipt,
   UserMinus,
@@ -12,24 +9,6 @@ import {
   Workflow,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
-
-const layers = [
-  {
-    icon: Globe2,
-    title: "Veřejný web",
-    desc: "Na vaší doméně. Vaše logo, vaše barvy, vaše firma. Tím web nekončí — pod ním pokračuje portál pro klienty.",
-  },
-  {
-    icon: Users,
-    title: "Klientský portál",
-    desc: "Vaši klienti se přihlásí. Nahrají faktury, schválí mzdy a daně kliknutím, vidí termíny a stav. Bez papírování, bez telefonování.",
-  },
-  {
-    icon: Monitor,
-    title: "Admin aplikace",
-    desc: "Pro vás a váš tým. Všichni klienti na jedné obrazovce — termíny, dokumenty, rizika, AI doporučení.",
-  },
-];
 
 const capabilities = [
   {

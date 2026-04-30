@@ -258,6 +258,30 @@ export default function LoginPage() {
               <div className="grid gap-4 md:grid-cols-3">
                 {demoProfiles.map((profile) => {
                   const isActive = profile.id === activeProfile.id;
+                  const roleLabel =
+                    profile.role === "client"
+                      ? "Pohled klienta"
+                      : profile.role === "german-tax"
+                        ? "Pohled účetní firmy"
+                        : "Pohled účetní firmy";
+                  const cardTitle =
+                    profile.role === "client"
+                      ? "Klient účetní firmy"
+                      : profile.role === "german-tax"
+                        ? "Specialista CZ/DE daní"
+                        : "Mzdová účetní";
+                  const cardSubtitle =
+                    profile.role === "client"
+                      ? "Co vidí firma, kterou účetní spravuje"
+                      : profile.role === "german-tax"
+                        ? "Pendleři, ELSTER, Kindergeld, A1"
+                        : "Mzdy, docházka, ČSSZ, exekuce";
+                  const cardBenefit =
+                    profile.role === "client"
+                      ? "Dashboard „co mě čeká", nahrávání faktur, schvalování kliknutím."
+                      : profile.role === "german-tax"
+                        ? "Fronta CZ/DE případů, podání přes ELSTER, hlídání termínů."
+                        : "Měsíční uzávěrka, hlášení pojišťovnám, ELDP, exekuce na jedné obrazovce.";
                   return (
                     <button
                       key={profile.id}
@@ -270,62 +294,66 @@ export default function LoginPage() {
                           className="hud-chip"
                           data-tone={isActive ? "cyan" : "slate"}
                         >
-                          Demo access
+                          Demo
                         </span>
                         <span
                           style={{
                             ...labelStyle,
-                            color: "rgba(255,255,255,0.48)",
+                            color: "rgba(255,255,255,0.55)",
                           }}
                         >
-                          {profile.role === "client" ? "CLIENT" : "EMPLOYEE"}
+                          {roleLabel}
                         </span>
                       </div>
                       <div
                         style={{
                           fontFamily: "Space Grotesk, sans-serif",
-                          fontSize: "1.55rem",
+                          fontSize: "1.35rem",
                           color: "#FFFFFF",
                           fontWeight: 700,
+                          lineHeight: 1.15,
                           marginBottom: 8,
                         }}
                       >
-                        {profile.surname}
+                        {cardTitle}
                       </div>
                       <div
                         style={{
-                          color: "#FFFFFF",
-                          fontSize: "0.92rem",
-                          marginBottom: 4,
-                        }}
-                      >
-                        {profile.title}
-                      </div>
-                      <div
-                        style={{
-                          color: "#7A8A9E",
-                          fontSize: "0.82rem",
+                          color: "rgba(0,229,255,0.85)",
+                          fontSize: "0.85rem",
+                          fontFamily: "var(--font-mono)",
+                          letterSpacing: "0.06em",
                           marginBottom: 14,
                         }}
                       >
-                        {profile.phone}
+                        {cardSubtitle}
                       </div>
                       <div
                         style={{
                           color: "#B8C1C8",
                           lineHeight: 1.65,
-                          fontSize: "0.83rem",
+                          fontSize: "0.85rem",
                         }}
                       >
-                        {profile.summary}
+                        {cardBenefit}
                       </div>
                       <div
-                        className="mt-4 flex items-center gap-2"
-                        style={{ color: "#7A8A9E" }}
+                        className="mt-5 pt-4 flex items-center gap-2"
+                        style={{
+                          color: "#7A8A9E",
+                          borderTop: "1px solid rgba(0,229,255,0.08)",
+                        }}
                       >
-                        <Building2 size={14} />
-                        <span style={{ fontSize: "0.78rem" }}>
-                          {profile.domain}
+                        <Building2 size={13} />
+                        <span
+                          style={{
+                            fontSize: "0.72rem",
+                            fontFamily: "var(--font-mono)",
+                            letterSpacing: "0.1em",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          Vstoupit do dema
                         </span>
                       </div>
                     </button>

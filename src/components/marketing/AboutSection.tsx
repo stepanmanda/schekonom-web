@@ -122,13 +122,13 @@ export default function AboutSection() {
                 ))}
                 {/* Data nodes */}
                 {[
-                  { x: 300, y: 80, color: "#00E5FF", label: "MONEY" },
-                  { x: 480, y: 130, color: "#00E5FF", label: "POHODA" },
-                  { x: 510, y: 250, color: "#D4AF37", label: "DOCUWARE" },
-                  { x: 380, y: 340, color: "#00E5FF", label: "BANKY" },
-                  { x: 220, y: 340, color: "#D4AF37", label: "ARES" },
-                  { x: 90, y: 250, color: "#00E5FF", label: "ČSSZ" },
-                  { x: 120, y: 130, color: "#00E5FF", label: "ELSTER" },
+                  { x: 300, y: 80, color: "#00E5FF", label: "ÚČETNICTVÍ" },
+                  { x: 480, y: 130, color: "#00E5FF", label: "DOKUMENTY" },
+                  { x: 510, y: 250, color: "#D4AF37", label: "BANKY" },
+                  { x: 380, y: 340, color: "#00E5FF", label: "REJSTŘÍKY" },
+                  { x: 220, y: 340, color: "#D4AF37", label: "MZDY" },
+                  { x: 90, y: 250, color: "#00E5FF", label: "DAŇOVÉ" },
+                  { x: 120, y: 130, color: "#00E5FF", label: "KOMUNIKACE" },
                 ].map((node) => (
                   <g key={node.label}>
                     <line

@@ -73,6 +73,7 @@ export default function KontaktPage() {
     inquiry: "",
     message: "",
   });
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<

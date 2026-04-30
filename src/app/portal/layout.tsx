@@ -232,6 +232,46 @@ function PortalShell({ children }: { children: React.ReactNode }) {
 
           {/* Main content */}
           <main className="space-y-6 xl:col-span-9">
+            {/* Demo disclaimer banner */}
+            <div
+              className="hud-panel p-5 lg:p-6 flex items-start gap-4"
+              style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}
+            >
+              <div
+                className="flex-shrink-0 p-2.5 border border-gold/30"
+                style={{ background: "rgba(212,175,55,0.06)" }}
+              >
+                <Lock size={18} style={{ color: "rgba(212,175,55,0.95)" }} />
+              </div>
+              <div className="flex-1">
+                <div
+                  className="text-gold mb-1.5"
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.65rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  ◉ Demo režim — některé funkce zamčené
+                </div>
+                <p
+                  className="text-text-secondary leading-relaxed"
+                  style={{ fontSize: "0.92rem" }}
+                >
+                  Pracujete s ukázkovými daty.{" "}
+                  <strong className="text-white">
+                    Pokročilé funkce, AI vrstva a hloubka analýz
+                  </strong>{" "}
+                  jsou v demu zamčené — odemkneme je po dohodě o spolupráci.
+                  Chráníme tím know-how, které jsme dlouho budovali.{" "}
+                  <Link href="/pilot" className="text-cyan hover:underline">
+                    Zájem o pilot →
+                  </Link>
+                </p>
+              </div>
+            </div>
+
             {/* KPI header panel */}
             <div className="hud-panel p-6 md:p-7">
               <div className="mb-5 flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">

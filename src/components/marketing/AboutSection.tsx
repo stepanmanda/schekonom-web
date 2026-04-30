@@ -202,29 +202,22 @@ export default function AboutSection() {
             </h3>
             <div className="space-y-4 text-text-secondary text-base leading-relaxed">
               <p>
-                EkonomOS dodáváme jako kompletní řešení. Postavíme vám web na
-                vaší doméně s vaším brandem, pod ním klientský portál a pro vás
-                administrátorskou aplikaci. Klient se přihlásí na vašem webu,
-                nahraje dokumenty, vidí termíny, schvaluje kliknutím. Vy vidíte
-                všechny své klienty na jedné obrazovce.
+                Hodnota není v množství dat. Hodnota je v <strong className="text-white">korelacích</strong>,
+                které vznikají teprve propojením účetnictví, komunikace, mezd,
+                rejstříků a behaviorálních stop. Rozdíl mezi účetní firmou
+                s počítači a <strong className="text-white">autonomním finančním centrem</strong>.
               </p>
               <p>
-                <strong className="text-white">
-                  Napojíme se na vaše existující systémy.
-                </strong>{" "}
-                Pracujeme s tím, co už máte — účetní software, dokumentové
-                úložiště, banky, státní portály i e-mail. Nic nepřepisujeme,
-                nic nemigrujeme.
-              </p>
-              <p>
-                Hodnota není v množství dat. Hodnota je v korelacích, které
-                vznikají teprve propojením účetnictví, komunikace, mezd,
-                rejstříků, geodat a behaviorálních stop. To je rozdíl mezi
-                účetní firmou s počítači a autonomním finančním centrem.
-              </p>
-              <p>
-                EkonomOS staví studio VELYOS — tým, který se specializuje na
-                B2B AI agenty a autonomní workflow pro profesionální služby.
+                Stavíme to ve studiu{" "}
+                <a
+                  href="https://velyos.cz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan hover:underline"
+                >
+                  VELYOS
+                </a>{" "}
+                — specializujeme se na B2B AI agenty a autonomní workflow pro profesionální služby.
               </p>
             </div>
           </div>

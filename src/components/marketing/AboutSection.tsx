@@ -213,7 +213,7 @@ export default function AboutSection() {
                     letterSpacing: "0.1em",
                   }}
                 >
-                  205 ANALÝZ · 184 ZDROJŮ
+                  PILOT FÁZE · HLEDÁME PARTNERY
                 </span>
               </div>
             </div>

@@ -43,7 +43,7 @@ const principles = [
   {
     icon: Eye,
     title: "Transparentní AI",
-    desc: "U každého AI rozhodnutí (predikce, alert, doporučení) ukážeme, na čem je založené. Žádné „blackbox" modely. Klient může model kdykoliv napadnout.",
+    desc: "U každého AI rozhodnutí (predikce, alert, doporučení) ukážeme, na čem je založené. Žádné 'blackbox' modely. Klient může model kdykoliv napadnout.",
   },
 ];
 

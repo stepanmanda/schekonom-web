@@ -35,7 +35,11 @@ export type ContactFormPayload = {
   message: string;
 };
 
-const FALLBACK_EMAIL = "info@ekonomos.cz";
+// Mailto fallback adresa. Default = stepan@velyos.cz (existující email).
+// Pokud zaregistruješ info@ekonomos.cz forwarding, přepni přes env var:
+// NEXT_PUBLIC_CONTACT_EMAIL=info@ekonomos.cz
+const FALLBACK_EMAIL =
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL || "stepan@velyos.cz";
 
 function buildMailto(data: ContactFormPayload): string {
   const subject = encodeURIComponent(

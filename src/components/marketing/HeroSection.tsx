@@ -4,36 +4,16 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
-  LayoutDashboard,
-  FolderOpen,
-  CalendarClock,
-  CheckSquare,
-  CheckCircle2,
+  Globe2,
+  Users,
+  Monitor,
+  PlayCircle,
 } from "lucide-react";
 
-const pilotPerks = [
-  "Pilot za zvýhodněných podmínek (sleva nebo prodloužené free období)",
-  "Společný měřící framework — baseline před, výsledky za 6 měsíců",
-  "Přímý přístup k vývojovému týmu — vaše požadavky jdou do produktu",
-  "Spoluautorství první case study (volitelně anonymně)",
-];
-
-const badges = [
-  { icon: LayoutDashboard, label: "Přehled" },
-  { icon: FolderOpen, label: "Dokumenty" },
-  { icon: CalendarClock, label: "Termíny" },
-  { icon: CheckSquare, label: "Schválení" },
-];
-
-const tickerLines = [
-  "FRAUD WATCH — AKTIVNÍ",
-  "OCR FAKTURY — RUNNING",
-  "PÁROVÁNÍ PLATEB — AKTIVNÍ",
-  "RIZIKOVÁ DETEKCE — 1.2k×",
-  "TERMÍNY HLÍDÁNY",
-  "UPOMÍNKY — AUTO",
-  "DPH KH — PŘIPRAVENO",
-  "AI VRSTVA — ONLINE",
+const layers = [
+  { icon: Globe2, title: "Web", subtitle: "Na vaší doméně" },
+  { icon: Users, title: "Klientský portál", subtitle: "Pro vaše klienty" },
+  { icon: Monitor, title: "Admin aplikace", subtitle: "Pro vás a tým" },
 ];
 
 export default function HeroSection() {
@@ -55,7 +35,6 @@ export default function HeroSection() {
     >
       {/* Animated mesh background */}
       <div className="absolute inset-0 z-0 bg-void-deep">
-        {/* Base radial mesh */}
         <div
           className="absolute inset-0"
           style={{
@@ -64,7 +43,6 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Slow drifting glow blobs */}
         <div
           className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-30 animate-pulse"
           style={{
@@ -83,7 +61,6 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Animated rotating ring */}
         <div
           className="absolute top-1/2 right-[8%] -translate-y-1/2 w-[480px] h-[480px] hidden lg:block animate-spin-slow opacity-50"
           style={{
@@ -95,10 +72,8 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Grid bg */}
         <div className="absolute inset-0 grid-bg opacity-30" />
 
-        {/* Diagonal scan lines */}
         <div
           className="absolute inset-0 opacity-30"
           style={{
@@ -116,171 +91,98 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Floating data ticker — right side */}
-      <div className="absolute top-32 right-6 z-[3] hidden xl:flex flex-col gap-2 max-w-xs opacity-0 animate-float-up delay-500">
-        <div
-          className="text-text-muted mb-2"
-          style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.55rem",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-          }}
-        >
-          ◉ LIVE PROVOZNÍ DATA
-        </div>
-        {tickerLines.map((line, i) => (
-          <div
-            key={line}
-            className="hud-panel px-3 py-2 flex items-center gap-2 animate-float-up"
-            style={{
-              animationDelay: `${0.6 + i * 0.08}s`,
-              animationFillMode: "backwards",
-            }}
-          >
-            <span className="w-1 h-1 rounded-full bg-status-green animate-pulse-dot" />
-            <span
-              className="text-text-secondary"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.58rem",
-                letterSpacing: "0.1em",
-              }}
-            >
-              {line}
-            </span>
-          </div>
-        ))}
-      </div>
-
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 w-full">
-        {/* Section tag */}
-        <div className="section-tag opacity-0 animate-float-up mb-8">
+        {/* Tagline chip */}
+        <div className="section-tag opacity-0 animate-float-up mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block animate-pulse-dot" />
-          EKONOMOS &nbsp;// &nbsp;ÚČETNÍ FIRMA ONLINE &nbsp;// &nbsp;ČESKY
+          EKONOMOS &nbsp;//&nbsp; OPERAČNÍ VRSTVA PRO ÚČETNÍ FIRMY
         </div>
 
-        {/* Heading */}
+        {/* H1 — sharp claim */}
         <h1
           className="opacity-0 animate-float-up delay-100 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.06] tracking-tight text-white max-w-4xl"
           style={{ fontFamily: "var(--font-space-grotesk)" }}
         >
-          Klient vidí svoje
+          Účetní firma, která má
           <br />
-          <span className="text-cyan">papíry</span>,&nbsp;
-          <span className="text-cyan">úkoly</span> a&nbsp;
-          <span className="text-cyan">termíny</span>.
-          <br />
-          Vy ušetříte <span className="text-gold">hodiny.</span>
+          všechno <span className="text-cyan">pod kontrolou.</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="opacity-0 animate-float-up delay-200 mt-7 text-text-secondary text-lg sm:text-xl leading-relaxed max-w-2xl">
-          Postavíme vám web na vaší doméně, klientský portál pod ním a
-          administrátorskou aplikaci pro vás. Napojíme se na vaše stávající
-          systémy — účetní, dokumenty, banky i registry. Vy vidíte všechny klienty najednou — méně
-          e-mailů, méně telefonů, méně chyb.
+        {/* Subtitle — co kupují */}
+        <p className="opacity-0 animate-float-up delay-200 mt-6 text-text-secondary text-lg sm:text-xl leading-relaxed max-w-3xl">
+          Postavíme vám <strong className="text-white">web na vaší doméně</strong>,{" "}
+          <strong className="text-white">klientský portál</strong> pro vaše klienty
+          a <strong className="text-white">admin aplikaci</strong> pro vás. AI vrstva hlídá termíny, fraud a klienty, kteří chtějí odejít.
         </p>
 
-        {/* Badges */}
-        <div className="opacity-0 animate-float-up delay-300 mt-8 flex flex-wrap gap-3">
-          {badges.map((badge) => (
+        {/* 3 produkt vrstvy — vizuální co kupuju */}
+        <div className="opacity-0 animate-float-up delay-300 mt-10 grid grid-cols-3 gap-3 max-w-3xl">
+          {layers.map((l) => (
             <div
-              key={badge.label}
-              className="flex items-center gap-2.5 px-4 py-2.5 border border-cyan/15 bg-cyan/5 hover:border-cyan/30 hover:bg-cyan/8 transition-all duration-300"
+              key={l.title}
+              className="border border-cyan/15 bg-cyan/[0.03] hover:border-cyan/30 hover:bg-cyan/[0.06] transition-all px-4 py-4 sm:px-5 sm:py-5"
             >
-              <badge.icon size={14} className="text-cyan" />
-              <span
+              <l.icon size={20} className="text-cyan mb-2.5" />
+              <div
+                className="text-white font-semibold text-sm sm:text-base"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                {l.title}
+              </div>
+              <div
+                className="text-text-muted mt-0.5"
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.12em",
+                  fontSize: "0.62rem",
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
                 }}
-                className="text-text-secondary"
               >
-                {badge.label}
-              </span>
+                {l.subtitle}
+              </div>
             </div>
           ))}
         </div>
 
         {/* CTAs */}
-        <div className="opacity-0 animate-float-up delay-400 mt-10 flex flex-wrap gap-4">
-          <Link href="/funkce" className="btn-primary">
-            Co aplikace umí
-            <ArrowRight size={16} />
-          </Link>
-          <Link href="/prihlaseni" className="btn-ghost">
+        <div className="opacity-0 animate-float-up delay-400 mt-10 flex flex-wrap gap-4 items-center">
+          <Link href="/prihlaseni" className="btn-primary">
+            <PlayCircle size={16} />
             Vyzkoušet demo
+          </Link>
+          <Link href="/pilot" className="btn-ghost">
+            Domluvit pilot
+            <ArrowRight size={16} />
           </Link>
         </div>
 
-        {/* Pilot CTA panel — nahrazuje původní stats grid */}
-        <div
-          className="opacity-0 animate-float-up delay-600 mt-20 hud-panel p-8 lg:p-10"
-          style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}
-        >
-          <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center">
-            <div>
+        {/* Pilot scarcity — kompaktní */}
+        <div className="opacity-0 animate-float-up delay-500 mt-10 flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            {[1, 2, 3, 4, 5].map((n) => (
               <div
-                className="mb-4 inline-flex items-center gap-2 text-gold"
+                key={n}
+                className="w-2.5 h-2.5 rounded-full"
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
+                  background: "rgba(212,175,55,0.4)",
+                  border: "1px solid rgba(212,175,55,0.7)",
                 }}
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
-                Pilot fáze — hledáme prvních 5 partnerských kanceláří
-              </div>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
-                Buďte u toho první.
-                <br />
-                <span className="text-gold">Společně to změříme.</span>
-              </h2>
-              <p className="text-text-secondary text-base leading-relaxed mb-5 max-w-2xl">
-                EkonomOS je <strong className="text-white">nový produkt</strong>. Místo abychom slibovali
-                čísla bez podkladu, hledáme <strong className="text-white">3–5 prvních partnerských
-                kanceláří</strong>, se kterými produkt nasadíme, společně nastavíme metriky a po 6
-                měsících veřejně publikujeme reálný dopad.
-              </p>
-              <ul className="space-y-2">
-                {pilotPerks.map((p) => (
-                  <li
-                    key={p}
-                    className="flex gap-3 text-text-secondary text-sm leading-relaxed"
-                  >
-                    <CheckCircle2
-                      size={16}
-                      className="text-status-green mt-0.5 flex-shrink-0"
-                    />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex lg:flex-col gap-3 self-start lg:self-center">
-              <Link
-                href="/pilot"
-                className="btn-primary whitespace-nowrap"
-              >
-                Mám zájem o pilot
-                <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="/funkce"
-                className="btn-ghost whitespace-nowrap text-center justify-center"
-              >
-                Co produkt umí
-              </Link>
-            </div>
+              />
+            ))}
           </div>
+          <Link
+            href="/pilot"
+            className="text-gold hover:text-white transition-colors"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+            }}
+          >
+            ◉ Pilot fáze · 5 z 5 míst volných · zvýhodněné podmínky →
+          </Link>
         </div>
       </div>
 

@@ -12,9 +12,45 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "EkonomOS — Klientský portál nové generace",
+  metadataBase: new URL("https://ekonomos.cz"),
+  title: {
+    default: "EkonomOS — Klientský portál nové generace",
+    template: "%s · EkonomOS",
+  },
   description:
-    "Klientský portál pro účetní a poradenské firmy. Klienti vidí úkoly, termíny, dokumenty a rizika v reálném čase. AI hlídá, co byste přehlédli.",
+    "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
+  keywords: [
+    "EkonomOS",
+    "klientský portál",
+    "účetní firma",
+    "AI účetnictví",
+    "fraud detection",
+    "churn predikce",
+    "DPH",
+    "ELSTER",
+    "VELYOS",
+  ],
+  authors: [{ name: "Studio VELYOS" }],
+  creator: "Studio VELYOS",
+  openGraph: {
+    title: "EkonomOS — Klientský portál nové generace",
+    description:
+      "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
+    url: "https://ekonomos.cz",
+    siteName: "EkonomOS",
+    locale: "cs_CZ",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EkonomOS — Klientský portál nové generace",
+    description:
+      "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik.",
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

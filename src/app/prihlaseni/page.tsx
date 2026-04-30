@@ -248,10 +248,10 @@ export default function LoginPage() {
                   marginBottom: 28,
                 }}
               >
-                Místo další landing page tady vzniká produktový showcase. Login
-                je řízený, ověřování jde přes OTP na telefon majitele a po
-                přihlášení se otevře role-specific pracovní plocha s klienty,
-                workflow, riziky a agentními akcemi.
+                Demo přístup do EkonomOS bez registrace. Vyberte profil podle
+                role, ověříme přes OTP na telefon majitele a otevře se
+                pracovní plocha přesně podle toho, co daná role vidí —
+                klienti, workflow, rizika a akce.
               </p>
 
               {/* Profile cards */}

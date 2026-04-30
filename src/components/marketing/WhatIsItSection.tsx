@@ -66,7 +66,7 @@ export default function WhatIsItSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-[1.05]"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Šest věcí <span className="text-cyan">na pozadí.</span>
+            Pět věcí <span className="text-cyan">na pozadí.</span>
           </h2>
         </div>
 

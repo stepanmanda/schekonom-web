@@ -217,32 +217,70 @@ export default function HeroSection() {
           </Link>
         </div>
 
-        {/* Bottom HUD stats */}
-        <div className="opacity-0 animate-float-up delay-600 mt-24 grid grid-cols-2 md:grid-cols-4 gap-px bg-cyan/10">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-void-deep/80 backdrop-blur-sm px-6 py-5 text-center"
-            >
+        {/* Pilot CTA panel — nahrazuje původní stats grid */}
+        <div
+          className="opacity-0 animate-float-up delay-600 mt-20 hud-panel p-8 lg:p-10"
+          style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}
+        >
+          <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
               <div
-                className="text-cyan text-2xl sm:text-3xl font-bold"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
-              >
-                {stat.value}
-              </div>
-              <div
-                className="mt-1 text-text-muted"
+                className="mb-4 inline-flex items-center gap-2 text-gold"
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.6rem",
-                  letterSpacing: "0.16em",
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.18em",
                   textTransform: "uppercase",
                 }}
               >
-                {stat.label}
+                <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
+                Pilot fáze — hledáme prvních 5 partnerských kanceláří
               </div>
+              <h2
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+                style={{ fontFamily: "var(--font-space-grotesk)" }}
+              >
+                Buďte u toho první.
+                <br />
+                <span className="text-gold">Společně to změříme.</span>
+              </h2>
+              <p className="text-text-secondary text-base leading-relaxed mb-5 max-w-2xl">
+                EkonomOS je <strong className="text-white">nový produkt</strong>. Místo abychom slibovali
+                čísla bez podkladu, hledáme <strong className="text-white">3–5 prvních partnerských
+                kanceláří</strong>, se kterými produkt nasadíme, společně nastavíme metriky a po 6
+                měsících veřejně publikujeme reálný dopad.
+              </p>
+              <ul className="space-y-2">
+                {pilotPerks.map((p) => (
+                  <li
+                    key={p}
+                    className="flex gap-3 text-text-secondary text-sm leading-relaxed"
+                  >
+                    <CheckCircle2
+                      size={16}
+                      className="text-status-green mt-0.5 flex-shrink-0"
+                    />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+            <div className="flex lg:flex-col gap-3 self-start lg:self-center">
+              <Link
+                href="/pilot"
+                className="btn-primary whitespace-nowrap"
+              >
+                Mám zájem o pilot
+                <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="/funkce"
+                className="btn-ghost whitespace-nowrap text-center justify-center"
+              >
+                Co produkt umí
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

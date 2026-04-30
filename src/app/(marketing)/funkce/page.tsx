@@ -177,6 +177,132 @@ export default function FunkcePage() {
           </div>
         </FadeInSection>
 
+        {/* ROI / Impact section */}
+        <FadeInSection className="mb-8">
+          <div className="flex items-center gap-4">
+            <div className="section-tag">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
+              CO VÁM TO PŘINESE // VYČÍSLENO
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-gold/20 to-transparent" />
+          </div>
+        </FadeInSection>
+
+        <FadeInSection className="mb-12">
+          <h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4"
+            style={{ fontFamily: "var(--font-space-grotesk)" }}
+          >
+            Modelová kancelář: 25 zaměstnanců, 100 klientů, obrat 30M Kč/rok.
+            <br />
+            <span className="text-gold">Po 12 měsících s EkonomOS:</span>
+          </h2>
+          <p className="text-text-secondary text-base max-w-3xl leading-relaxed">
+            Konzervativní odhad na základě dat z aktivního nasazení. Každá kancelář je jiná — váš profil propočítáme na konzultaci.
+          </p>
+        </FadeInSection>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-10">
+          {impacts.map((i) => (
+            <div key={i.title} className="hud-panel p-7">
+              <div className="flex items-start gap-5">
+                <div className="p-3 border border-gold/30 bg-gold/5 flex-shrink-0">
+                  <i.icon size={22} className="text-gold" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span
+                      className="text-gold text-3xl font-bold"
+                      style={{ fontFamily: "var(--font-space-grotesk)" }}
+                    >
+                      {i.value}
+                    </span>
+                    <span
+                      className="text-text-muted"
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "0.65rem",
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {i.unit}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-white text-lg font-semibold mb-2"
+                    style={{ fontFamily: "var(--font-space-grotesk)" }}
+                  >
+                    {i.title}
+                  </h3>
+                  <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                    {i.desc}
+                  </p>
+                  <div
+                    className="text-cyan border-t border-cyan/10 pt-3"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    💰 {i.moneyEquiv}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ROI Bottom line */}
+        <FadeInSection className="mb-24">
+          <div className="hud-panel p-10 text-center" style={{ borderTop: "2px solid rgba(212,175,55,0.5)" }}>
+            <div
+              className="text-gold mb-3"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+              }}
+            >
+              Bottom line
+            </div>
+            <div className="grid sm:grid-cols-3 gap-6 mb-6">
+              <div>
+                <div
+                  className="text-white text-3xl sm:text-4xl font-bold mb-1"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  ~2,6M Kč
+                </div>
+                <div className="text-text-muted text-sm">Roční dopad</div>
+              </div>
+              <div>
+                <div
+                  className="text-cyan text-3xl sm:text-4xl font-bold mb-1"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  ~800 K Kč
+                </div>
+                <div className="text-text-muted text-sm">Roční náklad EkonomOS</div>
+              </div>
+              <div>
+                <div
+                  className="text-gold text-3xl sm:text-4xl font-bold mb-1"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  3,3×
+                </div>
+                <div className="text-text-muted text-sm">ROI první rok</div>
+              </div>
+            </div>
+            <p className="text-text-secondary text-sm max-w-2xl mx-auto leading-relaxed">
+              Setup fee se vrátí za <strong className="text-white">2–4 měsíce</strong>. Každý další rok ROI roste — náklad zůstává, dopady kumulují.
+            </p>
+          </div>
+        </FadeInSection>
+
         {/* Module cards */}
         <FadeInSection className="mb-8">
           <div className="flex items-center gap-4">

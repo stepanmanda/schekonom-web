@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "EkonomOS — Klientský portál nové generace",
     description:
       "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
-    url: "https://ekonomos.cz",
+    url: "https://velyos.ekonomos.cz",
     siteName: "EkonomOS",
     locale: "cs_CZ",
     type: "website",

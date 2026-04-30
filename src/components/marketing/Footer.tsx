@@ -10,6 +10,8 @@ const footerLinks = {
     { label: "Všechny funkce", href: "/funkce" },
   ],
   produkt: [
+    { label: "Pilot fáze", href: "/pilot" },
+    { label: "Časté dotazy", href: "/caste-dotazy" },
     { label: "O EkonomOS", href: "/o-nas" },
     { label: "Zabezpečení dat", href: "/zabezpeceni-dat" },
     { label: "Kontakt", href: "/kontakt" },

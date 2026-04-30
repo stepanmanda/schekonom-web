@@ -592,6 +592,7 @@ export default function LoginPage() {
                 </form>
               </div>
             </div>
+            </details>
           </div>
 
           {/* Right column */}

@@ -104,7 +104,7 @@ export default function ONasPage() {
                   Klasická účetní kancelář bojuje s e-maily, papíry a
                   Excelem. EkonomOS to mění tím, že propojí všechny zdroje dat
                   do jedné aplikace, nasadí AI na hlídání rizik a automatizuje
-                  rutinu přes 8 N8N workflow.
+                  rutinu přes automatizovaný workflow.
                 </p>
               </div>
               <div>

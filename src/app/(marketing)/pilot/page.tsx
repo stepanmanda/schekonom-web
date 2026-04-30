@@ -309,7 +309,7 @@ export default function PilotPage() {
               </span>
             </div>
             <p className="text-text-secondary text-base leading-relaxed mb-6 max-w-3xl">
-              Konkrétní cifry probereme na konzultaci — záleží na rozsahu nasazení a počtu vašich klientů. Cena má tři složky:
+              Cena má tři složky. Uvedené rozsahy jsou orientační pro účetní firmu 15–50 zaměstnanců a 50–200 klientů. Konkrétní nabídku probereme po auditu vašeho stacku.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
@@ -323,6 +323,12 @@ export default function PilotPage() {
                   }}
                 >
                   1) Setup (jednorázově)
+                </div>
+                <div
+                  className="text-white text-xl font-semibold mb-2"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  80 – 200 K Kč
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Audit, integrace na vaše systémy, branding, training týmu. Pokrývá 8–12 týdnů onboarding.
@@ -340,6 +346,12 @@ export default function PilotPage() {
                 >
                   2) Platforma (měsíčně)
                 </div>
+                <div
+                  className="text-white text-xl font-semibold mb-2"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  8 – 15 K Kč / měsíc
+                </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Hosting, údržba, security patches, support. Fixní položka, nezávisí na počtu klientů.
                 </p>
@@ -356,13 +368,19 @@ export default function PilotPage() {
                 >
                   3) Per klient (měsíčně)
                 </div>
+                <div
+                  className="text-white text-xl font-semibold mb-2"
+                  style={{ fontFamily: "var(--font-space-grotesk)" }}
+                >
+                  ~300 – 500 Kč / klient
+                </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Skaluje s vaším úspěchem. AI compute, storage, integrace pro každého vašeho klienta zvlášť.
                 </p>
               </div>
             </div>
-            <p className="text-text-muted text-xs mt-5 leading-relaxed">
-              V pilot fázi nabízíme zvýhodněné podmínky — sleva nebo prodloužené free období. Konkrétní rozsah dohodneme individuálně.
+            <p className="text-text-muted text-sm mt-6 leading-relaxed max-w-3xl">
+              <strong className="text-white">V pilot fázi sleva 50 % na první rok</strong> nebo prodloužené free období. Pro kancelář se 100 klienty se měsíční cena pohybuje cca <strong className="text-white">38 – 65 K Kč/měsíc</strong> v plné fázi, v pilotu výrazně méně. Konkrétní rozsah dohodneme individuálně.
             </p>
           </div>
         </FadeInSection>

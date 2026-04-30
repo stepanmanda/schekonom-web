@@ -281,6 +281,33 @@ export default function LoginPage() {
                 vidí — klienti, workflow, rizika a akce. Žádné heslo, žádné OTP.
               </p>
 
+              {/* Locked features notice */}
+              <div
+                className="hud-panel mt-6 p-4 flex items-start gap-3"
+                style={{ borderLeft: "2px solid rgba(212,175,55,0.5)" }}
+              >
+                <Lock
+                  size={16}
+                  style={{
+                    color: "rgba(212,175,55,0.95)",
+                    marginTop: "2px",
+                    flexShrink: 0,
+                  }}
+                />
+                <p
+                  style={{
+                    color: "#B8C1C8",
+                    fontSize: "0.85rem",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  <strong style={{ color: "#FFFFFF" }}>
+                    Demo má omezenou funkčnost.
+                  </strong>{" "}
+                  Pokročilé funkce, AI vrstva a hloubka analýz se v demu nezobrazí — odemkneme je po dohodě o spolupráci. Chráníme tím know-how, které jsme dlouho budovali.
+                </p>
+              </div>
+
               {/* Profile cards */}
               <div className="grid gap-4 md:grid-cols-3">
                 {demoProfiles.map((profile) => {

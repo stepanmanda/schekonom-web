@@ -13,8 +13,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <WhatIsItSection />
       <DeadlineStressSection />
+      <WhatIsItSection />
       <StoriesSection />
       <HiddenSignalsDemo />
       <LockedTeaser />

@@ -5,13 +5,15 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function PortalGuard({ children }: { children: React.ReactNode }) {
-  const { session } = useAuth();
+  const { session, ready } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) router.replace("/prihlaseni");
-  }, [session, router]);
+    if (ready && !session) router.replace("/prihlaseni");
+  }, [ready, session, router]);
 
+  // Wait for sessionStorage hydration before deciding to redirect
+  if (!ready) return null;
   if (!session) return null;
   return <>{children}</>;
 }

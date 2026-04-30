@@ -55,15 +55,26 @@ export default function ContactSection() {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      `EkonomOS — ${formState.inquiry || "zájem o produkt"}`,
-    );
-    const body = encodeURIComponent(
-      `Jméno: ${formState.name}\nE-mail: ${formState.email}\nFirma: ${formState.company}\nCo potřebuji: ${formState.inquiry}\n\nZpráva:\n${formState.message}`,
-    );
-    window.location.href = `mailto:info@ekonomos.cz?subject=${subject}&body=${body}`;
+    setSubmitState("sending");
+    const payload = {
+      name: formState.name,
+      email: formState.email,
+      company: formState.phone, // contact section nemá company field, použijeme phone jako kontext
+      inquiry: formState.service,
+      message: formState.message,
+    };
+    const result = await submitContactForm(payload);
+    if (result.ok && result.mode === "endpoint") {
+      setSubmitState("success");
+      setFormState({ name: "", email: "", phone: "", service: "", message: "" });
+    } else if (result.mode === "mailto") {
+      // mailto fallback otevřel klienta — ale nevíme, jestli odeslal
+      setSubmitState("idle");
+    } else {
+      setSubmitState("error");
+    }
   };
 
   return (

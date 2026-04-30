@@ -314,7 +314,8 @@ export default function LoginPage() {
                       key={profile.id}
                       type="button"
                       className={`hud-card-selectable ${isActive ? "hud-card-selectable-active" : ""}`}
-                      onClick={() => pickProfile(profile)}
+                      onClick={() => handleExpressLogin(profile)}
+                      disabled={loadingStage !== null}
                     >
                       <div className="mb-4 flex items-center justify-between">
                         <span

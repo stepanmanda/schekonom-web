@@ -1,34 +1,6 @@
 "use client";
 
-import { Layers, Network, Bot, UserCheck } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
-
-const values = [
-  {
-    icon: Layers,
-    title: "Komplet servis",
-    desc: "Web na vaší doméně s vaším logem, klientský portál pod ním a EkonomOS aplikaci pro vás. Postavíme, hostujeme, aktualizujeme — vy se staráte o klienty.",
-    accent: "gold",
-  },
-  {
-    icon: Network,
-    title: "Propojuje data",
-    desc: "Účetnictví, mzdy, komunikace, rejstříky, geodata. Aplikace hledá souvislosti, které uvidíte jen když se data potkají na jednom místě.",
-    accent: "cyan",
-  },
-  {
-    icon: Bot,
-    title: "AI hlídá za vás",
-    desc: "Termíny, chybějící dokumenty, podezřelé platby, klient, který přestal komunikovat. Aplikace si toho všimne dřív než vy.",
-    accent: "cyan",
-  },
-  {
-    icon: UserCheck,
-    title: "Lidská kontrola",
-    desc: "AI navrhuje, vy rozhodujete. Žádný autopilot bez dohledu — každá důležitá akce projde vaším schválením.",
-    accent: "cyan",
-  },
-];
 
 export default function AboutSection() {
   const { ref, inView } = useInView(0.1);

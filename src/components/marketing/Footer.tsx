@@ -142,7 +142,15 @@ export default function Footer() {
               letterSpacing: "0.08em",
             }}
           >
-            &copy; 2026 EkonomOS &middot; Produkt Studia VELYOS
+            &copy; 2026 EkonomOS &middot; Produkt{" "}
+            <a
+              href="https://velyos.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan hover:underline"
+            >
+              Studia VELYOS
+            </a>
           </p>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-status-green animate-pulse-dot" />

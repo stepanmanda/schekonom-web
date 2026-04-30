@@ -85,7 +85,7 @@ const SIGNALS: Record<SignalKey, Signal> = {
       situation:
         "Klient #003 píše v pondělí drsněji než v pátek. Zpočátku malý rozdíl. Postupně se rozevírá. V 6. týdnu pondělní maily začnou být téměř výhružné, páteční zase přátelské.",
       aiCall:
-        "Klient #003: rostoucí divergence v tónu. Indikátor stresu. 78 % pravděpodobnost, že má napjaté cash flow nebo problém v týmu.",
+        "Klient #003: rostoucí divergence v tónu mezi pondělím a pátkem. Indikátor stresu. Vzorec typický pro napjaté cash flow nebo problém v týmu.",
       action:
         "Místo standardní pondělní upomínky pošlete e-mail typu „Všimli jsme si, že máte hodně. Jak vám můžeme pomoct?\"",
       saved:

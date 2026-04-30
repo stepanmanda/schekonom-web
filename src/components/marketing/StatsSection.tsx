@@ -84,7 +84,7 @@ export default function StatsSection() {
         >
           <div className="section-tag justify-center mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            METRIKY // ROZSAH PRODUKTU
+            ROZSAH PRODUKTU
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"

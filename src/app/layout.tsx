@@ -51,6 +51,9 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
+  verification: {
+    google: "Qgdm4KhYnlZl5UK1lV7dXOIJcai9wg5qtaj1eZ3oo6w",
+  },
 };
 
 const structuredData = {

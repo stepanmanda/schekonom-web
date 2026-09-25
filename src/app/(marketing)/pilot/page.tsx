@@ -112,7 +112,7 @@ export default function PilotPage() {
                   className="w-3 h-3 rounded-full"
                   style={{
                     background:
-                      n <= 5
+                      n <= 3
                         ? "rgba(212,175,55,0.4)"
                         : "rgba(255,255,255,0.05)",
                     border: "1px solid rgba(212,175,55,0.6)",
@@ -129,7 +129,7 @@ export default function PilotPage() {
                 textTransform: "uppercase",
               }}
             >
-              5 z 5 míst volných
+              3 z 5 míst volných
             </span>
           </div>
         </div>

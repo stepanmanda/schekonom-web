@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import EkonomosAssistant from "@/components/shared/EkonomosAssistant";
 import "./globals.css";
 
 const inter = Inter({
@@ -123,7 +124,11 @@ export default function RootLayout({
 }) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   return (
-    <html lang="cs" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html
+      lang="cs"
+      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <head>
         <script
           type="application/ld+json"
@@ -137,7 +142,10 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <EkonomosAssistant />
+      </body>
     </html>
   );
 }

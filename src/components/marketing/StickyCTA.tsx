@@ -18,7 +18,7 @@ export default function StickyCTA() {
   return (
     <Link
       href="/pilot"
-      className="fixed bottom-6 right-6 z-40 hud-panel px-5 py-3 flex items-center gap-3 hover:border-gold/40 transition-all"
+      className="fixed bottom-6 right-24 z-40 hud-panel px-5 py-3 hidden sm:flex items-center gap-3 hover:border-gold/40 transition-all"
       style={{
         borderTop: "1px solid rgba(212,175,55,0.5)",
         background: "rgba(3, 8, 13, 0.92)",

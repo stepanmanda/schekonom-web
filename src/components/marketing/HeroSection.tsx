@@ -181,7 +181,7 @@ export default function HeroSection() {
               textTransform: "uppercase",
             }}
           >
-            ◉ Pilot fáze · 5 z 5 míst volných · zvýhodněné podmínky →
+            ◉ Pilot fáze · 3 z 5 míst volných · zvýhodněné podmínky →
           </Link>
         </div>
       </div>

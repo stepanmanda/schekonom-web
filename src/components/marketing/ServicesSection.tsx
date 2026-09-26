@@ -94,17 +94,16 @@ export default function ServicesSection() {
         <div className={`mb-16 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            FUNKCE // CO APLIKACE UMÍ
+            CO VÁM EKONOMOS HLÍDÁ
           </div>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Co tam <span className="text-cyan">klient uvidí</span>
+            Účetnictví bez provozního chaosu
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-2xl">
-            Osm hlavních funkcí. Žádné instalování, žádné návody. Klient se
-            přihlásí přes prohlížeč a všechno má před sebou.
+            Doklady, termíny, klienti a schválení v jednom pracovním toku. Systém připraví podklady a upozorní na výjimky.
           </p>
         </div>
 

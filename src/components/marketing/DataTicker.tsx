@@ -1,21 +1,12 @@
 "use client";
 
 const tickerItems = [
-  "SYS:OK",
-  "FRAUD WATCH: AKTIVNÍ",
-  "OCR FAKTURY: RUNNING",
-  "PÁROVÁNÍ PLATEB: AKTIVNÍ",
-  "RIZIKOVÁ DETEKCE: 1.2k×",
-  "TERMÍNY HLÍDÁNY",
-  "UPOMÍNKY: AUTO",
-  "DPH KH: PŘIPRAVENO",
-  "ELSTER ENDPOINT: STANDBY",
-  "DOCUMENT INGEST: OK",
-  "AI VRSTVA: ONLINE",
-  "PREDIKCE ODCHODU: RUNNING",
-  "200+ ANALÝZ: ACTIVE",
-  "WORKFLOWS: ALL GREEN",
-  "DATA CORRELATION: LIVE",
+  "Doklady a termíny",
+  "Přehledné pracovní toky",
+  "Lidské schválení",
+  "Bezpečný provoz",
+  "Více času na klienty",
+  "Vše důležité na jednom místě",
 ];
 
 export default function DataTicker() {
@@ -30,10 +21,9 @@ export default function DataTicker() {
             <span
               className="text-text-muted"
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.6rem",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.75rem",
+                letterSpacing: "0.02em",
               }}
             >
               {item}

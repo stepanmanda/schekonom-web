@@ -35,8 +35,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Logo size={36} showText />
             <p className="mt-4 text-text-muted text-sm leading-relaxed max-w-sm">
-              Klientský portál pro účetní firmy a jejich klienty. Termíny,
-              dokumenty, schválení a AI hlídání rizik na jednom místě.
+              Operační systém pro moderní účetní firmu. Méně rutiny, více
+              kontroly a více prostoru pro klienty.
             </p>
             <a
               href="https://velyos.cz"
@@ -153,19 +153,7 @@ export default function Footer() {
               Studia VELYOS
             </a>
           </p>
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-status-green animate-pulse-dot" />
-            <span
-              className="text-text-muted"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.6rem",
-                letterSpacing: "0.12em",
-              }}
-            >
-              ALL SYSTEMS OPERATIONAL
-            </span>
-          </div>
+          <p className="text-text-muted text-sm">Systém pracuje. Vy rozhodujete.</p>
         </div>
       </div>
     </footer>

@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Playfair_Display, Roboto } from "next/font/google";
 import EkonomosAssistant from "@/components/shared/EkonomosAssistant";
 import ThemeProvider from "@/components/shared/ThemeProvider";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin", "latin-ext"],
 });
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ekonomos.velyos.cz"),
   title: {
-    default: "EkonomOS: Klientský portál nové generace",
+    default: "ekonomOS | Operační systém pro moderní účetní firmu",
     template: "%s · EkonomOS",
   },
   description:
-    "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
+    "ekonomOS propojuje doklady, termíny, klienty, platby a schvalování do jednoho pracovního toku. Méně rutiny, více kontroly a více času na klienty.",
   keywords: [
     "EkonomOS",
     "klientský portál",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Studio VELYOS" }],
   creator: "Studio VELYOS",
   openGraph: {
-    title: "EkonomOS: Klientský portál nové generace",
+    title: "ekonomOS | Operační systém pro moderní účetní firmu",
     description:
-      "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
+      "Méně rutiny. Více kontroly. Více prostoru pro klienty.",
     url: "https://ekonomos.velyos.cz",
     siteName: "EkonomOS",
     locale: "cs_CZ",
@@ -45,13 +45,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EkonomOS: Klientský portál nové generace",
+    title: "ekonomOS | Operační systém pro moderní účetní firmu",
     description:
-      "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik.",
+      "Méně rutiny. Více kontroly. Více prostoru pro klienty.",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: [{ url: "/brand/favicon.png", type: "image/png" }],
+    shortcut: "/brand/favicon.png",
+    apple: "/brand/favicon.png",
   },
   verification: {
     google: "Qgdm4KhYnlZl5UK1lV7dXOIJcai9wg5qtaj1eZ3oo6w",
@@ -98,7 +99,7 @@ const structuredData = {
         "Fraud detection (IBAN, duplicitní faktury)",
         "Automatizace OCR faktur, párování plateb, upomínek",
         "Hlídání termínů (DPH, ELSTER, ČSSZ, ZP)",
-        "200+ analýz napříč 23 kategoriemi",
+        "Přehledné pracovní toky pro účetní firmy",
         "Napojení na účetní software, banky, státní portály",
       ],
       provider: {
@@ -140,7 +141,7 @@ export default function RootLayout({
   return (
     <html
       lang="cs"
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
+      className={`${roboto.variable} ${playfair.variable}`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >

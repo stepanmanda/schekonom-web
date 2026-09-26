@@ -13,21 +13,20 @@ export default function HeroSection() {
             <span /> Klid v každém termínu
           </div>
           <h1 id="hero-title">
-            Doklady projdou.<br />
-            <span>Vy rozhodnete.</span>
+            Klid v každém termínu.
           </h1>
           <p className={styles.lede}>
-            EkonomOS propojí dokumenty, platby a termíny do jednoho toku.
-            <strong> Rutinu připraví systém. Kritické kroky schvaluje člověk.</strong>
+            EkonomOS propojí doklady, termíny, platby, klienty a schvalování do
+            jednoho přehledného toku. <strong>Systém připraví rutinu. Člověk rozhoduje tam, kde na tom záleží.</strong>
           </p>
 
           <div className={styles.actions}>
-            <Link href="/prihlaseni" className={styles.primary}>
+            <Link href="/kontakt" className={styles.primary}>
               <PlayCircle size={17} aria-hidden="true" />
-              Prohlédnout živé demo
+              Domluvit ukázku
             </Link>
-            <Link href="/pilot" className={styles.secondary}>
-              Jak probíhá pilot <ArrowRight size={16} aria-hidden="true" />
+            <Link href="/funkce" className={styles.secondary}>
+              Prohlédnout funkce <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
 
@@ -37,13 +36,10 @@ export default function HeroSection() {
             <span><Check aria-hidden="true" /> Člověk vždy schvaluje</span>
           </div>
 
-          <Link href="/pilot" className={styles.availability}>
-            <span className={styles.dots} aria-hidden="true">
-              <i /><i /><i className={styles.open} /><i className={styles.open} /><i className={styles.open} />
-            </span>
-            Pilotní fáze · 3 z 5 míst volných
-            <ArrowRight size={14} aria-hidden="true" />
-          </Link>
+          <div className={styles.availability}>
+            <span className={styles.dots} aria-hidden="true"><i /></span>
+            Systém pracuje. Vy rozhodujete.
+          </div>
         </div>
 
         <div className={styles.visual}>

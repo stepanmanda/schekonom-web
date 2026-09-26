@@ -1,4 +1,4 @@
-"use client";
+import Image from "next/image";
 
 interface LogoProps {
   size?: number;
@@ -8,66 +8,19 @@ interface LogoProps {
 export default function Logo({ size = 48, showText = true }: LogoProps) {
   return (
     <div className="flex items-center gap-3">
-      <div className="animate-glow-logo flex-shrink-0">
-        <svg
-          width={size}
-          height={size}
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="var(--accent-soft)" />
-              <stop offset="100%" stopColor="transparent" />
-            </radialGradient>
-            <linearGradient id="logoCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="var(--signal)" />
-              <stop offset="100%" stopColor="var(--accent-secondary)" />
-            </linearGradient>
-            <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="rgba(212,175,55,0.9)" />
-              <stop offset="100%" stopColor="rgba(212,175,55,0.5)" />
-            </linearGradient>
-          </defs>
-          <circle cx="24" cy="24" r="23" fill="url(#logoGlow)" />
-          <circle
-            cx="24"
-            cy="24"
-            r="22"
-            stroke="url(#logoCyan)"
-            strokeWidth="1.5"
-            fill="none"
-            opacity="0.5"
-          />
-          <circle
-            cx="24"
-            cy="24"
-            r="18"
-            stroke="url(#logoGold)"
-            strokeWidth="0.75"
-            fill="none"
-            opacity="0.3"
-          />
-          <text
-            x="24"
-            y="30"
-            textAnchor="middle"
-            fill="var(--signal)"
-            fontSize="16"
-            fontFamily="Space Grotesk, sans-serif"
-            fontWeight="700"
-            letterSpacing="1"
-          >
-            OS
-          </text>
-        </svg>
-      </div>
+      <Image
+        src="/brand/logo.png"
+        alt="ekonomOS"
+        width={size}
+        height={size}
+        className="flex-shrink-0 object-contain"
+        priority={size >= 40}
+      />
       {showText && (
         <div className="flex flex-col">
           <span
             style={{
-              fontFamily: "var(--font-space-grotesk)",
+              fontFamily: "var(--font-body)",
               fontSize: "1.1rem",
               fontWeight: 700,
               color: "var(--ink)",
@@ -75,18 +28,18 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
               lineHeight: 1,
             }}
           >
-            EkonomOS
+            ekonomOS
           </span>
           <span
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.55rem",
-              letterSpacing: "0.2em",
+              letterSpacing: "0.12em",
               color: "var(--accent-strong)",
               marginTop: 2,
             }}
           >
-            KLIENTSKÝ PORTÁL
+            OPERAČNÍ SYSTÉM
           </span>
         </div>
       )}

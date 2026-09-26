@@ -138,7 +138,7 @@ export default function Header() {
           </Link>
 
           <Link href="/kontakt" className="btn-primary">
-            Domluvit demo
+            Domluvit ukázku
           </Link>
         </div>
 
@@ -191,7 +191,7 @@ export default function Header() {
                 className="btn-primary text-center justify-center"
                 onClick={() => setMobileOpen(false)}
               >
-                Domluvit demo
+                Domluvit ukázku
               </Link>
             </div>
           </nav>

@@ -40,14 +40,14 @@ const SIGNALS: Record<SignalKey, Signal> = {
   smajliky: {
     key: "smajliky",
     icon: Smile,
-    title: "Smajlíky v e-mailech",
+    title: "Smajlíky v emailech",
     unit: "% mailů se smajlíkem",
     baseline: "~80 %",
     weeks: [82, 78, 80, 75, 70, 60, 40, 20, 10, 5, 0, 0],
     alertWeek: 8,
     scenario: {
       situation:
-        "Klient #007 vám 6 měsíců posílal v každém e-mailu smajlík. Žádný velký, jen takový obyčejný. Ve 4. týdnu nárůstu pracovních úkolů ho začal vynechávat. V 8. týdnu úplně přestal.",
+        "Klient #007 vám 6 měsíců posílal v každém emailu smajlík. Žádný velký, jen takový obyčejný. Ve 4. týdnu nárůstu pracovních úkolů ho začal vynechávat. V 8. týdnu úplně přestal.",
       aiCall:
         "Klient #007 změnil tón. Posledních 14 dní bez emocí. Riziko odchodu během 60 dní výrazně zvýšené.",
       action:
@@ -70,7 +70,7 @@ const SIGNALS: Record<SignalKey, Signal> = {
         "Klient #012 současně: přestal odpovídat na první mail (3× za sebou), řádově víc ad-hoc dotazů, přestal číst přílohy. Vícenásobné riziko. Doporučení: osobní schůzka tento týden.",
       action:
         "Sjednáte schůzku. Klient přizná, že hledal jiného účetního, ale dáte mu důvěru zpět.",
-      saved: "Měli jste reálnou šanci ho udržet — zvládli jste to.",
+      saved: "Měli jste reálnou šanci ho udržet, zvládli jste to.",
     },
   },
   ton: {
@@ -87,7 +87,7 @@ const SIGNALS: Record<SignalKey, Signal> = {
       aiCall:
         "Klient #003: rostoucí divergence v tónu mezi pondělím a pátkem. Indikátor stresu. Vzorec typický pro napjaté cash flow nebo problém v týmu.",
       action:
-        "Místo standardní pondělní upomínky pošlete e-mail typu „Všimli jsme si, že máte hodně. Jak vám můžeme pomoct?\"",
+        "Místo standardní pondělní upomínky pošlete email typu „Všimli jsme si, že máte hodně. Jak vám můžeme pomoct?\"",
       saved:
         "Klient přizná, že má kontrolu z FÚ. Pomůžete připravit podklady, posílíte vztah.",
     },
@@ -123,20 +123,21 @@ export default function HiddenSignalsDemo() {
 
   const active = SIGNALS[activeKey];
 
-  // auto-play při změně signálu
-  useEffect(() => {
+  const selectSignal = (key: SignalKey) => {
+    setActiveKey(key);
     setRevealedWeek(0);
     setPlaying(true);
-  }, [activeKey]);
+  };
 
   useEffect(() => {
     if (!playing) return;
-    if (revealedWeek >= TIMELINE_WEEKS) {
-      setPlaying(false);
-      return;
-    }
+    if (revealedWeek >= TIMELINE_WEEKS) return;
     const id = setTimeout(() => {
-      setRevealedWeek((w) => w + 1);
+      setRevealedWeek((week) => {
+        const nextWeek = week + 1;
+        if (nextWeek >= TIMELINE_WEEKS) setPlaying(false);
+        return nextWeek;
+      });
     }, 220);
     return () => clearTimeout(id);
   }, [playing, revealedWeek]);
@@ -161,7 +162,7 @@ export default function HiddenSignalsDemo() {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        {/* Header — kompaktní */}
+        {/* Header, kompaktní */}
         <div className={`mb-8 ${inView ? "animate-float-up" : "opacity-0"}`}>
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gold inline-block animate-pulse-dot" />
@@ -176,7 +177,7 @@ export default function HiddenSignalsDemo() {
           </h2>
           <p className="mt-5 text-text-secondary text-base sm:text-lg max-w-3xl leading-relaxed">
             Aplikace na pozadí sleduje, jak s vámi klient píše a kdy odpovídá.
-            Drobné změny — <strong className="text-white">smajlíky, oslovení, tón, rychlost</strong> — jsou často první signál, že se něco děje.
+            Drobné změny, <strong className="text-white">smajlíky, oslovení, tón, rychlost</strong>, jsou často první signál, že se něco děje.
             Vyberte níže ukázku a uvidíte 12týdenní vývoj fiktivního klienta.
           </p>
         </div>
@@ -189,7 +190,7 @@ export default function HiddenSignalsDemo() {
               <button
                 key={s.key}
                 type="button"
-                onClick={() => setActiveKey(s.key)}
+                onClick={() => selectSignal(s.key)}
                 className={`p-4 lg:p-5 border text-left transition-all ${
                   isActive
                     ? "border-gold/50 bg-gold/[0.06]"
@@ -240,7 +241,7 @@ export default function HiddenSignalsDemo() {
                   textTransform: "uppercase",
                 }}
               >
-                ◉ Klient #007 — vývoj 12 týdnů
+                ◉ Klient #007, vývoj 12 týdnů
               </div>
               <h3
                 className="text-white text-xl font-semibold"
@@ -277,7 +278,7 @@ export default function HiddenSignalsDemo() {
             </button>
           </div>
 
-          {/* Timeline visualization — zmenšeno + legend */}
+          {/* Timeline visualization, zmenšeno + legend */}
           <div className="mb-6 grid lg:grid-cols-[1fr_220px] gap-6">
             <div>
               <div className="grid grid-cols-12 gap-1 mb-2" style={{ minHeight: "100px" }}>
@@ -345,7 +346,7 @@ export default function HiddenSignalsDemo() {
                 className="mt-3 text-text-muted text-xs"
                 style={{ fontStyle: "italic" }}
               >
-                T1–T12 = týdny od začátku sledování. Vyšší sloupec = silnější signál (přátelská komunikace).
+                T1 až T12 = týdny od začátku sledování. Vyšší sloupec = silnější signál (přátelská komunikace).
               </div>
             </div>
 

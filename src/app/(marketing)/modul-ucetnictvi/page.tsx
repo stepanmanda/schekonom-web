@@ -6,9 +6,7 @@ import {
   ArrowRight,
   CheckCircle2,
   AlertTriangle,
-  TrendingUp,
   Eye,
-  Lock,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
@@ -77,7 +75,7 @@ export default function ModulUcetnictviPage() {
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
             Skutečnost vs. plán, cash flow, variance analýza, prognóza do konce
             období. Modul propojuje účetní data s rozpočtem, sezónností a
-            historickým trendem — abyste viděli nejen co se stalo, ale i kam to
+            historickým trendem, abyste viděli nejen co se stalo, ale i kam to
             směřuje.
           </p>
         </div>
@@ -205,7 +203,7 @@ export default function ModulUcetnictviPage() {
                 Účetnictví bez slepých míst
               </h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                Modul se dodává jako součást EkonomOS — na konzultaci probereme, jak ho propojit s vašimi účetními a rozpočtovými daty.
+                Modul se dodává jako součást EkonomOS, na konzultaci probereme, jak ho propojit s vašimi účetními a rozpočtovými daty.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/kontakt" className="btn-primary">

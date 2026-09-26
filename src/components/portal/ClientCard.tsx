@@ -16,7 +16,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "color-mix(in srgb, var(--accent-strong) 72%, transparent)",
 };
 
 function MiniMetric({
@@ -31,10 +31,10 @@ function MiniMetric({
   return (
     <div className="hud-mini-metric" data-tone="slate">
       <div className="mb-3 flex items-center gap-2">
-        <Icon size={14} color="rgba(0,229,255,0.72)" />
+        <Icon size={14} color="color-mix(in srgb, var(--accent-strong) 72%, transparent)" />
         <span style={labelStyle}>{label}</span>
       </div>
-      <div style={{ color: "#FFFFFF", fontWeight: 600 }}>{value}</div>
+      <div style={{ color: "var(--ink)", fontWeight: 600 }}>{value}</div>
     </div>
   );
 }
@@ -56,7 +56,7 @@ export default function ClientCard({
         <div>
           <div
             style={{
-              color: "#FFFFFF",
+              color: "var(--ink)",
               fontSize: "1rem",
               fontWeight: 600,
               marginBottom: 4,
@@ -64,8 +64,8 @@ export default function ClientCard({
           >
             {client.name}
           </div>
-          <div style={{ color: "#7A8A9E", fontSize: "0.82rem" }}>
-            {client.sector} // {client.region}
+          <div style={{ color: "var(--muted)", fontSize: "0.82rem" }}>
+            {client.sector}{" // "}{client.region}
           </div>
         </div>
         <span className="hud-chip" data-tone={client.statusTone}>
@@ -102,12 +102,12 @@ export default function ClientCard({
 
       <div className="mt-4 border-t border-cyan-500/10 pt-4">
         <div style={labelStyle}>odpovědnost</div>
-        <div style={{ color: "#B8C1C8", lineHeight: 1.6 }}>
+        <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
           {client.ownerLabels.join(" / ")}
         </div>
         <div
           className="mt-2"
-          style={{ color: "#FFFFFF", lineHeight: 1.6, fontSize: "0.88rem" }}
+          style={{ color: "var(--ink)", lineHeight: 1.6, fontSize: "0.88rem" }}
         >
           {client.status}
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import EkonomosAssistant from "@/components/shared/EkonomosAssistant";
+import ThemeProvider from "@/components/shared/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ekonomos.velyos.cz"),
   title: {
-    default: "EkonomOS — Klientský portál nové generace",
+    default: "EkonomOS: Klientský portál nové generace",
     template: "%s · EkonomOS",
   },
   description:
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Studio VELYOS" }],
   creator: "Studio VELYOS",
   openGraph: {
-    title: "EkonomOS — Klientský portál nové generace",
+    title: "EkonomOS: Klientský portál nové generace",
     description:
       "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik. Pilot fáze, hledáme prvních 5 partnerů.",
     url: "https://ekonomos.velyos.cz",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EkonomOS — Klientský portál nové generace",
+    title: "EkonomOS: Klientský portál nové generace",
     description:
       "Komplet pro účetní firmy: web, klientský portál a admin aplikace s AI hlídáním rizik.",
   },
@@ -88,7 +89,7 @@ const structuredData = {
         priceSpecification: {
           "@type": "PriceSpecification",
           description:
-            "Setup fee + měsíční platforma + per-klient. Konkrétní cena podle rozsahu.",
+            "Setup fee + měsíční platforma + cena za klienta. Konkrétní cena podle rozsahu.",
         },
       },
       featureList: [
@@ -117,6 +118,19 @@ const structuredData = {
   ],
 };
 
+const themeScript = `
+  (() => {
+    try {
+      const stored = localStorage.getItem("ekonomos-theme");
+      const theme = stored === "light" || stored === "dark"
+        ? stored
+        : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    } catch (_) {}
+  })();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -128,8 +142,10 @@ export default function RootLayout({
       lang="cs"
       className={`${inter.variable} ${spaceGrotesk.variable}`}
       data-scroll-behavior="smooth"
+      suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -143,8 +159,10 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        {children}
-        <EkonomosAssistant />
+        <ThemeProvider>
+          {children}
+          <EkonomosAssistant />
+        </ThemeProvider>
       </body>
     </html>
   );

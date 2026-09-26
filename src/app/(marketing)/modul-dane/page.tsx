@@ -17,7 +17,7 @@ const highlights = [
   },
   {
     title: "Daňová optimalizace v reálném čase",
-    desc: "Aplikace navrhuje, kde lze daňovou zátěž snížit — odpisy, časování investic, slevy. Konkrétní akce, ne obecné rady.",
+    desc: "Aplikace navrhuje, kde lze daňovou zátěž snížit, odpisy, časování investic, slevy. Konkrétní akce, ne obecné rady.",
   },
   {
     title: "Připraveno na ViDA a e-fakturaci",
@@ -72,9 +72,9 @@ export default function ModulDanePage() {
             Daně, které <span className="text-cyan">se hlídají samy</span>
           </h1>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Česká daňová agenda v jednom toku — DPPO, DPFO, DPH, kontrolní a
+            Česká daňová agenda v jednom toku, DPPO, DPFO, DPH, kontrolní a
             souhrnné hlášení, monitoring legislativy a podpora při daňových
-            kontrolách. Plus simulátor „co kdyby" pro daňovou optimalizaci.
+            kontrolách. Plus simulátor „co kdyby“ pro daňovou optimalizaci.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export default function ModulDanePage() {
         <FadeInSection className="mb-20">
           <div className="section-tag mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan inline-block" />
-            UKÁZKA Z PRAXE // SCÉNÁŘE „CO KDYBY"
+            UKÁZKA Z PRAXE // SCÉNÁŘE „CO KDYBY“
           </div>
           <h2
             className="text-2xl sm:text-3xl font-bold text-white mb-3"

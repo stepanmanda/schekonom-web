@@ -29,14 +29,14 @@ export default function SchvaleniPage() {
                 <div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontWeight: 600,
                       marginBottom: 6,
                     }}
                   >
                     {alert.title}
                   </div>
-                  <div style={{ color: "#B8C1C8", lineHeight: 1.62 }}>
+                  <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
                     {alert.summary}
                   </div>
                 </div>
@@ -47,7 +47,7 @@ export default function SchvaleniPage() {
                   {alert.severity}
                 </span>
               </div>
-              <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+              <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                 {alert.action}
               </div>
             </div>
@@ -64,19 +64,19 @@ export default function SchvaleniPage() {
           {workspace.deadlines.map((deadline) => (
             <div key={deadline.id} className="hud-list-row">
               <div className="flex items-start gap-3">
-                <Calendar size={16} color="rgba(0,229,255,0.75)" />
+                <Calendar size={16} color="color-mix(in srgb, var(--accent-strong) 75%, transparent)" />
                 <div>
-                  <div style={{ color: "#FFFFFF", fontWeight: 600 }}>
+                  <div style={{ color: "var(--ink)", fontWeight: 600 }}>
                     {deadline.title}
                   </div>
                   <div
                     style={{
-                      color: "#7A8A9E",
+                      color: "var(--muted)",
                       fontSize: "0.84rem",
                       marginTop: 4,
                     }}
                   >
-                    {deadline.area} // {deadline.ownerLabel}
+                    {deadline.area}{" // "}{deadline.ownerLabel}
                   </div>
                 </div>
               </div>

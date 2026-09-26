@@ -35,7 +35,7 @@ export default function StickyCTA() {
           textTransform: "uppercase",
         }}
       >
-        Pilot — máme volné sloty
+        Pilot, máme volné sloty
       </span>
     </Link>
   );

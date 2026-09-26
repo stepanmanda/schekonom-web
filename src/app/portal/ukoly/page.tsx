@@ -24,14 +24,14 @@ export default function UkolyPage() {
                 <div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontWeight: 600,
                       marginBottom: 6,
                     }}
                   >
                     {task.title}
                   </div>
-                  <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+                  <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                     {task.summary}
                   </div>
                 </div>
@@ -74,14 +74,14 @@ export default function UkolyPage() {
                 <div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontWeight: 600,
                       marginBottom: 6,
                     }}
                   >
                     {alert.title}
                   </div>
-                  <div style={{ color: "#B8C1C8", lineHeight: 1.62 }}>
+                  <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
                     {alert.summary}
                   </div>
                 </div>

@@ -31,7 +31,7 @@ export default function AboutSection() {
           </h2>
           <p className="mt-4 text-text-secondary text-lg max-w-2xl mx-auto">
             EkonomOS není jen aplikace. Je to autonomní finanční centrum, které
-            propojuje vaše data, hlídá rizika a navrhuje akce — místo toho, aby
+            propojuje vaše data, hlídá rizika a navrhuje akce, místo toho, aby
             vás zaplavovalo Excelem.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function AboutSection() {
         <div
           className={`mb-20 grid lg:grid-cols-2 gap-10 items-center ${inView ? "animate-float-up delay-100" : "opacity-0"}`}
         >
-          {/* Abstract HUD visualization — žádné fotky */}
+          {/* Abstract HUD visualization, žádné fotky */}
           <div className="relative group">
             <div
               className="absolute -inset-3 opacity-25 blur-2xl group-hover:opacity-40 transition-opacity duration-700"
@@ -65,7 +65,7 @@ export default function AboutSection() {
               {/* Grid pattern */}
               <div className="absolute inset-0 grid-bg opacity-40" />
 
-              {/* SVG data viz — concentric rings + nodes */}
+              {/* SVG data viz, concentric rings + nodes */}
               <svg
                 className="absolute inset-0 w-full h-full"
                 viewBox="0 0 600 400"
@@ -216,8 +216,7 @@ export default function AboutSection() {
                   className="text-cyan hover:underline"
                 >
                   VELYOS
-                </a>{" "}
-                — specializujeme se na B2B AI agenty a autonomní workflow pro profesionální služby.
+                </a>, specializujeme se na B2B AI agenty a autonomní workflow pro profesionální služby.
               </p>
             </div>
           </div>

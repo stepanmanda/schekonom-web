@@ -15,31 +15,31 @@ import {
 import { useInView } from "@/hooks/useInView";
 
 const criteria = [
-  "Účetní firma 15–50 zaměstnanců, 50–200 klientů",
+  "Účetní firma 15 až 50 zaměstnanců, 50 až 200 klientů",
   "Otevřenost ke společnému měření a sdílení dat (anonymizovaně)",
   "Kontaktní osoba na úrovni majitele / jednatele",
-  "Klientský mix včetně CZ–DE výhoda, ne podmínka",
+  "Klientský mix včetně CZ a DE výhoda, ne podmínka",
   "Závazek k 6měsíčnímu společnému provozu (pak free decision)",
 ];
 
 const phases = [
   {
-    week: "Týden 1–2",
+    week: "Týden 1 až 2",
     title: "Audit a baseline",
     desc: "Probereme váš stav, zmapujeme bolesti, dohodneme metriky úspěchu. Vy nám ukážete, jak dnes pracujete. My nastavíme baseline, ze které budeme měřit změnu.",
   },
   {
-    week: "Týden 3–6",
+    week: "Týden 3 až 6",
     title: "Integrace a customizace",
     desc: "Napojíme EkonomOS na vaše stávající systémy. Nastavíme workflow a alerty podle vašeho profilu. Trénink týmu, branding, testovací data.",
   },
   {
-    week: "Týden 7–12",
+    week: "Týden 7 až 12",
     title: "Pilotní provoz",
     desc: "Tým EkonomOS aktivně používá. Týdenní check-iny. Vše dokumentujeme. Identifikujeme co funguje, co je třeba doladit, kde je největší dopad.",
   },
   {
-    week: "Měsíc 4–6",
+    week: "Měsíc 4 až 6",
     title: "Měření a vyhodnocení",
     desc: "Porovnání před vs. po. Společně publikujeme case study (volitelně anonymně). Rozhodnete, jestli pokračujeme do plné komerční fáze.",
   },
@@ -47,7 +47,7 @@ const phases = [
 
 const youGet = [
   "Sleva nebo prodloužené free období podle rozsahu pilotu",
-  "Přímý přístup k vývojovému týmu — vaše požadavky jdou rovnou do produktu",
+  "Přímý přístup k vývojovému týmu, vaše požadavky jdou rovnou do produktu",
   "Spoluautorství první case study (anonymizovaně i otevřeně)",
   "Onboarding na míru a osobní training týmu",
   "Po 6 měsících zvýhodněné podmínky pro plný provoz",
@@ -56,7 +56,7 @@ const youGet = [
 const youProvide = [
   "Čas: ~2 hodiny týdně po dobu prvních 12 týdnů (kontaktní osoba)",
   "Přístup k systémům, na které budeme napojovat (s vaší IT podporou)",
-  "Otevřenost k feedbacku — co funguje i nefunguje",
+  "Otevřenost k feedbacku, co funguje i nefunguje",
   "Souhlas se sběrem anonymizovaných metrik pro měření dopadu",
 ];
 
@@ -309,7 +309,7 @@ export default function PilotPage() {
               </span>
             </div>
             <p className="text-text-secondary text-base leading-relaxed mb-6 max-w-3xl">
-              Cena má tři složky. Uvedené rozsahy jsou orientační pro účetní firmu 15–50 zaměstnanců a 50–200 klientů. Konkrétní nabídku probereme po auditu vašeho stacku.
+              Cena má tři složky. Uvedené rozsahy jsou orientační pro účetní firmu 15 až 50 zaměstnanců a 50 až 200 klientů. Konkrétní nabídku probereme po auditu vašeho stacku.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
@@ -328,10 +328,10 @@ export default function PilotPage() {
                   className="text-white text-xl font-semibold mb-2"
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  80 – 200 K Kč
+                  80  až  200 K Kč
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
-                  Audit, integrace na vaše systémy, branding, training týmu. Pokrývá 8–12 týdnů onboarding.
+                  Audit, integrace na vaše systémy, branding, training týmu. Pokrývá 8 až 12 týdnů onboarding.
                 </p>
               </div>
               <div className="border border-cyan/10 bg-cyan/[0.03] p-5">
@@ -350,7 +350,7 @@ export default function PilotPage() {
                   className="text-white text-xl font-semibold mb-2"
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  8 – 15 K Kč / měsíc
+                  8  až  15 K Kč / měsíc
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Hosting, údržba, security patches, support. Fixní položka, nezávisí na počtu klientů.
@@ -372,7 +372,7 @@ export default function PilotPage() {
                   className="text-white text-xl font-semibold mb-2"
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  ~300 – 500 Kč / klient
+                  ~300  až  500 Kč / klient
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Skaluje s vaším úspěchem. AI compute, storage, integrace pro každého vašeho klienta zvlášť.
@@ -380,7 +380,7 @@ export default function PilotPage() {
               </div>
             </div>
             <p className="text-text-muted text-sm mt-6 leading-relaxed max-w-3xl">
-              <strong className="text-white">V pilot fázi sleva 50 % na první rok</strong> nebo prodloužené free období. Pro kancelář se 100 klienty se měsíční cena pohybuje cca <strong className="text-white">38 – 65 K Kč/měsíc</strong> v plné fázi, v pilotu výrazně méně. Konkrétní rozsah dohodneme individuálně.
+              <strong className="text-white">V pilot fázi sleva 50 % na první rok</strong> nebo prodloužené free období. Pro kancelář se 100 klienty se měsíční cena pohybuje cca <strong className="text-white">38  až  65 K Kč/měsíc</strong> v plné fázi, v pilotu výrazně méně. Konkrétní rozsah dohodneme individuálně.
             </p>
           </div>
         </FadeInSection>
@@ -404,7 +404,7 @@ export default function PilotPage() {
                 workflow budeme dolaďovat za pochodu. Pokud potřebujete plně
                 hotový enterprise SaaS s 5letou historií, počkejte 2 roky a
                 vraťte se. Pokud chcete být u toho, kdy se to staví, a
-                ovlivnit, jak to bude vypadat — pojďte do toho s námi.
+                ovlivnit, jak to bude vypadat, pojďte do toho s námi.
               </p>
             </div>
           </div>
@@ -431,15 +431,14 @@ export default function PilotPage() {
               <li className="flex gap-4">
                 <div className="hud-step-index">1</div>
                 <div className="text-text-secondary text-sm leading-relaxed">
-                  <strong className="text-white">Krátký hovor (30 min)</strong>{" "}
-                  — bez prezentace. Zjistíme, co řešíte, a jestli vám EkonomOS
+                  <strong className="text-white">Krátký hovor (30 min)</strong>: bez prezentace. Zjistíme, co řešíte, a jestli vám EkonomOS
                   reálně může pomoct.
                 </div>
               </li>
               <li className="flex gap-4">
                 <div className="hud-step-index">2</div>
                 <div className="text-text-secondary text-sm leading-relaxed">
-                  <strong className="text-white">Demo a Q&A</strong> — ukážeme
+                  <strong className="text-white">Demo a Q&A</strong>, ukážeme
                   produkt na živých datech (anonymizovaných). Odpovíme na
                   všechno, co vás zajímá.
                 </div>
@@ -447,7 +446,7 @@ export default function PilotPage() {
               <li className="flex gap-4">
                 <div className="hud-step-index">3</div>
                 <div className="text-text-secondary text-sm leading-relaxed">
-                  <strong className="text-white">Návrh pilotu</strong> —
+                  <strong className="text-white">Návrh pilotu</strong>,
                   připravíme konkrétní plán pro vaši firmu: co napojíme, co
                   budeme měřit, kolik to bude stát, časová osa.
                 </div>
@@ -455,9 +454,7 @@ export default function PilotPage() {
               <li className="flex gap-4">
                 <div className="hud-step-index">4</div>
                 <div className="text-text-secondary text-sm leading-relaxed">
-                  <strong className="text-white">Pilot smlouva nebo NDA</strong>{" "}
-                  — pokud pokračujeme. Žádný tlak — pokud se nehodíme, řekneme
-                  to upřímně.
+                  <strong className="text-white">Pilot smlouva nebo NDA</strong>: pokud pokračujeme. Když se nehodíme, řekneme to upřímně a bez nátlaku.
                 </div>
               </li>
             </ol>

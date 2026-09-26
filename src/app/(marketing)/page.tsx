@@ -1,6 +1,5 @@
 import HeroSection from "@/components/marketing/HeroSection";
-import WhatIsItSection from "@/components/marketing/WhatIsItSection";
-import DeadlineStressSection from "@/components/marketing/DeadlineStressSection";
+import PracticalValueSection from "@/components/marketing/PracticalValueSection";
 import StoriesSection from "@/components/marketing/StoriesSection";
 import HiddenSignalsDemo from "@/components/marketing/HiddenSignalsDemo";
 import ICPSection from "@/components/marketing/ICPSection";
@@ -12,8 +11,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <DeadlineStressSection />
-      <WhatIsItSection />
+      <PracticalValueSection />
       <StoriesSection />
       <HiddenSignalsDemo />
       <ICPSection />

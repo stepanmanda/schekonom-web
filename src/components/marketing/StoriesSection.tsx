@@ -7,24 +7,23 @@ import { useInView } from "@/hooks/useInView";
 const stories = [
   {
     icon: ShieldCheck,
-    code: "SCÉNÁŘ-01",
+    code: "SCÉNÁŘ 01",
     headline: "Phishing IBAN",
     subhead: "Někdo vám podvrhne změnu účtu",
     body: [
-      "Klient platí dlouhodobě stejnému dodavateli. Tentokrát přijde mail s fakturou — všechno jako vždycky, jen 'použijte prosím nový IBAN'.",
+      "Klient platí dlouhodobě stejnému dodavateli. Tentokrát přijde mail s fakturou, všechno jako vždycky, jen 'použijte prosím nový IBAN'.",
       "Klasický phishing. Účetní by v rutině zaplatila. Aplikace si toho má všimnout.",
     ],
     alert:
-      'EkonomOS by měl říct: "Podezřelá změna IBAN — ověřit telefonicky na známém čísle. Neplatit do ověření."',
+      'EkonomOS by měl říct: "Podezřelá změna IBAN, ověřit telefonicky na známém čísle. Neplatit do ověření."',
     outcome:
       "Účetní zavolá přímo dodavateli. Pokud žádnou změnu neposlal, vy jste právě ušetřili klientovi částku faktury.",
     contrast:
       "Bez aplikace by se peníze odeslaly na falešný účet, než by někdo zjistil, že IBAN nesedí.",
-    accent: "red",
   },
   {
     icon: Calendar,
-    code: "SCÉNÁŘ-02",
+    code: "SCÉNÁŘ 02",
     headline: "Zaseknutá uzávěrka",
     subhead: "Klient nedodá podklady, výplaty se blíží",
     body: [
@@ -32,16 +31,15 @@ const stories = [
       "Účetní by to zjistila až na konci měsíce, kdyby zkusila zpracovat mzdy.",
     ],
     alert:
-      'EkonomOS by měl říct: "Mzdová uzávěrka zablokovaná — chybí docházka. Eskalace na jednatele dnes."',
+      'EkonomOS by měl říct: "Mzdová uzávěrka zablokovaná, chybí docházka. Eskalace na jednatele dnes."',
     outcome:
       "Vedoucí mezd okamžitě zavolá manažerovi klienta a pomůže vyřešit, proč podklady neposlal. Výplaty stihnou termín.",
     contrast:
-      "Bez aplikace problém vyjde najevo, až mzdy zaseknou — to už je pozdě.",
-    accent: "gold",
+      "Bez aplikace problém vyjde najevo, až mzdy zaseknou, to už je pozdě.",
   },
   {
     icon: UserMinus,
-    code: "SCÉNÁŘ-03",
+    code: "SCÉNÁŘ 03",
     headline: "Tichý odchod klienta",
     subhead: "Klient přestane komunikovat",
     body: [
@@ -53,8 +51,7 @@ const stories = [
     outcome:
       "Tým zajede osobně. Pokud má klient problém s předchozím účetním nebo zvažuje odchod, zachytíte to dřív, než pošle výpověď.",
     contrast:
-      "Bez aplikace dostanete za měsíc e-mail 'Děkujeme za spolupráci, jdeme jinam'.",
-    accent: "cyan",
+      "Bez aplikace dostanete za měsíc email 'Děkujeme za spolupráci, jdeme jinam'.",
   },
 ];
 
@@ -92,37 +89,21 @@ export default function StoriesSection() {
             <span className="text-gold">EkonomOS cílí.</span>
           </h2>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Tohle nejsou historické případy zákazníků — produkt je v pilotní fázi. Jsou to <strong className="text-white">scénáře</strong>, na které je aplikace stavěná. Pokud vám zní povědomě, jste přesně cílovka, kterou hledáme.
+            Tohle nejsou historické případy zákazníků, produkt je v pilotní fázi. Jsou to <strong className="text-white">scénáře</strong>, na které je aplikace stavěná. Pokud vám zní povědomě, jste přesně cílovka, kterou hledáme.
           </p>
         </div>
 
         {/* Stories grid */}
         <div className="grid lg:grid-cols-3 gap-6">
           {stories.map((s, i) => {
-            const accentColor =
-              s.accent === "red"
-                ? "rgba(255,123,123,0.5)"
-                : s.accent === "gold"
-                  ? "rgba(212,175,55,0.5)"
-                  : "rgba(0,229,255,0.5)";
-            const accentBg =
-              s.accent === "red"
-                ? "rgba(255,123,123,0.06)"
-                : s.accent === "gold"
-                  ? "rgba(212,175,55,0.06)"
-                  : "rgba(0,229,255,0.06)";
-
             return (
               <div
                 key={s.code}
-                className={`hud-panel p-7 flex flex-col relative ${
+                className={`hud-panel story-card p-7 flex flex-col relative ${
                   inView
                     ? `animate-float-up delay-${(i + 1) * 200}`
                     : "opacity-0"
                 }`}
-                style={{
-                  borderTop: `2px solid ${accentColor}`,
-                }}
               >
                 {/* Top: code + icon */}
                 <div className="flex items-start justify-between mb-5">
@@ -138,23 +119,18 @@ export default function StoriesSection() {
                     {s.code}
                   </span>
                   <div
-                    className="p-2.5 border"
-                    style={{
-                      borderColor: accentColor,
-                      background: accentBg,
-                    }}
+                    className="story-icon p-2.5 border"
                   >
-                    <s.icon size={20} style={{ color: accentColor }} />
+                    <s.icon size={20} aria-hidden="true" />
                   </div>
                 </div>
 
                 {/* Headline */}
                 <div className="mb-6">
                   <div
-                    className="text-2xl sm:text-3xl font-bold mb-2"
+                    className="story-headline text-2xl sm:text-3xl font-bold mb-2"
                     style={{
                       fontFamily: "var(--font-space-grotesk)",
-                      color: accentColor,
                       lineHeight: 1.05,
                     }}
                   >
@@ -168,7 +144,7 @@ export default function StoriesSection() {
                   </div>
                 </div>
 
-                {/* Body paragraphs — first paragraph always, second only on sm+ */}
+                {/* Body paragraphs, first paragraph always, second only on sm+ */}
                 <div className="space-y-3 mb-5 text-text-secondary text-sm leading-relaxed">
                   {s.body.map((p, idx) => (
                     <p key={idx} className={idx > 0 ? "hidden sm:block" : ""}>
@@ -179,13 +155,8 @@ export default function StoriesSection() {
 
                 {/* Alert callout */}
                 <div
-                  className="p-4 mb-5 text-sm leading-relaxed"
-                  style={{
-                    borderLeft: `2px solid ${accentColor}`,
-                    background: accentBg,
-                    color: "#FFFFFF",
-                    fontStyle: "italic",
-                  }}
+                  className="story-callout p-4 mb-5 text-sm leading-relaxed"
+                  style={{ fontStyle: "italic" }}
                 >
                   {s.alert}
                 </div>
@@ -195,8 +166,8 @@ export default function StoriesSection() {
                   {s.outcome}
                 </p>
 
-                {/* Contrast bottom — hidden on small screens to keep cards short */}
-                <div className="pt-4 border-t border-cyan/10 hidden sm:block">
+                {/* Contrast bottom, hidden on small screens to keep cards short */}
+                <div className="story-contrast pt-4 border-t hidden sm:block">
                   <p
                     className="text-text-muted text-xs leading-relaxed"
                     style={{ fontStyle: "italic" }}
@@ -217,7 +188,7 @@ export default function StoriesSection() {
           className={`mt-16 text-center ${inView ? "animate-float-up delay-800" : "opacity-0"}`}
         >
           <p className="text-text-secondary text-lg mb-6">
-            Tyhle scénáře aplikace umí. Konkrétní dopad u vás společně změříme — produkt je v pilotní fázi.
+            Tyhle scénáře aplikace umí. Konkrétní dopad u vás společně změříme, produkt je v pilotní fázi.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/funkce" className="btn-primary">

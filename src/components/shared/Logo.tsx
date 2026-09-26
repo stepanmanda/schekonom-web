@@ -18,12 +18,12 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
         >
           <defs>
             <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="rgba(0,229,255,0.15)" />
+              <stop offset="0%" stopColor="var(--accent-soft)" />
               <stop offset="100%" stopColor="transparent" />
             </radialGradient>
             <linearGradient id="logoCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00E5FF" />
-              <stop offset="100%" stopColor="#0088CC" />
+              <stop offset="0%" stopColor="var(--signal)" />
+              <stop offset="100%" stopColor="var(--accent-secondary)" />
             </linearGradient>
             <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="rgba(212,175,55,0.9)" />
@@ -53,7 +53,7 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
             x="24"
             y="30"
             textAnchor="middle"
-            fill="#00E5FF"
+            fill="var(--signal)"
             fontSize="16"
             fontFamily="Space Grotesk, sans-serif"
             fontWeight="700"
@@ -70,7 +70,7 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
               fontFamily: "var(--font-space-grotesk)",
               fontSize: "1.1rem",
               fontWeight: 700,
-              color: "#FFFFFF",
+              color: "var(--ink)",
               letterSpacing: "0.04em",
               lineHeight: 1,
             }}
@@ -82,7 +82,7 @@ export default function Logo({ size = 48, showText = true }: LogoProps) {
               fontFamily: "var(--font-mono)",
               fontSize: "0.55rem",
               letterSpacing: "0.2em",
-              color: "rgba(0,229,255,0.6)",
+              color: "var(--accent-strong)",
               marginTop: 2,
             }}
           >

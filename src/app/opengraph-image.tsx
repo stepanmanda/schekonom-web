@@ -8,7 +8,7 @@ export const size = {
 };
 
 export const contentType = "image/png";
-export const alt = "EkonomOS — Klientský portál nové generace";
+export const alt = "EkonomOS: Klientský portál nové generace";
 
 export default async function Image() {
   return new ImageResponse(
@@ -95,7 +95,7 @@ export default async function Image() {
               display: "flex",
             }}
           >
-            PILOT FAZE — HLEDAME PARTNERY
+            PILOT FAZE: HLEDÁME PARTNERY
           </div>
           <div
             style={{

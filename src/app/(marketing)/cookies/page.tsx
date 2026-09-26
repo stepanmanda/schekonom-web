@@ -70,14 +70,14 @@ export default function CookiesPage() {
             </h2>
             <p>
               <strong className="text-white">Plausible Analytics</strong> (pokud
-              je aktivní) — služba poskytující anonymní statistiky návštěvnosti
+              je aktivní), služba poskytující anonymní statistiky návštěvnosti
               <strong className="text-white"> bez cookies</strong>, bez identifikace
               uživatele, bez crossite trackingu. Plausible je hostován v EU,
               GDPR-compliant by design.
             </p>
             <p className="mt-3">
               <strong className="text-white">Technické session cookies</strong> demo
-              aplikace na <Link href="/prihlaseni" className="text-cyan hover:underline">/prihlaseni</Link> —
+              aplikace na <Link href="/prihlaseni" className="text-cyan hover:underline">/prihlaseni</Link>,
               pouze pro fungování přihlašovací relace, vyprší při zavření
               prohlížeče. Nesouvisejí s analytikou ani marketingem, nepotřebují
               souhlas.
@@ -91,7 +91,7 @@ export default function CookiesPage() {
             <p>
               Cookie banner musíte mít, pokud používáte tracking cookies (nebo
               jiné technologie sledování). My žádné nepoužíváme, takže banner
-              by byl zbytečný — a podle nás otravný.
+              by byl zbytečný, a podle nás otravný.
             </p>
             <p className="mt-3">
               Pokud někdy začneme tracking používat, banner přidáme a budeme

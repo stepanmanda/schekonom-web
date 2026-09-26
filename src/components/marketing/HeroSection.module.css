@@ -1,0 +1,29 @@
+.hero { position: relative; display: flex; min-height: 100svh; overflow: hidden; align-items: center; color: var(--ink); background: var(--page); }
+.ambient { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 81% 12%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 31rem), radial-gradient(circle at 46% 100%, color-mix(in srgb, var(--gold) 5%, transparent), transparent 27rem); }
+.grid { position: relative; display: grid; width: min(1380px, calc(100% - 48px)); margin: 0 auto; padding: 126px 0 68px; grid-template-columns: minmax(390px, .82fr) minmax(580px, 1.18fr); gap: clamp(42px, 5.5vw, 86px); align-items: center; }
+.copy { position: relative; z-index: 2; }
+.eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.4rem; color: var(--accent-strong); font-size: .7rem; font-weight: 820; letter-spacing: .15em; text-transform: uppercase; animation: rise .65s .05s both; }
+.eyebrow span { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 6px var(--accent-soft); }
+.copy h1 { max-width: 650px; margin: 0; font-family: var(--font-display); font-size: clamp(3.4rem, 5.4vw, 5.7rem); font-weight: 740; letter-spacing: -.068em; line-height: .94; animation: rise .75s .12s both; }
+.copy h1 span { color: var(--accent-strong); background: linear-gradient(90deg, var(--accent-strong), var(--accent-secondary)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.lede { max-width: 590px; margin-top: 1.8rem; color: var(--muted); font-size: clamp(1.03rem, 1.35vw, 1.22rem); line-height: 1.65; animation: rise .75s .2s both; }
+.lede strong { color: var(--ink); font-weight: 700; }
+.actions { display: flex; flex-wrap: wrap; margin-top: 2rem; gap: .75rem; animation: rise .75s .28s both; }
+.primary, .secondary { display: inline-flex; min-height: 50px; padding: 0 1.15rem; align-items: center; justify-content: center; gap: .55rem; border-radius: 13px; font-size: .78rem; font-weight: 780; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.primary { color: var(--button-ink); background: var(--button); box-shadow: 0 13px 28px color-mix(in srgb, var(--shadow-color) 18%, transparent); }
+.secondary { border: 1px solid var(--line); color: var(--ink); background: color-mix(in srgb, var(--surface) 72%, transparent); }
+.primary:hover, .secondary:hover { transform: translateY(-2px); }
+.primary:focus-visible, .secondary:focus-visible, .availability:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 30%, transparent); outline-offset: 3px; }
+.assurances { display: flex; flex-wrap: wrap; margin-top: 1.5rem; gap: .65rem 1.1rem; color: var(--muted); font-size: .7rem; animation: rise .75s .35s both; }
+.assurances span { display: inline-flex; align-items: center; gap: .35rem; }
+.assurances svg { width: 13px; height: 13px; color: var(--accent-strong); stroke-width: 3; }
+.availability { display: inline-flex; margin-top: 1.4rem; align-items: center; gap: .55rem; color: var(--gold-strong); font: 760 .67rem var(--font-mono); letter-spacing: .04em; animation: rise .75s .42s both; }
+.dots { display: inline-flex; gap: 3px; }
+.dots i { width: 7px; height: 7px; border: 1px solid var(--gold-strong); border-radius: 50%; background: var(--gold-strong); }
+.dots .open { background: transparent; }
+.visual { min-width: 0; animation: scaleIn .9s .18s cubic-bezier(.2,.8,.3,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(.97); } to { opacity: 1; transform: none; } }
+@media (max-width: 1080px) { .grid { grid-template-columns: 1fr; padding-top: 132px; } .copy { text-align: center; } .copy h1, .lede { margin-right: auto; margin-left: auto; } .eyebrow, .actions, .assurances, .availability { justify-content: center; } .visual { width: min(720px, 100%); margin: 0 auto; } }
+@media (max-width: 640px) { .grid { width: min(100% - 28px, 1380px); padding: 108px 0 42px; gap: 2.5rem; } .copy h1 { font-size: clamp(2.8rem, 14vw, 4rem); } .lede { margin-top: 1.35rem; font-size: .97rem; } .actions { flex-direction: column; } .primary, .secondary { width: 100%; } .assurances { display: grid; justify-items: start; text-align: left; } }
+@media (prefers-reduced-motion: reduce) { .eyebrow, .copy h1, .lede, .actions, .assurances, .availability, .visual { animation: none; } }

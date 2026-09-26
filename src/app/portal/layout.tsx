@@ -11,6 +11,7 @@ import {
   User,
 } from "lucide-react";
 import Logo from "@/components/shared/Logo";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 import KpiCard from "@/components/portal/KpiCard";
 import { AuthProvider, useAuth } from "@/lib/auth/context";
 import { PortalGuard } from "@/lib/auth/guard";
@@ -21,7 +22,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "var(--accent-strong)",
 };
 
 const navKeyToRoute: Record<DemoNavKey, string> = {
@@ -46,8 +47,8 @@ function StatusLine({
   tone: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-sm border border-cyan-500/10 bg-white/[0.02] px-3 py-2">
-      <span style={{ color: "#7A8A9E" }}>{label}</span>
+    <div className="portal-status-line">
+      <span>{label}</span>
       <span className="hud-chip" data-tone={tone}>
         {value}
       </span>
@@ -71,10 +72,11 @@ function PortalShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div
+      className="portal-shell"
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top right, rgba(0,229,255,0.08), transparent 25%), linear-gradient(180deg, #02060A 0%, #03080D 45%, #081420 100%)",
+          "radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 8%, transparent), transparent 25%), var(--page)",
       }}
     >
       {/* Top header bar */}
@@ -85,8 +87,8 @@ function PortalShell({ children }: { children: React.ReactNode }) {
           zIndex: 40,
           backdropFilter: "blur(22px)",
           WebkitBackdropFilter: "blur(22px)",
-          background: "rgba(2, 6, 10, 0.82)",
-          borderBottom: "1px solid rgba(0,229,255,0.08)",
+          background: "color-mix(in srgb, var(--page) 84%, transparent)",
+          borderBottom: "1px solid var(--line)",
         }}
       >
         <div
@@ -109,6 +111,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            <ThemeToggle compact />
             {summaryBadges.map((badge) => (
               <span key={badge} className="hud-chip" data-tone="slate">
                 {badge}
@@ -130,30 +133,30 @@ function PortalShell({ children }: { children: React.ReactNode }) {
         <div className="grid gap-6 xl:grid-cols-12">
           {/* Sidebar */}
           <aside className="xl:col-span-3">
-            <div className="hud-panel sticky top-28 p-5">
+            <div className="hud-panel p-5 xl:sticky xl:top-28">
               {/* Profile info */}
               <div className="mb-5 flex items-center gap-3">
                 <div
                   className="flex h-10 w-10 items-center justify-center"
                   style={{
-                    border: "1px solid rgba(0,229,255,0.18)",
-                    background: "rgba(0,229,255,0.06)",
+                    border: "1px solid color-mix(in srgb, var(--accent) 24%, var(--line))",
+                    background: "var(--accent-soft)",
                   }}
                 >
-                  <User size={18} color="#00E5FF" />
+                  <User size={18} color="var(--accent-strong)" aria-hidden="true" />
                 </div>
                 <div>
                   <div style={labelStyle}>ACTIVE PROFILE</div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontSize: "1rem",
                       fontWeight: 600,
                     }}
                   >
                     {workspace.profile.surname}
                   </div>
-                  <div style={{ color: "#7A8A9E", fontSize: "0.82rem" }}>
+                  <div style={{ color: "var(--muted)", fontSize: "0.82rem" }}>
                     {workspace.profile.title}
                   </div>
                 </div>
@@ -183,7 +186,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                   className="mb-3 flex items-center gap-2"
                   style={labelStyle}
                 >
-                  <Activity size={13} color="#00E5FF" />
+                  <Activity size={13} color="var(--accent-strong)" />
                   System status
                 </div>
                 <div className="space-y-2">
@@ -207,7 +210,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                   className="mb-3 flex items-center gap-2"
                   style={labelStyle}
                 >
-                  <Building2 size={13} color="#00E5FF" />
+                  <Building2 size={13} color="var(--accent-strong)" />
                   Viditelní klienti
                 </div>
                 <div className="space-y-2">
@@ -253,7 +256,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                     textTransform: "uppercase",
                   }}
                 >
-                  ◉ Demo režim — některé funkce zamčené
+                  ◉ Demo režim, některé funkce zamčené
                 </div>
                 <p
                   className="text-text-secondary leading-relaxed"
@@ -263,10 +266,10 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                   <strong className="text-white">
                     Pokročilé funkce, AI vrstva a hloubka analýz
                   </strong>{" "}
-                  jsou v demu zamčené — odemkneme je po dohodě o spolupráci.
+                  jsou v demu zamčené, odemkneme je po dohodě o spolupráci.
                   Chráníme tím know-how, které jsme dlouho budovali.{" "}
-                  <Link href="/pilot" className="text-cyan hover:underline">
-                    Zájem o pilot →
+                  <Link href="/pilot" className="portal-primary-link">
+                    Domluvit pilot <span aria-hidden="true">→</span>
                   </Link>
                 </p>
               </div>
@@ -286,7 +289,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                   <h1
                     style={{
                       fontFamily: "Space Grotesk, sans-serif",
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontSize: "clamp(2rem, 3vw, 3.2rem)",
                       lineHeight: 1.06,
                       marginBottom: 10,
@@ -296,7 +299,7 @@ function PortalShell({ children }: { children: React.ReactNode }) {
                   </h1>
                   <p
                     style={{
-                      color: "#B8C1C8",
+                      color: "var(--muted)",
                       maxWidth: 900,
                       lineHeight: 1.74,
                     }}

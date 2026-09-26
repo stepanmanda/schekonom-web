@@ -17,8 +17,6 @@ import { severityTone, toneLabel, workflowTone } from "@/lib/utils";
 import type {
   ClientDetail,
   DemoAlert,
-  DemoDocument,
-  DemoTask,
   WorkflowStep,
 } from "@/lib/demo/types";
 
@@ -27,7 +25,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "color-mix(in srgb, var(--accent-strong) 72%, transparent)",
 };
 
 function WorkflowRow({ step }: { step: WorkflowStep }) {
@@ -36,14 +34,14 @@ function WorkflowRow({ step }: { step: WorkflowStep }) {
       <div className="hud-workflow-marker" />
       <div>
         <div className="mb-1 flex flex-wrap items-center gap-2">
-          <span style={{ color: "#FFFFFF", fontWeight: 600 }}>
+          <span style={{ color: "var(--ink)", fontWeight: 600 }}>
             {step.label}
           </span>
           <span className="hud-chip" data-tone={workflowTone(step.state)}>
             {step.timestamp}
           </span>
         </div>
-        <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>{step.detail}</div>
+        <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>{step.detail}</div>
       </div>
     </div>
   );
@@ -67,11 +65,11 @@ function AlertList({
           <div className="mb-3 flex items-start justify-between gap-3">
             <div>
               <div
-                style={{ color: "#FFFFFF", fontWeight: 600, marginBottom: 6 }}
+                style={{ color: "var(--ink)", fontWeight: 600, marginBottom: 6 }}
               >
                 {alert.title}
               </div>
-              <div style={{ color: "#B8C1C8", lineHeight: 1.62 }}>
+              <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
                 {alert.summary}
               </div>
             </div>
@@ -80,7 +78,7 @@ function AlertList({
             </span>
           </div>
           {!compact ? (
-            <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+            <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
               {alert.action}
             </div>
           ) : null}
@@ -113,24 +111,32 @@ export default function ClientDetailPage({
   useEffect(() => {
     if (!session) return;
     let cancelled = false;
-    setLoading(true);
-    setError("");
+    const profileId = session.user.id;
 
-    getClientMissionControl(session.user.id, clientId)
-      .then((d) => {
-        if (!cancelled) setDetail(d);
-      })
-      .catch((err) => {
-        if (!cancelled)
+    async function loadDetail() {
+      setLoading(true);
+      setError("");
+
+      try {
+        const nextDetail = await getClientMissionControl(
+          profileId,
+          clientId,
+        );
+        if (!cancelled) setDetail(nextDetail);
+      } catch (err) {
+        if (!cancelled) {
           setError(
             err instanceof Error
               ? err.message
               : "Nepodařilo se načíst detail klienta.",
           );
-      })
-      .finally(() => {
+        }
+      } finally {
         if (!cancelled) setLoading(false);
-      });
+      }
+    }
+
+    void loadDetail();
 
     return () => {
       cancelled = true;
@@ -148,11 +154,11 @@ export default function ClientDetailPage({
             Mission control
           </div>
           <div
-            style={{ color: "#FFFFFF", fontSize: "1.35rem", fontWeight: 700 }}
+            style={{ color: "var(--ink)", fontSize: "1.35rem", fontWeight: 700 }}
           >
             {client?.name ?? "Klient"}
           </div>
-          <div style={{ color: "#7A8A9E", lineHeight: 1.65, marginTop: 8 }}>
+          <div style={{ color: "var(--muted)", lineHeight: 1.65, marginTop: 8 }}>
             {detail?.description ?? client?.status ?? "Načítám detail klienta."}
           </div>
         </div>
@@ -169,7 +175,7 @@ export default function ClientDetailPage({
       {/* Loading state */}
       {loading ? (
         <div className="hud-loading-box">
-          <Activity size={16} color="#00E5FF" />
+          <Activity size={16} color="var(--accent-strong)" />
           <span>Načítám detail klienta a workflow vrstvy...</span>
         </div>
       ) : null}
@@ -196,7 +202,7 @@ export default function ClientDetailPage({
                 <div style={labelStyle}>{metric.label}</div>
                 <div
                   style={{
-                    color: "#FFFFFF",
+                    color: "var(--ink)",
                     fontSize: "1.05rem",
                     fontWeight: 600,
                     margin: "6px 0",
@@ -204,7 +210,7 @@ export default function ClientDetailPage({
                 >
                   {metric.value}
                 </div>
-                <div style={{ color: "#7A8A9E", lineHeight: 1.55 }}>
+                <div style={{ color: "var(--muted)", lineHeight: 1.55 }}>
                   {metric.sub}
                 </div>
               </div>
@@ -214,7 +220,7 @@ export default function ClientDetailPage({
           {/* Workflow timeline */}
           <div className="mb-5">
             <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-              <BadgeCheck size={13} color="#00E5FF" />
+              <BadgeCheck size={13} color="var(--accent-strong)" />
               Workflow timeline
             </div>
             <div className="space-y-3">
@@ -227,7 +233,7 @@ export default function ClientDetailPage({
           {/* Risk shield */}
           <div className="mb-5">
             <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-              <AlertTriangle size={13} color="#00E5FF" />
+              <AlertTriangle size={13} color="var(--accent-strong)" />
               Risk shield
             </div>
             <AlertList alerts={clientAlerts} compact={false} />
@@ -236,7 +242,7 @@ export default function ClientDetailPage({
           {/* Missing docs radar */}
           <div className="mb-5">
             <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-              <Upload size={13} color="#00E5FF" />
+              <Upload size={13} color="var(--accent-strong)" />
               Missing docs radar
             </div>
             <div className="space-y-3">
@@ -248,14 +254,14 @@ export default function ClientDetailPage({
                   >
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontWeight: 600,
                         marginBottom: 6,
                       }}
                     >
                       {item.title}
                     </div>
-                    <div style={{ color: "#7A8A9E", lineHeight: 1.62 }}>
+                    <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
                       {item.blocking}
                     </div>
                     <div className="mt-3 flex flex-wrap gap-2">
@@ -283,7 +289,7 @@ export default function ClientDetailPage({
           {/* Virtual CFO */}
           <div className="mb-5">
             <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-              <TrendingUp size={13} color="#00E5FF" />
+              <TrendingUp size={13} color="var(--accent-strong)" />
               Virtual CFO
             </div>
             <div className="space-y-3">
@@ -294,7 +300,7 @@ export default function ClientDetailPage({
                   data-tone={item.tone}
                 >
                   <div className="mb-2 flex items-center justify-between gap-3">
-                    <div style={{ color: "#FFFFFF", fontWeight: 600 }}>
+                    <div style={{ color: "var(--ink)", fontWeight: 600 }}>
                       {item.title}
                     </div>
                     <span className="hud-chip" data-tone={item.tone}>
@@ -303,7 +309,7 @@ export default function ClientDetailPage({
                   </div>
                   <div
                     style={{
-                      color: "#B8C1C8",
+                      color: "var(--muted)",
                       lineHeight: 1.62,
                       marginBottom: 10,
                     }}
@@ -312,14 +318,14 @@ export default function ClientDetailPage({
                   </div>
                   <div
                     style={{
-                      color: "#7A8A9E",
+                      color: "var(--muted)",
                       lineHeight: 1.62,
                       marginBottom: 8,
                     }}
                   >
                     Dopad: {item.impact}
                   </div>
-                  <div style={{ color: "#FFFFFF", lineHeight: 1.62 }}>
+                  <div style={{ color: "var(--ink)", lineHeight: 1.62 }}>
                     Doporučený krok: {item.action}
                   </div>
                 </div>
@@ -331,7 +337,7 @@ export default function ClientDetailPage({
           <div className="grid gap-5 lg:grid-cols-2">
             <div>
               <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-                <Shield size={13} color="#00E5FF" />
+                <Shield size={13} color="var(--accent-strong)" />
                 Schvalovací centrum
               </div>
               <div className="space-y-3">
@@ -342,15 +348,15 @@ export default function ClientDetailPage({
                   >
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontWeight: 600,
                         marginBottom: 6,
                       }}
                     >
                       {item.title}
                     </div>
-                    <div style={{ color: "#7A8A9E", lineHeight: 1.62 }}>
-                      {item.owner} // {item.status}
+                    <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
+                      {item.owner}{" // "}{item.status}
                     </div>
                     <div className="mt-3">
                       <span className="hud-chip" data-tone="gold">
@@ -364,19 +370,19 @@ export default function ClientDetailPage({
 
             <div>
               <div className="mb-3 flex items-center gap-2" style={labelStyle}>
-                <FileText size={13} color="#00E5FF" />
+                <FileText size={13} color="var(--accent-strong)" />
                 Aktivní dokumenty
               </div>
               <div className="space-y-3">
                 {clientDocuments.slice(0, 4).map((doc) => (
                   <div key={doc.id} className="hud-list-row">
                     <div>
-                      <div style={{ color: "#FFFFFF", fontWeight: 600 }}>
+                      <div style={{ color: "var(--ink)", fontWeight: 600 }}>
                         {doc.title}
                       </div>
                       <div
                         style={{
-                          color: "#7A8A9E",
+                          color: "var(--muted)",
                           fontSize: "0.82rem",
                           marginTop: 4,
                         }}
@@ -394,12 +400,12 @@ export default function ClientDetailPage({
                 ))}
                 <div className="hud-list-row">
                   <div>
-                    <div style={{ color: "#FFFFFF", fontWeight: 600 }}>
+                    <div style={{ color: "var(--ink)", fontWeight: 600 }}>
                       Otevřené úkoly
                     </div>
                     <div
                       style={{
-                        color: "#7A8A9E",
+                        color: "var(--muted)",
                         fontSize: "0.82rem",
                         marginTop: 4,
                       }}

@@ -2,9 +2,9 @@
  * Utility pro odesílání kontaktních formulářů.
  *
  * Funguje ve dvou módech:
- * 1. POST endpoint (NEXT_PUBLIC_CONTACT_ENDPOINT env var) — pošle JSON na URL
+ * 1. POST endpoint (NEXT_PUBLIC_CONTACT_ENDPOINT env var), pošle JSON na URL
  *    (kompatibilní s Web3Forms, Formspree, vlastním backendem nebo velyos.cz API)
- * 2. mailto fallback — otevře mailový klient s předvyplněnou zprávou
+ * 2. mailto fallback, otevře mailový klient s předvyplněnou zprávou
  *
  * Pokud POST selže (síť / 4xx / 5xx), automaticky fallback na mailto.
  *
@@ -43,7 +43,7 @@ const FALLBACK_EMAIL =
 
 function buildMailto(data: ContactFormPayload): string {
   const subject = encodeURIComponent(
-    `EkonomOS — ${data.inquiry || "zájem o produkt"}`,
+    `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
   );
   const body = encodeURIComponent(
     [
@@ -61,6 +61,12 @@ function buildMailto(data: ContactFormPayload): string {
   return `mailto:${FALLBACK_EMAIL}?subject=${subject}&body=${body}`;
 }
 
+function openMailtoFallback(data: ContactFormPayload) {
+  if (typeof window !== "undefined") {
+    window.location.href = buildMailto(data);
+  }
+}
+
 export async function submitContactForm(
   data: ContactFormPayload,
 ): Promise<{ ok: boolean; mode: "endpoint" | "mailto"; error?: string }> {
@@ -73,7 +79,7 @@ export async function submitContactForm(
       const payload: Record<string, string> = {
         ...data,
         source: "ekonomos.velyos.cz",
-        subject: `EkonomOS — ${data.inquiry || "zájem o produkt"}`,
+        subject: `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
       };
       if (accessKey) {
         payload.access_key = accessKey;
@@ -91,16 +97,16 @@ export async function submitContactForm(
       if (response.ok) {
         return { ok: true, mode: "endpoint" };
       }
-      // Fall through to mailto
+      openMailtoFallback(data);
       return {
-        ok: false,
+        ok: true,
         mode: "mailto",
         error: `Endpoint vrátil ${response.status}`,
       };
     } catch (err) {
-      // Sítová chyba → fallback na mailto
+      openMailtoFallback(data);
       return {
-        ok: false,
+        ok: true,
         mode: "mailto",
         error: err instanceof Error ? err.message : "Network error",
       };
@@ -108,9 +114,7 @@ export async function submitContactForm(
   }
 
   // Žádný endpoint nakonfigurován → mailto
-  if (typeof window !== "undefined") {
-    window.location.href = buildMailto(data);
-  }
+  openMailtoFallback(data);
   return { ok: true, mode: "mailto" };
 }
 

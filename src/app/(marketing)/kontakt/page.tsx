@@ -74,7 +74,9 @@ export default function KontaktPage() {
     inquiry: "",
     message: "",
   });
-  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitState, setSubmitState] = useState<
+    "idle" | "sending" | "success" | "mailto" | "error"
+  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -92,7 +94,7 @@ export default function KontaktPage() {
       setSubmitState("success");
       setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
     } else if (result.mode === "mailto") {
-      setSubmitState("idle");
+      setSubmitState("mailto");
     } else {
       setSubmitState("error");
     }
@@ -116,7 +118,7 @@ export default function KontaktPage() {
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
             Vyzkoušejte si demo bez registrace, nebo nám napište. Odpovídáme do
             24 hodin v pracovních dnech. Nasazení EkonomOS u vás v kanceláři
-            zvládneme za 4–6 týdnů.
+            zvládneme za 4 až 6 týdnů.
           </p>
         </div>
 
@@ -137,7 +139,7 @@ export default function KontaktPage() {
                 Veřejný web na vaší doméně s vaším brandem, klientský portál
                 pod ním a administrátorskou aplikaci EkonomOS pro vaše
                 zaměstnance. Postavíme, nasadíme, hostujeme, aktualizujeme.
-                Vás zatěžovat nebudeme — vyžádáme si jen logo, barvy a obsah.
+                Vás zatěžovat nebudeme, vyžádáme si jen logo, barvy a obsah.
               </p>
             </div>
           </div>
@@ -244,7 +246,7 @@ export default function KontaktPage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    E-mail *
+                    email *
                   </label>
                   <input
                     type="email"
@@ -353,6 +355,21 @@ export default function KontaktPage() {
                   <span>Děkujeme. Ozveme se vám do 24 hodin.</span>
                 </div>
               )}
+              {submitState === "mailto" && (
+                <div className="flex items-center gap-2 text-cyan text-sm" role="status">
+                  <CheckCircle2 size={16} />
+                  <span>
+                    Otevřeli jsme e-mailovou aplikaci. Pokud se neotevřela, {" "}
+                    <a
+                      href={getMailtoLink(formState)}
+                      className="underline hover:no-underline"
+                    >
+                      napište nám přímo
+                    </a>
+                    .
+                  </span>
+                </div>
+              )}
               {submitState === "error" && (
                 <div className="flex items-center gap-2 text-status-red text-sm">
                   <AlertTriangle size={16} />
@@ -362,7 +379,7 @@ export default function KontaktPage() {
                       href={getMailtoLink(formState)}
                       className="text-cyan hover:underline"
                     >
-                      Pošlete nám e-mail přímo
+                      Pošlete nám email přímo
                     </a>
                     .
                   </span>

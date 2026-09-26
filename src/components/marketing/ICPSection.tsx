@@ -4,15 +4,15 @@ import { Check, X } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 const fitFor = [
-  "Účetní firma s 15–50 zaměstnanci a 50–200 klienty",
-  "Mix klientů včetně CZ–DE pohraničí (pendleři, výroba, stavba)",
-  "Růst se zastavil — chcete víc klientů, ale nejde najímat",
+  "Účetní firma s 15 až 50 zaměstnanci a 50 až 200 klienty",
+  "Mix klientů včetně CZ a DE pohraničí (pendleři, výroba, stavba)",
+  "Růst se zastavil, chcete víc klientů, ale nejde najímat",
   "Klienti se ptají na portál, online přehled, méně mailů",
   "Otevřenost technologii, ale ne tech-first majitel",
 ];
 
 const notFor = [
-  "OSVČ účetní s 5–10 klienty (CAC převýší přínos)",
+  "OSVČ účetní s 5 až 10 klienty (CAC převýší přínos)",
   "Big4 nebo síťové kanceláře s vlastním IT",
   "Firmy, kde majitel chce ručně schvalovat každý krok",
   "Klienti, kteří odmítají digitální nahrávání dokumentů",
@@ -117,7 +117,7 @@ export default function ICPSection() {
           className={`mt-10 text-center text-text-muted text-sm max-w-2xl mx-auto ${inView ? "animate-float-up delay-600" : "opacity-0"}`}
           style={{ fontStyle: "italic" }}
         >
-          Pokud vám to nesedí jednoznačně, ozvěte se — rádi vám upřímně řekneme, jestli máme co nabídnout, nebo vás nasměrujeme jinam.
+          Pokud vám to nesedí jednoznačně, ozvěte se, rádi vám upřímně řekneme, jestli máme co nabídnout, nebo vás nasměrujeme jinam.
         </p>
       </div>
     </section>

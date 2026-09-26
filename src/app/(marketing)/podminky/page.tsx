@@ -105,7 +105,7 @@ export default function PodminkyPage() {
               6. Omezení odpovědnosti
             </h2>
             <p>
-              Informace na webu jsou poskytovány „jak jsou" (as-is). Nepřebíráme
+              Informace na webu jsou poskytovány „jak jsou“ (as-is). Nepřebíráme
               odpovědnost za rozhodnutí učiněná na základě obsahu webu před
               uzavřením písemné smlouvy.
             </p>
@@ -123,7 +123,7 @@ export default function PodminkyPage() {
 
           <section>
             <p className="text-text-muted text-sm border-t border-cyan/10 pt-6 mt-8">
-              Pro pilot smlouvu, MSA nebo DPA template — ozvěte se přímo na{" "}
+              Pro pilot smlouvu, MSA nebo DPA template, ozvěte se přímo na{" "}
               <a
                 href="mailto:stepan@velyos.cz"
                 className="text-cyan hover:underline"

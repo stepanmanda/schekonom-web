@@ -26,14 +26,14 @@ export default function AutomatizacePage() {
                   <div>
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontWeight: 600,
                         marginBottom: 6,
                       }}
                     >
                       {item.title}
                     </div>
-                    <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+                    <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                       {item.summary}
                     </div>
                   </div>
@@ -75,7 +75,7 @@ export default function AutomatizacePage() {
                 <span
                   style={{
                     fontFamily: "SF Mono, Monaco, Consolas, monospace",
-                    color: "#FFFFFF",
+                    color: "var(--ink)",
                     fontSize: "0.8rem",
                   }}
                 >
@@ -85,7 +85,7 @@ export default function AutomatizacePage() {
                   {endpoint.status}
                 </span>
               </div>
-              <div style={{ color: "#7A8A9E", lineHeight: 1.62 }}>
+              <div style={{ color: "var(--muted)", lineHeight: 1.62 }}>
                 {endpoint.purpose}
               </div>
             </div>

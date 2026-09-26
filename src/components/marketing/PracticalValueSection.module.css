@@ -1,0 +1,244 @@
+/* PracticalValueSection CSS Module */
+
+.section {
+  position: relative;
+  padding: 4rem 0;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 30%,
+    color-mix(in srgb, var(--accent) 30%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+/* Entrance animation for entire section */
+@keyframes entrance {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  opacity: 0;
+  animation: entrance 0.8s ease-out forwards;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+
+.title {
+  font-size: 2.25rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-space-grotesk);
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+.description {
+  margin: 1rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 48rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  background: var(--surface);
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.card:nth-child(1)::before {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.card:nth-child(2)::before {
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.card:nth-child(3)::before {
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.iconWrapper {
+  display: inline-flex;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card:nth-child(1) .iconWrapper {
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.card:nth-child(2) .iconWrapper {
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, var(--line));
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.card:nth-child(3) .iconWrapper {
+  border: 1px solid color-mix(in srgb, var(--gold) 30%, var(--line));
+  background: color-mix(in srgb, var(--gold) 30%, transparent);
+}
+
+.card:nth-child(1) .iconWrapper svg {
+  color: var(--accent);
+}
+
+.card:nth-child(2) .iconWrapper svg {
+  color: var(--gold);
+}
+
+.card:nth-child(3) .iconWrapper svg {
+  color: var(--gold);
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-family: var(--font-space-grotesk);
+}
+
+.cardText {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.summary {
+  padding: 1.75rem;
+  background: var(--surface);
+  border-radius: 0.75rem;
+  border-left: 4px solid var(--accent);
+}
+
+.summaryText {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--ink);
+  font-weight: 600;
+  font-family: var(--font-space-grotesk);
+}
+
+.summaryTextSecondary {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .summary {
+    padding: 1.5rem;
+  }
+}

@@ -7,7 +7,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "color-mix(in srgb, var(--accent-strong) 72%, transparent)",
 };
 
 export default function SectionCard({
@@ -29,7 +29,7 @@ export default function SectionCard({
         </div>
         <div
           style={{
-            color: "#FFFFFF",
+            color: "var(--ink)",
             fontSize: "1.15rem",
             fontWeight: 600,
             marginBottom: 6,
@@ -37,7 +37,7 @@ export default function SectionCard({
         >
           {title}
         </div>
-        <div style={{ color: "#7A8A9E", lineHeight: 1.68 }}>{description}</div>
+        <div style={{ color: "var(--muted)", lineHeight: 1.68 }}>{description}</div>
       </div>
       {children}
     </section>

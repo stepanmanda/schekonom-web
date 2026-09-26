@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/shared/Logo";
 import { Menu, X, LogIn, ChevronDown } from "lucide-react";
+import ThemeToggle from "@/components/shared/ThemeToggle";
 
 const moduleLinks = [
   { label: "Účetní reporting", href: "/modul-ucetnictvi" },
@@ -23,6 +24,26 @@ const navItems = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeydown);
+    return () => document.removeEventListener("keydown", onKeydown);
+  }, []);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1280) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -53,7 +74,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-7">
           {navItems.map((item) =>
             item.children ? (
               <div key={item.href} className="relative group">
@@ -94,8 +115,9 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Right side — Portal link + CTA */}
-        <div className="hidden lg:flex items-center gap-4">
+        {/* Right side, Portal link + CTA */}
+        <div className="hidden xl:flex items-center gap-4">
+          <ThemeToggle compact />
           {/* Portal link */}
           <Link
             href="/prihlaseni"
@@ -120,20 +142,21 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Hamburger button */}
         <button
-          className="lg:hidden text-text-secondary hover:text-white transition-colors p-2"
+          className="xl:hidden text-text-secondary hover:text-white transition-colors p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Zavřít menu" : "Otevřít menu"}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden glass-panel-dark border-t border-cyan/10">
-          <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
+        <div className="xl:hidden z-50 absolute left-0 right-0 top-full glass-panel-dark border-t border-cyan/10 max-h-[calc(100dvh-5rem)] overflow-y-auto">
+          <nav className="max-w-7xl mx-auto px-6 py-2 flex flex-col gap-3" aria-label="Mobile menu">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -144,7 +167,8 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-cyan/10 flex flex-col gap-4">
+            <div className="py-2 border-t border-cyan/10 flex flex-col gap-3">
+              <ThemeToggle />
               <Link
                 href="/prihlaseni"
                 className="flex items-center gap-2 text-text-muted hover:text-white transition-colors"
@@ -173,6 +197,7 @@ export default function Header() {
           </nav>
         </div>
       )}
+
     </header>
   );
 }

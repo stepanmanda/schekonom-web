@@ -26,7 +26,7 @@ const phases: Array<{
     items: [
       "Klientský portál + admin aplikace (3 role: klient, daně, mzdy)",
       "Integrace na účetní, dokumentové úložiště, banky a státní portály",
-      "AI vrstva — predikce, fraud detection, automatizace workflow",
+      "AI vrstva, predikce, fraud detection, automatizace workflow",
       "Pilot demo s anonymizovanými daty",
       "Compliance základ: GDPR, EU hosting, šifrování",
     ],
@@ -36,8 +36,8 @@ const phases: Array<{
     period: "Q2 / Q3 2026",
     title: "Pilot fáze",
     items: [
-      "Onboarding 3–5 prvních partnerských kanceláří",
-      "Společný měřící framework — baseline před, výsledky za 6 měsíců",
+      "Onboarding 3 až 5 prvních partnerských kanceláří",
+      "Společný měřící framework, baseline před, výsledky za 6 měsíců",
       "Doladění integrací podle reálných stacků partnerů",
       "Tuning AI modelů na produkčních datech (s opt-in souhlasem)",
       "První case study (volitelně anonymně)",
@@ -50,7 +50,7 @@ const phases: Array<{
     items: [
       "Public pricing podle pilotních dat",
       "Self-service onboarding pro menší kanceláře",
-      "Marketplace integrací — partneři přidávají vlastní moduly",
+      "Marketplace integrací, partneři přidávají vlastní moduly",
       "Mobilní aplikace pro klienty (iOS / Android)",
       "Rozšíření do SK a DE trhu",
     ],
@@ -62,7 +62,7 @@ const phases: Array<{
     items: [
       "Plně autonomní AI agenti pro rutinní rozhodování (s human approval gates)",
       "Hlasový asistent pro klienty (telefon + chat)",
-      "Network effect — sdílené benchmarky napříč anonymizovanými klienty",
+      "Network effect, sdílené benchmarky napříč anonymizovanými klienty",
       "ViDA / e-fakturace plně integrované",
       "Vertikální rozšíření: advokacie, controllingové firmy, daňoví poradci",
     ],
@@ -113,7 +113,7 @@ export default function RoadmapPage() {
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
             Žádné marketingové roadmapy z výtahu. Tady je upřímný přehled, kde
             EkonomOS je dnes a kam směřujeme. Pilot fáze znamená, že priority
-            ovlivníte i vy — co od partnerů uslyšíme, jde do produktu nahoru.
+            ovlivníte i vy, co od partnerů uslyšíme, jde do produktu nahoru.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ export default function RoadmapPage() {
           <div className="hud-panel p-6">
             <p className="text-text-secondary text-sm leading-relaxed">
               <strong className="text-white">Buďme upřímní.</strong> Plánovaná fáze
-              není slib — je to směr. Konkrétní priority dolaďujeme podle toho, co
+              není slib, je to směr. Konkrétní priority dolaďujeme podle toho, co
               uslyšíme od pilotních partnerů. Pokud máte jiný problém, který chcete
               vidět v EkonomOS dřív, ozvěte se.
             </p>

@@ -18,7 +18,7 @@ const principles = [
   {
     icon: Lock,
     title: "Privacy by design",
-    desc: "Aplikace shromažďuje jen to, co je potřeba k provozu vaší účetní firmy. Citlivé funkce (lingvistická a behaviorální analýza) jsou volitelné — zapínají se až po výslovném souhlasu klienta i jeho zaměstnanců.",
+    desc: "Aplikace shromažďuje jen to, co je potřeba k provozu vaší účetní firmy. Citlivé funkce (lingvistická a behaviorální analýza) jsou volitelné, zapínají se až po výslovném souhlasu klienta i jeho zaměstnanců.",
   },
   {
     icon: FileCheck,
@@ -28,7 +28,7 @@ const principles = [
   {
     icon: AlertOctagon,
     title: "AI Act ready",
-    desc: "Splňujeme požadavky evropského AI Act účinného od 2026 — transparentnost AI rozhodování, lidská kontrola, dokumentace modelů, opt-in pro vysokorizikové funkce.",
+    desc: "Splňujeme požadavky evropského AI Act účinného od 2026, transparentnost AI rozhodování, lidská kontrola, dokumentace modelů, opt-in pro vysokorizikové funkce.",
   },
   {
     icon: Server,
@@ -93,9 +93,9 @@ export default function ZabezpeceniDatPage() {
             <span className="text-cyan">Bereme to vážně.</span>
           </h1>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            EkonomOS pracuje s daty, která žádná firma nechce dát z ruky —
+            EkonomOS pracuje s daty, která žádná firma nechce dát z ruky,
             faktury, mzdy, smlouvy, komunikace. Postavili jsme aplikaci s
-            GDPR-by-design, EU hostingem a opt-in přístupem k citlivým funkcím.
+            Ochrana dat je součástí návrhu aplikace. Data jsou hostována v EU a citlivé funkce se zapínají pouze po udělení souhlasu.
             Tady je, co konkrétně to znamená.
           </p>
         </div>
@@ -197,7 +197,7 @@ export default function ZabezpeceniDatPage() {
             </h2>
             <p className="text-text-secondary leading-relaxed max-w-3xl mb-4">
               Behaviorální analýza, hlasová a textová analýza, monitoring chování zaměstnanců
-              — to jsou funkce, které **mohou** přinést hodnotu, ale taky musí být **etické a legální**.
+ představují funkce, které mohou přinést hodnotu. Musí ale být etické a legální.
               Standardně jsou vypnuté. Zapínáme je až po:
             </p>
             <ul className="space-y-2 text-text-secondary text-sm">

@@ -102,7 +102,7 @@ export default function WhatIsItSection() {
               Klasická účetní firma má software pro účetnictví.
             </p>
             <p className="text-text-secondary leading-relaxed">
-              <strong className="text-white">My jsme nadstavba</strong>, která propojí vaše systémy, automatizuje rutinu a hlídá rizika. Účetní práci dál děláte vy — jen máte víc času, méně chyb a klienta, který vidí, co se děje.
+              <strong className="text-white">My jsme nadstavba</strong>, která propojí vaše systémy, automatizuje rutinu a hlídá rizika. Účetní práci dál děláte vy, jen máte víc času, méně chyb a klienta, který vidí, co se děje.
             </p>
           </div>
         </div>

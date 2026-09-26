@@ -5,7 +5,7 @@ import { Shield, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "Ochrana osobních údajů",
   description:
-    "Jak EkonomOS zachází s osobními údaji návštěvníků webu a klientů — GDPR-compliant, EU hosting, opt-in citlivé funkce.",
+    "Jak EkonomOS zachází s osobními údaji návštěvníků webu a klientů, GDPR-compliant, EU hosting, opt-in citlivé funkce.",
   alternates: { canonical: "/soukromi" },
 };
 
@@ -59,7 +59,7 @@ export default function SoukromiPage() {
               trackingu.
             </p>
             <p>
-              Pokud vyplníte kontaktní formulář, zpracováváme: jméno, e-mail,
+              Pokud vyplníte kontaktní formulář, zpracováváme: jméno, email,
               název firmy a obsah zprávy. Účelem je odpověď na vaši poptávku.
               Právní základ: čl. 6 odst. 1 písm. b) GDPR (jednání před uzavřením smlouvy).
             </p>
@@ -92,7 +92,7 @@ export default function SoukromiPage() {
               5. Komu údaje předáváme
             </h2>
             <p>
-              Pro odeslání transakčních e-mailů (oznámení o vyplnění formuláře)
+              Pro odeslání transakčních emailů (oznámení o vyplnění formuláře)
               používáme službu Brevo (sendinblue.com), provozovanou v EU.
               Pro evidenci poptávek používáme Google Sheets (G Suite EU
               region). Žádné údaje nepředáváme do třetích zemí mimo EU.
@@ -134,7 +134,7 @@ export default function SoukromiPage() {
             <p className="text-text-muted text-sm border-t border-cyan/10 pt-6 mt-8">
               Toto prohlášení může být aktualizováno. Aktuální verze je vždy
               dostupná na této stránce. O zásadních změnách informujeme
-              e-mailem registrované uživatele a klienty.
+              emailem registrované uživatele a klienty.
             </p>
           </section>
         </div>

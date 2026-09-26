@@ -130,7 +130,7 @@ export default function ModulMzdyPage() {
                 Mzdová účetní jako lidská práce
               </h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                Robot se postará o rutinu. Vy se věnujete tomu, co technicky nezvládne — atypickým případům a jednání s klientem.
+                Robot se postará o rutinu. Vy se věnujete tomu, co technicky nezvládne, atypickým případům a jednání s klientem.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/kontakt" className="btn-primary">

@@ -15,25 +15,25 @@ export default function TerminyPage() {
     <SectionCard
       label="Calendar"
       title="Termíny a odpovědnosti"
-      description="Daňové, mzdové a přeshraniční deadline v jednom pohledu, ne v několika kalendářích a e-mailech."
+      description="Daňové, mzdové a přeshraniční deadline v jednom pohledu, ne v několika kalendářích a emailech."
     >
       <div className="space-y-3">
         {workspace.deadlines.map((deadline) => (
           <div key={deadline.id} className="hud-list-row">
             <div className="flex items-start gap-3">
-              <Calendar size={16} color="rgba(0,229,255,0.75)" />
+              <Calendar size={16} color="color-mix(in srgb, var(--accent-strong) 75%, transparent)" />
               <div>
-                <div style={{ color: "#FFFFFF", fontWeight: 600 }}>
+                <div style={{ color: "var(--ink)", fontWeight: 600 }}>
                   {deadline.title}
                 </div>
                 <div
                   style={{
-                    color: "#7A8A9E",
+                    color: "var(--muted)",
                     fontSize: "0.84rem",
                     marginTop: 4,
                   }}
                 >
-                  {deadline.area} // {deadline.ownerLabel}
+                  {deadline.area}{" // "}{deadline.ownerLabel}
                 </div>
               </div>
             </div>

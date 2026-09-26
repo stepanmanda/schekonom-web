@@ -49,7 +49,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     ],
     phrases: ["ucetni kancelar", "pro ucetni", "co umi"],
     answer:
-      "Účetní kanceláři EkonomOS sjednotí klienty, úkoly, dokumenty, termíny a rizika do jednoho přehledu. Umí připravovat OCR příjem faktur, párování plateb, upomínky a uzávěrkové workflow; kritické kroky zůstávají za schvalovací bránou člověka. Přínos se v pilotu teprve měří — web neslibuje hotové výsledky pro každou kancelář.",
+      "Účetní kanceláři EkonomOS sjednotí klienty, úkoly, dokumenty, termíny a rizika do jednoho přehledu. Umí připravovat OCR příjem faktur, párování plateb, upomínky a uzávěrkové workflow; kritické kroky zůstávají za schvalovací bránou člověka. Přínos se v pilotu teprve měří. Web neslibuje hotové výsledky pro každou kancelář.",
     links: [
       { label: "Co EkonomOS umí", href: "/funkce" },
       { label: "Účetní modul", href: "/modul-ucetnictvi" },
@@ -85,7 +85,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     keywords: ["pilot", "partner", "spoluprace", "mesicu", "baseline", "onboarding"],
     phrases: ["jak probiha pilot", "pilotni faze", "mam zajem o pilot"],
     answer:
-      "Pilot trvá 6 měsíců: týdny 1–2 audit a baseline, 3–6 integrace a customizace, 7–12 pilotní provoz a měsíce 4–6 měření a vyhodnocení. Po pilotu se rozhodnete, zda pokračovat; web uvádí možnost ukončení s 30denní výpovědí. Aktuálně jsou komunikována 3 z 5 volných míst.",
+      "Pilot trvá 6 měsíců: týdny 1 až 2 jsou určené na audit a baseline, týdny 3 až 6 na integraci a customizaci, týdny 7 až 12 na pilotní provoz a měsíce 4 až 6 na měření a vyhodnocení. Po pilotu se rozhodnete, zda pokračovat; web uvádí možnost ukončení s 30denní výpovědí. Aktuálně jsou komunikována 3 z 5 volných míst.",
     links: [
       { label: "Podmínky pilotu", href: "/pilot" },
       { label: "Domluvit hovor", href: "/kontakt" },
@@ -119,7 +119,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     ],
     phrases: ["jak chranite data", "kde jsou data", "ochrana dat"],
     answer:
-      "Produkční řešení je v dokumentaci popsané s hostingem v EU, šifrováním AES-256 v klidu a TLS 1.3 při přenosu, role-based přístupy, audit logem a MFA. Citlivé behaviorální, hlasové a textové analýzy jsou opt-in. ISO 27001 je v přípravě a SOC 2 Type II je plánováno na rok 2027 — nejde tedy o hotové certifikace.",
+      "Produkční řešení je v dokumentaci popsané s hostingem v EU, šifrováním AES-256 v klidu a TLS 1.3 při přenosu, řízením přístupu podle rolí, audit logem a MFA. Citlivé behaviorální, hlasové a textové analýzy jsou opt-in. ISO 27001 je v přípravě a SOC 2 Type II je plánováno na rok 2027. Nejde tedy o hotové certifikace.",
     links: [
       { label: "Zabezpečení dat", href: "/zabezpeceni-dat" },
       { label: "Ochrana soukromí", href: "/soukromi" },
@@ -130,7 +130,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     keywords: ["nasazeni", "nasadit", "dlouho", "tydnu", "implementace", "spusteni"],
     phrases: ["za jak dlouho", "jak dlouho trva", "doba nasazeni"],
     answer:
-      "Standardní nasazení je na webu uvedeno jako 8–12 týdnů: první 2 týdny audit a baseline, týdny 3–6 integrace a customizace a týdny 7–12 pilotní provoz. Od vaší kontaktní osoby se počítá přibližně se 2 hodinami týdně během prvních 6 týdnů.",
+      "Standardní nasazení je na webu uvedeno jako 8 až 12 týdnů: první 2 týdny jsou určené na audit a baseline, týdny 3 až 6 na integraci a customizaci a týdny 7 až 12 na pilotní provoz. Od vaší kontaktní osoby se počítá přibližně se 2 hodinami týdně během prvních 6 týdnů.",
     links: [
       { label: "Průběh pilotu", href: "/pilot" },
       { label: "Časté dotazy", href: "/caste-dotazy" },
@@ -141,7 +141,7 @@ const knowledgeBase: KnowledgeEntry[] = [
     keywords: ["demo", "ukazka", "profil", "profily", "registrace", "testovaci"],
     phrases: ["demo rezim", "vyzkouset demo"],
     answer:
-      "Demo je frontend-only ukázka: používá statická anonymizovaná data, nemá backend, databázi ani externí volání. Nabízí tři profily — klient firmy, specialista německých daní a mzdová účetní. Pokročilé funkce a část AI vrstvy jsou v demu záměrně zamčené; produkční backend se staví na míru klientovi.",
+      "Demo je frontendová ukázka: používá statická anonymizovaná data, nemá backend, databázi ani externí volání. Nabízí tři profily: klient firmy, specialista německých daní a mzdová účetní. Pokročilé funkce a část AI vrstvy jsou v demu záměrně zamčené; produkční backend se staví na míru klientovi.",
     links: [
       { label: "Otevřít demo", href: "/prihlaseni" },
       { label: "Roadmapa", href: "/roadmap" },
@@ -313,4 +313,3 @@ export function findAssistantAnswer(query: string): AssistantAnswer {
 
   return ranked[0]?.score >= 2 ? ranked[0].entry : unknownAnswer;
 }
-

@@ -16,7 +16,7 @@ const faqs: FaqGroup[] = [
     items: [
       {
         q: "Jak dlouho trvá nasazení?",
-        a: "Standardně 8–12 týdnů od podpisu. První 2 týdny audit a baseline, 3.–6. týden integrace na vaše systémy a customizace, 7.–12. týden pilotní provoz. V pilot fázi máme čas na pečlivé nasazení — nechceme spěchat na úkor kvality.",
+        a: "Standardně 8 až 12 týdnů od podpisu. První 2 týdny audit a baseline, 3. až 6. týden integrace na vaše systémy a customizace, 7. až 12. týden pilotní provoz. V pilot fázi máme čas na pečlivé nasazení, nechceme spěchat na úkor kvality.",
       },
       {
         q: "Co když naše účetní firma používá jiný účetní software, než s kým máte zkušenosti?",
@@ -24,7 +24,7 @@ const faqs: FaqGroup[] = [
       },
       {
         q: "Potřebujeme IT oddělení nebo IT partnera?",
-        a: "Ne. Veškerý onboarding zajišťuje VELYOS. Od vás potřebujeme přístupy a součinnost při nastavování — typicky stačí 2 hodiny týdně po dobu prvních 6 týdnů.",
+        a: "Ne. Veškerý onboarding zajišťuje VELYOS. Od vás potřebujeme přístupy a součinnost při nastavování, typicky stačí 2 hodiny týdně po dobu prvních 6 týdnů.",
       },
       {
         q: "Můžeme aplikaci hostovat na svých serverech?",
@@ -37,7 +37,7 @@ const faqs: FaqGroup[] = [
     items: [
       {
         q: "Kolik to stojí?",
-        a: "Cena má tři složky: jednorázový setup fee (audit, integrace, customizace), měsíční platforma fee (hosting, údržba, support) a per-klient fee (skaluje s úspěchem). Konkrétní čísla závisí na rozsahu — probereme na konzultaci. V pilot fázi nabízíme zvýhodněné podmínky.",
+        a: "Cena má tři složky: jednorázový setup fee (audit, integrace, customizace), měsíční platforma fee (hosting, údržba, support) a cenu za klienta (roste s úspěchem). Konkrétní čísla závisí na rozsahu, probereme na konzultaci. V pilot fázi nabízíme zvýhodněné podmínky.",
       },
       {
         q: "Jaký je minimální závazek?",
@@ -62,11 +62,11 @@ const faqs: FaqGroup[] = [
       },
       {
         q: "Co AI Act 2026?",
-        a: "Splňujeme požadavky evropského AI Act účinného od 2026 — transparentnost AI rozhodování, lidská kontrola u kritických akcí, dokumentace modelů, opt-in pro vysokorizikové funkce. Citlivé funkce (lingvistická a behaviorální analýza) jsou defaultně vypnuté.",
+        a: "Splňujeme požadavky evropského AI Act účinného od 2026, transparentnost AI rozhodování, lidská kontrola u kritických akcí, dokumentace modelů, opt-in pro vysokorizikové funkce. Citlivé funkce (lingvistická a behaviorální analýza) jsou defaultně vypnuté.",
       },
       {
         q: "Můžete vidět naše konkrétní data?",
-        a: "Vývojový tým má přístup k systémovým logům pro debugging, ale ne ke konkrétním klientským datům — ta jsou izolovaná na úrovni databáze. Pro pilot fázi máme limitovaný přístup pro účely testování, vždy s vaším souhlasem a pod NDA.",
+        a: "Vývojový tým má přístup k systémovým logům pro debugging, ale ne ke konkrétním klientským datům, ta jsou izolovaná na úrovni databáze. Pro pilot fázi máme limitovaný přístup pro účely testování, vždy s vaším souhlasem a pod NDA.",
       },
     ],
   },
@@ -79,7 +79,7 @@ const faqs: FaqGroup[] = [
       },
       {
         q: "Co když klient odmítne digitální nahrávání?",
-        a: "Můžete dál přijímat papír — naskenujete a aplikace ho zařadí. Ale pro plnou hodnotu EkonomOS je digitální vstup výhodnější. Pokud máte hodně klientů s tradiční papírovou agendou, EkonomOS pro vás možná zatím nemá smysl.",
+        a: "Můžete dál přijímat papír, naskenujete a aplikace ho zařadí. Ale pro plnou hodnotu EkonomOS je digitální vstup výhodnější. Pokud máte hodně klientů s tradiční papírovou agendou, EkonomOS pro vás možná zatím nemá smysl.",
       },
       {
         q: "Existuje SLA?",
@@ -87,7 +87,7 @@ const faqs: FaqGroup[] = [
       },
       {
         q: "Co když VELYOS skončí nebo bude prodaný?",
-        a: "Smlouva obsahuje exit klauzuli — v případě ukončení provozu garantujeme migrační období minimálně 6 měsíců a kompletní data export. Plus máme escrow účet pro zdrojový kód, pokud by to bylo podmínkou.",
+        a: "Smlouva obsahuje exit klauzuli, v případě ukončení provozu garantujeme migrační období minimálně 6 měsíců a kompletní data export. Plus máme escrow účet pro zdrojový kód, pokud by to bylo podmínkou.",
       },
     ],
   },
@@ -100,11 +100,11 @@ const faqs: FaqGroup[] = [
       },
       {
         q: "Co se stane, když pilot nedopadne?",
-        a: "Žádné penalty. Po 6 měsících společně vyhodnotíme, jestli má smysl pokračovat. Pokud ne, ukončíme férově, předáme data, rozejdeme se v dobrém. EkonomOS si nemůže dovolit nespokojené klienty — referencí je málo.",
+        a: "Žádné penalty. Po 6 měsících společně vyhodnotíme, jestli má smysl pokračovat. Pokud ne, ukončíme férově, předáme data, rozejdeme se v dobrém. EkonomOS si nemůže dovolit nespokojené klienty, referencí je málo.",
       },
       {
         q: "Můžu pilot ukončit dříve?",
-        a: "Ano, s 30denní výpovědí kdykoliv. V pilot fázi nechceme nikoho držet násilím — pokud něco nefunguje, je lepší to ukončit a poučit se.",
+        a: "Ano, s 30denní výpovědí kdykoliv. V pilot fázi nechceme nikoho držet násilím, pokud něco nefunguje, je lepší to ukončit a poučit se.",
       },
     ],
   },
@@ -174,8 +174,8 @@ export default function FaqPage() {
             Otázky, které <span className="text-cyan">slyšíme nejčastěji</span>
           </h1>
           <p className="mt-6 text-text-secondary text-lg leading-relaxed">
-            Pokud tu vaši otázku nenajdete, ozvěte se. Odpovíme upřímně —
-            i když je odpověď „ještě nevíme, vyřešíme to v pilotu".
+            Pokud tu vaši otázku nenajdete, ozvěte se. Odpovíme upřímně,
+            i když je odpověď „ještě nevíme, vyřešíme to v pilotu“.
           </p>
         </div>
 

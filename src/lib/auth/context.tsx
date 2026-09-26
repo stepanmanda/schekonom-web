@@ -37,9 +37,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Load session from sessionStorage on mount
   useEffect(() => {
-    const stored = loadFromStorage();
-    if (stored) setSession(stored);
-    setReady(true);
+    let active = true;
+    queueMicrotask(() => {
+      if (!active) return;
+      const stored = loadFromStorage();
+      if (stored) setSession(stored);
+      setReady(true);
+    });
+    return () => {
+      active = false;
+    };
   }, []);
 
   const login = useCallback((s: VerifyCodeResponse) => {
@@ -48,7 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       try {
         window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(s));
       } catch {
-        // sessionStorage may be unavailable (private browsing) — fall back to in-memory only
+        // sessionStorage may be unavailable (private browsing), so fall back to in-memory only
       }
     }
   }, []);

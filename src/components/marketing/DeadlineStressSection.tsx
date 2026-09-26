@@ -7,12 +7,12 @@ const helpers = [
   {
     icon: CalendarClock,
     title: "Vidí, kdo nedodal podklady",
-    desc: "Jedna obrazovka, všichni klienti, červené tečky u problémových. Žádné vyhledávání v 50 e-mailech.",
+    desc: "Jedna obrazovka, všichni klienti, červené tečky u problémových. Žádné vyhledávání v 50 emailech.",
   },
   {
     icon: Send,
     title: "Sama posílá upomínky",
-    desc: "3stupňový systém — e-mail (7 dní), SMS (14 dní), telefonát (21 dní). Vy nemusíte zvedat sluchátko.",
+    desc: "3stupňový systém, email (7 dní), SMS (14 dní), telefonát (21 dní). Vy nemusíte zvedat sluchátko.",
   },
   {
     icon: FileCheck,
@@ -30,7 +30,7 @@ export default function DeadlineStressSection() {
       className="py-14 sm:py-20 relative"
       ref={ref as React.RefObject<HTMLElement>}
     >
-      {/* Background accent — slight red urgency */}
+      {/* Background accent, slight red urgency */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -57,7 +57,7 @@ export default function DeadlineStressSection() {
           <p className="mt-6 text-text-secondary text-lg sm:text-xl max-w-3xl leading-relaxed">
             Tohle znáte. <strong className="text-white">DPFO za 2025 do 1. 7.</strong>,{" "}
             <strong className="text-white">DPPO do 1. 7.</strong>, kontrolní hlášení každý 25.,{" "}
-            <strong className="text-white">ELDP do 31. 5.</strong> — termíny se vrší jeden přes druhý.
+            <strong className="text-white">ELDP do 31. 5.</strong>, termíny se vrší jeden přes druhý.
             Excel tabulky, hromady mailů, klienti, kteří dodávají podklady na
             poslední chvíli (nebo vůbec). Tým padá, vy padáte taky. <strong className="text-white">EkonomOS to ředí za vás.</strong>
           </p>

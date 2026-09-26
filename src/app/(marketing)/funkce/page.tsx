@@ -25,7 +25,7 @@ const modules = [
   {
     icon: BookOpen,
     title: "Účetní reporting",
-    desc: "Skutečnost vs. plán, cash flow, prognózy a variance analýza — propojené napříč klientovou agendou.",
+    desc: "Skutečnost vs. plán, cash flow, prognózy a variance analýza, propojené napříč klientovou agendou.",
     href: "/modul-ucetnictvi",
   },
   {
@@ -37,7 +37,7 @@ const modules = [
   {
     icon: FileText,
     title: "Daně a DPH",
-    desc: "Česká daňová agenda v jednom toku — DPPO, DPFO, DPH, kontrolní hlášení, e-fakturace, monitoring legislativy.",
+    desc: "Česká daňová agenda v jednom toku, DPPO, DPFO, DPH, kontrolní hlášení, e-fakturace, monitoring legislativy.",
     href: "/modul-dane",
   },
   {
@@ -52,7 +52,7 @@ const aiPillars = [
   {
     icon: Brain,
     title: "Predikce",
-    desc: "Aplikace předpovídá riziko odchodu klienta, posouvá termíny, hledá nejlepší moment ke kontaktu — z dat, která už máte.",
+    desc: "Aplikace předpovídá riziko odchodu klienta, posouvá termíny, hledá nejlepší moment ke kontaktu, z dat, která už máte.",
   },
   {
     icon: ShieldCheck,
@@ -62,7 +62,7 @@ const aiPillars = [
   {
     icon: Workflow,
     title: "Automatizace",
-    desc: "Rutinní úkony běží na pozadí — příjem faktur, párování plateb, upomínky, uzávěrky. Vy schvalujete, robot pracuje.",
+    desc: "Rutinní úkony běží na pozadí, příjem faktur, párování plateb, upomínky, uzávěrky. Vy schvalujete, robot pracuje.",
   },
 ];
 
@@ -77,7 +77,7 @@ const impacts = [
   {
     icon: Clock,
     title: "Méně rutinní práce",
-    desc: "OCR faktur, auto-párování plateb, hlídání termínů, příprava DPH KH. Co dnes děláte ručně, budete schvalovat — místo dělat.",
+    desc: "OCR faktur, auto-párování plateb, hlídání termínů, příprava DPH KH. Co dnes děláte ručně, budete schvalovat, místo dělat.",
     expectation: "Cíl: pokles ručního času o desítky hodin měsíčně",
   },
   {
@@ -95,7 +95,7 @@ const impacts = [
   {
     icon: UserCheck,
     title: "Méně odchodů klientů",
-    desc: "Z dat klienta poznáme, že jeho komunikace s vámi se mění — dřív, než přijde výpověď. Vy stihnete reagovat, místo abyste se učili z odešlých klientů.",
+    desc: "Z dat klienta poznáme, že jeho komunikace s vámi se mění, dřív, než přijde výpověď. Vy stihnete reagovat, místo abyste se učili z odešlých klientů.",
     expectation: "Cíl: snížit počet odchodů, který dnes berete jako normu",
   },
 ];
@@ -191,7 +191,7 @@ export default function FunkcePage() {
             <span className="text-gold">míří udělat rozdíl</span>
           </h2>
           <p className="text-text-secondary text-base max-w-3xl leading-relaxed">
-            EkonomOS je nový produkt v pilotní fázi. Konkrétní čísla nemůžeme slíbit, dokud je společně se zákazníkem nezměříme. Tady jsou oblasti, kde produkt cílí na měřitelný rozdíl — a kde s vámi rádi nastavíme baseline a porovnáme stav před a po.
+            EkonomOS je nový produkt v pilotní fázi. Konkrétní čísla nemůžeme slíbit, dokud je společně se zákazníkem nezměříme. Tady jsou oblasti, kde produkt cílí na měřitelný rozdíl, a kde s vámi rádi nastavíme baseline a porovnáme stav před a po.
           </p>
         </FadeInSection>
 
@@ -240,7 +240,7 @@ export default function FunkcePage() {
                 textTransform: "uppercase",
               }}
             >
-              ◉ Pilot fáze — hledáme partnery
+              ◉ Pilot fáze, hledáme partnery
             </div>
             <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-center">
               <div>
@@ -253,7 +253,7 @@ export default function FunkcePage() {
                   <span className="text-gold">Společně to změříme.</span>
                 </h3>
                 <p className="text-text-secondary text-base leading-relaxed mb-4 max-w-2xl">
-                  EkonomOS je nový produkt. Místo abychom slibovali čísla bez podkladu, hledáme <strong className="text-white">3–5 prvních partnerských kanceláří</strong>, se kterými nasadíme produkt, společně nastavíme metriky a po 6 měsících veřejně publikujeme reálný dopad.
+                  EkonomOS je nový produkt. Místo abychom slibovali čísla bez podkladu, hledáme <strong className="text-white">3 až 5 prvních partnerských kanceláří</strong>, se kterými nasadíme produkt, společně nastavíme metriky a po 6 měsících veřejně publikujeme reálný dopad.
                 </p>
                 <ul className="space-y-2 text-text-secondary text-sm">
                   <li className="flex gap-3">
@@ -262,11 +262,11 @@ export default function FunkcePage() {
                   </li>
                   <li className="flex gap-3">
                     <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
-                    Společný měřící framework — baseline před nasazením, výsledky za 6 měsíců
+                    Společný měřící framework, baseline před nasazením, výsledky za 6 měsíců
                   </li>
                   <li className="flex gap-3">
                     <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
-                    Přímý přístup k vývojovému týmu — vaše požadavky se promítají do produktu
+                    Přímý přístup k vývojovému týmu, vaše požadavky se promítají do produktu
                   </li>
                   <li className="flex gap-3">
                     <CheckCircle2 size={16} className="text-status-green mt-0.5 flex-shrink-0" />
@@ -363,7 +363,7 @@ export default function FunkcePage() {
           ))}
         </div>
 
-        {/* Tease — Skryté signály */}
+        {/* Tease, Skryté signály */}
         <FadeInSection className="mb-24">
           <div className="hud-panel p-10 grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
             <div className="p-4 border border-gold/30 bg-gold/5">
@@ -388,7 +388,7 @@ export default function FunkcePage() {
                 Drobnosti, kterých si lidé sami nevšimnou
               </h3>
               <p className="text-text-secondary text-sm leading-relaxed max-w-2xl">
-                Vedle účetních dat sleduje aplikace desítky signálů, ze kterých skládá obraz toho, co se s klientem opravdu děje. Konkrétní seznam ukazujeme až klientům — proč byste měli prozradit konkurenci, na co se my dívají.
+                Vedle účetních dat sleduje aplikace desítky signálů, ze kterých skládá obraz toho, co se s klientem opravdu děje. Konkrétní seznam ukazujeme až klientům, proč byste měli prozradit konkurenci, na co se my dívají.
               </p>
             </div>
             <Link
@@ -409,7 +409,7 @@ export default function FunkcePage() {
               className="text-2xl sm:text-3xl font-bold text-white mb-4"
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
-              Web, portál i aplikaci —
+              Web, portál i aplikaci:
               <br />
               <span className="text-gold">postavíme za vás</span>
             </h2>

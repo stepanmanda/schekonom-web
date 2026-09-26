@@ -8,7 +8,6 @@ import {
   Layers,
   Workflow,
   ShieldCheck,
-  Phone,
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
@@ -26,7 +25,7 @@ const principles = [
   {
     icon: Workflow,
     title: "AI pod dohledem",
-    desc: "Aplikace navrhuje akce — vy schvalujete. Žádný autopilot bez kontroly. Lidský úsudek zůstává v každém kritickém kroku.",
+    desc: "Aplikace navrhuje akce, vy schvalujete. Žádný autopilot bez kontroly. Lidský úsudek zůstává v každém kritickém kroku.",
   },
   {
     icon: ShieldCheck,
@@ -78,8 +77,7 @@ export default function ONasPage() {
               className="text-cyan hover:underline"
             >
               VELYOS
-            </a>{" "}
-            — tým, který se specializuje na B2B AI agenty a autonomní workflow
+            </a>, tým, který se specializuje na B2B AI agenty a autonomní workflow
             pro profesionální služby. Zaměřujeme se na sektory, kde malé úspory
             a včasné varování generují největší hodnotu: účetnictví, daně,
             advokacie, poradenství.
@@ -109,7 +107,7 @@ export default function ONasPage() {
                   Účetnictví <span className="text-cyan">jinak</span>
                 </h2>
                 <p className="text-text-secondary leading-relaxed">
-                  Klasická účetní kancelář bojuje s e-maily, papíry a
+                  Klasická účetní kancelář bojuje s emaily, papíry a
                   Excelem. EkonomOS to mění tím, že propojí všechny zdroje dat
                   do jedné aplikace, nasadí AI na hlídání rizik a automatizuje
                   rutinu přes automatizovaný workflow.
@@ -207,7 +205,7 @@ export default function ONasPage() {
             </h2>
             <p className="text-text-secondary text-base max-w-2xl mx-auto leading-relaxed">
               VELYOS staví AI agenty a autonomní workflow pro firmy, které
-              prodávají odbornou práci — účetní kanceláře, advokátní praxe,
+              prodávají odbornou práci, účetní kanceláře, advokátní praxe,
               daňové poradny, controllingové studio. EkonomOS je první z
               produktů, které stavíme na míru tomuto vertikálu.
             </p>

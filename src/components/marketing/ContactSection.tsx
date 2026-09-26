@@ -47,7 +47,9 @@ export default function ContactSection() {
     inquiry: "",
     message: "",
   });
-  const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitState, setSubmitState] = useState<
+    "idle" | "sending" | "success" | "mailto" | "error"
+  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -65,7 +67,7 @@ export default function ContactSection() {
       setSubmitState("success");
       setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
     } else if (result.mode === "mailto") {
-      setSubmitState("idle");
+      setSubmitState("mailto");
     } else {
       setSubmitState("error");
     }
@@ -97,7 +99,7 @@ export default function ContactSection() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10">
-          {/* Contact info — left side */}
+          {/* Contact info, left side */}
           <div
             className={`lg:col-span-2 ${inView ? "animate-float-up delay-100" : "opacity-0"}`}
           >
@@ -163,7 +165,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Contact form — right side */}
+          {/* Contact form, right side */}
           <div
             className={`lg:col-span-3 ${inView ? "animate-float-up delay-300" : "opacity-0"}`}
           >
@@ -207,7 +209,7 @@ export default function ContactSection() {
                       textTransform: "uppercase",
                     }}
                   >
-                    E-mail *
+                    email *
                   </label>
                   <input
                     type="email"
@@ -316,6 +318,21 @@ export default function ContactSection() {
                   <span>Děkujeme. Ozveme se vám do 24 hodin.</span>
                 </div>
               )}
+              {submitState === "mailto" && (
+                <div className="flex items-center gap-2 text-cyan text-sm" role="status">
+                  <CheckCircle2 size={16} />
+                  <span>
+                    Otevřeli jsme e-mailovou aplikaci. Pokud se neotevřela, {" "}
+                    <a
+                      href={getMailtoLink(formState)}
+                      className="underline hover:no-underline"
+                    >
+                      napište nám přímo
+                    </a>
+                    .
+                  </span>
+                </div>
+              )}
               {submitState === "error" && (
                 <div className="flex items-center gap-2 text-status-red text-sm">
                   <AlertTriangle size={16} />
@@ -325,7 +342,7 @@ export default function ContactSection() {
                       href={getMailtoLink(formState)}
                       className="text-cyan hover:underline"
                     >
-                      Pošlete nám e-mail přímo
+                      Pošlete nám email přímo
                     </a>
                     .
                   </span>

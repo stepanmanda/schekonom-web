@@ -7,7 +7,6 @@ import {
   AlertTriangle,
   ArrowRight,
   Bot,
-  Building2,
   Cpu,
   KeyRound,
   Lock,
@@ -31,7 +30,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "color-mix(in srgb, var(--accent-strong) 72%, transparent)",
 };
 
 function InfoTile({
@@ -48,13 +47,13 @@ function InfoTile({
   return (
     <div className="hud-mini-metric" data-tone="slate">
       <div className="mb-3 flex items-center gap-2">
-        <Icon size={14} color="rgba(0,229,255,0.72)" />
+        <Icon size={14} color="color-mix(in srgb, var(--accent-strong) 72%, transparent)" />
         <span style={labelStyle}>{title}</span>
       </div>
-      <div style={{ color: "#FFFFFF", fontWeight: 600, marginBottom: 6 }}>
+      <div style={{ color: "var(--ink)", fontWeight: 600, marginBottom: 6 }}>
         {value}
       </div>
-      <div style={{ color: "#7A8A9E", lineHeight: 1.5 }}>{sub}</div>
+      <div style={{ color: "var(--muted)", lineHeight: 1.5 }}>{sub}</div>
     </div>
   );
 }
@@ -76,15 +75,6 @@ export default function LoginPage() {
 
   const activeProfile =
     demoProfiles.find((p) => p.id === activeProfileId) ?? defaultProfile;
-
-  const pickProfile = (profile: DemoProfile) => {
-    setActiveProfileId(profile.id);
-    setSurname(profile.surname);
-    setPhone(profile.phone);
-    setCode("");
-    setChallenge(null);
-    setError("");
-  };
 
   const handleRequestCode = async (event: FormEvent) => {
     event.preventDefault();
@@ -130,7 +120,7 @@ export default function LoginPage() {
     }
   };
 
-  // Express login — jeden klik bez OTP. Pro pilot demo není OTP potřeba.
+  // Express login, jeden klik bez OTP. Pro pilot demo není OTP potřeba.
   const handleExpressLogin = async (profile: DemoProfile) => {
     setActiveProfileId(profile.id);
     setSurname(profile.surname);
@@ -174,10 +164,11 @@ export default function LoginPage() {
 
   return (
     <div
+      className="portal-shell"
       style={{
         minHeight: "100vh",
         background:
-          "radial-gradient(circle at top right, rgba(0,229,255,0.08), transparent 32%), linear-gradient(180deg, #02060A 0%, #03080D 45%, #091724 100%)",
+          "radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 10%, transparent), transparent 32%), var(--page)",
       }}
     >
       <div className="mx-auto w-full px-6 py-8" style={{ maxWidth: 1480 }}>
@@ -208,17 +199,17 @@ export default function LoginPage() {
             <div
               className="flex h-10 w-10 items-center justify-center"
               style={{
-                border: "1px solid rgba(0,229,255,0.2)",
-                background: "rgba(0,229,255,0.06)",
+                border: "1px solid color-mix(in srgb, var(--accent-strong) 20%, transparent)",
+                background: "color-mix(in srgb, var(--accent-strong) 6%, transparent)",
               }}
             >
-              <Shield size={18} color="#00E5FF" />
+              <Shield size={18} color="var(--accent-strong)" />
             </div>
             <div>
               <div style={labelStyle}>EKONOMOS CONTROL CENTER</div>
               <div
                 style={{
-                  color: "#FFFFFF",
+                  color: "var(--ink)",
                   fontSize: "0.95rem",
                   fontWeight: 600,
                 }}
@@ -249,7 +240,7 @@ export default function LoginPage() {
                   fontFamily: "Space Grotesk, sans-serif",
                   fontSize: "clamp(2.4rem, 4vw, 4.6rem)",
                   lineHeight: 1.02,
-                  color: "#FFFFFF",
+                  color: "var(--ink)",
                   marginBottom: 16,
                 }}
               >
@@ -257,8 +248,8 @@ export default function LoginPage() {
                 <br />
                 <span
                   style={{
-                    background:
-                      "linear-gradient(90deg, #00E5FF 0%, rgba(212,175,55,0.92) 100%)",
+                    backgroundImage:
+                      "linear-gradient(90deg, var(--accent-strong) 0%, rgba(212,175,55,0.92) 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -270,7 +261,7 @@ export default function LoginPage() {
 
               <p
                 style={{
-                  color: "#B8C1C8",
+                  color: "var(--muted)",
                   maxWidth: 760,
                   lineHeight: 1.78,
                   marginBottom: 28,
@@ -278,7 +269,7 @@ export default function LoginPage() {
               >
                 Demo přístup do EkonomOS bez registrace. Klikněte na profil podle
                 role a otevře se pracovní plocha přesně podle toho, co daná role
-                vidí — klienti, workflow, rizika a akce. Žádné heslo, žádné OTP.
+                vidí, klienti, workflow, rizika a akce. Žádné heslo, žádné OTP.
               </p>
 
               {/* Locked features notice */}
@@ -296,15 +287,15 @@ export default function LoginPage() {
                 />
                 <p
                   style={{
-                    color: "#B8C1C8",
+                    color: "var(--muted)",
                     fontSize: "0.85rem",
                     lineHeight: 1.65,
                   }}
                 >
-                  <strong style={{ color: "#FFFFFF" }}>
+                  <strong style={{ color: "var(--ink)" }}>
                     Demo má omezenou funkčnost.
                   </strong>{" "}
-                  Pokročilé funkce, AI vrstva a hloubka analýz se v demu nezobrazí — odemkneme je po dohodě o spolupráci. Chráníme tím know-how, které jsme dlouho budovali.
+                  Pokročilé funkce, AI vrstva a hloubka analýz se v demu nezobrazí, odemkneme je po dohodě o spolupráci. Chráníme tím know-how, které jsme dlouho budovali.
                 </p>
               </div>
 
@@ -364,7 +355,7 @@ export default function LoginPage() {
                         style={{
                           fontFamily: "Space Grotesk, sans-serif",
                           fontSize: "1.35rem",
-                          color: "#FFFFFF",
+                          color: "var(--ink)",
                           fontWeight: 700,
                           lineHeight: 1.15,
                           marginBottom: 8,
@@ -374,7 +365,7 @@ export default function LoginPage() {
                       </div>
                       <div
                         style={{
-                          color: "rgba(0,229,255,0.85)",
+                          color: "color-mix(in srgb, var(--accent-strong) 85%, transparent)",
                           fontSize: "0.85rem",
                           fontFamily: "var(--font-mono)",
                           letterSpacing: "0.06em",
@@ -385,7 +376,7 @@ export default function LoginPage() {
                       </div>
                       <div
                         style={{
-                          color: "#B8C1C8",
+                          color: "var(--muted)",
                           lineHeight: 1.65,
                           fontSize: "0.85rem",
                         }}
@@ -395,8 +386,8 @@ export default function LoginPage() {
                       <div
                         className="mt-5 pt-4 flex items-center gap-2"
                         style={{
-                          color: "#7A8A9E",
-                          borderTop: "1px solid rgba(0,229,255,0.08)",
+                          color: "var(--muted)",
+                          borderTop: "1px solid color-mix(in srgb, var(--accent-strong) 8%, transparent)",
                         }}
                       >
                         <ArrowRight size={13} />
@@ -408,8 +399,8 @@ export default function LoginPage() {
                             textTransform: "uppercase",
                             color:
                               loadingStage !== null && isActive
-                                ? "rgba(0,229,255,0.6)"
-                                : "rgba(0,229,255,0.85)",
+                                ? "color-mix(in srgb, var(--accent-strong) 60%, transparent)"
+                                : "color-mix(in srgb, var(--accent-strong) 85%, transparent)",
                           }}
                         >
                           {loadingStage !== null && isActive
@@ -453,15 +444,15 @@ export default function LoginPage() {
                     <div
                       className="flex h-10 w-10 items-center justify-center"
                       style={{
-                        border: "1px solid rgba(0,229,255,0.22)",
-                        background: "rgba(0,229,255,0.06)",
+                        border: "1px solid color-mix(in srgb, var(--accent-strong) 22%, transparent)",
+                        background: "color-mix(in srgb, var(--accent-strong) 6%, transparent)",
                       }}
                     >
-                      <KeyRound size={18} color="#00E5FF" />
+                      <KeyRound size={18} color="var(--accent-strong)" />
                     </div>
                     <div>
                       <div style={labelStyle}>STEP 01 // REQUEST OTP</div>
-                      <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
+                      <div style={{ color: "var(--ink)", fontSize: "0.92rem" }}>
                         Přihlášení přes příjmení a telefon
                       </div>
                     </div>
@@ -501,7 +492,7 @@ export default function LoginPage() {
                     </button>
                     <div
                       className="flex items-center gap-2"
-                      style={{ color: "#7A8A9E" }}
+                      style={{ color: "var(--muted)" }}
                     >
                       <Phone size={14} />
                       <span style={{ fontSize: "0.82rem" }}>
@@ -537,7 +528,7 @@ export default function LoginPage() {
                     </div>
                     <div>
                       <div style={labelStyle}>STEP 02 // VERIFY & OPEN</div>
-                      <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
+                      <div style={{ color: "var(--ink)", fontSize: "0.92rem" }}>
                         Otevřít pracovní plochu podle role
                       </div>
                     </div>
@@ -547,7 +538,7 @@ export default function LoginPage() {
                     <div style={labelStyle}>Status</div>
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontSize: "0.92rem",
                         marginBottom: 8,
                       }}
@@ -558,7 +549,7 @@ export default function LoginPage() {
                     </div>
                     <div
                       style={{
-                        color: "#7A8A9E",
+                        color: "var(--muted)",
                         lineHeight: 1.65,
                         fontSize: "0.82rem",
                       }}
@@ -592,7 +583,7 @@ export default function LoginPage() {
                         style={{
                           fontFamily: "Space Grotesk, sans-serif",
                           fontSize: "1.8rem",
-                          color: "#FFFFFF",
+                          color: "var(--ink)",
                           letterSpacing: "0.16em",
                         }}
                       >
@@ -627,10 +618,10 @@ export default function LoginPage() {
             {/* Demo flow panel */}
             <div className="hud-panel p-6">
               <div className="mb-4 flex items-center gap-3">
-                <Bot size={18} color="#00E5FF" />
+                <Bot size={18} color="var(--accent-strong)" />
                 <div>
                   <div style={labelStyle}>JAK PŘIHLÁŠENÍ FUNGUJE</div>
-                  <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
+                  <div style={{ color: "var(--ink)", fontSize: "0.92rem" }}>
                     Čtyři kroky od kliknutí k pracovní ploše
                   </div>
                 </div>
@@ -640,7 +631,7 @@ export default function LoginPage() {
                 {demoFlow.map((step, index) => (
                   <div key={step} className="hud-list-row">
                     <span className="hud-step-index">{index + 1}</span>
-                    <span style={{ color: "#B8C1C8", lineHeight: 1.6 }}>
+                    <span style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                       {step}
                     </span>
                   </div>
@@ -651,10 +642,10 @@ export default function LoginPage() {
             {/* API handshake panel */}
             <div className="hud-panel p-6">
               <div className="mb-4 flex items-center gap-3">
-                <Cpu size={18} color="#00E5FF" />
+                <Cpu size={18} color="var(--accent-strong)" />
                 <div>
                   <div style={labelStyle}>POD KAPOTOU</div>
-                  <div style={{ color: "#FFFFFF", fontSize: "0.92rem" }}>
+                  <div style={{ color: "var(--ink)", fontSize: "0.92rem" }}>
                     Demo komunikuje s backendem stejně jako produkce.
                   </div>
                 </div>
@@ -669,7 +660,7 @@ export default function LoginPage() {
                     <span
                       style={{
                         fontFamily: "SF Mono, Monaco, Consolas, monospace",
-                        color: "#B8C1C8",
+                        color: "var(--muted)",
                         fontSize: "0.75rem",
                       }}
                     >
@@ -683,17 +674,17 @@ export default function LoginPage() {
             {/* Selected profile panel */}
             <div className="hud-panel p-6">
               <div className="mb-4 flex items-center gap-3">
-                <Activity size={18} color="#00E5FF" />
+                <Activity size={18} color="var(--accent-strong)" />
                 <div>
                   <div style={labelStyle}>SELECTED PROFILE</div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontSize: "1rem",
                       fontWeight: 600,
                     }}
                   >
-                    {activeProfile.surname} // {activeProfile.title}
+                    {activeProfile.surname}{" // "}{activeProfile.title}
                   </div>
                 </div>
               </div>

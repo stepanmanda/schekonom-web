@@ -7,7 +7,7 @@ const labelStyle = {
   fontSize: "0.62rem",
   letterSpacing: "0.18em",
   textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
+  color: "color-mix(in srgb, var(--accent-strong) 72%, transparent)",
 };
 
 export default function KpiCard({ kpi }: { kpi: DemoKpi }) {
@@ -21,13 +21,13 @@ export default function KpiCard({ kpi }: { kpi: DemoKpi }) {
           fontFamily: "Space Grotesk, sans-serif",
           fontSize: "1.6rem",
           fontWeight: 700,
-          color: "#FFFFFF",
+          color: "var(--ink)",
           marginBottom: 8,
         }}
       >
         {kpi.value}
       </div>
-      <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>{kpi.sub}</div>
+      <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>{kpi.sub}</div>
     </div>
   );
 }

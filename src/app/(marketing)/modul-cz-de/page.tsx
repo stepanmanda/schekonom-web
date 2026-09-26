@@ -12,7 +12,7 @@ import { useInView } from "@/hooks/useInView";
 const highlights = [
   {
     title: "Pendleři bez chaosu",
-    desc: "Steuererklärung, Freistellung, Kindergeld, A1 — všechna přeshraniční agenda v jednom toku. V němčině i češtině.",
+    desc: "Steuererklärung, Freistellung, Kindergeld, A1, všechna přeshraniční agenda v jednom toku. V němčině i češtině.",
   },
   {
     title: "ELSTER napojení napřímo",
@@ -71,9 +71,9 @@ export default function ModulCzDePage() {
             Hranice, které <span className="text-cyan">vás nebrzdí</span>
           </h1>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Modul pro klienty s vazbou na Německo — pendleři, vyslaní pracovníci,
+            Modul pro klienty s vazbou na Německo, pendleři, vyslaní pracovníci,
             firmy s přeshraničními operacemi, investoři. Steuererklärung,
-            Freistellung, Kindergeld, ELSTER, A1, transferové ceny — v jednom rozhraní.
+            Freistellung, Kindergeld, ELSTER, A1, transferové ceny, v jednom rozhraní.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function ModulCzDePage() {
                 CZ/DE bez papírování
               </h3>
               <p className="text-text-secondary mb-8 leading-relaxed">
-                Pendlery, vyslání i přeshraniční operace zvládneme — v češtině i v němčině.
+                Pendlery, vyslání i přeshraniční operace zvládneme, v češtině i v němčině.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/kontakt" className="btn-primary">

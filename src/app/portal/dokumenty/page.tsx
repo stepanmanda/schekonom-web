@@ -23,15 +23,15 @@ export default function DokumentyPage() {
               <div>
                 <div
                   style={{
-                    color: "#FFFFFF",
+                    color: "var(--ink)",
                     fontWeight: 600,
                     marginBottom: 6,
                   }}
                 >
                   {doc.title}
                 </div>
-                <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
-                  {doc.kind} // {doc.source}
+                <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
+                  {doc.kind}{" // "}{doc.source}
                 </div>
               </div>
               <span
@@ -43,7 +43,7 @@ export default function DokumentyPage() {
             </div>
             <div
               className="mt-4 flex items-center gap-2"
-              style={{ color: "#7A8A9E" }}
+              style={{ color: "var(--muted)" }}
             >
               <Clock3 size={14} />
               <span style={{ fontSize: "0.82rem" }}>{doc.receivedAt}</span>

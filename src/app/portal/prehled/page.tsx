@@ -5,14 +5,6 @@ import SectionCard from "@/components/portal/SectionCard";
 import ClientCard from "@/components/portal/ClientCard";
 import { severityTone } from "@/lib/utils";
 
-const labelStyle = {
-  fontFamily: "SF Mono, Monaco, Consolas, monospace",
-  fontSize: "0.62rem",
-  letterSpacing: "0.18em",
-  textTransform: "uppercase" as const,
-  color: "rgba(0,229,255,0.72)",
-};
-
 export default function PrehledPage() {
   const { session } = useAuth();
   if (!session) return null;
@@ -53,14 +45,14 @@ export default function PrehledPage() {
                   <div>
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontWeight: 600,
                         marginBottom: 6,
                       }}
                     >
                       {item.title}
                     </div>
-                    <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+                    <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                       {item.summary}
                     </div>
                   </div>

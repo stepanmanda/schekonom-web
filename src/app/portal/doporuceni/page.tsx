@@ -24,14 +24,14 @@ export default function DoporuceniPage() {
                 <div>
                   <div
                     style={{
-                      color: "#FFFFFF",
+                      color: "var(--ink)",
                       fontWeight: 600,
                       marginBottom: 6,
                     }}
                   >
                     {task.title}
                   </div>
-                  <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+                  <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                     {task.summary}
                   </div>
                 </div>
@@ -72,14 +72,14 @@ export default function DoporuceniPage() {
                   <div>
                     <div
                       style={{
-                        color: "#FFFFFF",
+                        color: "var(--ink)",
                         fontWeight: 600,
                         marginBottom: 6,
                       }}
                     >
                       {item.title}
                     </div>
-                    <div style={{ color: "#7A8A9E", lineHeight: 1.6 }}>
+                    <div style={{ color: "var(--muted)", lineHeight: 1.6 }}>
                       {item.summary}
                     </div>
                   </div>

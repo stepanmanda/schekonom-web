@@ -6,20 +6,20 @@ import { useInView } from "@/hooks/useInView";
 const regulations = [
   {
     icon: Receipt,
-    label: "ViDA — VAT in the Digital Age",
-    deadline: "2027–2030",
+    label: "ViDA: VAT in the Digital Age",
+    deadline: "2027 až 2030",
     desc: "EU postupně zavádí povinnou e-fakturaci a real-time DPH reporting. Účetní firmy bez digitalizovaného workflow se neudrží.",
   },
   {
     icon: Cpu,
-    label: "AI Act — evropská regulace AI",
+    label: "AI Act: evropská regulace AI",
     deadline: "Účinnost 2026",
     desc: "Pokud AI rozhoduje o klientech, musí to být transparentní, auditovatelné a s lidskou kontrolou. EkonomOS je tak postavený od začátku.",
   },
   {
     icon: ScrollText,
     label: "Povinná e-fakturace v ČR",
-    deadline: "Postupně 2026–2028",
+    deadline: "Postupně 2026 až 2028",
     desc: "ISDOC, EU normy, kontrolní hlášení v reálném čase. Klienti, kteří dnes posílají PDF fakturu mailem, budou potřebovat jiný workflow.",
   },
 ];
@@ -54,7 +54,7 @@ export default function WhyNowSection() {
             Tři regulační vlny, které <span className="text-cyan">přijdou tak jako tak.</span>
           </h2>
           <p className="mt-6 text-text-secondary text-lg max-w-3xl leading-relaxed">
-            Účetní firmy v ČR mají v příštích 2–4 letech tři velké změny.
+            Účetní firmy v ČR mají v příštích 2 až 4 letech tři velké změny.
             Buď je doženete s předstihem, nebo budete dohánět ostatní. EkonomOS
             staví aplikaci tak, aby každá z nich byla pro vás <strong className="text-white">přechod, ne krize</strong>.
           </p>

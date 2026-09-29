@@ -1,5 +1,21 @@
+type EmailAddress = {
+  email: string;
+  name?: string;
+};
+
+type EmailBinding = {
+  send(message: {
+    to: string | EmailAddress;
+    from: string | EmailAddress;
+    replyTo?: string | EmailAddress;
+    subject: string;
+    html: string;
+    text: string;
+  }): Promise<{ messageId: string }>;
+};
+
 type Env = {
-  BREVO_API_KEY?: string;
+  EMAIL?: EmailBinding;
   EKONOMOS_NOTIFY_EMAIL?: string;
   EKONOMOS_FROM_EMAIL?: string;
 };
@@ -131,8 +147,8 @@ export const onRequestPost = async ({
     return json({ ok: false, error: validationError }, 400);
   }
 
-  if (!env.BREVO_API_KEY) {
-    console.error("contact: BREVO_API_KEY is not configured");
+  if (!env.EMAIL) {
+    console.error("contact: EMAIL binding is not configured");
     return json({ ok: false, error: "service-unavailable" }, 503);
   }
 
@@ -158,32 +174,31 @@ export const onRequestPost = async ({
     <p><strong>Zpráva:</strong></p>
     <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
   `;
+  const textContent = [
+    "Nová poptávka — EkonomOS",
+    `Jméno: ${name}`,
+    `E-mail: ${email}`,
+    `Firma: ${company || "—"}`,
+    `Co potřebuje: ${inquiry || "—"}`,
+    `Zdroj: ${source}`,
+    "",
+    "Zpráva:",
+    message,
+  ].join("\n");
 
   try {
-    const response = await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "api-key": env.BREVO_API_KEY,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        sender: { name: "EkonomOS", email: sender },
-        to: [{ email: recipient }],
-        replyTo: { email, name },
-        subject: `EkonomOS — ${safeSubject}`,
-        htmlContent,
-      }),
+    await env.EMAIL.send({
+      from: { email: sender, name: "EkonomOS" },
+      to: recipient,
+      replyTo: { email, name },
+      subject: `EkonomOS — ${safeSubject}`,
+      html: htmlContent,
+      text: textContent,
     });
-
-    if (!response.ok) {
-      console.error(`contact: Brevo returned ${response.status}`);
-      return json({ ok: false, error: "delivery-failed" }, 502);
-    }
 
     return json({ ok: true }, 200);
   } catch {
-    console.error("contact: Brevo request failed");
+    console.error("contact: Cloudflare Email Service delivery failed");
     return json({ ok: false, error: "delivery-failed" }, 502);
   }
 };

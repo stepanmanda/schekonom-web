@@ -9,7 +9,7 @@ Krok-za-krokem postup od dokončené aplikace k live na **`ekonomos.velyos.cz`**
 - ✅ Repo `stepanmanda/schekonom-web` (fork)
 - ✅ Cloudflare účet
 - ✅ Doména `velyos.cz` v Cloudflare DNS
-- ✅ Brevo API key (existující klíč lze bezpečně přidat jako šifrovaný serverový secret)
+- ✅ Cloudflare Email Sending aktivní pro doménu `velyos.cz`
 
 ---
 
@@ -21,16 +21,19 @@ Endpoint je součástí tohoto repozitáře jako Cloudflare Pages Function:
 functions/api/contact.ts
 ```
 
-V Cloudflare Pages → projekt EkonomOS → **Settings → Variables and Secrets** nastav pro produkci:
+1. V Cloudflare otevři **Compute → Email Service → Email Sending**, onboarduj
+   doménu `velyos.cz` a ověř cílovou adresu `stepan@velyos.cz`.
+2. V projektu EkonomOS přidej produkční Send Email binding s názvem `EMAIL`.
+   Omez cílovou adresu na `stepan@velyos.cz` a odesílatele na
+   `noreply@velyos.cz`.
+3. Volitelně nastav běžné proměnné `EKONOMOS_NOTIFY_EMAIL` a
+   `EKONOMOS_FROM_EMAIL`, pokud chceš změnit výchozí adresy.
+4. Spusť nový deployment.
 
-- `BREVO_API_KEY` jako **Secret** (povinné; nikdy nepoužívat prefix `NEXT_PUBLIC_`)
-- `EKONOMOS_NOTIFY_EMAIL` jako běžnou proměnnou (volitelné, výchozí `stepan@velyos.cz`)
-- `EKONOMOS_FROM_EMAIL` jako běžnou proměnnou (volitelné, výchozí `noreply@velyos.cz`)
-
-Po změně spusť nový deployment. Formulář používá same-origin adresu
-`https://ekonomos.velyos.cz/api/contact`; Brevo klíč se neposílá do prohlížeče.
-Endpoint kontroluje origin, typ a velikost požadavku, validuje pole, používá
-honeypot a escapuje obsah emailu.
+Formulář používá same-origin adresu `https://ekonomos.velyos.cz/api/contact`.
+Žádný externí API klíč ani heslo k Zoho není potřeba. Endpoint kontroluje
+origin, typ a velikost požadavku, validuje pole, používá honeypot a escapuje
+obsah emailu.
 
 ---
 
@@ -50,7 +53,7 @@ honeypot a escapuje obsah emailu.
    ```
    NEXT_PUBLIC_CONTACT_EMAIL = stepan@velyos.cz
    ```
-   Serverový `BREVO_API_KEY` nastav podle kroku 1 jako šifrovaný Secret.
+   Emailový binding `EMAIL` nastav podle kroku 1.
    Volitelně (pokud chceš analytics):
    ```
    NEXT_PUBLIC_PLAUSIBLE_DOMAIN = ekonomos.velyos.cz
@@ -144,8 +147,8 @@ Po deploy:
 - Otevři DevTools → Network → odešli formulář → zkontroluj response z `/api/contact`
 - Možné chyby:
   - **403** — origin není povolený v `functions/api/contact.ts`
-  - **503** — v projektu EkonomOS chybí serverový Secret `BREVO_API_KEY`
-  - **502** — Brevo odmítlo odeslání; zkontroluj Functions logs a ověřenou adresu odesílatele
+  - **503** — v projektu EkonomOS chybí Send Email binding `EMAIL`
+  - **502** — Email Service odmítla odeslání; zkontroluj Functions logs a ověření domény/adresy
   - **404** — Cloudflare Pages Function nebyla součástí deploymentu
 
 ### Mailto fallback
@@ -174,7 +177,7 @@ GitHub repo má před každým deploy commit hash, takže můžeš `git revert <
 - [x] Per-page metadata
 - [x] Plausible Analytics ready (jen env var)
 - [x] Reduced motion, GH Pages workflow deaktivován
-- [ ] **Nastavit `BREVO_API_KEY` v projektu EkonomOS** ← TVŮJ DALŠÍ KROK
+- [ ] **Onboardovat `velyos.cz` do Email Sending a přidat binding `EMAIL`** ← TVŮJ DALŠÍ KROK
 - [ ] **Cloudflare Pages projekt** ← TVŮJ DALŠÍ KROK
 - [ ] **DNS CNAME** ← TVŮJ DALŠÍ KROK
 - [ ] **Form test** ← PO DEPLOY

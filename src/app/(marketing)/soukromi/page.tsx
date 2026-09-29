@@ -95,9 +95,9 @@ export default function SoukromiPage() {
               5. Komu údaje předáváme
             </h2>
             <p>
-              Pro odeslání transakčních emailů (oznámení o vyplnění formuláře)
-              používáme službu Brevo (sendinblue.com). Pro evidenci poptávek
-              používáme Google Workspace. Pokud povolíte marketingové měření,
+              Pro bezpečné doručení oznámení o vyplnění formuláře používáme
+              Cloudflare Email Service. Následnou obchodní komunikaci vedeme
+              prostřednictvím Zoho Mail. Pokud povolíte marketingové měření,
               údaje o návštěvě a konverzních událostech zpracovává také Meta
               Platforms Ireland Limited podle svých podmínek a zavedených
               mechanismů pro mezinárodní předávání údajů. Rozsah zpracovatelů

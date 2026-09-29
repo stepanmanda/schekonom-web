@@ -25,10 +25,12 @@ function initializePixel(pixelId: string) {
     if (fbq.callMethod) fbq.callMethod(...args);
     else fbq.queue?.push(args);
   }) as NonNullable<Window["fbq"]>;
+  fbq.push = fbq;
   fbq.queue = [];
   fbq.loaded = true;
   fbq.version = "2.0";
   window.fbq = fbq;
+  window._fbq = fbq;
 
   const script = document.createElement("script");
   script.async = true;

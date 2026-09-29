@@ -19,6 +19,7 @@ export type MarketingAttribution = Partial<{
 
 declare global {
   interface Window {
+    _fbq?: Window["fbq"];
     fbq?: ((...args: unknown[]) => void) & {
       callMethod?: (...args: unknown[]) => void;
       queue?: unknown[][];

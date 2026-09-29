@@ -74,6 +74,7 @@ export default function KontaktPage() {
     company: "",
     inquiry: "",
     message: "",
+    website: "",
   });
   const [submitState, setSubmitState] = useState<
     "idle" | "sending" | "success" | "mailto" | "error"
@@ -94,7 +95,14 @@ export default function KontaktPage() {
     if (result.ok && result.mode === "endpoint") {
       trackMetaEvent("Lead", { content_name: "contact_form_page" });
       setSubmitState("success");
-      setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
+      setFormState({
+        name: "",
+        email: "",
+        company: "",
+        inquiry: "",
+        message: "",
+        website: "",
+      });
     } else if (result.mode === "mailto") {
       trackMetaEvent("Contact", { content_name: "contact_mailto_page" });
       setSubmitState("mailto");
@@ -213,6 +221,18 @@ export default function KontaktPage() {
               onSubmit={handleSubmit}
               className="hud-panel p-8 rounded-sm space-y-5"
             >
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="contact-page-website">Webová stránka</label>
+                <input
+                  id="contact-page-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.website}
+                  onChange={handleChange}
+                />
+              </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label
@@ -397,7 +417,7 @@ export default function KontaktPage() {
                   letterSpacing: "0.08em",
                 }}
               >
-                Odesláním souhlasíte se zpracováním osobních údajů dle GDPR.
+                Odesláním berete na vědomí zpracování osobních údajů za účelem vyřízení poptávky.
               </p>
             </form>
           </div>

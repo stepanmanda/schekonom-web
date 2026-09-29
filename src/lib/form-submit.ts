@@ -3,30 +3,10 @@ import { getStoredAttribution } from "@/lib/tracking";
 /**
  * Utility pro odesílání kontaktních formulářů.
  *
- * Funguje ve dvou módech:
- * 1. POST endpoint (NEXT_PUBLIC_CONTACT_ENDPOINT env var), pošle JSON na URL
- *    (kompatibilní s Web3Forms, Formspree, vlastním backendem nebo velyos.cz API)
- * 2. mailto fallback, otevře mailový klient s předvyplněnou zprávou
- *
- * Pokud POST selže (síť / 4xx / 5xx), automaticky fallback na mailto.
- *
- * Konfigurace:
- *   .env.local:
- *     NEXT_PUBLIC_CONTACT_ENDPOINT=https://api.web3forms.com/submit
- *     NEXT_PUBLIC_CONTACT_ACCESS_KEY=<your-key>   (pokud provider potřebuje)
- *
- *   Pro Web3Forms:
- *     - Endpoint: https://api.web3forms.com/submit
- *     - Access key: získáš zdarma na web3forms.com
- *
- *   Pro Formspree:
- *     - Endpoint: https://formspree.io/f/<form-id>
- *     - Access key: ne potřeba
- *
- *   Pro velyos.cz vlastní endpoint:
- *     - Endpoint: https://velyos.cz/api/contact (nebo cokoli)
- *     - Backend musí povolit CORS pro ekonomos.velyos.cz
- *     - Pokud používá API key, dát ho do NEXT_PUBLIC_CONTACT_ACCESS_KEY
+ * Primárně posílá JSON na same-origin Cloudflare Pages Function `/api/contact`.
+ * Pokud endpoint selže, otevře jako nouzový fallback předvyplněný email.
+ * Brevo API klíč zůstává pouze v serverovém prostředí Cloudflare a nikdy se
+ * neposílá do prohlížeče.
  */
 
 export type ContactFormPayload = {
@@ -35,6 +15,8 @@ export type ContactFormPayload = {
   company?: string;
   inquiry?: string;
   message: string;
+  /** Honeypot proti jednoduchým formulářovým botům. Musí zůstat prázdný. */
+  website?: string;
 };
 
 // Mailto fallback adresa. Default = stepan@velyos.cz (existující email).
@@ -80,56 +62,43 @@ function openMailtoFallback(data: ContactFormPayload) {
 export async function submitContactForm(
   data: ContactFormPayload,
 ): Promise<{ ok: boolean; mode: "endpoint" | "mailto"; error?: string }> {
-  const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
-  const accessKey = process.env.NEXT_PUBLIC_CONTACT_ACCESS_KEY;
-
-  // Pokud je nastavený endpoint, zkus POST
-  if (endpoint) {
-    try {
-      const attribution = getStoredAttribution();
-      const payload: Record<string, string> = {
-        ...data,
-        source: "ekonomos.velyos.cz",
-        subject: `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
-      };
-      for (const [key, value] of Object.entries(attribution)) {
-        if (value) payload[key] = value;
-      }
-      if (accessKey) {
-        payload.access_key = accessKey;
-      }
-
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        return { ok: true, mode: "endpoint" };
-      }
-      openMailtoFallback(data);
-      return {
-        ok: true,
-        mode: "mailto",
-        error: `Endpoint vrátil ${response.status}`,
-      };
-    } catch (err) {
-      openMailtoFallback(data);
-      return {
-        ok: true,
-        mode: "mailto",
-        error: err instanceof Error ? err.message : "Network error",
-      };
+  try {
+    const attribution = getStoredAttribution();
+    const payload: Record<string, string | undefined> = {
+      ...data,
+      source: "ekonomos.velyos.cz",
+      subject: `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
+    };
+    for (const [key, value] of Object.entries(attribution)) {
+      if (value) payload[key] = value;
     }
-  }
 
-  // Žádný endpoint nakonfigurován → mailto
-  openMailtoFallback(data);
-  return { ok: true, mode: "mailto" };
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      return { ok: true, mode: "endpoint" };
+    }
+    openMailtoFallback(data);
+    return {
+      ok: true,
+      mode: "mailto",
+      error: `Endpoint vrátil ${response.status}`,
+    };
+  } catch (err) {
+    openMailtoFallback(data);
+    return {
+      ok: true,
+      mode: "mailto",
+      error: err instanceof Error ? err.message : "Network error",
+    };
+  }
 }
 
 export function getMailtoLink(data: ContactFormPayload): string {

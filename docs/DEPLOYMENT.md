@@ -9,104 +9,28 @@ Krok-za-krokem postup od dokončené aplikace k live na **`ekonomos.velyos.cz`**
 - ✅ Repo `stepanmanda/schekonom-web` (fork)
 - ✅ Cloudflare účet
 - ✅ Doména `velyos.cz` v Cloudflare DNS
-- ✅ Velyos repo `stepanmanda/velyos-web` s Cloudflare Pages
-- ✅ Brevo API key + Apps Script webhook (už máš pro `/api/diagnostika`)
+- ✅ Brevo API key (existující klíč lze bezpečně přidat jako šifrovaný serverový secret)
 
 ---
 
-## 1. Backend — kontaktní endpoint na velyos.cz
+## 1. Backend — kontaktní endpoint v projektu EkonomOS
 
-### 1.1 Zkopíruj template do velyos repa
+Endpoint je součástí tohoto repozitáře jako Cloudflare Pages Function:
 
-```bash
-cd ~/path/to/velyos-web   # nebo kde máš velyos repo
-mkdir -p functions/api
-cp ~/Desktop/schekonom_rebrand/schekonom-web-fork/docs/velyos-cf-function-template.ts \
-   functions/api/ekonomos-contact.ts
+```
+functions/api/contact.ts
 ```
 
-### 1.2 Apps Script Sheet update
+V Cloudflare Pages → projekt EkonomOS → **Settings → Variables and Secrets** nastav pro produkci:
 
-Endpoint posílá `sheet: "EKONOMOS LEADS"` v payloadu. V tvém Apps Script webhooku přidej rozlišovač:
+- `BREVO_API_KEY` jako **Secret** (povinné; nikdy nepoužívat prefix `NEXT_PUBLIC_`)
+- `EKONOMOS_NOTIFY_EMAIL` jako běžnou proměnnou (volitelné, výchozí `stepan@velyos.cz`)
+- `EKONOMOS_FROM_EMAIL` jako běžnou proměnnou (volitelné, výchozí `noreply@velyos.cz`)
 
-```javascript
-// V Apps Script (Tools → Script editor v Google Sheet "VELYOS LEADS")
-function doPost(e) {
-  const data = JSON.parse(e.postData.contents);
-
-  // Verify webhook secret
-  const secret = e.parameter['X-Webhook-Secret'] ||
-                 (e.postData.headers && e.postData.headers['X-Webhook-Secret']);
-  if (secret !== SHEET_WEBHOOK_SECRET) {
-    return ContentService.createTextOutput(JSON.stringify({ ok: false }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-
-  // Choose tab based on sheet name from payload
-  const sheetName = data.sheet || 'VELYOS LEADS';
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName(sheetName);
-
-  // If tab doesn't exist, create it with headers
-  if (!sheet) {
-    sheet = ss.insertSheet(sheetName);
-    sheet.appendRow([
-      'Timestamp', 'Name', 'Email', 'Company', 'Inquiry', 'Message', 'Source'
-    ]);
-  }
-
-  sheet.appendRow([
-    data.timestamp || new Date().toISOString(),
-    data.name || '',
-    data.email || '',
-    data.company || '',
-    data.inquiry || '',
-    data.message || '',
-    data.source || ''
-  ]);
-
-  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-```
-
-Save → Deploy → New deployment → Web app. (Pokud už deployment máš, stačí Save — nový kód se aktivuje.)
-
-### 1.3 Push velyos do main
-
-```bash
-cd ~/path/to/velyos-web
-git add functions/api/ekonomos-contact.ts
-git commit -m "feat: add ekonomos-contact endpoint"
-git push origin main
-```
-
-Cloudflare Pages **auto-deploy** spustí build. Za 1–2 minuty bude endpoint dostupný na:
-```
-https://velyos.cz/api/ekonomos-contact
-```
-
-### 1.4 Verifikace endpointu
-
-```bash
-# OPTIONS (CORS preflight)
-curl -i -X OPTIONS https://velyos.cz/api/ekonomos-contact \
-  -H "Origin: https://ekonomos.velyos.cz"
-# → 204, Access-Control-Allow-Origin: https://ekonomos.velyos.cz
-
-# POST (test request)
-curl -X POST https://velyos.cz/api/ekonomos-contact \
-  -H "Content-Type: application/json" \
-  -H "Origin: https://ekonomos.velyos.cz" \
-  -d '{"name":"Test","email":"test@example.com","message":"Test message from curl"}'
-# → {"ok":true}
-```
-
-Po úspěšném testu zkontroluj:
-- [ ] Přišel ti email na `stepan@velyos.cz` z Brevo
-- [ ] V Google Sheet vznikl nový tab "EKONOMOS LEADS" s testovacím záznamem
-
-Pokud něco selže — koukni do Cloudflare Pages → velyos-web → Functions → Real-time logs.
+Po změně spusť nový deployment. Formulář používá same-origin adresu
+`https://ekonomos.velyos.cz/api/contact`; Brevo klíč se neposílá do prohlížeče.
+Endpoint kontroluje origin, typ a velikost požadavku, validuje pole, používá
+honeypot a escapuje obsah emailu.
 
 ---
 
@@ -124,9 +48,9 @@ Pokud něco selže — koukni do Cloudflare Pages → velyos-web → Functions �
    - Root directory: ` ` (prázdné)
 6. Environment variables (Production):
    ```
-   NEXT_PUBLIC_CONTACT_ENDPOINT = https://velyos.cz/api/ekonomos-contact
    NEXT_PUBLIC_CONTACT_EMAIL = stepan@velyos.cz
    ```
+   Serverový `BREVO_API_KEY` nastav podle kroku 1 jako šifrovaný Secret.
    Volitelně (pokud chceš analytics):
    ```
    NEXT_PUBLIC_PLAUSIBLE_DOMAIN = ekonomos.velyos.cz
@@ -217,12 +141,12 @@ Po deploy:
 - Lokálně replikovat: `npm run build` → musí projít bez chyb
 
 ### Formulář vrací error
-- Check že env var `NEXT_PUBLIC_CONTACT_ENDPOINT` je správně nastavený
-- Otevři DevTools → Network → odešli formulář → koukni na response z `velyos.cz/api/ekonomos-contact`
+- Otevři DevTools → Network → odešli formulář → zkontroluj response z `/api/contact`
 - Možné chyby:
-  - **CORS** — origin není povolený. Přidat doménu do `ALLOWED_ORIGINS` v `functions/api/ekonomos-contact.ts`
-  - **403/500** — chyba v endpointu. Check Cloudflare Pages → velyos-web → Functions logs
-  - **Network error** — endpoint není deployed. Verify že `velyos.cz/api/ekonomos-contact` vrací 200/204 přes curl
+  - **403** — origin není povolený v `functions/api/contact.ts`
+  - **503** — v projektu EkonomOS chybí serverový Secret `BREVO_API_KEY`
+  - **502** — Brevo odmítlo odeslání; zkontroluj Functions logs a ověřenou adresu odesílatele
+  - **404** — Cloudflare Pages Function nebyla součástí deploymentu
 
 ### Mailto fallback
 Pokud endpoint není dostupný, formulář automaticky spadne na `mailto:stepan@velyos.cz` s předplněným subject + body. Tohle funguje vždy bez backendu — ale klient musí mít nastavený mailový klient v prohlížeči.
@@ -244,13 +168,13 @@ GitHub repo má před každým deploy commit hash, takže můžeš `git revert <
 ## Status
 
 - [x] Frontend code — production ready
-- [x] CF Function template — připravený v `docs/`
-- [x] Form utility se 3 módy (endpoint/mailto/fallback)
+- [x] Same-origin CF Function — `functions/api/contact.ts`
+- [x] Form utility s endpointem a nouzovým mailto fallbackem
 - [x] OG image, sitemap, robots, schema.org
 - [x] Per-page metadata
 - [x] Plausible Analytics ready (jen env var)
 - [x] Reduced motion, GH Pages workflow deaktivován
-- [ ] **Velyos endpoint deploy** ← TVŮJ DALŠÍ KROK
+- [ ] **Nastavit `BREVO_API_KEY` v projektu EkonomOS** ← TVŮJ DALŠÍ KROK
 - [ ] **Cloudflare Pages projekt** ← TVŮJ DALŠÍ KROK
 - [ ] **DNS CNAME** ← TVŮJ DALŠÍ KROK
 - [ ] **Form test** ← PO DEPLOY

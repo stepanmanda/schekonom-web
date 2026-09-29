@@ -95,10 +95,10 @@ export default function SoukromiPage() {
               5. Komu údaje předáváme
             </h2>
             <p>
-              Pro bezpečné doručení oznámení o vyplnění formuláře používáme
-              Cloudflare Email Service. Následnou obchodní komunikaci vedeme
-              prostřednictvím Zoho Mail. Pokud povolíte marketingové měření,
-              údaje o návštěvě a konverzních událostech zpracovává také Meta
+              Poptávky z kontaktního formuláře ukládáme do databáze Cloudflare
+              D1. Následnou obchodní komunikaci vedeme prostřednictvím Zoho
+              Mail. Pokud povolíte marketingové měření, údaje o návštěvě a
+              konverzních událostech zpracovává také Meta
               Platforms Ireland Limited podle svých podmínek a zavedených
               mechanismů pro mezinárodní předávání údajů. Rozsah zpracovatelů
               se může měnit; aktuální informace jsou uvedeny zde a na stránce

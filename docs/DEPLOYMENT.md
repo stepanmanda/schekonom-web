@@ -9,7 +9,7 @@ Krok-za-krokem postup od dokončené aplikace k live na **`ekonomos.velyos.cz`**
 - ✅ Repo `stepanmanda/schekonom-web` (fork)
 - ✅ Cloudflare účet
 - ✅ Doména `velyos.cz` v Cloudflare DNS
-- ✅ Cloudflare Email Sending aktivní pro doménu `velyos.cz`
+- ✅ Cloudflare D1 databáze dostupná v účtu
 
 ---
 
@@ -21,19 +21,17 @@ Endpoint je součástí tohoto repozitáře jako Cloudflare Pages Function:
 functions/api/contact.ts
 ```
 
-1. V Cloudflare otevři **Compute → Email Service → Email Sending**, onboarduj
-   doménu `velyos.cz` a ověř cílovou adresu `stepan@velyos.cz`.
-2. V projektu EkonomOS přidej produkční Send Email binding s názvem `EMAIL`.
-   Omez cílovou adresu na `stepan@velyos.cz` a odesílatele na
-   `noreply@velyos.cz`.
-3. Volitelně nastav běžné proměnné `EKONOMOS_NOTIFY_EMAIL` a
-   `EKONOMOS_FROM_EMAIL`, pokud chceš změnit výchozí adresy.
+1. V Cloudflare otevři **Storage & Databases → D1 SQL Database** a vytvoř
+   databázi `ekonomos-leads`.
+2. V D1 konzoli spusť SQL z `migrations/0001_contact_leads.sql`.
+3. V projektu EkonomOS otevři **Settings → Bindings → Add → D1 database**.
+   Binding pojmenuj přesně `LEADS_DB` a vyber `ekonomos-leads`.
 4. Spusť nový deployment.
 
 Formulář používá same-origin adresu `https://ekonomos.velyos.cz/api/contact`.
 Žádný externí API klíč ani heslo k Zoho není potřeba. Endpoint kontroluje
-origin, typ a velikost požadavku, validuje pole, používá honeypot a escapuje
-obsah emailu.
+origin, typ a velikost požadavku, validuje pole, používá honeypot a omezuje
+počet požadavků pomocí anonymizovaného hashe IP adresy.
 
 ---
 
@@ -53,7 +51,7 @@ obsah emailu.
    ```
    NEXT_PUBLIC_CONTACT_EMAIL = stepan@velyos.cz
    ```
-   Emailový binding `EMAIL` nastav podle kroku 1.
+   D1 binding `LEADS_DB` nastav podle kroku 1.
    Volitelně (pokud chceš analytics):
    ```
    NEXT_PUBLIC_PLAUSIBLE_DOMAIN = ekonomos.velyos.cz
@@ -84,22 +82,15 @@ Otevři `https://ekonomos.velyos.cz` a zkontroluj:
 - [ ] `/sitemap.xml` vrací XML
 - [ ] `/robots.txt` vrací text
 - [ ] Open Graph preview v LinkedIn / Twitter (použij [opengraph.xyz](https://www.opengraph.xyz))
-- [ ] **Formulář pošle test:** vyplň, odešli, zkontroluj že přišel email
+- [ ] **Formulář uloží test:** vyplň, odešli a ověř řádek v D1 tabulce `contact_leads`
 
 ---
 
-## 3. Email forwarding (volitelné)
+## 3. Zoho Mail
 
-Pokud chceš i `info@ekonomos.cz` (zatím nepoužité, ale pro pozdější brand consistency):
-
-1. Cloudflare → `velyos.cz` zóna → **Email** → **Email Routing**
-2. Pokud doména je v jiné zóně (`ekonomos.cz`), aktivuj Email Routing tam
-3. Custom address: `info@ekonomos.cz` → forward na `stepan@velyos.cz`
-
-Pak v ekonomos repo přepni env var:
-```
-NEXT_PUBLIC_CONTACT_EMAIL = info@ekonomos.cz
-```
+Zoho zůstává poskytovatelem firemní schránky. Neupravuj ani nemaž existující
+MX záznamy a nezapínej Cloudflare Email Routing pro `velyos.cz`; s příjmem přes
+Zoho by bylo v konfliktu. Formulář nevyžaduje heslo ani API přístup k Zoho.
 
 ---
 
@@ -125,7 +116,7 @@ Po deploy:
 - [ ] **LinkedIn share preview** test (vystav post, zkontroluj OG image)
 - [ ] **Lighthouse audit** v Chrome DevTools → Performance, Accessibility, Best Practices, SEO
 - [ ] **Mobile audit** — otevři na telefonu, projdi homepage + /funkce + /pilot
-- [ ] **Form test** — pošli reálný formulář, zkontroluj email + Sheet
+- [ ] **Form test** — pošli testovací formulář a zkontroluj řádek v D1
 - [ ] **Demo button** — klikni na 3 demo profily, ověř že portál se otevře
 - [ ] **Footer linky** — všechny 3 právní stránky vrací 200
 - [ ] **404 page** — přidat? (Next.js má default, stačí to)
@@ -147,8 +138,8 @@ Po deploy:
 - Otevři DevTools → Network → odešli formulář → zkontroluj response z `/api/contact`
 - Možné chyby:
   - **403** — origin není povolený v `functions/api/contact.ts`
-  - **503** — v projektu EkonomOS chybí Send Email binding `EMAIL`
-  - **502** — Email Service odmítla odeslání; zkontroluj Functions logs a ověření domény/adresy
+  - **503** — v projektu EkonomOS chybí D1 binding `LEADS_DB`
+  - **502** — tabulky nejsou vytvořené nebo D1 odmítla zápis; zkontroluj Functions logs
   - **404** — Cloudflare Pages Function nebyla součástí deploymentu
 
 ### Mailto fallback
@@ -177,7 +168,7 @@ GitHub repo má před každým deploy commit hash, takže můžeš `git revert <
 - [x] Per-page metadata
 - [x] Plausible Analytics ready (jen env var)
 - [x] Reduced motion, GH Pages workflow deaktivován
-- [ ] **Onboardovat `velyos.cz` do Email Sending a přidat binding `EMAIL`** ← TVŮJ DALŠÍ KROK
+- [ ] **Vytvořit D1 `ekonomos-leads`, spustit migraci a přidat binding `LEADS_DB`** ← TVŮJ DALŠÍ KROK
 - [ ] **Cloudflare Pages projekt** ← TVŮJ DALŠÍ KROK
 - [ ] **DNS CNAME** ← TVŮJ DALŠÍ KROK
 - [ ] **Form test** ← PO DEPLOY

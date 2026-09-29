@@ -1,23 +1,19 @@
-type EmailAddress = {
-  email: string;
-  name?: string;
+type D1Result = {
+  success: boolean;
 };
 
-type EmailBinding = {
-  send(message: {
-    to: string | EmailAddress;
-    from: string | EmailAddress;
-    replyTo?: string | EmailAddress;
-    subject: string;
-    html: string;
-    text: string;
-  }): Promise<{ messageId: string }>;
+type D1PreparedStatement = {
+  bind(...values: unknown[]): D1PreparedStatement;
+  run(): Promise<D1Result>;
+  first<T>(): Promise<T | null>;
+};
+
+type D1Database = {
+  prepare(query: string): D1PreparedStatement;
 };
 
 type Env = {
-  EMAIL?: EmailBinding;
-  EKONOMOS_NOTIFY_EMAIL?: string;
-  EKONOMOS_FROM_EMAIL?: string;
+  LEADS_DB?: D1Database;
 };
 
 type PagesContext<T> = {
@@ -32,7 +28,6 @@ type ContactPayload = {
   inquiry?: unknown;
   message?: unknown;
   source?: unknown;
-  subject?: unknown;
   website?: unknown;
   landing_page?: unknown;
   referrer?: unknown;
@@ -49,6 +44,8 @@ const ALLOWED_ORIGINS = new Set([
   "http://127.0.0.1:3000",
 ]);
 const MAX_REQUEST_BYTES = 20_000;
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_SECONDS = 600;
 
 function json(body: Record<string, unknown>, status: number): Response {
   return Response.json(body, {
@@ -63,15 +60,6 @@ function json(body: Record<string, unknown>, status: number): Response {
 
 function text(value: unknown, maxLength: number): string {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
 
 function validate(payload: ContactPayload): string | null {
@@ -91,22 +79,48 @@ function validate(payload: ContactPayload): string | null {
   return null;
 }
 
-function attributionRows(payload: ContactPayload): string {
-  const fields: Array<[string, unknown]> = [
-    ["Vstupní stránka", payload.landing_page],
-    ["Referrer", payload.referrer],
-    ["UTM source", payload.utm_source],
-    ["UTM medium", payload.utm_medium],
-    ["UTM campaign", payload.utm_campaign],
-    ["UTM content", payload.utm_content],
-    ["UTM term", payload.utm_term],
-  ];
+async function sha256(value: string): Promise<string> {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest), (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
+}
 
-  return fields
-    .map(([label, value]) => [label, text(value, 500)] as const)
-    .filter(([, value]) => value)
-    .map(([label, value]) => `<p><strong>${label}:</strong> ${escapeHtml(value)}</p>`)
-    .join("");
+async function isRateLimited(db: D1Database, request: Request): Promise<boolean> {
+  const ip = request.headers.get("CF-Connecting-IP") || "local";
+  const ipHash = await sha256(ip);
+  const now = Math.floor(Date.now() / 1000);
+  const cutoff = now - RATE_LIMIT_WINDOW_SECONDS;
+
+  await db
+    .prepare("DELETE FROM contact_rate_limits WHERE window_start < ?")
+    .bind(now - 86_400)
+    .run();
+
+  await db
+    .prepare(
+      `INSERT INTO contact_rate_limits (ip_hash, window_start, request_count)
+       VALUES (?, ?, 1)
+       ON CONFLICT(ip_hash) DO UPDATE SET
+         window_start = CASE
+           WHEN contact_rate_limits.window_start < ? THEN excluded.window_start
+           ELSE contact_rate_limits.window_start
+         END,
+         request_count = CASE
+           WHEN contact_rate_limits.window_start < ? THEN 1
+           ELSE contact_rate_limits.request_count + 1
+         END`,
+    )
+    .bind(ipHash, now, cutoff, cutoff)
+    .run();
+
+  const row = await db
+    .prepare("SELECT request_count FROM contact_rate_limits WHERE ip_hash = ?")
+    .bind(ipHash)
+    .first<{ request_count: number }>();
+
+  return (row?.request_count || 0) > RATE_LIMIT_MAX;
 }
 
 export const onRequestPost = async ({
@@ -147,58 +161,50 @@ export const onRequestPost = async ({
     return json({ ok: false, error: validationError }, 400);
   }
 
-  if (!env.EMAIL) {
-    console.error("contact: EMAIL binding is not configured");
+  if (!env.LEADS_DB) {
+    console.error("contact: LEADS_DB binding is not configured");
     return json({ ok: false, error: "service-unavailable" }, 503);
   }
 
-  const name = text(payload.name, 120);
-  const email = text(payload.email, 254);
-  const company = text(payload.company, 200);
-  const inquiry = text(payload.inquiry, 200);
-  const message = text(payload.message, 5000);
-  const source = text(payload.source, 200) || "ekonomos.velyos.cz";
-  const safeSubject = (inquiry || "nová poptávka").replace(/[\r\n]+/g, " ");
-  const recipient = env.EKONOMOS_NOTIFY_EMAIL || "stepan@velyos.cz";
-  const sender = env.EKONOMOS_FROM_EMAIL || "noreply@velyos.cz";
-
-  const htmlContent = `
-    <h2>Nová poptávka — EkonomOS</h2>
-    <p><strong>Jméno:</strong> ${escapeHtml(name)}</p>
-    <p><strong>E-mail:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Firma:</strong> ${escapeHtml(company || "—")}</p>
-    <p><strong>Co potřebuje:</strong> ${escapeHtml(inquiry || "—")}</p>
-    <p><strong>Zdroj:</strong> ${escapeHtml(source)}</p>
-    ${attributionRows(payload)}
-    <hr>
-    <p><strong>Zpráva:</strong></p>
-    <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
-  `;
-  const textContent = [
-    "Nová poptávka — EkonomOS",
-    `Jméno: ${name}`,
-    `E-mail: ${email}`,
-    `Firma: ${company || "—"}`,
-    `Co potřebuje: ${inquiry || "—"}`,
-    `Zdroj: ${source}`,
-    "",
-    "Zpráva:",
-    message,
-  ].join("\n");
-
   try {
-    await env.EMAIL.send({
-      from: { email: sender, name: "EkonomOS" },
-      to: recipient,
-      replyTo: { email, name },
-      subject: `EkonomOS — ${safeSubject}`,
-      html: htmlContent,
-      text: textContent,
-    });
+    if (await isRateLimited(env.LEADS_DB, request)) {
+      return json({ ok: false, error: "rate-limit" }, 429);
+    }
 
-    return json({ ok: true }, 200);
+    const result = await env.LEADS_DB
+      .prepare(
+        `INSERT INTO contact_leads (
+          id, created_at, name, email, company, inquiry, message, source,
+          landing_page, referrer, utm_source, utm_medium, utm_campaign,
+          utm_content, utm_term
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .bind(
+        crypto.randomUUID(),
+        new Date().toISOString(),
+        text(payload.name, 120),
+        text(payload.email, 254),
+        text(payload.company, 200) || null,
+        text(payload.inquiry, 200) || null,
+        text(payload.message, 5000),
+        text(payload.source, 200) || "ekonomos.velyos.cz",
+        text(payload.landing_page, 1000) || null,
+        text(payload.referrer, 1000) || null,
+        text(payload.utm_source, 200) || null,
+        text(payload.utm_medium, 200) || null,
+        text(payload.utm_campaign, 300) || null,
+        text(payload.utm_content, 300) || null,
+        text(payload.utm_term, 300) || null,
+      )
+      .run();
+
+    if (!result.success) {
+      throw new Error("D1 insert failed");
+    }
+
+    return json({ ok: true }, 201);
   } catch {
-    console.error("contact: Cloudflare Email Service delivery failed");
-    return json({ ok: false, error: "delivery-failed" }, 502);
+    console.error("contact: D1 storage failed");
+    return json({ ok: false, error: "storage-failed" }, 502);
   }
 };

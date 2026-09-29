@@ -5,8 +5,8 @@ import { getStoredAttribution } from "@/lib/tracking";
  *
  * Primárně posílá JSON na same-origin Cloudflare Pages Function `/api/contact`.
  * Pokud endpoint selže, otevře jako nouzový fallback předvyplněný email.
- * Odeslání zajišťuje serverový Cloudflare Email Service binding; žádné
- * přihlašovací údaje ani API klíče se neposílají do prohlížeče.
+ * Poptávku bezpečně uloží serverová Cloudflare Pages Function do D1 databáze;
+ * žádné přihlašovací údaje ani API klíče se neposílají do prohlížeče.
  */
 
 export type ContactFormPayload = {

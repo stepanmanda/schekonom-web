@@ -131,6 +131,11 @@ Pokud něco selže — koukni do Cloudflare Pages → velyos-web → Functions �
    ```
    NEXT_PUBLIC_PLAUSIBLE_DOMAIN = ekonomos.velyos.cz
    ```
+   Meta Pixel používá výchozí veřejné ID VELYOS. Pro jeho změnu nastav:
+   ```
+   NEXT_PUBLIC_META_PIXEL_ID = 1749869516293565
+   ```
+   Pixel se načte pouze po marketingovém souhlasu návštěvníka.
 7. **Save and Deploy**
 
 První build trvá 2–4 minuty. Po dokončení dostaneš URL typu `ekonomos.pages.dev`.

@@ -5,14 +5,13 @@ import { Cookie, ArrowRight, CheckCircle2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "Cookies",
   description:
-    "Web ekonomos.velyos.cz nepoužívá trackovací cookies. Pouze technické cookies nezbytné pro fungování stránky.",
+    "Jak ekonomos.velyos.cz používá nutné úložiště a volitelné marketingové měření Meta Pixel pouze po souhlasu.",
   alternates: { canonical: "/cookies" },
 };
 
 const noCookies = [
   "Žádné Google Analytics cookies",
-  "Žádný Facebook Pixel ani jiné marketing tracking",
-  "Žádný cross-site tracking",
+  "Žádný Meta Pixel před udělením souhlasu",
   "Žádný fingerprinting",
   "Žádné A/B testing cookies",
 ];
@@ -33,7 +32,7 @@ export default function CookiesPage() {
             Cookies
           </h1>
           <p className="mt-4 text-text-muted text-sm">
-            Krátká verze: <strong className="text-white">Web nepoužívá trackovací cookies.</strong>
+            Krátká verze: <strong className="text-white">Meta Pixel se spustí pouze po vašem souhlasu.</strong>
           </p>
         </div>
 
@@ -76,26 +75,33 @@ export default function CookiesPage() {
               GDPR-compliant by design.
             </p>
             <p className="mt-3">
-              <strong className="text-white">Technické session cookies</strong> demo
-              aplikace na <Link href="/prihlaseni" className="text-cyan hover:underline">/prihlaseni</Link>,
-              pouze pro fungování přihlašovací relace, vyprší při zavření
-              prohlížeče. Nesouvisejí s analytikou ani marketingem, nepotřebují
-              souhlas.
+              <strong className="text-white">Meta Pixel</strong> používáme po
+              udělení marketingového souhlasu k měření výkonu reklam, návštěv
+              stránek a dokončení kontaktního formuláře. Před souhlasem se
+              skript Meta nenačte. Souhlas lze kdykoliv změnit přes tlačítko
+              „Nastavení soukromí“.
+            </p>
+            <p className="mt-3">
+              <strong className="text-white">Technické úložiště</strong> používáme
+              pro uložení volby soukromí a fungování demo aplikace na{" "}
+              <Link href="/prihlaseni" className="text-cyan hover:underline">/prihlaseni</Link>.
+              Neslouží k marketingovému sledování.
             </p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-semibold mb-3" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-              Proč nemáme cookie banner?
+              Jak funguje volba soukromí?
             </h2>
             <p>
-              Cookie banner musíte mít, pokud používáte tracking cookies (nebo
-              jiné technologie sledování). My žádné nepoužíváme, takže banner
-              by byl zbytečný, a podle nás otravný.
+              Při první návštěvě můžete volitelné marketingové měření povolit
+              nebo odmítnout. Obě možnosti jsou dostupné ve stejné vrstvě a
+              odmítnutí neomezuje přístup k webu.
             </p>
             <p className="mt-3">
-              Pokud někdy začneme tracking používat, banner přidáme a budeme
-              se vás explicitně ptát na souhlas.
+              Dokud souhlas neudělíte, Meta Pixel se nenačte. Pozdější změna
+              volby zastaví další marketingové události a odstraní známé Meta
+              cookies z domény ekonomOS.
             </p>
           </section>
 

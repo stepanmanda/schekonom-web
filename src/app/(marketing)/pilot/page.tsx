@@ -328,7 +328,7 @@ export default function PilotPage() {
                   className="text-white text-xl font-semibold mb-2"
                   style={{ fontFamily: "var(--font-space-grotesk)" }}
                 >
-                  80  až  200 K Kč
+                  80 000 až 200 000 Kč
                 </div>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   Audit, integrace na vaše systémy, branding, training týmu. Pokrývá 8 až 12 týdnů onboarding.

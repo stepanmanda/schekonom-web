@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { submitContactForm, getMailtoLink } from "@/lib/form-submit";
+import { trackMetaEvent } from "@/lib/tracking";
 
 const contactBlocks = [
   {
@@ -91,9 +92,11 @@ export default function KontaktPage() {
     setSubmitState("sending");
     const result = await submitContactForm(formState);
     if (result.ok && result.mode === "endpoint") {
+      trackMetaEvent("Lead", { content_name: "contact_form_page" });
       setSubmitState("success");
       setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
     } else if (result.mode === "mailto") {
+      trackMetaEvent("Contact", { content_name: "contact_mailto_page" });
       setSubmitState("mailto");
     } else {
       setSubmitState("error");

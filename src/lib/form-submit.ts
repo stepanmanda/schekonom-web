@@ -1,3 +1,5 @@
+import { getStoredAttribution } from "@/lib/tracking";
+
 /**
  * Utility pro odesílání kontaktních formulářů.
  *
@@ -42,6 +44,7 @@ const FALLBACK_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL || "stepan@velyos.cz";
 
 function buildMailto(data: ContactFormPayload): string {
+  const attribution = getStoredAttribution();
   const subject = encodeURIComponent(
     `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
   );
@@ -54,6 +57,10 @@ function buildMailto(data: ContactFormPayload): string {
       "",
       "Zpráva:",
       data.message,
+      attribution.utm_source ? "" : null,
+      attribution.utm_source ? `Zdroj: ${attribution.utm_source}` : null,
+      attribution.utm_medium ? `Médium: ${attribution.utm_medium}` : null,
+      attribution.utm_campaign ? `Kampaň: ${attribution.utm_campaign}` : null,
     ]
       .filter(Boolean)
       .join("\n"),
@@ -62,9 +69,12 @@ function buildMailto(data: ContactFormPayload): string {
 }
 
 function openMailtoFallback(data: ContactFormPayload) {
-  if (typeof window !== "undefined") {
-    window.location.href = buildMailto(data);
-  }
+  if (typeof document === "undefined") return;
+  const link = document.createElement("a");
+  link.href = buildMailto(data);
+  if (link.protocol !== "mailto:") return;
+  link.rel = "noopener noreferrer";
+  link.click();
 }
 
 export async function submitContactForm(
@@ -76,11 +86,15 @@ export async function submitContactForm(
   // Pokud je nastavený endpoint, zkus POST
   if (endpoint) {
     try {
+      const attribution = getStoredAttribution();
       const payload: Record<string, string> = {
         ...data,
         source: "ekonomos.velyos.cz",
         subject: `EkonomOS: ${data.inquiry || "zájem o produkt"}`,
       };
+      for (const [key, value] of Object.entries(attribution)) {
+        if (value) payload[key] = value;
+      }
       if (accessKey) {
         payload.access_key = accessKey;
       }

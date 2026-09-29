@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Mail, MessageSquare, PlayCircle, Send, CheckCircle2, AlertTriangle } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 import { submitContactForm, getMailtoLink } from "@/lib/form-submit";
+import { trackMetaEvent } from "@/lib/tracking";
 
 const contactInfo = [
   {
@@ -64,9 +65,11 @@ export default function ContactSection() {
     setSubmitState("sending");
     const result = await submitContactForm(formState);
     if (result.ok && result.mode === "endpoint") {
+      trackMetaEvent("Lead", { content_name: "contact_form_home" });
       setSubmitState("success");
       setFormState({ name: "", email: "", company: "", inquiry: "", message: "" });
     } else if (result.mode === "mailto") {
+      trackMetaEvent("Contact", { content_name: "contact_mailto_home" });
       setSubmitState("mailto");
     } else {
       setSubmitState("error");

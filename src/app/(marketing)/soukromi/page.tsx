@@ -25,7 +25,7 @@ export default function SoukromiPage() {
             Ochrana osobních údajů
           </h1>
           <p className="mt-4 text-text-muted text-sm">
-            Účinné od 30. 4. 2026
+            Aktualizováno 29. 9. 2026
           </p>
         </div>
 
@@ -52,11 +52,14 @@ export default function SoukromiPage() {
               2. Jaké údaje sbíráme z webu
             </h2>
             <p>
-              Web <strong className="text-white">ekonomos.velyos.cz</strong> nepoužívá
-              žádné trackovací cookies. Pokud máme aktivní analytiku
-              (Plausible Analytics), sbíráme pouze anonymní pageviews bez
-              identifikace návštěvníka, bez fingerprintingu, bez crossite
-              trackingu.
+              Web <strong className="text-white">ekonomos.velyos.cz</strong> používá
+              technické úložiště pro fungování webu a zapamatování volby
+              soukromí. Pokud udělíte marketingový souhlas, aktivujeme Meta
+              Pixel pro měření návštěv, výkonu reklam a konverzních událostí.
+              Právním základem tohoto volitelného zpracování je váš souhlas
+              podle čl. 6 odst. 1 písm. a) GDPR. Souhlas lze kdykoliv odvolat.
+              Pokud máme aktivní Plausible Analytics, sbíráme agregované
+              statistiky návštěvnosti bez marketingových cookies.
             </p>
             <p>
               Pokud vyplníte kontaktní formulář, zpracováváme: jméno, email,
@@ -93,9 +96,13 @@ export default function SoukromiPage() {
             </h2>
             <p>
               Pro odeslání transakčních emailů (oznámení o vyplnění formuláře)
-              používáme službu Brevo (sendinblue.com), provozovanou v EU.
-              Pro evidenci poptávek používáme Google Sheets (G Suite EU
-              region). Žádné údaje nepředáváme do třetích zemí mimo EU.
+              používáme službu Brevo (sendinblue.com). Pro evidenci poptávek
+              používáme Google Workspace. Pokud povolíte marketingové měření,
+              údaje o návštěvě a konverzních událostech zpracovává také Meta
+              Platforms Ireland Limited podle svých podmínek a zavedených
+              mechanismů pro mezinárodní předávání údajů. Rozsah zpracovatelů
+              se může měnit; aktuální informace jsou uvedeny zde a na stránce
+              Cookies.
             </p>
           </section>
 

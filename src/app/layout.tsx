@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Playfair_Display, Roboto } from "next/font/google";
+import CookieConsent from "@/components/shared/CookieConsent";
 import EkonomosAssistant from "@/components/shared/EkonomosAssistant";
+import MetaPixel from "@/components/shared/MetaPixel";
 import ThemeProvider from "@/components/shared/ThemeProvider";
 import "./globals.css";
 
@@ -13,8 +16,16 @@ const playfair = Playfair_Display({
   subsets: ["latin", "latin-ext"],
 });
 
+function getMetadataBase(): URL | undefined {
+  try {
+    return new URL("https://ekonomos.velyos.cz");
+  } catch {
+    return undefined;
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ekonomos.velyos.cz"),
+  metadataBase: getMetadataBase(),
   title: {
     default: "ekonomOS | Operační systém pro moderní účetní firmu",
     template: "%s · EkonomOS",
@@ -138,6 +149,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const metaPixelId =
+    process.env.NEXT_PUBLIC_META_PIXEL_ID || "1749869516293565";
   return (
     <html
       lang="cs"
@@ -163,6 +176,10 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <EkonomosAssistant />
+          <CookieConsent />
+          <Suspense fallback={null}>
+            <MetaPixel pixelId={metaPixelId} />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

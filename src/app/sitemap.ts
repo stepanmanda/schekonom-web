@@ -20,10 +20,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/pilot`,
+      url: `${BASE_URL}/audit-ucetni-kancelare`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.95,
+    },
+    {
+      url: `${BASE_URL}/pilot`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
     {
       url: `${BASE_URL}/caste-dotazy`,

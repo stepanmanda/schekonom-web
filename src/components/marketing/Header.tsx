@@ -15,6 +15,7 @@ const moduleLinks = [
 
 const navItems = [
   { label: "Funkce", href: "/funkce", children: moduleLinks },
+  { label: "Rozbor", href: "/audit-ucetni-kancelare" },
   { label: "Pilot", href: "/pilot" },
   { label: "Časté dotazy", href: "/caste-dotazy" },
   { label: "O EkonomOS", href: "/o-nas" },
@@ -137,8 +138,8 @@ export default function Header() {
             </span>
           </Link>
 
-          <Link href="/kontakt" className="btn-primary">
-            Domluvit ukázku
+          <Link href="/audit-ucetni-kancelare" className="btn-primary">
+            Nezávazný rozbor
           </Link>
         </div>
 
@@ -187,11 +188,11 @@ export default function Header() {
                 </span>
               </Link>
               <Link
-                href="/kontakt"
+                href="/audit-ucetni-kancelare"
                 className="btn-primary text-center justify-center"
                 onClick={() => setMobileOpen(false)}
               >
-                Domluvit ukázku
+                Nezávazný rozbor
               </Link>
             </div>
           </nav>

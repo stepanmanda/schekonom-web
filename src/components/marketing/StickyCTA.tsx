@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Rocket } from "lucide-react";
+import { ClipboardCheck } from "lucide-react";
 
 export default function StickyCTA() {
   const [visible, setVisible] = useState(false);
@@ -17,7 +17,7 @@ export default function StickyCTA() {
 
   return (
     <Link
-      href="/pilot"
+      href="/audit-ucetni-kancelare"
       className="fixed bottom-6 right-24 z-40 hud-panel px-5 py-3 hidden sm:flex items-center gap-3 hover:border-gold/40 transition-all"
       style={{
         borderTop: "1px solid rgba(212,175,55,0.5)",
@@ -25,7 +25,7 @@ export default function StickyCTA() {
         backdropFilter: "blur(14px)",
       }}
     >
-      <Rocket size={16} className="text-gold" />
+      <ClipboardCheck size={16} className="text-gold" />
       <span
         className="text-white"
         style={{
@@ -35,7 +35,7 @@ export default function StickyCTA() {
           textTransform: "uppercase",
         }}
       >
-        Pilot, máme volné sloty
+        Nezávazný rozbor procesu
       </span>
     </Link>
   );

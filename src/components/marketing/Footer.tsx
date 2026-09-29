@@ -10,6 +10,7 @@ const footerLinks = {
     { label: "Všechny funkce", href: "/funkce" },
   ],
   produkt: [
+    { label: "Nezávazný rozbor", href: "/audit-ucetni-kancelare" },
     { label: "Pilot fáze", href: "/pilot" },
     { label: "Roadmap", href: "/roadmap" },
     { label: "Časté dotazy", href: "/caste-dotazy" },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check, PlayCircle } from "lucide-react";
+import { ArrowRight, Check, ClipboardCheck } from "lucide-react";
 import ProcessJourney from "./ProcessJourney";
 import styles from "./HeroSection.module.css";
 
@@ -21,9 +21,9 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            <Link href="/kontakt" className={styles.primary}>
-              <PlayCircle size={17} aria-hidden="true" />
-              Domluvit ukázku
+            <Link href="/audit-ucetni-kancelare" className={styles.primary}>
+              <ClipboardCheck size={17} aria-hidden="true" />
+              Nezávazný rozbor
             </Link>
             <Link href="/funkce" className={styles.secondary}>
               Prohlédnout funkce <ArrowRight size={16} aria-hidden="true" />

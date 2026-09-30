@@ -92,6 +92,20 @@
 .progress { position: absolute; right: 1.15rem; bottom: .45rem; left: 1.15rem; z-index: 15; height: 4px; overflow: hidden; border-radius: 4px; background: var(--line); }
 .progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent-strong), #62cbb8); transition: width .55s cubic-bezier(.2,.8,.3,1); }
 
+/* Light-mode process accents follow the navy brand, not the old turquoise. */
+:global(html[data-theme="light"]) .paper b { color: var(--accent); }
+:global(html[data-theme="light"]) .scanBeam {
+  background: var(--accent-secondary);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+:global(html[data-theme="light"]) .progress span {
+  background: linear-gradient(90deg, var(--accent-strong), var(--accent-secondary));
+}
+:global(html[data-theme="light"]) .scenario_deadline.phase_1 .calendarCard,
+:global(html[data-theme="light"]) .scenario_deadline.phase_4 .approvalCard {
+  border-color: var(--gold);
+}
+
 @keyframes pulse { 50% { opacity: .45; transform: scale(.75); } }
 @keyframes itemIn { to { opacity: 1; transform: none; } }
 @keyframes centerIn { to { opacity: 1; transform: translateX(-50%) scale(1); } }

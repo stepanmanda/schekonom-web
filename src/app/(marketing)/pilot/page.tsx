@@ -258,7 +258,7 @@ export default function PilotPage() {
           </FadeInSection>
 
           <FadeInSection>
-            <div className="hud-panel p-7" style={{ borderTop: "2px solid rgba(0,229,255,0.5)" }}>
+            <div className="hud-panel p-7" style={{ borderTop: "2px solid rgba(var(--visual-signal-rgb),0.5)" }}>
               <div className="flex items-center gap-3 mb-5">
                 <Users size={20} className="text-cyan" />
                 <span

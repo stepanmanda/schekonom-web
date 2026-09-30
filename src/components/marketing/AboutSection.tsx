@@ -46,7 +46,7 @@ export default function AboutSection() {
               className="absolute -inset-3 opacity-25 blur-2xl group-hover:opacity-40 transition-opacity duration-700"
               style={{
                 background:
-                  "radial-gradient(ellipse at center, rgba(0,229,255,0.3), transparent 70%)",
+                  "radial-gradient(ellipse at center, rgba(var(--visual-signal-rgb),0.3), transparent 70%)",
               }}
             />
             <div
@@ -58,7 +58,7 @@ export default function AboutSection() {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(ellipse 60% 80% at 30% 30%, rgba(0,229,255,0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 75% 70%, rgba(212,175,55,0.12) 0%, transparent 60%)",
+                    "radial-gradient(ellipse 60% 80% at 30% 30%, rgba(var(--visual-signal-rgb),0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 75% 70%, rgba(var(--visual-gold-rgb),0.12) 0%, transparent 60%)",
                 }}
               />
 
@@ -73,7 +73,7 @@ export default function AboutSection() {
               >
                 <defs>
                   <radialGradient id="ringGlow" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="rgba(0,229,255,0.15)" />
+                    <stop offset="0%" stopColor="rgba(var(--visual-signal-rgb),0.15)" />
                     <stop offset="100%" stopColor="transparent" />
                   </radialGradient>
                 </defs>
@@ -87,20 +87,20 @@ export default function AboutSection() {
                     cy="200"
                     r={r}
                     fill="none"
-                    stroke="rgba(0,229,255,0.15)"
+                    stroke="rgba(var(--visual-signal-rgb),0.15)"
                     strokeWidth="0.5"
                     strokeDasharray={i % 2 === 0 ? "2 4" : "none"}
                   />
                 ))}
                 {/* Data nodes */}
                 {[
-                  { x: 300, y: 80, color: "#00E5FF", label: "ÚČETNICTVÍ" },
-                  { x: 480, y: 130, color: "#00E5FF", label: "DOKUMENTY" },
-                  { x: 510, y: 250, color: "#D4AF37", label: "BANKY" },
-                  { x: 380, y: 340, color: "#00E5FF", label: "REJSTŘÍKY" },
-                  { x: 220, y: 340, color: "#D4AF37", label: "MZDY" },
-                  { x: 90, y: 250, color: "#00E5FF", label: "DAŇOVÉ" },
-                  { x: 120, y: 130, color: "#00E5FF", label: "KOMUNIKACE" },
+                  { x: 300, y: 80, color: "var(--visual-signal)", label: "ÚČETNICTVÍ" },
+                  { x: 480, y: 130, color: "var(--visual-signal)", label: "DOKUMENTY" },
+                  { x: 510, y: 250, color: "var(--legacy-gold)", label: "BANKY" },
+                  { x: 380, y: 340, color: "var(--visual-signal)", label: "REJSTŘÍKY" },
+                  { x: 220, y: 340, color: "var(--legacy-gold)", label: "MZDY" },
+                  { x: 90, y: 250, color: "var(--visual-signal)", label: "DAŇOVÉ" },
+                  { x: 120, y: 130, color: "var(--visual-signal)", label: "KOMUNIKACE" },
                 ].map((node) => (
                   <g key={node.label}>
                     <line
@@ -129,7 +129,7 @@ export default function AboutSection() {
                     <text
                       x={node.x}
                       y={node.y + 22}
-                      fill="rgba(184,193,200,0.7)"
+                      fill="var(--legacy-text-secondary)"
                       fontSize="9"
                       fontFamily="SF Mono, monospace"
                       letterSpacing="1"
@@ -144,14 +144,14 @@ export default function AboutSection() {
                   cx="300"
                   cy="200"
                   r="14"
-                  fill="rgba(0,229,255,0.2)"
-                  stroke="#00E5FF"
+                  fill="rgba(var(--visual-signal-rgb),0.2)"
+                  stroke="var(--visual-signal)"
                   strokeWidth="1.5"
                 />
                 <text
                   x="300"
                   y="204"
-                  fill="#00E5FF"
+                  fill="var(--visual-signal)"
                   fontSize="9"
                   fontFamily="Space Grotesk, sans-serif"
                   fontWeight="700"

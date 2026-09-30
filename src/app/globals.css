@@ -18,47 +18,82 @@ html[data-theme="light"] {
   --button: #002e5d;
   --button-ink: #ffffff;
   --shadow-color: #002e5d;
+  /* Compatibility tokens for legacy utilities and inline visualizations. */
+  --legacy-void: var(--page);
+  --legacy-void-deep: var(--page);
+  --legacy-void-light: var(--surface-raised);
+  --legacy-navy: var(--surface);
+  --legacy-navy-deep: var(--surface-raised);
+  --legacy-gold: var(--gold);
+  --legacy-ai-blue: var(--accent);
+  --legacy-ai-brand: var(--accent-secondary);
+  --legacy-steel: var(--muted);
+  --legacy-status-gold: var(--gold-strong);
+  --visual-legend: var(--surface-raised);
+  --legacy-text: var(--ink);
+  --legacy-text-secondary: var(--muted);
+  --legacy-text-muted: var(--muted);
+  --visual-signal: var(--signal);
+  --visual-signal-rgb: 0, 46, 93;
+  --visual-gold-rgb: 197, 168, 128;
 }
 
 html[data-theme="dark"] {
-  --page: #050708;
-  --surface: #0c1114;
-  --surface-raised: #11181c;
-  --ink: #f4f6f5;
-  --muted: #9aa8ae;
-  --line: #29353a;
-  --accent: #a2b0a8;
-  --accent-strong: #c1cbc5;
-  --accent-secondary: #82948a;
-  --accent-soft: rgba(162, 176, 168, 0.12);
-  --signal: #b7c0bb;
-  --gold: #d5a13c;
-  --gold-strong: #efc66d;
-  --button: #f4f6f5;
-  --button-ink: #071012;
+  --page: #080c0f;
+  --surface: #10171c;
+  --surface-raised: #182229;
+  --ink: #f2f5f7;
+  --muted: #a6b2bb;
+  --line: #2a363e;
+  --accent: #a6b2bb;
+  --accent-strong: #f2f5f7;
+  --accent-secondary: #c2ccd3;
+  --accent-soft: rgba(166, 178, 187, 0.1);
+  --signal: #c2ccd3;
+  --gold: #d5b276;
+  --gold-strong: #e5c995;
+  --button: #f2f5f7;
+  --button-ink: #080c0f;
   --shadow-color: #000000;
+  --legacy-void: var(--page);
+  --legacy-void-deep: var(--page);
+  --legacy-void-light: var(--surface);
+  --legacy-navy: var(--surface);
+  --legacy-navy-deep: var(--surface-raised);
+  --legacy-gold: var(--gold);
+  --legacy-text: var(--ink);
+  --legacy-text-secondary: var(--muted);
+  --legacy-text-muted: var(--muted);
+  --visual-signal: var(--signal);
+  --visual-signal-rgb: 194, 204, 211;
+  --visual-gold-rgb: 213, 178, 118;
+  --legacy-ai-blue: var(--signal);
+  --legacy-ai-brand: var(--signal);
+  --legacy-steel: var(--muted);
+  --legacy-status-gold: var(--gold);
+  --visual-legend: var(--surface-raised);
 }
 
 @theme inline {
-  --color-void: #03080D;
-  --color-void-deep: #02060A;
-  --color-void-light: #091724;
-  --color-navy: #0A2236;
-  --color-navy-deep: #0E2E47;
+  --color-void: var(--legacy-void);
+  --color-void-deep: var(--legacy-void-deep);
+  --color-void-light: var(--legacy-void-light);
+  --color-navy: var(--legacy-navy);
+  --color-navy-deep: var(--legacy-navy-deep);
   --color-cyan: var(--signal);
   --color-cyan-dim: color-mix(in srgb, var(--signal) 15%, transparent);
   --color-cyan-brand: var(--accent-secondary);
-  --color-gold: #D4AF37;
-  --color-gold-dim: rgba(212, 175, 55, 0.06);
-  --color-ai-blue: #0055FF;
-  --color-ai-brand: #116DFF;
-  --color-steel: #58758C;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #B8C1C8;
-  --color-text-muted: #7A8A9E;
+  --color-gold: var(--legacy-gold);
+  --color-gold-dim: rgba(var(--visual-gold-rgb), 0.06);
+  --color-ai-blue: var(--legacy-ai-blue);
+  --color-ai-brand: var(--legacy-ai-brand);
+  --color-steel: var(--legacy-steel);
+  --color-text-primary: var(--legacy-text);
+  --color-text-secondary: var(--legacy-text-secondary);
+  --color-text-muted: var(--legacy-text-muted);
   --color-status-green: #00E5A0;
   --color-status-red: #FF7B7B;
-  --color-status-gold: #E6C65C;
+  --color-status-gold: var(--legacy-status-gold);
   --font-display: var(--font-playfair);
   --font-body: var(--font-roboto);
   --font-mono: 'SF Mono', Monaco, Consolas, monospace;
@@ -998,15 +1033,15 @@ html[data-theme="light"] .section-tag {
   color: var(--accent-strong) !important;
 }
 html[data-theme="light"] .btn-primary {
-  color: #fff !important;
-  border-color: var(--ink) !important;
-  background: var(--ink) !important;
+  color: var(--button-ink) !important;
+  border-color: var(--button) !important;
+  background: var(--button) !important;
   box-shadow: none !important;
 }
 html[data-theme="light"] .btn-primary:hover {
-  color: #fff !important;
-  border-color: color-mix(in srgb, var(--ink) 82%, var(--accent)) !important;
-  background: color-mix(in srgb, var(--ink) 90%, var(--accent)) !important;
+  color: var(--button-ink) !important;
+  border-color: var(--accent-secondary) !important;
+  background: var(--accent-secondary) !important;
 }
 html[data-theme="light"] .hud-input {
   background: var(--surface) !important;
@@ -1016,17 +1051,17 @@ html[data-theme="light"] .hud-input {
 html[data-theme="light"] .hud-input::placeholder {
   color: var(--muted) !important;
 }
-html[data-theme="light"] .hud-button,
 html[data-theme="light"] .hud-button-secondary {
   color: var(--ink) !important;
 }
 html[data-theme="light"] .hud-button {
-  border-color: var(--line) !important;
-  background: rgba(20, 44, 61, 0.04) !important;
+  color: var(--button-ink) !important;
+  border-color: var(--button) !important;
+  background: var(--button) !important;
 }
 html[data-theme="light"] .hud-button:hover:not(:disabled) {
-  background: rgba(20, 44, 61, 0.08) !important;
-  border-color: var(--line) !important;
+  background: var(--accent-secondary) !important;
+  border-color: var(--accent-secondary) !important;
 }
 html[data-theme="light"] .hud-button-secondary {
   border-color: var(--line) !important;
@@ -1267,8 +1302,8 @@ html[data-theme="light"] .portal-shell .hud-workflow-step[data-state="active"] .
 }
 
 html[data-theme="dark"] .portal-shell .hud-panel {
-  background: linear-gradient(180deg, #101619 0%, #0a0f12 100%);
-  border-color: #283238;
+  background: var(--surface);
+  border-color: var(--line);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.38);
 }
 html[data-theme="dark"] .portal-shell .hud-card-selectable,
@@ -1281,16 +1316,89 @@ html[data-theme="dark"] .portal-shell .hud-alert-card,
 html[data-theme="dark"] .portal-shell .hud-cfo-card,
 html[data-theme="dark"] .portal-shell .hud-nav-button,
 html[data-theme="dark"] .portal-shell .hud-mini-client {
-  background: #101619;
-  border-color: #283238;
+  background: var(--surface-raised);
+  border-color: var(--line);
 }
 html[data-theme="dark"] .portal-shell .hud-nav-button-active,
 html[data-theme="dark"] .portal-shell .hud-mini-client-active,
 html[data-theme="dark"] .portal-shell .hud-card-selectable-active,
 html[data-theme="dark"] .portal-shell .hud-client-card-active {
-  background: #18211e;
-  border-color: #66776e;
+  background: var(--accent-soft);
+  border-color: var(--accent);
   box-shadow: none;
+}
+
+/* Dark shared components use the same surfaces as the newer CSS modules. */
+html[data-theme="dark"] .glass-panel,
+html[data-theme="dark"] .hud-panel,
+html[data-theme="dark"] .service-card {
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+html[data-theme="dark"] .glass-panel-dark {
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  border-color: var(--line);
+}
+html[data-theme="dark"] .service-card-ai {
+  background: var(--surface-raised);
+}
+html[data-theme="dark"] .service-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+}
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .hud-button {
+  color: var(--button-ink);
+  border-color: var(--button);
+  background: var(--button);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+html[data-theme="dark"] .btn-primary:hover,
+html[data-theme="dark"] .hud-button:hover:not(:disabled) {
+  color: var(--button-ink);
+  background: color-mix(in srgb, var(--button) 90%, var(--accent));
+  border-color: var(--button);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+html[data-theme="dark"] .btn-ghost,
+html[data-theme="dark"] .hud-button-secondary {
+  color: var(--ink);
+  border-color: var(--line);
+  background: transparent;
+}
+html[data-theme="dark"] .btn-ghost:hover,
+html[data-theme="dark"] .hud-button-secondary:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: var(--accent);
+  background: var(--surface-raised);
+}
+html[data-theme="dark"] .hud-input,
+html[data-theme="dark"] .hud-input:focus {
+  color: var(--ink);
+  background: var(--surface-raised);
+  border-color: var(--line);
+}
+html[data-theme="dark"] .hud-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+html[data-theme="dark"] .hud-input::placeholder,
+html[data-theme="dark"] .nav-link,
+html[data-theme="dark"] .hud-time-stamp {
+  color: var(--muted);
+}
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .text-white {
+  color: var(--ink);
+}
+html[data-theme="dark"] .hud-chip[data-tone="gold"] {
+  color: var(--gold-strong);
+  border-color: color-mix(in srgb, var(--gold) 30%, var(--line));
+  background: color-mix(in srgb, var(--gold) 8%, var(--surface));
+}
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--page);
 }
 
 /* Marketing scenarios use one premium palette, not three competing accents. */
@@ -1312,6 +1420,9 @@ html[data-theme="dark"] .portal-shell .hud-client-card-active {
 }
 .story-contrast {
   border-color: var(--line);
+}
+html[data-theme="dark"] .story-card {
+  border-top-color: var(--gold);
 }
 html[data-theme="dark"] .story-headline {
   color: var(--ink);

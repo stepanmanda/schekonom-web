@@ -70,7 +70,7 @@ export default function DeadlineStressSection() {
               <div
                 key={h.title}
                 className="hud-panel p-6 lg:p-7"
-                style={{ borderTop: "2px solid rgba(0,229,255,0.4)" }}
+                style={{ borderTop: "2px solid rgba(var(--visual-signal-rgb),0.4)" }}
               >
                 <div
                   className="absolute top-3 right-4 text-cyan/40"

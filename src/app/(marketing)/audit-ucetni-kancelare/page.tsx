@@ -63,7 +63,7 @@ export default function AccountingOfficeAuditPage() {
   return (
     <div className="pt-28 pb-24 overflow-hidden">
       <section className="relative border-b border-cyan/10 pb-20">
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_70%_20%,rgba(0,229,255,0.09),transparent_38%)]" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_70%_20%,rgba(var(--visual-signal-rgb),0.09),transparent_38%)]" />
         <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
           <div className="animate-float-up">
             <div className="section-tag mb-5">

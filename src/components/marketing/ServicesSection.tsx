@@ -121,7 +121,7 @@ export default function ServicesSection() {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(105deg, transparent 40%, rgba(0,229,255,0.06) 45%, rgba(0,229,255,0.12) 50%, rgba(0,229,255,0.06) 55%, transparent 60%)",
+                    "linear-gradient(105deg, transparent 40%, rgba(var(--visual-signal-rgb),0.06) 45%, rgba(var(--visual-signal-rgb),0.12) 50%, rgba(var(--visual-signal-rgb),0.06) 55%, transparent 60%)",
                   transform: "translateX(-100%)",
                   animation: "none",
                 }}

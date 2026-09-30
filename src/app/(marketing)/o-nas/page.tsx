@@ -190,7 +190,7 @@ export default function ONasPage() {
                 fontSize: "0.65rem",
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
-                color: "rgba(0,229,255,0.85)",
+                color: "rgba(var(--visual-signal-rgb),0.85)",
               }}
             >
               Studio VELYOS

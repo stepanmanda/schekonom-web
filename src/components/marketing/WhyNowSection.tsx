@@ -37,7 +37,7 @@ export default function WhyNowSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(0,229,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(var(--visual-signal-rgb),0.04) 0%, transparent 70%)",
         }}
       />
 

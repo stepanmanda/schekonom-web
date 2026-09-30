@@ -157,7 +157,7 @@ export default function HiddenSignalsDemo() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(212,175,55,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(var(--visual-gold-rgb),0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -289,9 +289,9 @@ export default function HiddenSignalsDemo() {
                   const isPostAlert = week > active.alertWeek;
                   const heightPct = Math.max(8, value);
 
-                  let barColor = "rgba(0,229,255,0.6)";
+                  let barColor = "rgba(var(--visual-signal-rgb),0.6)";
                   if (isPostAlert) barColor = "rgba(255,123,123,0.6)";
-                  if (isAlert) barColor = "rgba(212,175,55,0.85)";
+                  if (isAlert) barColor = "rgba(var(--visual-gold-rgb),0.85)";
 
                   return (
                     <div
@@ -305,7 +305,7 @@ export default function HiddenSignalsDemo() {
                           style={{
                             fontFamily: "var(--font-mono)",
                             fontSize: "0.6rem",
-                            color: "rgba(212,175,55,0.95)",
+                            color: "rgba(var(--visual-gold-rgb),0.95)",
                           }}
                         >
                           ◉
@@ -319,7 +319,7 @@ export default function HiddenSignalsDemo() {
                           transition: "height 0.4s ease, background 0.4s ease",
                           opacity: isRevealed ? 1 : 0.15,
                           borderTop: isAlert
-                            ? "2px solid rgba(212,175,55,0.95)"
+                            ? "2px solid rgba(var(--visual-gold-rgb),0.95)"
                             : "none",
                         }}
                       />
@@ -353,7 +353,7 @@ export default function HiddenSignalsDemo() {
             {/* Legend */}
             <div
               className="hud-panel p-4 self-start"
-              style={{ background: "rgba(2,6,10,0.6)" }}
+              style={{ background: "var(--visual-legend)" }}
             >
               <div
                 className="text-cyan mb-3"
@@ -370,22 +370,22 @@ export default function HiddenSignalsDemo() {
                 <div className="flex items-start gap-2">
                   <div
                     className="w-3 h-3 mt-0.5 flex-shrink-0"
-                    style={{ background: "rgba(0,229,255,0.6)" }}
+                    style={{ background: "rgba(var(--visual-signal-rgb),0.6)" }}
                   />
                   <span className="text-text-secondary leading-snug">
-                    <strong className="text-white">Cyan:</strong> klient v pohodě, signál stabilní
+                    <strong className="text-white">Stabilní signál:</strong> klient v pohodě, signál stabilní
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
                   <div
                     className="w-3 h-3 mt-0.5 flex-shrink-0"
                     style={{
-                      background: "rgba(212,175,55,0.85)",
-                      borderTop: "2px solid rgba(212,175,55,1)",
+                      background: "rgba(var(--visual-gold-rgb),0.85)",
+                      borderTop: "2px solid var(--legacy-gold)",
                     }}
                   />
                   <span className="text-text-secondary leading-snug">
-                    <strong className="text-white">Gold:</strong> aplikace zaznamenala riziko, posílá alert
+                    <strong className="text-white">Zlatá:</strong> aplikace zaznamenala riziko, posílá alert
                   </span>
                 </div>
                 <div className="flex items-start gap-2">
@@ -407,7 +407,7 @@ export default function HiddenSignalsDemo() {
                   fontSize: "0.62rem",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "rgba(212,175,55,0.95)",
+                  color: "rgba(var(--visual-gold-rgb),0.95)",
                 }}
               >
                 <AlertTriangle size={12} />
@@ -423,7 +423,7 @@ export default function HiddenSignalsDemo() {
               className={`hud-panel p-5 transition-all duration-500 ${
                 revealedWeek >= 1 ? "opacity-100" : "opacity-30"
               }`}
-              style={{ borderLeft: "2px solid rgba(0,229,255,0.5)" }}
+              style={{ borderLeft: "2px solid rgba(var(--visual-signal-rgb),0.5)" }}
             >
               <div
                 className="text-cyan mb-3"
@@ -446,7 +446,7 @@ export default function HiddenSignalsDemo() {
               className={`hud-panel p-5 transition-all duration-500 ${
                 revealedWeek >= active.alertWeek ? "opacity-100" : "opacity-30"
               }`}
-              style={{ borderLeft: "2px solid rgba(212,175,55,0.6)" }}
+              style={{ borderLeft: "2px solid rgba(var(--visual-gold-rgb),0.6)" }}
             >
               <div
                 className="text-gold mb-3"

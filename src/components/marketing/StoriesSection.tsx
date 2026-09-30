@@ -69,7 +69,7 @@ export default function StoriesSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(212,175,55,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(var(--visual-gold-rgb),0.04) 0%, transparent 70%)",
         }}
       />
 

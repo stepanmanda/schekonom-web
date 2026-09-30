@@ -51,7 +51,7 @@ export default function WhatIsItSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(0,229,255,0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 70% 50% at 50% 30%, rgba(var(--visual-signal-rgb),0.05) 0%, transparent 70%)",
         }}
       />
 
@@ -96,7 +96,7 @@ export default function WhatIsItSection() {
         <div className={`${inView ? "animate-float-up delay-400" : "opacity-0"}`}>
           <div
             className="hud-panel p-7 lg:p-8"
-            style={{ borderLeft: "2px solid rgba(212,175,55,0.5)" }}
+            style={{ borderLeft: "2px solid rgba(var(--visual-gold-rgb),0.5)" }}
           >
             <p className="text-white text-lg sm:text-xl leading-relaxed font-semibold mb-2" style={{ fontFamily: "var(--font-space-grotesk)" }}>
               Klasická účetní firma má software pro účetnictví.
